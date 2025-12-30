@@ -273,3 +273,67 @@ main {
     scrollbar-width: thin; /* Makes it skinnier */
     scrollbar-color: #333 #0a0a0a; /* Thumb Color | Track Color */
 }
+
+/* --- COLLAPSIBLE SIDEBAR STYLES --- */
+
+/* Desktop Toggle Button (Visible when sidebar is closed) */
+#desktop-expand-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 2000;
+    background-color: #1a1c29;
+    border: 1px solid #333;
+    color: var(--theme-color);
+    font-size: 1.5rem;
+    padding: 5px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: none; /* Hidden by default (sidebar is open) */
+    transition: all 0.3s;
+}
+
+#desktop-expand-btn:hover {
+    background-color: #2a2d42;
+    box-shadow: 0 0 10px var(--theme-color);
+}
+
+/* Sidebar Collapse Button (Inside the sidebar) */
+#sidebar-collapse-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    color: #888;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+#sidebar-collapse-btn:hover {
+    color: var(--theme-color);
+}
+
+/* Transitions for smooth movement */
+#sidebar, main, #dot-nav {
+    transition: all 0.3s ease-in-out;
+}
+
+/* --- COLLAPSED STATE (Applied via JS) --- */
+body.collapsed #sidebar {
+    transform: translateX(-100%); /* Hides sidebar to the left */
+}
+
+body.collapsed main {
+    margin-left: 0; /* Expands content to fill screen */
+}
+
+body.collapsed #desktop-expand-btn {
+    display: block; /* Show the open button */
+}
+
+/* Move dots to the left when sidebar is gone */
+body.collapsed #dot-nav {
+    left: 40px; 
+}

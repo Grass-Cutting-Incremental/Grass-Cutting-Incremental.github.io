@@ -1,39 +1,49 @@
-// script.js
 document.addEventListener('DOMContentLoaded', () => {
-    const menuToggle = document.getElementById('menu-toggle');
+    // --- Elements ---
+    const body = document.body;
+    const mobileToggle = document.getElementById('menu-toggle');
     const sidebar = document.getElementById('sidebar');
+    const collapseBtn = document.getElementById('sidebar-collapse-btn');
+    const expandBtn = document.getElementById('desktop-expand-btn');
 
-    if(menuToggle && sidebar) {
-        menuToggle.addEventListener('click', () => {
-            sidebar.classList.toggle('active');
-        });
-    }
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    // Mobile Menu
-    const menuToggle = document.getElementById('menu-toggle');
-    const sidebar = document.getElementById('sidebar');
-
-    if(menuToggle && sidebar) {
-        menuToggle.addEventListener('click', () => {
+    // --- Mobile Menu Logic ---
+    if(mobileToggle && sidebar) {
+        mobileToggle.addEventListener('click', () => {
             sidebar.classList.toggle('active');
         });
     }
 
-    // Scroll Spy for Dot Navigation
+    // --- Desktop Collapse Logic ---
+    
+    // 1. Check LocalStorage for saved preference
+    if (localStorage.getItem('sidebar-collapsed') === 'true') {
+        body.classList.add('collapsed');
+    }
+
+    // 2. Function to toggle sidebar
+    function toggleSidebar() {
+        body.classList.toggle('collapsed');
+        
+        // Save state
+        const isCollapsed = body.classList.contains('collapsed');
+        localStorage.setItem('sidebar-collapsed', isCollapsed);
+    }
+
+    // 3. Add Event Listeners
+    if (collapseBtn) collapseBtn.addEventListener('click', toggleSidebar);
+    if (expandBtn) expandBtn.addEventListener('click', toggleSidebar);
+
+    // --- Scroll Spy (Dot Nav) Logic ---
     const sections = document.querySelectorAll('h2[id]');
     const navDots = document.querySelectorAll('.dot-item');
 
     if (navDots.length > 0 && sections.length > 0) {
         window.addEventListener('scroll', () => {
             let current = '';
-            
-            // Highlight the section taking up the most screen space or near top
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                // 200px offset to trigger highlight before the header hits the very top
-                if (window.scrollY >= (sectionTop - 200)) {
+                // Offset to highlight before reaching exact top
+                if (window.scrollY >= (sectionTop - 250)) {
                     current = section.getAttribute('id');
                 }
             });
