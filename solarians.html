@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solarians - GCI Guide</title>
+    <!-- FAVICON -->
+    <link rel="icon" type="image/x-icon" href="Main.ico">
+    
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- PAGE THEME CONFIGURATION --- */
+        :root {
+            --theme-color: #fb923c; /* Solarians Orange */
+        }
+
+        /* --- HEADINGS --- */
+        h1.main-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(251, 146, 60, 0.4);
+        }
+
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            font-size: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #333;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100px;
+            height: 2px;
+            background-color: var(--theme-color);
+            box-shadow: 0 0 10px var(--theme-color);
+        }
+
+        /* Major Checkpoint Headers */
+        h2.major-checkpoint {
+            font-size: 2.5rem;
+            color: var(--theme-color);
+            border-bottom: 4px solid var(--theme-color);
+            text-shadow: 0 0 10px rgba(251, 146, 60, 0.2);
+        }
+
+        h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--theme-color);
+            font-size: 1.4rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* --- TABLE OF CONTENTS --- */
+        .toc-box {
+            background-color: #151515;
+            border: 1px solid #333;
+            border-left: 4px solid var(--theme-color);
+            padding: 1.5rem;
+            margin-bottom: 3rem;
+            border-radius: 6px;
+            position: sticky;
+            top: 20px; /* Make TOC sticky on large screens if desired, but sidebar handles navigation mostly */
+        }
+        .toc-title {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--theme-color);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        .toc-list {
+            list-style: none;
+            column-count: 2; 
+            column-gap: 20px;
+        }
+        .toc-list li { margin-bottom: 8px; }
+        .toc-list a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.2s;
+            font-size: 0.95rem;
+        }
+        .toc-list a:hover {
+            color: var(--theme-color);
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .toc-list { column-count: 1; }
+        }
+
+        /* --- CREDITS BOX --- */
+        .credits-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid #333;
+            border-left: 4px solid var(--theme-color);
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin-bottom: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .credits-header {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            color: var(--theme-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        .credits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            font-size: 0.95rem;
+            color: #bbb;
+        }
+        .credit-role {
+            font-weight: bold;
+            color: #fff;
+            margin-right: 5px;
+        }
+
+        /* --- NOTE STYLE --- */
+        .note {
+            background-color: #151515;
+            border-left: 2px solid var(--theme-color);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.95rem;
+            color: #cccccc;
+            transition: transform 0.2s;
+        }
+        .note:hover { background-color: #1a1a1a; }
+        .note strong { color: #fff; }
+
+        /* --- IMAGE STYLES --- */
+        .guide-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            display: block;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            border: 1px solid #444;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        /* --- TABLE STYLES --- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background-color: #111;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            border-radius: 8px;
+            overflow: hidden;
+            font-size: 0.9rem;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #222;
+        }
+        th {
+            background-color: #1f1f1f;
+            color: var(--theme-color);
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+        }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background-color: #1a1a1a; }
+
+        /* Warning Text styling */
+        .warning-text {
+            color: #ff5555;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        /* List Styling */
+        ul { margin-left: 20px; margin-bottom: 1.5rem; }
+        li { margin-bottom: 8px; color: #ddd; }
+
+        /* Sidebar Active Color Override */
+        #sidebar a.active {
+            color: var(--theme-color) !important;
+            border-left-color: var(--theme-color) !important;
+        }
+        #sidebar a:hover {
+            color: var(--theme-color) !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <div class="logo" style="color:var(--theme-color); font-weight:bold;">GCI</div>
+        <button id="menu-toggle" style="background:none; border:none; color:#fff; font-size:1.5rem;">☰</button>
+    </header>
+
+    <!-- Sidebar -->
+    <aside id="sidebar">
+        <div class="sidebar-header">
+            <h1 style="color: var(--theme-color);">GCI</h1>
+            <p>Unofficial Guide</p>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+
+            <div class="section-title">World 1</div>
+            <a href="origins.html">Origins</a>
+            <a href="galactic.html">Galactic</a>
+            <a href="planetoid.html">Planetoid</a>
+            <a href="constellations.html">Constellations</a>
+            <a href="supernova.html">Supernova</a>
+            <a href="solarians.html" class="active">Solarians</a>
+            <a href="grasslands.html">Grasslands</a>
+            <a href="loops.html">Loops</a>
+
+            <div class="section-title">World 2</div>
+            <a href="jungle.html">Jungle</a>
+            <a href="true-awaken.html">True Awaken</a>
+            <a href="desert.html">Desert</a>
+            <a href="midnight.html">Midnight</a>
+            <a href="great-rift.html">Great Rift</a>
+            <a href="doom.html">Doom (DaS)</a>
+
+            <div class="section-title">Bonus</div>
+            <a href="tower.html">The Tower</a>
+            <a href="cool.html">Cool</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main>
+        <div class="guide-container">
+            
+            <h1 class="main-title">Solarians</h1>
+            
+            <!-- Credits -->
+            <div class="credits-box">
+                <div class="credits-header">/// Archive Data</div>
+                <div class="credits-grid">
+                    <div><span class="credit-role">Written by:</span> SigmaFlo44 & JimmyDSwan</div>
+                    <div><span class="credit-role">Verified by:</span> Projects Team</div>
+                </div>
+            </div>
+
+            <!-- Table of Contents -->
+            <div class="toc-box">
+                <div class="toc-title">Table of Contents</div>
+                <ul class="toc-list">
+                    <li><a href="#intro">Introduction & Notice</a></li>
+                    <li><a href="#tutorial">Basic Tutorial</a></li>
+                    <li><a href="#constellations">Constellation Setups</a></li>
+                    <li><a href="#unlock">Solarians Unlock</a></li>
+                    <li><a href="#stage1">Stage 1 & Souls</a></li>
+                    <li><a href="#compressed">Sol Compression (Major)</a></li>
+                    <li><a href="#t1challenges">Tier 1 Challenges</a></li>
+                    <li><a href="#restoration">Restoration Board</a></li>
+                    <li><a href="#stage40">Stage 40</a></li>
+                    <li><a href="#snt6">Supernova Tier 6</a></li>
+                    <li><a href="#sunset">Sunset (Major)</a></li>
+                    <li><a href="#t2challenges">Tier 2 Challenges</a></li>
+                    <li><a href="#snt7">Supernova Tier 7</a></li>
+                    <li><a href="#portal">Portal Pieces</a></li>
+                    <li><a href="#help100">Sunset - Stage 100 Help</a></li>
+                    <li><a href="#pp10">Portal Piece 10 (Major)</a></li>
+                    <li><a href="#appendix">Appendix (Tables)</a></li>
+                </ul>
+            </div>
+
+            <h2 id="intro">Introduction & Notice</h2>
+            <p>You have reached Solarians! This is the beginning of the long grind towards your next major goal. Before you get into the guide, there is some important and useful information to note below.</p>
+            
+            <p class="warning-text">You should avoid any of the following actions:</p>
+            <ul>
+                <li>Spending any Flowers in Flower Shop II.</li>
+                <li>Forgetting to purchase upgrades in all tabs of the Singularity chart (accessible via slider).</li>
+                <li>Performing a Sunrise for a lower amount of Sunrise FM.</li>
+            </ul>
+
+            <h3>Guide Info & Formatting</h3>
+            <p>This guide will use abbreviations, with the first use of them being marked in bold next to the full version i.e. <strong>Fighting Multi (FM)</strong>. Names of resets and currencies will also be marked in bold for clarity.</p>
+
+            <h2 id="tutorial">Basic Tutorial</h2>
+            <p>Solarians is a minigame involving time and material management. You will be using the people known as Solarians to collect materials and form buffs for you to progress. These Solarians have speeds they work at, with <strong>Collection Speed</strong> for materials and <strong>Forming Speed</strong> for forming.</p>
+
+            <p>You can select the number of Solarians you want to use at one time via the large board to the left of the collection. I would personally recommend only using the 100, 25, 5 or 1 options at any given time.</p>
+
+            <p>The only way to progress and eventually beat this minigame is to increase your stage by fighting enemies. Increasing your stage will provide you with temporary buffs. The main boosts to pay attention to here are <strong>Solar Shards</strong> and <strong>Sunrise Fighting Multi (SFM)</strong>.</p>
+            <p>SFM does not apply immediately, requiring a <strong>Sunrise</strong> to be performed. I personally recommend getting between 5x and 100x SFM each Sunrise.</p>
+
+            <div class="note"><strong>IMPORTANT:</strong> Solar Rays Generation is an upgrade unlocked in the Solar Upgrades Board at Stage 3, costing 10 Million Solar Shards. It should be purchased as soon as possible.</div>
+
+            <h2 id="constellations">Constellation Setups</h2>
+            <p>Before you proceed, you are recommended to update your constellation setups to one of the below.</p>
+
+            <h3>Basic Persistent Constellations</h3>
+            <img src="persistent2.png" alt="Basic Persistent Constellations" class="guide-image">
+
+            <h3>Later Persistent Constellations</h3>
+            <img src="persistent3.png" alt="Later Persistent Constellations" class="guide-image">
+
+            <h2 id="unlock">Solarians Unlock</h2>
+            <p>Solarians are unlocked via a board that appears at Supernova Tier 5 (SNT5) called the <strong>Singularity Chart</strong>. This board is next to the Solar Obelisk. You can obtain Singularities by Centralizing currencies. Get enough Prestige Points for the Prestige Point Centralize to get the Solarians upgrade.</p>
+
+            <h2 id="stage1">Stage 1 & Souls</h2>
+            <p>By defeating your first enemy you have gained a new currency called <strong>Souls</strong>. It is recommended to prioritize Solarian Power earlier on since it offers much better boosts than upgrading collecting/forming individually.</p>
+
+            <p>You will quickly get the second centralize and have to choose between Remnants and Soul Eater. <strong>Choose Remnants</strong> because it unlocks 2 upgrades costing Remnants in the Remnants upgrade board.</p>
+
+            <!-- Major Checkpoint: Sol Compression -->
+            <h2 id="compressed" class="major-checkpoint">Sol Compression</h2>
+            <p><strong>Stage 10</strong> is of great significance. It unlocks a new board known as Sol Compression, which generates <strong>Compressed Sol</strong>. Sol Compression is similar to Dark Fruits but is tiered, and is spent into all available boosts of that tier automatically.</p>
+            <div class="note">Be sure to purchase the new sunstone upgrade that unlocks at stage 12.</div>
+
+            <h2 id="t1challenges">Tier 1 Challenges</h2>
+            <p>With this stage, you have unlocked challenges which will grant challenge score and a currency called <strong>Golden Stars</strong>. You should do these after you get to SNT6 as this unlocks Bulk Completion for T1 Challenges.</p>
+
+            <h3>Recommended Spending Order for Golden Stars:</h3>
+            <ul>
+                <li>First 5: Golden Souls</li>
+                <li>Next 5: Sword Constellation Cap</li>
+                <li>Next 5: Soul Constellation Cap</li>
+                <li>Next 5: Golden Souls</li>
+                <li>Next 10: Forming</li>
+                <li>Next 10: Collecting</li>
+                <li>Last 10: Restore</li>
+            </ul>
+
+            <h2 id="restoration">Restoration Board</h2>
+            <p>The Restoration Board is unlocked at Stage 20. This is how you get beyond SNT 5 and use the new currency known as <strong>Mana</strong>.</p>
+            <ul>
+                <li><strong>Sword vs Soul:</strong> Choose <strong>Sword</strong> first for the fighting boost.</li>
+                <li><strong>Divine Robbery vs Super Compression:</strong> Choose <strong>Super Compression</strong>.</li>
+            </ul>
+
+            <h2 id="stage40">Stage 40</h2>
+            <p>Now, you will need to return to the restoration board where you should have met all the requirements necessary to obtain Supernova Tier 6. If you need Mana, you will need to Time Warp, go AFK for a bit of time, or waste time playing Planet Run.</p>
+
+            <h2 id="snt6">Supernova Tier 6</h2>
+            <p>Upon reaching the requirements for the next star tier, you are able to increase your SNT. As seen on the restoration board, you now have an Offense/Defense boost that increases based on your star growth, and the first upgrade of the restore tab will now be unlocked.</p>
+
+            <p>Other notable unlocks include the new Sunset reset in the Solar Obelisk and new remnant upgrades. If you get Stars and Fun centralize before Sunset, choose <strong>Best Offense</strong> over Super Absorb.</p>
+
+            <!-- Major Checkpoint: Sunset -->
+            <h2 id="sunset" class="major-checkpoint">Sunset</h2>
+            <p class="warning-text">READ THE FULL SECTION BELOW BEFORE DOING A SUNSET</p>
+            <p>Sunset is the second reset on the Solar Obelisk. It is an important reset, BUT YOU SHOULD NOT DO IT IMMEDIATELY. You will also gain <strong>Darkness</strong> on this reset at a rate of 1:1 of current Mana.</p>
+
+            <p>It is recommended to do your first Sunset reset after obtaining SNT7, and both Stars and Fun centralizes, at around Stage 56-58. This should be for around 400+ Divine Souls and 1 Billion+ Darkness.</p>
+
+            <p><strong>Spending Guide:</strong></p>
+            <ul>
+                <li><strong>Singularity Chart (Souls Tab):</strong> Purchase all upgrades costing 3-5 Divine Souls, Compression II, Light Logs V, Souls II.</li>
+                <li><strong>Singularity Chart (Mana Tab):</strong> Purchase ‘Violent’ upgrade.</li>
+                <li><strong>Souls Board:</strong> Buy a mix of Compression, FM, Mana and Souls. Ignore Restoration Speed for now.</li>
+                <li><strong>Darkness:</strong> Prioritize a new Grid tier over anything else.</li>
+            </ul>
+
+            <h2 id="t2challenges">Tier 2 Challenges</h2>
+            <p>After performing a Sunset, you have unlocked T2 Challenges. They provide a second type of stars known as <strong>Platinum Stars</strong>. Completions in the T2 challenge called ‘Challenging’ also automatically complete T1 challenges you may have missed.</p>
+            <div class="note">It is not recommended to skip T2 challenges.</div>
+
+            <h2 id="snt7">Supernova Tier 7</h2>
+            <p>Upon reaching the requirements for SNT7 you can increase your supernova tier. This tier is notable for its benefits which include:</p>
+            <ul>
+                <li>A new star growth buff for restoration speed.</li>
+                <li>A new tab for the restoration board called the portal tab.</li>
+                <li>The Sunset reset no longer resets basic levels in the forming tab (except compression).</li>
+            </ul>
+
+            <h2 id="portal">Portal Pieces</h2>
+            <p>By reaching SNT7, you have unlocked the <strong>Portal tab</strong>. You can now craft Portal Pieces (PPs). Every portal piece will require a set amount of resources and restoration to complete.</p>
+
+            <p>You will notice that portal pieces 8 and 9 require a huge amount of fragments. The best way to improve your gain is to:</p>
+            <ul>
+                <li>Purchase at least two upgrades of grass essence in the souls tab.</li>
+                <li>Get the planet run grass essence upgrade.</li>
+                <li>Use time warps (and don’t sunrise until you build those pieces).</li>
+            </ul>
+
+            <h2 id="help100">Sunset - Stage 100 Help</h2>
+            <p>Make sure you are centralizing whenever possible and doing sunsets every time you get x5-x20 more Dsouls and darkness. Repeat this process until you reach stage 100.</p>
+            <div class="note">Doing planet run while waiting is very beneficial especially while waiting for portal pieces.</div>
+
+            <!-- Major Checkpoint: Portal Piece 10 -->
+            <h2 id="pp10" class="major-checkpoint">Portal Piece 10</h2>
+            <p>Once you reach stage 107-110 you should be able to finally centralize Dark Matter. Doing so will teleport you to a small obby, clearing it and doing a Galactic will reward you with the <strong>Grassland Gem</strong>, which is needed to complete the 10th portal piece. Go and finish the portal to enter the new realm.</p>
+
+            <p style="text-align:center; font-style:italic; margin-top:2rem;">Congratulations! It's time to go to the next document.</p>
+            <p style="text-align:center;"><a href="https://forms.gle/YOUR_FORM_LINK_HERE" style="color:var(--theme-color); text-decoration:underline;">Click here for the Solarians Questionnaire</a></p>
+
+            <h2 id="appendix">Appendix</h2>
+
+            <h3>Centralize Requirements</h3>
+            <table>
+                <thead>
+                    <tr><th>Centralized Currency</th><th>Stage Requirement</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Prestige Points</td><td>Stages 0-1</td></tr>
+                    <tr><td>Crystals</td><td>Stages 1-2</td></tr>
+                    <tr><td>Steel</td><td>Stages 2-3</td></tr>
+                    <tr><td>Rocket Fuel</td><td>Stages 4-6</td></tr>
+                    <tr><td>Charge</td><td>Stages 14-16</td></tr>
+                    <tr><td>Anti-Grass</td><td>Stage 20</td></tr>
+                    <tr><td>Anonymity Points</td><td>Stage 21-23</td></tr>
+                    <tr><td>Oil</td><td>Stage 25-27</td></tr>
+                    <tr><td>Platinum</td><td>Stage 29-30</td></tr>
+                    <tr><td>Fun</td><td>Stage 58</td></tr>
+                    <tr><td>Stars</td><td>Stage 56-58</td></tr>
+                    <tr><td>SFRGT</td><td>Stage 85-86</td></tr>
+                    <tr><td>Dark Matter</td><td>Stage 103-105</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Singularity Order</h3>
+            <table>
+                <thead>
+                    <tr><th>Centralized Currency</th><th>Suggested Upgrade</th><th>Notes</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Crystals</td><td>Remnants</td><td>See Stage 1 Section</td></tr>
+                    <tr><td>Charge</td><td>Sword</td><td>See Restoration Board</td></tr>
+                    <tr><td>Oil</td><td>Super Compression</td><td>See Restoration Board</td></tr>
+                    <tr><td>Stars</td><td>Best Offense</td><td>See SNT 6 Section</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Portal Piece Costs</h3>
+            <table>
+                <thead>
+                    <tr><th>PP #</th><th>Cost</th><th>Reward</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>PP1</td><td>10 Grass Essence, 100M Portal Stones, 1B Mana</td><td>2x Mana</td></tr>
+                    <tr><td>PP2</td><td>10M T1 Comp. Sol, 1B Portal Stones, 10B Mana</td><td>2x Compression Speed</td></tr>
+                    <tr><td>PP3</td><td>1B Souls, 10B Portal Stones, 100B Mana</td><td>2x Divine Souls</td></tr>
+                    <tr><td>PP4</td><td>1T Fragments, 100B Portal Stones, 1T Mana</td><td>2x Grass Essence</td></tr>
+                    <tr><td>PP5</td><td>10,000 Grass Essence, 1T Portal Stones, 10T Mana</td><td>2x Mana</td></tr>
+                    <tr><td>PP6</td><td>1T T1 Comp. Sol, 10T Portal Stones, 100T Mana</td><td>2x Compression Speed</td></tr>
+                    <tr><td>PP7</td><td>10T Souls, 100T Portal Stones, 1Qa Mana</td><td>2x Divine Souls</td></tr>
+                    <tr><td>PP8</td><td>2Qa Fragments, 300T Portal Stones, 3Qa Mana</td><td>2x Grass Essence</td></tr>
+                    <tr><td>PP9</td><td>6Qa Fragments, 800T Portal Stones, 80Qa Mana</td><td>-</td></tr>
+                    <tr><td>PP10</td><td>1 Grassland Gem, 2Qa Portal Stones, 200Qa Mana</td><td>Portal Activated</td></tr>
+                </tbody>
+            </table>
+
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
