@@ -243,3 +243,33 @@ main {
 @media (max-width: 1100px) {
     #dot-nav { display: none; }
 }
+
+/* --- CUSTOM SCROLLBAR STYLING --- */
+
+/* For Webkit Browsers (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+    width: 8px; /* Width of the vertical scrollbar */
+    height: 8px; /* Height of the horizontal scrollbar */
+}
+
+/* The Track (Background) */
+::-webkit-scrollbar-track {
+    background: #0a0a0a; /* Matches your Sidebar background */
+}
+
+/* The Handle (The moving part) */
+::-webkit-scrollbar-thumb {
+    background: #333; /* Dark Grey */
+    border-radius: 4px; /* Soft edges */
+}
+
+/* Handle on hover (When you mouse over it) */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Slightly lighter grey */
+}
+
+/* For Firefox (different syntax) */
+* {
+    scrollbar-width: thin; /* Makes it skinnier */
+    scrollbar-color: #333 #0a0a0a; /* Thumb Color | Track Color */
+}
