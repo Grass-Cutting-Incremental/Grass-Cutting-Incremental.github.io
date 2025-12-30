@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Tower - GCI Guide</title>
+    <!-- FAVICON -->
+    <link rel="icon" type="image/x-icon" href="Main.ico">
+    
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- PAGE THEME CONFIGURATION --- */
+        :root {
+            --theme-color: #a0aec0; /* Base Tower Grey */
+        }
+
+        /* --- HEADINGS --- */
+        h1.main-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(160, 174, 192, 0.4);
+        }
+
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            font-size: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #333;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100px;
+            height: 2px;
+            background-color: var(--theme-color);
+            box-shadow: 0 0 10px var(--theme-color);
+        }
+
+        h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--theme-color);
+            font-size: 1.4rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* --- CREDITS BOX --- */
+        .credits-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid #333;
+            border-left: 4px solid var(--theme-color);
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin-bottom: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .credits-header {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            color: var(--theme-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        .credits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            font-size: 0.95rem;
+            color: #bbb;
+        }
+        .credit-role {
+            font-weight: bold;
+            color: #fff;
+            margin-right: 5px;
+        }
+
+        /* --- NOTE STYLE --- */
+        .note {
+            background-color: #151515;
+            border-left: 2px solid var(--theme-color);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.95rem;
+            color: #cccccc;
+            transition: transform 0.2s;
+        }
+        .note:hover { background-color: #1a1a1a; }
+        .note strong { color: #fff; }
+
+        /* --- IMAGE STYLES --- */
+        .guide-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            display: block;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            border: 1px solid #444;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        /* Warning Text styling */
+        .warning-text {
+            color: #ff5555;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        /* List Styling */
+        ul { margin-left: 20px; margin-bottom: 1.5rem; }
+        li { margin-bottom: 8px; color: #ddd; }
+
+        /* Sidebar Active Color Override */
+        #sidebar a.active {
+            color: var(--theme-color) !important;
+            border-left-color: var(--theme-color) !important;
+        }
+        #sidebar a:hover {
+            color: var(--theme-color) !important;
+        }
+
+        /* --- DOT NAV OVERRIDES FOR LONG LISTS --- */
+        #dot-nav {
+            top: 100px;
+            bottom: 50px;
+            transform: none;
+            overflow-y: auto;
+            padding-right: 10px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            gap: 10px;
+        }
+        #dot-nav::-webkit-scrollbar { display: none; }
+
+        /* --- FLOOR SPECIFIC COLORS --- */
+        /* Floor 1: Green */
+        h2#f1, h2#f1::after { color: #4ade80 !important; border-color: #4ade80 !important; background-color: transparent; }
+        h2#f1::after { background-color: #4ade80; }
+        
+        /* Floor 2: Crystal Pink */
+        h2#f2, h2#f2::after { color: #f472b6 !important; border-color: #f472b6 !important; background-color: transparent; }
+        h2#f2::after { background-color: #f472b6; }
+
+        /* Floor 3: Frosty Blue */
+        h2#f3, h2#f3::after { color: #60a5fa !important; border-color: #60a5fa !important; background-color: transparent; }
+        h2#f3::after { background-color: #60a5fa; }
+
+        /* Floor 4: Darker Light Green */
+        h2#f4, h2#f4::after { color: #16a34a !important; border-color: #16a34a !important; background-color: transparent; }
+        h2#f4::after { background-color: #16a34a; }
+
+        /* Floor 5: Crimson Red */
+        h2#f5, h2#f5::after { color: #dc2626 !important; border-color: #dc2626 !important; background-color: transparent; }
+        h2#f5::after { background-color: #dc2626; }
+
+    </style>
+</head>
+<body>
+
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <div class="logo" style="color:var(--theme-color); font-weight:bold;">GCI</div>
+        <button id="menu-toggle" style="background:none; border:none; color:#fff; font-size:1.5rem;">☰</button>
+    </header>
+
+    <!-- Sidebar -->
+    <aside id="sidebar">
+        <div class="sidebar-header">
+            <h1 style="color: var(--theme-color);">GCI</h1>
+            <p>The Tower Guide</p>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+
+            <div class="section-title">World 1</div>
+            <a href="origins.html">Origins</a>
+            <a href="galactic.html">Galactic</a>
+            <a href="planetoid.html">Planetoid</a>
+            <a href="constellations.html">Constellations</a>
+            <a href="supernova.html">Supernova</a>
+            <a href="solarians.html">Solarians</a>
+            <a href="grasslands.html">Grasslands</a>
+            <a href="loops.html">Loops</a>
+
+            <div class="section-title">World 2</div>
+            <a href="jungle.html">Jungle</a>
+            <a href="true-awaken.html">True Awaken</a>
+            <a href="desert.html">Desert</a>
+            <a href="midnight.html">Midnight</a>
+            <a href="great-rift.html">Great Rift</a>
+            <a href="doom.html">Doom (DaS)</a>
+
+            <div class="section-title">Bonus</div>
+            <a href="tower.html" class="active">The Tower</a>
+            <a href="cool.html">Cool</a>
+        </nav>
+    </aside>
+
+    <!-- DOT NAVIGATION -->
+    <div id="dot-nav">
+        <a href="#intro" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Intro</span></a>
+        <a href="#f1" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Floor 1</span></a>
+        <a href="#f2" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Floor 2</span></a>
+        <a href="#f3" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Floor 3</span></a>
+        <a href="#platinum" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Farming</span></a>
+        <a href="#f4" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Floor 4</span></a>
+        <a href="#f5" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Floor 5</span></a>
+        <a href="#rh8" class="dot-item"><div class="dot-circle"></div><span class="dot-label">RH 1-8</span></a>
+        <a href="#rh10" class="dot-item"><div class="dot-circle"></div><span class="dot-label">RH 8-10</span></a>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <div class="guide-container">
+            
+            <h1 class="main-title">The Tower</h1>
+            
+            <!-- Credits -->
+            <div class="credits-box">
+                <div class="credits-header">/// Archive Data</div>
+                <div class="credits-grid">
+                    <div><span class="credit-role">Written by:</span> GrandDom</div>
+                </div>
+            </div>
+
+            <h2 id="intro">Introduction & Notice</h2>
+            <p>Congratulations on beating World 2! Here you will find a relatively long piece of optional content that you can complete known as The Tower. Before you get into the guide, there is some important information to know below.</p>
+            
+            <p class="warning-text">You should avoid any of the following actions:</p>
+            <ul>
+                <li>Performing a reset you just unlocked immediately, for low currency.</li>
+                <li>Prioritizing stat upgrades over generator automations.</li>
+                <li>Forgetting to purchase Perk Equivalent Upgrades.</li>
+            </ul>
+
+            <h3>Guide Info & Formatting</h3>
+            <p>This guide will use abbreviations, with the first use of them being marked in bold next to the full version i.e. <strong>Grasshops (GH)</strong>. Names of resets and currencies will also be marked in bold for clarity.</p>
+
+            <h2 id="f1">Floor 1 (Grass Field)</h2>
+            <p><strong>Estimated Time to GH 10:</strong> 1-1.5 Hours Active Playtime</p>
+            <p>Welcome to the first floor. This is essentially the exact same as the normal realm, but with different upgrades and grasshop milestones. Your goal here, and for every other floor, is to reach Grasshop 10.</p>
+
+            <p>Each floor of the tower is the same, but with a different theme and harder stats. Any time ‘equivalent’ is referenced, it means the same as the feature mentioned, but with a different name.</p>
+
+            <div class="note">You should always be farming for Platinum or Platinum Equivalents after unlocking them.</div>
+
+            <p>Aim for around 500,000 to 1 Million Crystals on the first reset. Once you reach level 200 and can Grasshop, make sure you have all the platinum upgrades you want and do it immediately.</p>
+
+            <h2 id="f2">Floor 2 (Crystal Caves)</h2>
+            <p><strong>Estimated Time to GH 10 Equivalent:</strong> 4-5 Hours Active Playtime</p>
+            <p>Well done on getting to the second floor. You will immediately notice that this floor level grants a multi to the floor below. You will also notice that the upgrades here start off with a higher cost.</p>
+
+            <p>You should start collecting grass immediately and aim to unlock the autocut for this floor as soon as possible. Repeat this process of going between the floors to push grasshops, steel and automation.</p>
+
+            <h2 id="f3">Floor 3 (Diamond Zone)</h2>
+            <p><strong>Estimated Time to GH 10 Equivalent:</strong> 20 Hours In Game</p>
+            <p>You reached Floor 3! This is the exact same as the other floors, except the costs are higher and the Platinum-equivalent has a lower spawn chance.</p>
+
+            <h2 id="platinum">Platinum-Type Farming</h2>
+            <p>From floor 3 onwards, you cannot make any progress without farming a large amount of platinum for platinum upgrades, and each floor will take much longer than the last.</p>
+            <p>You can either Manually farm Platinum-Equivalents for a long period of time, whilst pushing Grasshops, or Macro Platinum-Equivalents.</p>
+            <div class="note">Reminder that you are not allowed to discuss or share Macros within the LG discord server.</div>
+
+            <h2 id="f4">Floor 4 (Mystical Forest)</h2>
+            <p><strong>Estimated Time to GH 10 Equivalent:</strong> 40-50 Hours In-Game</p>
+            <p>Well done on making it this far. You do however need to note that on this floor and the fifth floor, you CANNOT progress without getting Platinum-Type upgrades.</p>
+
+            <p>This means you will need to grind out a large amount of platinum. After getting MH 1, grind stoneificate and get Platinum Value to 4 or 5 per collection, and then grind 40k Platinum.</p>
+
+            <h2 id="f5">Floor 5 (Demonic Place)</h2>
+            <p><strong>Estimated Time to GH 10 Equivalent:</strong> 1 Week - 1 Month</p>
+            <p>Upon unlocking Floor 5 you will have to devote yourself to collecting grass until you get to at least Demonic Level 7. You will not be able to get any upgrades on this floor until you get at least MH 12.</p>
+
+            <p>The first major goal is to get F5 autocut, which should be doable with MH 13 or 14. You will slowly build up enough demonic levels to be able to do the first reset, WHICH YOU SHOULD NOT DO UNLESS YOU HAVE HIT AT LEAST LEVEL 40-60.</p>
+
+            <h2 id="rh8">Ring Hop 1-8</h2>
+            <p>You can obtain RH 1 & 2 with <5k Green Rings earnt. It is then recommended you get to ~8 Green Rings per collection and farm 60-100k Green Rings.</p>
+            <div class="note">SKIP YELLOW RING TILL AT LEAST RH 7, PREFERABLY 8</div>
+
+            <h2 id="rh10">Ring Hop 8-10</h2>
+            <p>This section can be done in multiple ways. The recommended option is: Yellow Ring at RH 8 and then get to 9 faster and do 2 more resets.</p>
+
+            <p>Before pushing to RH 10, you should have the Yellow and Green Ring upgrades shown below at the minimum.</p>
+
+            <img src="green.png" alt="Green Ring Upgrades" class="guide-image">
+            <img src="yellow.png" alt="Yellow Ring Upgrades" class="guide-image">
+
+            <hr style="border-color: #333; margin: 4rem 0;">
+            <p style="text-align: center; font-size: 1.2rem; color: #fff;">Congratulations on completing The Tower guide!</p>
+
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loops - GCI Guide</title>
+    <!-- FAVICON -->
+    <link rel="icon" type="image/x-icon" href="Main.ico">
+    
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- PAGE THEME CONFIGURATION --- */
+        :root {
+            --theme-color: #3b82f6; /* Dark Blue */
+        }
+
+        /* --- HEADINGS --- */
+        h1.main-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+        }
+
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            font-size: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #333;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100px;
+            height: 2px;
+            background-color: var(--theme-color);
+            box-shadow: 0 0 10px var(--theme-color);
+        }
+
+        /* Major Checkpoint Headers */
+        h2.major-checkpoint {
+            font-size: 2.5rem;
+            color: var(--theme-color);
+            border-bottom: 4px solid var(--theme-color);
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.2);
+        }
+
+        h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--theme-color);
+            font-size: 1.4rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* --- CREDITS BOX --- */
+        .credits-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid #333;
+            border-left: 4px solid var(--theme-color);
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin-bottom: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .credits-header {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            color: var(--theme-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        .credits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            font-size: 0.95rem;
+            color: #bbb;
+        }
+        .credit-role {
+            font-weight: bold;
+            color: #fff;
+            margin-right: 5px;
+        }
+
+        /* --- NOTE STYLE --- */
+        .note {
+            background-color: #151515;
+            border-left: 2px solid var(--theme-color);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.95rem;
+            color: #cccccc;
+            transition: transform 0.2s;
+        }
+        .note:hover { background-color: #1a1a1a; }
+        .note strong { color: #fff; }
+
+        /* --- TABLE STYLES --- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background-color: #111;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            border-radius: 8px;
+            overflow: hidden;
+            font-size: 0.9rem;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #222;
+        }
+        th {
+            background-color: #1f1f1f;
+            color: var(--theme-color);
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+        }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background-color: #1a1a1a; }
+
+        /* Warning Text styling */
+        .warning-text {
+            color: #ff5555;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        /* List Styling */
+        ul { margin-left: 20px; margin-bottom: 1.5rem; }
+        li { margin-bottom: 8px; color: #ddd; }
+
+        /* Sidebar Active Color Override */
+        #sidebar a.active {
+            color: var(--theme-color) !important;
+            border-left-color: var(--theme-color) !important;
+        }
+        #sidebar a:hover {
+            color: var(--theme-color) !important;
+        }
+
+        /* Dot Nav Override */
+        #dot-nav {
+            top: 100px;
+            bottom: 50px;
+            transform: none;
+            overflow-y: auto;
+            padding-right: 10px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            gap: 10px;
+        }
+        #dot-nav::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body>
+
+    <button id="desktop-expand-btn">☰</button>
+
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <div class="logo" style="color:var(--theme-color); font-weight:bold;">GCI</div>
+        <button id="menu-toggle" style="background:none; border:none; color:#fff; font-size:1.5rem;">☰</button>
+    </header>
+
+    <!-- Sidebar -->
+    <aside id="sidebar">
+        <div class="sidebar-header">
+            <h1 style="color: var(--theme-color);">GCI</h1>
+            <p>Loops Guide</p>
+            <button id="sidebar-collapse-btn">«</button>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+
+            <div class="section-title">World 1</div>
+            <a href="origins.html">Origins</a>
+            <a href="galactic.html">Galactic</a>
+            <a href="planetoid.html">Planetoid</a>
+            <a href="constellations.html">Constellations</a>
+            <a href="supernova.html">Supernova</a>
+            <a href="solarians.html">Solarians</a>
+            <a href="grasslands.html">Grasslands</a>
+            <a href="loops.html" class="active">Loops</a>
+
+            <div class="section-title">World 2</div>
+            <a href="jungle.html">Jungle</a>
+            <a href="true-awaken.html">True Awaken</a>
+            <a href="desert.html">Desert</a>
+            <a href="midnight.html">Midnight</a>
+            <a href="great-rift.html">Great Rift</a>
+            <a href="doom.html">Doom (DaS)</a>
+
+            <div class="section-title">Bonus</div>
+            <a href="tower.html">The Tower</a>
+            <a href="cool.html">Cool</a>
+        </nav>
+    </aside>
+
+    <!-- DOT NAVIGATION -->
+    <div id="dot-nav">
+        <a href="#intro" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Intro</span></a>
+        <a href="#loop1" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Loop</span></a>
+        <a href="#looplets" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Looplets</span></a>
+        <a href="#unlocks" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Unlocks</span></a>
+        <a href="#recovery" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Recovery</span></a>
+        <a href="#loop2" class="dot-item"><div class="dot-circle"></div><span class="dot-label">2nd Loop</span></a>
+        <a href="#megaloop" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Mega Loop</span></a>
+        <a href="#megalooplets" class="dot-item"><div class="dot-circle"></div><span class="dot-label">ML Looplets</span></a>
+        <a href="#mlunlocks" class="dot-item"><div class="dot-circle"></div><span class="dot-label">ML Unlocks</span></a>
+        <a href="#lime" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Lime Charge</span></a>
+        <a href="#d11" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Dungeon 11</span></a>
+        <a href="#mlrecovery" class="dot-item"><div class="dot-circle"></div><span class="dot-label">ML Recovery</span></a>
+        <a href="#ml11" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Final ML</span></a>
+        <a href="#appendix" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Appendix</span></a>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <div class="guide-container">
+            
+            <h1 class="main-title">Loops</h1>
+            
+            <!-- Credits -->
+            <div class="credits-box">
+                <div class="credits-header">/// Archive Data</div>
+                <div class="credits-grid">
+                    <div><span class="credit-role">Written by:</span> SimgaFlo44</div>
+                    <div><span class="credit-role">Verified by:</span> 4178</div>
+                </div>
+            </div>
+
+            <h2 id="intro">Introduction & Notice</h2>
+            <p>Welcome to World 1’s bonus content! This guide will assume that you have read the optional content section of the grasslands guide.</p>
+            <p><strong>TLDR for Grasslands Page 19+:</strong> You must reach stage 20k before looping as every 10k stages you are rewarded with an additional loop.</p>
+
+            <!-- Major Checkpoint: Loop Floor 1 -->
+            <h2 id="loop1" class="major-checkpoint">Loop Floor 1: Loop</h2>
+            <p>After reaching Stage 1000, the Loop reset (The End) is unlocked. Looping will reset everything up to that point except your Flower upgrades, Grassland progress and upgrades.</p>
+            <p>Upon performing a loop you will be given a global multiplier that increases almost everything. This multi starts at x1 and is increased by +1 every loop you perform.</p>
+            <div class="note">Make sure you have stage 20K before looping.</div>
+
+            <h2 id="looplets">Looplets and Looplet upgrades</h2>
+            <p>After looping at Stage 20k, you will have a total multiplier of x4 and you will be awarded 3 Looplets. Looplets are the currency that is used to buy Loop upgrades.</p>
+            <p><strong>Recommended Upgrades:</strong></p>
+            <ul>
+                <li><strong>Loopier Loops:</strong> Increases global multi by 1.5x.</li>
+                <li><strong>Planetoid II:</strong> Keeps the lines, arcs and stardust autobuyers.</li>
+                <li><strong>Prism:</strong> Keep prism constellation upgrade unlocked on loop.</li>
+            </ul>
+
+            <h2 id="unlocks">Loop Unlocks</h2>
+            <p>Doing your first Loop will unlock the following:</p>
+            <ul>
+                <li>Permanent access to the Loop Tower and Loop upgrades.</li>
+                <li>A new boost in the rare flower shop for Loops per Loop (You should buy these).</li>
+                <li>Two new stats that track floor 1 loop multi and total loop multi.</li>
+            </ul>
+
+            <h2 id="recovery">Loop Recovery</h2>
+            <p>The buffs provided by the first loop are not major enough to be a significant change from regular gameplay, but you will be able to clear sections faster.</p>
+            <ul>
+                <li><strong>Pre-Galactic:</strong> Get AGH 19 on your first galactic to unlock the star accumulator immediately.</li>
+                <li><strong>Galactic:</strong> Get more speed tree upgrades and skip some AGHGS milestones.</li>
+                <li><strong>Planetoid:</strong> Achieving AGHGS 45 will be swift.</li>
+                <li><strong>Solarians:</strong> After unlocking grasslands and getting sharper edge you’ll be able to effortlessly fly through stages.</li>
+            </ul>
+
+            <h3>Things You May Have Forgotten</h3>
+            <ul>
+                <li>You can right-click on upgrades to buy max.</li>
+                <li>Portal Piece 10 requires a grasslands gem (centralize Dark Matter).</li>
+                <li>Dark charge centralize requires you to have a last prism and a T12 grid constellation.</li>
+            </ul>
+
+            <h2 id="loop2">Second Loop (IMPORTANT)</h2>
+            <p>After reaching stage 1K, you are once again given the option to loop.</p>
+            <p class="warning-text">DO NOT GET MORE THAN 10 TOTAL LOOPS, this is because all your floor 1 progress will be reset on floor 2.</p>
+            <p>Reach stage 20K first then use 4 Loop per Loop boosts from the rare flower shop. This will increase the loops you’ll gain to 7 allowing you to reach 10 total loops.</p>
+
+            <!-- Major Checkpoint: Mega Loop -->
+            <h2 id="megaloop" class="major-checkpoint">Loop Floor 2: Mega Loop</h2>
+            <p>Floor 2 is a big step up from the first one. First and foremost you will have to perform your first <strong>Mega Loop (ML)</strong>. The Mega Loop reset will reset everything Loop does as well as Loops, Looplets, and Looplet upgrades.</p>
+            <p>Make sure to perform your first mega loop immediately when you can, as getting more loops is a waste.</p>
+
+            <h2 id="megalooplets">Mega Looplets and Upgrades</h2>
+            <p>Performing your first mega loop will award you with 1 Mega Looplet. The most important upgrade is the <strong>Mega Loop per Mega Loop</strong> upgrade costing 10 Looplets. It allows you to get two mega loops at once.</p>
+            <p><strong>Order to buy:</strong></p>
+            <ul>
+                <li>(ML 1) Mega Loopier Loops</li>
+                <li>(ML 3) Mega Planetoid I OR II and Pre Galactic Realms</li>
+                <li>(ML 5) Mega Planetoid I OR II (the one you didn’t buy yet) and Galactic realms</li>
+                <li>(ML7 to ML11) Do not spend Mega Looplets at this point, save them for floor 3.</li>
+            </ul>
+
+            <h2 id="mlunlocks">Mega Loop Unlocks</h2>
+            <p>Performing your first Mega Loop will unlock the Lime charger, the 11th Dungeon, New Mastery upgrades, and permanently unlocks grassland.</p>
+
+            <h2 id="lime">The Lime Charger + LC Tab</h2>
+            <p>The Lime Charger generates a base of 1 lime charge (LC) per second. The most important is milestone 3 (1M LC) which gives you +1 loop per loop for every 6 OoMs of Lime Charge.</p>
+            <div class="note">Mega Looping will reset your current LC, so spend any LC you have on the upgrades in the EL tab before doing a Mega Loop.</div>
+
+            <h2 id="d11">Dungeon 11: Neon City</h2>
+            <p><strong>Gear Required:</strong> Mythics from DD4.</p>
+            <p>The first room in D11 is the only room that makes use of normal cutting/health. Killing them will drop Neon gear. Their stats indicate a new type of cutting <strong>Advanced Cutting/Health</strong> where 1 Advanced cutting is 1Sp Normal Cutting.</p>
+            <p>You should try to get the uncommon gear in early-mid Mega Loop and the rare gear in Later Mega Loops. This is crucial to get the 1m LC necessary for the +1lpl boost.</p>
+
+            <h2 id="mlrecovery">Mega Loop Recovery</h2>
+            <p>At Mega Loop you will be able to skip far more things.</p>
+            <ul>
+                <li><strong>Early/Galactic:</strong> Bypass waiting for steel and rocket parts.</li>
+                <li><strong>Planetoid:</strong> Almost all time walls are gone. Dark fruits are faster.</li>
+                <li><strong>Supernova:</strong> Skip star tier 1 entirely and go immediately to star tier 2.</li>
+                <li><strong>Solarians:</strong> You can do your first Twilight after SNT 11.</li>
+            </ul>
+
+            <!-- Major Checkpoint: Final ML -->
+            <h2 id="ml11" class="major-checkpoint">Mega Loop 11 (Final)</h2>
+            <p>At this point you should have 6 Mega Looplets saved. You will be able to go through the cyan door and access the 3rd floor.</p>
+            <p>Your Mega Looplets will be converted into a new currency at a rate of 1:10 once you perform the Super Mega Loop reset.</p>
+            <div class="note">It is not worth going for more mega loops after ml11.</div>
+
+            <hr style="border-color: #333; margin: 4rem 0;">
+
+            <h2 id="appendix">Appendix</h2>
+
+            <h3>Challenge Stage Requirements (Max Completions)</h3>
+            <table>
+                <thead><tr><th>Challenge</th><th>Stage Req</th></tr></thead>
+                <tbody>
+                    <tr><td>Basic (T1)</td><td>20</td></tr>
+                    <tr><td>Cycle (T1)</td><td>26</td></tr>
+                    <tr><td>Soul (T1)</td><td>22</td></tr>
+                    <tr><td>Wall (T1)</td><td>18</td></tr>
+                    <tr><td>Soulless (T1)</td><td>18</td></tr>
+                    <tr><td>Limited (T1)</td><td>28</td></tr>
+                    <tr><td>Strong (T1)</td><td>32</td></tr>
+                    <tr><td>Evil (T1)</td><td>7</td></tr>
+                    <tr><td>Advanced (T2)</td><td>48</td></tr>
+                    <tr><td>Decompressed (T2)</td><td>48</td></tr>
+                    <tr><td>Challenging (T2)</td><td>60</td></tr>
+                    <tr><td>Speed (T2)</td><td>32</td></tr>
+                    <tr><td>One (T2)</td><td>40</td></tr>
+                    <tr><td>Sole Hero (T2)</td><td>80</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Normal Looplet Upgrades</h3>
+            <table>
+                <thead><tr><th>Upgrade</th><th>Description</th></tr></thead>
+                <tbody>
+                    <tr><td>Normal Realm</td><td>Permanently unlocks normal realm autobuyers on loops</td></tr>
+                    <tr><td>Anti Realm</td><td>Permanently unlocks anti realm autobuyers on loops</td></tr>
+                    <tr><td>Galactic Realms</td><td>Permanently unlocks unnatural and space realm autobuyer</td></tr>
+                    <tr><td>Planetoid I</td><td>Pre-constellation planetoid autobuyers</td></tr>
+                    <tr><td>Planetoid II</td><td>Post-constellation planetoid autobuyers</td></tr>
+                    <tr><td>Supernova I</td><td>Autobuys basic, automation and advanced solar upgrades</td></tr>
+                    <tr><td>Supernova II</td><td>Autobuys sunstone, flare and filler solar upgrade</td></tr>
+                    <tr><td>Solarians</td><td>Unlocks Free Compression. Singularity Chart x10 instead</td></tr>
+                    <tr><td>Prism</td><td>Permanently unlocks prisms on loops</td></tr>
+                    <tr><td>Loopier Loops</td><td>Increases nearly everything by 50%</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Mega Looplet Upgrades</h3>
+            <table>
+                <thead><tr><th>Upgrade</th><th>Description</th></tr></thead>
+                <tbody>
+                    <tr><td>ML per ML</td><td>Increases mega loops on mega loop by +1. Resets on mega loop</td></tr>
+                    <tr><td>Pre-Galactic Realms</td><td>Unlocks normal/anti realm autobuyers. Includes multi gh/gs</td></tr>
+                    <tr><td>Mega Galactic Realms</td><td>Unlocks unnatural/space autobuyers. Includes multi grass jump</td></tr>
+                    <tr><td>Mega Planetoid I</td><td>Pre-constellation autobuyers. Includes multi Planetary</td></tr>
+                    <tr><td>Mega Planetoid II</td><td>Post-constellation autobuyers</td></tr>
+                    <tr><td>Mega Supernova</td><td>Autobuys all solar upgrades</td></tr>
+                    <tr><td>Mega Solarians</td><td>Unlocks soul absorber. Singularity chart x3 instead</td></tr>
+                    <tr><td>Mega Prism</td><td>Unlocks prisms and multiplies instability cap by 10</td></tr>
+                    <tr><td>Mega Loopier Loops</td><td>Increases nearly everything by 40%. Keeps previous loopier loops</td></tr>
+                    <tr><td>Tier 9</td><td>Unlocks autofight, keep forming compression, and flares bonus</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Lime Charge Info</h3>
+            <table>
+                <thead><tr><th>Upgrade</th><th>Cost</th></tr></thead>
+                <tbody>
+                    <tr><td>Lime Charged Grass</td><td>1,000 LC</td></tr>
+                    <tr><td>Lime Charged Crystals</td><td>100,000 LC</td></tr>
+                    <tr><td>Lime Charged Anti-Grass</td><td>1M LC</td></tr>
+                    <tr><td>Lime Charged Anonymity</td><td>10M LC</td></tr>
+                    <tr><td>Lime Charged Oil</td><td>100M LC</td></tr>
+                    <tr><td>Lime Charged Unnatural Grass</td><td>1B LC</td></tr>
+                    <tr><td>Lime Charged Normality</td><td>10B LC</td></tr>
+                    <tr><td>Lime Charged Clouds</td><td>100B LC</td></tr>
+                    <tr><td>Lime Charged Planetarium</td><td>1T LC</td></tr>
+                    <tr><td>Lime Charged Astro</td><td>10T LC</td></tr>
+                    <tr><td>Lime Charged Measure</td><td>100T LC</td></tr>
+                    <tr><td>Lime Charged Dark Matter</td><td>1Qa LC</td></tr>
+                    <tr><td>Lime Charged Momentum</td><td>10Qa LC</td></tr>
+                    <tr><td>Lime Charged Perks</td><td>100Qa LC</td></tr>
+                    <tr><td>Lime Charged Platinum</td><td>1Qt LC</td></tr>
+                    <tr><td>Lime Charged Rocket Fuel</td><td>10Qt LC</td></tr>
+                    <tr><td>Lime Charged Stars</td><td>100Qt LC</td></tr>
+                    <tr><td>Lime Charged Moonstone</td><td>1Sx LC</td></tr>
+                    <tr><td>Lime Charged Rings</td><td>10Sx LC</td></tr>
+                </tbody>
+            </table>
+
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
