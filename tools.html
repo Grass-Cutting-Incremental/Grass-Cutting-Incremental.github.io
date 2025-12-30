@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tools - GCI</title>
+    <!-- FAVICON -->
+    <link rel="icon" type="image/x-icon" href="assets/img/Main.ico">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Break Eternity Decimal library -->
+    <script src="https://unpkg.com/break_eternity@0.1.0/break_eternity.min.js"></script>
+</head>
+<body>
+
+    <button id="desktop-expand-btn">☰</button>
+
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <div class="logo" style="color:var(--theme-color); font-weight:bold;">GCI</div>
+        <button id="menu-toggle" style="background:none; border:none; color:#fff; font-size:1.5rem;">☰</button>
+    </header>
+
+    <!-- Sidebar -->
+    <aside id="sidebar">
+        <div class="sidebar-header">
+            <h1 style="color: var(--theme-color);">GCI</h1>
+            <p>Tools</p>
+            <button id="sidebar-collapse-btn">«</button>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="tools.html" class="active">Tools</a>
+
+            <div class="section-title">World 1</div>
+            <a href="origins.html">Origins</a>
+            <a href="galactic.html">Galactic</a>
+            <a href="planetoid.html">Planetoid</a>
+            <a href="constellations.html">Constellations</a>
+            <a href="supernova.html">Supernova</a>
+            <a href="solarians.html">Solarians</a>
+            <a href="grasslands.html">Grasslands</a>
+            <a href="loops.html">Loops</a>
+
+            <div class="section-title">World 2</div>
+            <a href="jungle.html">Jungle</a>
+            <a href="true-awaken.html">True Awaken</a>
+            <a href="desert.html">Desert</a>
+            <a href="midnight.html">Midnight</a>
+            <a href="great-rift.html">Great Rift</a>
+            <a href="doom.html">Doom (DaS)</a>
+
+            <div class="section-title">Bonus</div>
+            <a href="tower.html">The Tower</a>
+            <a href="cool.html">Cool World</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main>
+        <div class="guide-container">
+            <h1 class="main-title">Tools</h1>
+
+            <div class="credits-box">
+                <div class="credits-header">/// Tools</div>
+                <div class="credits-grid">
+                    <div><span class="credit-role">Suffix Converter</span> by TheSeal27 (adapted)</div>
+                </div>
+            </div>
+
+            <h2 id="suffix">Suffix Converter</h2>
+            <p>Convert between normal numbers, scientific notation and suffix notation.</p>
+
+            <div class="note">
+                <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+                    <input id="SuffixConverterInputField" style="width:260px;padding:8px;border-radius:6px;border:1px solid #333;background:#0f0f0f;color:#fff;" placeholder="Enter number (e.g. 1.23e6 or 1.23 million)"></input>
+                    <button id="SuffixConverterCalculateButton" class="btn wiki">Calculate</button>
+                </div>
+                <p style="margin-top:12px;"><b>Results:</b><br>Scientific: <span id="SuffixConverterScientificOutput">-</span><br>Suffix: <span id="SuffixConverterSuffixOutput">-</span><br>English name of highest suffix: <span id="SuffixConverterEnglishNameOutput">-</span></p>
+            </div>
+
+            <p class="warning-text">Note: This converter accepts scientific notation and common suffix names (e.g., thousand, million, billion, etc.).</p>
+
+        </div>
+    </main>
+
+    <script src="assets/js/script.js"></script>
+    <script>
+    // Minimal suffix converter adapted for the static site (uses Break Eternity Decimal)
+    (function(){
+        // Use suffix names from community list (truncated)
+        const suffixNames = ['', '', 'Million', 'Billion', 'Trillion', 'Quadrillion', 'Quintillion', 'Sextillion', 'Septillion', 'Octillion', 'Nonillion', 'Decillion', 'Undecillion', 'Duodecillion', 'Tredecillion', 'Quattuordecillion', 'Quindecillion', 'Sexdecillion', 'Septendecillion', 'Octodecillion', 'Novemdecillion', 'Vigintillion', 'Unvigintillion', 'Duovigintillion', 'Tresvigintillion', 'Quattuorvigintillion', 'Quinvigintillion', 'Sesvigintillion', 'Septenvigintillion', 'Octovigintillion', 'Novemvigintillion', 'Trigintillion', 'Untrigintillion', 'Duotrigintillion', 'Trestrigintillion', 'Quattuortrigintillion', 'Quintrigintillion', 'Sextrigintillion', 'Septentrigintillion', 'Octotrigintillion', 'Novemtrigintillion', 'Quadragintillion', 'Unquadragintillion', 'Duoquadragintillion', 'Trequadragintillion', 'Quattuorquadragintillion', 'Quinquadragintillion', 'Sexquadragintillion', 'Septenquadragintillion', 'Octoquadragintillion', 'Novemquadragintillion', 'Quinquagintillion', 'Unquinquagintillion', 'Duoquinquagintillion', 'Trequinquagintillion', 'Quattuorquinquagintillion', 'Quinquinquagintillion', 'Sexquinquagintillion', 'Septenquinquagintillion', 'Octoquinquagintillion', 'Novemquinquagintillion', 'Hexagintillion', 'Unhexagintillion', 'Duohexagintillion', 'Trehexagintillion', 'Quattuorhexagintillion', 'Quinhexagintillion', 'Sexhexagintillion', 'Septenhexagintillion', 'Octohexagintillion', 'Novemhexagintillion', 'Septuagintillion', 'Unseptuagintillion', 'Duoseptuagintillion', 'Treseptuagintillion', 'Quattuorseptuagintillion', 'Quinseptuagintillion', 'Sexseptuagintillion', 'Septenseptuagintillion', 'Octoseptuagintillion', 'Novemseptuagintillion', 'Octogintillion', 'Unoctogintillion', 'Duooctogintillion', 'Treoctogintillion', 'Quattuoroctogintillion', 'Quinoctogintillion', 'Sexoctogintillion', 'Septenoctogintillion', 'Octooctogintillion', 'Novemoctogintillion', 'Nonagintillion', 'Unnonagintillion', 'Duononagintillion', 'Trenonagintillion', 'Quattuornonagintillion', 'Quinnonagintillion', 'Sexnonagintillion', 'Septennonagintillion', 'Octononagintillion', 'Nonnonagintillion', 'Centillion'];
+
+        // Build suffix lookup map (lowercase)
+        const suffixLookup = {};
+        for (let i = 0; i < suffixNames.length; i++) {
+            if (suffixNames[i]) suffixLookup[suffixNames[i].toLowerCase()] = i * 3;
+        }
+        // Common short forms
+        suffixLookup['k'] = 3; suffixLookup['m'] = 6; suffixLookup['b'] = 9; suffixLookup['t'] = 12; suffixLookup['q'] = 15;
+
+        function parseInputToDecimal(input) {
+            input = String(input).trim();
+            if (input === '') return new Decimal(0);
+            // If contains e or E, let Decimal parse natural scientific or plain number
+            if (/e/i.test(input)) {
+                try { return new Decimal(input); } catch (e) { return null; }
+            }
+            // Match number + optional suffix word
+            const m = input.match(/^([+-]?\d*\.?\d+)(?:\s*([a-zA-Z]+))?$/);
+            if (!m) return null;
+            const num = new Decimal(m[1]);
+            if (!m[2]) return num;
+            const suf = m[2].toLowerCase();
+            const exp = suffixLookup[suf];
+            if (exp === undefined) {
+                // Try plural/ending s removal
+                const alt = suf.replace(/s$/,'');
+                if (suffixLookup[alt] !== undefined) {
+                    return num.times(Decimal.pow(10, suffixLookup[alt]));
+                }
+                return null;
+            }
+            return num.times(Decimal.pow(10, exp));
+        }
+
+        function toScientificString(d, decimals=3) {
+            if (d === null) return 'Invalid input';
+            if (d.equals(0)) return '0e0';
+            const sign = d.sign < 0 ? '-' : '';
+            const ad = d.abs();
+            const exponent = ad.exponent;
+            const mant = new Decimal(ad.mantissa).toStringWithDecimalPlaces(decimals).replace(/\.?0+$/,'');
+            return sign + mant + 'e' + exponent;
+        }
+
+        function toSuffixString(d, decimals=3) {
+            if (d === null) return 'Invalid input';
+            if (d.equals(0)) return '0';
+            const sign = d.sign < 0 ? '-' : '';
+            const ad = d.abs();
+            if (ad.lessThan(1e6)) return sign + ad.toString();
+            const exponent = ad.exponent;
+            const index = Math.floor(exponent / 3);
+            if (index >= suffixNames.length) return sign + toScientificString(d,decimals);
+            const extra = exponent % 3;
+            const mantissa = new Decimal(ad.mantissa * Math.pow(10, extra)).toStringWithDecimalPlaces(decimals).replace(/\.?0+$/,'');
+            return sign + mantissa + ' ' + suffixNames[index];
+        }
+
+        function englishSuffixName(d) {
+            if (d === null) return 'Invalid input';
+            if (d.equals(0)) return 'Zero';
+            const ad = d.abs();
+            if (ad.exponent >= 6) {
+                const idx = Math.floor(ad.exponent / 3);
+                if (idx < suffixNames.length) return suffixNames[idx];
+                return 'Very large number';
+            }
+            const ordinalsList = ['One', 'Ten', 'Hundred', 'Thousand', 'Ten thousand', 'Hundred thousand'];
+            const s = ad.toString();
+            const len = s.replace(/[^0-9]/g,'').length;
+            return ordinalsList[Math.max(0, Math.min(ordinalsList.length-1, len-1))];
+        }
+
+        function updateResults() {
+            const raw = document.getElementById('SuffixConverterInputField').value;
+            const dec = parseInputToDecimal(raw);
+            if (dec === null) {
+                document.getElementById('SuffixConverterScientificOutput').innerHTML = '<span style="color:#ff5555">Invalid input</span>';
+                document.getElementById('SuffixConverterSuffixOutput').innerHTML = '<span style="color:#ff5555">Invalid input</span>';
+                document.getElementById('SuffixConverterEnglishNameOutput').innerHTML = '<span style="color:#ff5555">Invalid input</span>';
+                return;
+            }
+            // Check too high
+            if (dec.greaterThanOrEqualTo(Decimal.pow(10,306))) {
+                const tooHighText = "<span style='color:#FF0000'>Error: Input is greater than or equal to 1e306 or -1e306.</span>";
+                document.getElementById('SuffixConverterScientificOutput').innerHTML = tooHighText;
+                document.getElementById('SuffixConverterSuffixOutput').innerHTML = tooHighText;
+                document.getElementById('SuffixConverterEnglishNameOutput').innerHTML = tooHighText;
+                return;
+            }
+            document.getElementById('SuffixConverterScientificOutput').textContent = toScientificString(dec,3);
+            document.getElementById('SuffixConverterSuffixOutput').textContent = toSuffixString(dec,3);
+            document.getElementById('SuffixConverterEnglishNameOutput').textContent = englishSuffixName(dec);
+        }
+
+        document.getElementById('SuffixConverterCalculateButton').addEventListener('click', function(){
+            document.getElementById('SuffixConverterScientificOutput').innerHTML = '<i>Calculating...</i>';
+            document.getElementById('SuffixConverterSuffixOutput').innerHTML = '<i>Calculating...</i>';
+            document.getElementById('SuffixConverterEnglishNameOutput').innerHTML = '<i>Calculating...</i>';
+            setTimeout(updateResults, 40);
+        });
+
+        // Also allow Enter key in input
+        document.getElementById('SuffixConverterInputField').addEventListener('keypress', function(e){
+            if (e.key === 'Enter') document.getElementById('SuffixConverterCalculateButton').click();
+        });
+
+    })();
+    </script>
+</body>
+</html>
