@@ -3,10 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CHANGE TITLE FOR EACH PAGE -->
     <title>Origins Guide - GCI</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Specific styles for the table in this guide */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #050505;
+            color: #4ade80;
+        }
+        .note {
+            background-color: #1f2937;
+            border-left: 4px solid #4ade80;
+            padding: 10px 15px;
+            margin: 15px 0;
+            font-size: 0.95rem;
+            color: #d1d5db;
+        }
+        .warning {
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
 
@@ -16,16 +46,15 @@
         <button id="menu-toggle" style="background:none; border:none; color:#fff; font-size:1.5rem;">☰</button>
     </header>
 
-<aside id="sidebar">
+    <!-- Sidebar -->
+    <aside id="sidebar">
         <div class="sidebar-header">
             <h1>GCI Wiki</h1>
             <p>Grass Cutting Incremental</p>
         </div>
         <nav>
-            <!-- General -->
             <a href="index.html">Home</a>
 
-            <!-- World 1 Section -->
             <div class="section-title">World 1</div>
             <a href="origins.html" class="active">Origins</a>
             <a href="galactic.html">Galactic</a>
@@ -36,7 +65,6 @@
             <a href="grasslands.html">Grasslands</a>
             <a href="loops.html">Loops</a>
 
-            <!-- World 2 Section -->
             <div class="section-title">World 2</div>
             <a href="jungle.html">Jungle</a>
             <a href="true-awaken.html">True Awaken</a>
@@ -45,7 +73,6 @@
             <a href="great-rift.html">Great Rift</a>
             <a href="doom.html">Doom (DaS)</a>
 
-            <!-- Bonus Section -->
             <div class="section-title">Bonus</div>
             <a href="tower.html">The Tower</a>
             <a href="cool.html">Cool</a>
@@ -55,22 +82,297 @@
     <!-- Main Content -->
     <main>
         <div class="guide-container">
-            <!-- PASTE YOUR GOOGLE DOC CONTENT HERE -->
-            
             <h1>Origins (Early Game)</h1>
+            <p><em>Written by Srb1sLav. Verified by 4178 and System. Formatted by GrandDom. Revised by the Projects Team.</em></p>
+
+            <h2>Introduction</h2>
+            <p>Welcome to Grass Cutting Incremental! This is a guide to help you progress faster throughout the Early Game.</p>
             
-            <p>This is where your 15 pages of text go. You can simply copy and paste text here.</p>
+            <hr style="border-color: #333; margin: 2rem 0;">
 
-            <h2>First Steps</h2>
-            <p>Details about the first prestige...</p>
+            <h3>Guide Info & Formatting</h3>
+            <p>This guide will use abbreviations, with the first use of them being marked in bold next to the full version i.e. <strong>Prestige points (PP)</strong>. You can find the Abbreviation page at the end of the document.</p>
+            <p>Names of resets, currencies, and some important features will also be marked in bold for clarity. Any extremely important information will be marked clearly in <span class="warning">bold red text</span>.</p>
 
-            <h2>Upgrades</h2>
+            <hr style="border-color: #333; margin: 2rem 0;">
+
+            <h2>Basic Tutorial</h2>
+            <p>Let’s get started with the UI. The <strong>Map</strong> button gives you the ability to teleport across the map (you unlock more teleport pins as you progress further). You should pin these locations for easier fast travel. The <strong>Help</strong> button lets you access the help menu to gather helpful information about the game (new pages will be unlocked as you progress further). The <strong>Stats & Settings</strong> button lets you access different settings in the game.</p>
+            
+            <div class="note">Note 1: Currencies and Levels tabs allow you to pin currencies/levels & disable/enable autobuyers and popups</div>
+
+            <p>When you spawn in the game you are met with a field of Grass, which spawns Grass at a rate of 1/s to start. You can cut this grass by walking near the individual strands. The grass field has a limit to how many Grass it can house, and it has a Grass Grow Speed which is increased through upgrades. In front of the field there is an upgrade board where you can buy upgrades with the goal of progressing further.</p>
+
+            <p>As you collect Grass you gain XP, which increases your Level. Each of these Levels multiplies Grass gain, and each higher Level grants a higher Grass multiplier. Once you reach Level 2 you unlock Perks, which can be spent on Perk upgrades. You should initially spend these on the Walk Speed and Range upgrades, with the following Perks being spent on Grow Speed and Grass Value upgrades.</p>
+
+            <p>Your first goal is to reach Level 31 for your first reset. Keep on collecting Grass and buying grass upgrades to get there!</p>
+
+            <div class="note">Note 2: Keep in mind that many upgrades give additional/compounding increase every 25 Levels of an upgrade</div>
+            <div class="note">Note 3: PC users can “Buy Max” by right clicking an upgrade</div>
+
+            <hr style="border-color: #333; margin: 2rem 0;">
+
+            <h2>Prestige & Platinum</h2>
+            <p>At level 31 you unlock <strong>Prestige</strong>, which resets everything before it in exchange for <strong>Prestige Points (PP)</strong> based on Level.</p>
+
+            <p>The first Prestige should be done for around 40+ PP. Split your PPs equally into the XP and Grass Value upgrades, and do not buy any automation upgrades that cost PPs on first Prestige.</p>
+
+            <p>After your first Prestige you unlock <strong>Tiers</strong>. You get <strong>Tier Progress (TP)</strong> the same way you get XP, by cutting Grass. Each Tier multiplies Grass gain, with higher Tier giving a much higher Grass multiplier. Once you reach Tier 3 for the first time, you unlock <strong>Platinum</strong>.</p>
+
+            <p>This currency and its upgrades won’t get reset unless mentioned. Platinum Grass has a 1% chance to appear in the field instead of normal grass. You should max out the autocut upgrade in platinum board, then spread Platinum equally starting from the cheapest upgrades.</p>
+
+            <p>You should attempt to perform a Prestige for around 3x more PP compared to what you got on your last Prestige, and then spread this PP equally. For now you should only buy Automation upgrades if they are cheap enough.</p>
+
+            <div class="note">Note 1: You want to get prestige upgrades for Grass and XP gain to level 25 before you do your 1st Crystallize</div>
+            <div class="note">Note 2: After your last Prestige before Crystallize, you want to get few levels in prestige upgrade for Crystal gain</div>
+            <div class="note">Note 3: Don’t spend Grass on the PP gain upgrade until you are about to Prestige</div>
+
+            <hr style="border-color: #333; margin: 2rem 0;">
+
+            <h2>Save Files & Modifiers</h2>
+            <p>The next time you join the game, you will have the option to select and modify Save Files (your current progression will be saved on Save Slot 1). You can Copy & Paste Save Files, erase them, start from a certain progression point (this is unlocked as you progress through the game) and more…</p>
+
+            <p>After you get the prestige badge (after performing your first Prestige), the next time you decide to make a new save file, you will have the option to select Modifiers. Modifiers affect your progression by disabling important features of the game, hence making progression significantly harder.</p>
+
+            <div class="note">Note: Modifiers can not be changed after confirming (you would have to make a new save file and start over)</div>
+
+            <p>One of the Modifiers gives you Global Multiplier based on how many Modifiers you have enabled, but don’t be fooled, the other Modifiers provide a big disadvantage. In the end, the game is still much easier and more enjoyable without any modifiers.</p>
+            <p>It is highly recommended that you “complete” the game without any modifiers first, and then if you are seeking for a challenge, you should start on a new save file with modifiers.</p>
+
+            <hr style="border-color: #333; margin: 2rem 0;">
+
+            <h2>Flowers</h2>
+            <p>After your first Prestige you have unlocked flowers. Flowers is a currency that you obtain by claiming the Daily Reward and achievements (Stats & Settings > Achievements). Flower upgrades can help you a bit with progression (you unlock more upgrades as you progress further).</p>
+
+            <div class="note">Note 1: You can claim Achievements by right clicking if you are playing on a PC</div>
+
+            <p>In the top of the building you will see a button called <strong>Flower Respec</strong>. A Flower Respec sets all flower upgrades back to Level 0 and refunds you all the Flowers that you have spent on the upgrades. You have 2 free Flower Respecs at the start of a new Save File, and after you spend them you will have 1 additional Flower Respec. Once you spend that last Flower Respec you will need to wait for 1 week to perform another one again.</p>
+
+            <div class="note">Note 2: Flowers and flower upgrades NEVER get reset by anything but Flower Respec</div>
+            <div class="note">Note 3: After spending the 2 free Flower Respecs you can’t have more than 1 Flower Respec available at once</div>
+
+            <p>The only upgrades you will want to focus on are the Mini Time Warp Upgrades (which you unlock after your first Grasshop). This is because they will be useful throughout the whole game, unlike other upgrades which would help only at certain progression points (you also won’t need to Respec flowers this way).</p>
+
+            <hr style="border-color: #333; margin: 2rem 0;">
+
+            <h2>Crystallize</h2>
+            <p>Crystallize is the second reset, granting <strong>Crystals</strong> based on Tier. You should perform your first Crystallize for at least 35 Crystals. In terms of upgrades, you should get every upgrade from this board to level 1 (except the Grow Amount) and then spend the rest equally, whilst ignoring the newly unlocked automation upgrades.</p>
+
+            <p>Your first Crystallize will unlock new Perk and Platinum upgrades. Below is the order you should buy Perk upgrades in:</p>
+            <p><strong>Walkspeed, Range and Grow Speed</strong>, with the remaining being spread equally in this order: <strong>XP, TP, Grass, PP and Crystals</strong>.</p>
+
+            <p>For Platinum you should max out starter PP and starter Crystals, and then spend the rest equally (starting from the cheapest upgrades). Crystallize recovery is simple as you just do a Prestige once in a while and spread your PP equally. Make sure you get automation upgrades for PP when they aren’t too expensive.</p>
+
+            <div class="note">Note 1: Don't buy the prestige upgrade for Crystal gain until you are about to Crystallize</div>
+            <div class="note">Note 2: You want to get 1 Level of PP generation before your 2nd Crystallize, this will make recoveries significantly easier (this upgrade can be found at the automation building)</div>
+
+            <p>With each Crystallize you want to get at least around 3x more Crystals compared to the amount you got on your previous Crystalize. Do this until you unlock Accomplishments.</p>
+
+            <div class="note">Note 3: Once you max out PP generation you don’t have to Prestige anymore (except for Accomplishments)</div>
+
+            <hr style="border-color: #333; margin: 2rem 0;">
+
+            <h2>Accomplishments</h2>
+            <p>Accomplishments are a series of challenges that provide HUGE rewards on completion. Each Accomplishment has some sort of rules and a Level/Tier Goal. If you follow the rules mentioned and meet the requirements, you will be properly rewarded.</p>
+
+            <p>Once you unlock Accomplishments you will want to do every Accomplishment that you can. Don’t focus on the amount you get from resets, but rather focus just on doing Accomplishments. You should do Accomplishments in bulk.</p>
+
+            <p>When you can’t easily do more Accomplishments, you will want to get more upgrades from crystal upgrade board. Do some more Accomplishments if needed and then go and reach Level 201. Make sure you get 1 level of Crystal Generation and max out all other automation upgrades before you perform your first Grasshop.</p>
+
+            <div class="note">Note 1: The Level requirement for Accomplishments will always increase by 10/20/30 Levels…</div>
+            <div class="note">Note 2: When doing “Less Grass” Accomplishment, get XP upgrade for Grass to Level 100, and for “Less Prestige”, get Tier upgrade for PP to level 10.</div>
+            <div class="note">Note 3: If you perform a reset higher than the required one for the Accomplishment you will still get level(s) for that Accomplishment, as long as you meet the requirements for it. Example would be doing Crystallize when you are asked to do Prestige.</div>
+            <div class="note">Note 4: The text above Tier Bar shows what your next Tier will be, not what your current Tier is.</div>
+
+            <p>You can go to Stats & Settings > Currencies to turn off all autobuyers for a specific currency.</p>
+
+            <hr style="border-color: #333; margin: 2rem 0;">
+
+            <h2>Grasshop</h2>
+            <p>Congratulations on unlocking <strong>Grasshop (GH)</strong> Milestones! Each Milestone is unlocked once you reach a certain amount of GHs, providing various boosts, features and QoL. The goal here is to make recovery easier and allow yourself to progress further into the game.</p>
+
+            <p>For recoveries, keep doing what you were doing after you unlocked Accomplishments. Your goal is to GH again, again and again… (until you get GH 8).</p>
+
+            <p>After your 1st GH you want to make sure you get as many Accomplishments as possible to level 2. This is because GH 2 lets you keep levels of all accomplishments up to the number of your next GH. This will make recoveries MUCH faster. (e.g. If you are performing your 2nd GH, then every Accomplishment that was previously level 2 or above would now be level 2).</p>
+
+            <p>After your 2nd GH, keep doing the same recovery. Get automation upgrades once you can afford them in a reasonable amount of time and do Accomplishments if progression slows down.</p>
+
+            <div class="note">Note 1: Once you reach GH 5 you start getting 5 Platinum per collection. For every 5 Platinum per collection you generate +1 Platinum per second, that is the base formula.</div>
+            <div class="note">Note 2: You can see how much Platinum you are getting per collection in Stats & Settings > Stats, you can also pin up to 2 stats at once at the top of your screen by clicking number 1 or 2 (which are just for positioning).</div>
+
+            <hr style="border-color: #333; margin: 2rem 0;">
+
+            <h2>Steelie</h2>
+            <p>You should perform your first <strong>Steelie</strong> as soon as possible for 1 Steel, as this will unlock new upgrades once you get the 1st upgrade at <strong>The Factory</strong> (the recently unlocked building with all the upgrades that cost Steel).</p>
+
+            <p>After your first Steelie, you unlock new Accomplishments. They require you to perform a Steelie while meeting the requirements, but you don’t want to worry about them just yet. You also unlock <strong>The Foundry</strong>, which makes it so that the more time that passes (offline progress included) since your last Steelie, the more Steel you will gain from your next Steelie. This building also contains upgrades that will affect your Steel gain.</p>
+
+            <div class="note">Note 1: The multi from The Foundry caps out after 24 hours have passed (offline progress included).</div>
+            <div class="note">Note 2: Performing GH will not reset your Steel multi from Foundry. Hence, if you have to pick between the two, you always want to GH first, and then Steelie.</div>
+
+            <p>Before doing your next Steelie resets, you want to do all the Accomplishments that you can and reach GH 9 (you can reach GH 10 too if you are a passive player). GH 9 unlocks 2 new Perk upgrades (Charge is not unlocked just yet, but you will have it very soon). You want to spread your Perks equally, with Steel upgrade being prioritized until you unlock Charge.</p>
+
+            <p>You have 2 options when it comes to getting Steel from Steelie at this stage of the game:</p>
             <ul>
-                <li>Upgrade 1: Do this first</li>
-                <li>Upgrade 2: Do this second</li>
+                <li>1. Do multiple of them for a smaller amount of Steel (active route)</li>
+                <li>2. Wait for higher Steel multi from Foundry, allowing you to do less Steelie for more Steel (passive route)</li>
             </ul>
 
-            <!-- END CONTENT -->
+            <p>You should spread your Steel equally, prioritizing the upgrades with the least amount of levels. Your goal is to get Steel upgrades and save Steel to buy the first level of upgrades in The Factory. You will also want to perform as many GHs as possible.</p>
+
+            <div class="note">Note 3: Always spend Grass, PP, and Crystal on Foundry & Generator upgrades right before performing GH/Steelie.</div>
+            <div class="note">Note 4: Don’t forget to max out all automation upgrades and to pay attention to the bonus you get every 25 Levels of some upgrades.</div>
+
+            <hr style="border-color: #333; margin: 2rem 0;">
+
+            <h2>Charger & Assembler</h2>
+            <p>After getting the Charger upgrade from The Factory for the first time, you will unlock your first building located in the Industrial Zone (go to your Map and pin the teleport pin for it).</p>
+
+            <p>The <strong>Charger</strong> generates a certain amount of Charge per second, and has a list of Milestones. These Milestones are unlocked once you reach the required amount of Charge. Having more Charge increases the bonus that Milestones provide.</p>
+
+            <p>You DEFINITELY want to level up the “Empower” Accomplishment. This is because it increases your Charge generation per second by 10x with each Level.</p>
+
+            <div class="note">Note 1: Charge bonuses are based on your current Charge, not your Best Charge.</div>
+            <div class="note">Note 2: Performing GH or Steelie will reset your current Charge amount.</div>
+            <div class="note">Note 3: You will be able to do “Steelie Speedrun” and “What’s Prestige?” Accomplishments fairly soon, make sure you don’t miss out on them. As for “Powerhouse” Accomplishment, don’t try to do it just yet.</div>
+
+            <p>The <strong>Assembler</strong> provides automation upgrades with the effects called <strong>EL (Everlasting)</strong> and <strong>ABP (Auto Bypass)</strong> for the shown currencies.</p>
+            <ul>
+                <li><strong>EL upgrades</strong> will allow you to buy upgrades without the currency getting spent (only applies to upgrades from their currency’s respective upgrade board).</li>
+                <li><strong>ABP upgrades</strong> allow your autobuyers to buy upgrades until they are fully maxed out, ignoring how far you have currently purchased them manually.</li>
+            </ul>
+
+            <div class="note">Note 4: What GH Milestones mean by “Charger charge bonuses increase 1 OoM sooner” is that Charger Milestones bonuses will have their effect increased as if you had +1 OoM of Charge.</div>
+
+            <p>Your next goal is to buy the <strong>Decelerator</strong> upgrade from The Factory. To maximize speed, do as many Accomplishments as possible, as many GHs as possible (16+), and perform multiple Steelie resets.</p>
+
+            <div class="note">Note 5: You want to get Steel upgrades until they cost more than 10B Steel. After that you want to save all your Steel for Decelerator upgrade from The Factory.</div>
+            <div class="note">Note 6: Using some Mini Time Warps here is recommended, unless you are willing to wait.</div>
+
+            <hr style="border-color: #333; margin: 2rem 0;">
+
+            <h2>Anti-Realm</h2>
+            <p>Upon buying the Decelerator upgrade, you will unlock a new building in the Industrial Zone. Entering the portal will take you to a new realm known as <strong>Anti Realm</strong>.</p>
+            
+            <div class="note">Note 1: Go to Map and pin the teleporter pin for Anti Realm (at the top left corner).</div>
+
+            <p>As you begin to collect Anti Grass here from the field, you will notice that it is much harder to build up compared to the Normal Realm. You should focus on anything that boosts Anti Grass value and Anti XP for now.</p>
+            <p>There are 3 important benefactors from the Normal Realm: Anti Grass boost (GH Milestone 17), Anti XP boost (GH Milestone 19), and Anti Grass boost (10Qa Charge Milestone).</p>
+            <p>In Anti Realm, don’t spend too much currency on upgrades that affect Normal Realm and on Anti Grass Cap until you are about to progress in Normal Realm again.</p>
+
+            <p><strong>Your goal is to reach Anti Level 31.</strong></p>
+
+            <div class="note">Note 2: Don’t forget to do “Empower” Accomplishment.</div>
+            <div class="note">Note 3: You gain 10x Platinum and x25 Tier progress in Anti Realm. Hence, if you plan on grinding Platinum or Tier, you most certainly want to do that in Anti Realm.</div>
+            <div class="note">Note 4: Don’t buy Steel Upgrades from Anti Realm until you are about to perform a Steelie.</div>
+            <div class="note">Note 5: Don’t forget to perform Steelie every now and then so you can get upgrades from The Factory.</div>
+            <div class="note">Note 6: Higher Anti Level = more Charge (It also scales exponentially).</div>
+            <div class="note">Note 7: All resets in Anti Realm reset your Charge.</div>
+
+            <hr style="border-color: #333; margin: 2rem 0;">
+
+            <h2>Anonymity</h2>
+            <p>At Anti Level 31 you unlock <strong>Anonymity</strong>, Anti Realm’s version of Prestige. This resets everything before it in Anti Realm in exchange for <strong>Anonymity Points (AP)</strong> based on Anti Level.</p>
+
+            <p>First Anonymity reset should be done as soon as possible. You want to spend all of your AP on Anti Grass upgrade, with leftover AP going to Charge upgrade.</p>
+            <p>After first Anonymity you will unlock Anti-Anti Automation upgrades, 2 new Anti Realm related Accomplishments, Platinum upgrade for AP, and a new Charge Milestone for 1Qt Charge.</p>
+
+            <div class="note">Note 1: Do as many Accomplishments as possible.</div>
+            <div class="note">Note 2: For “Less Anti-Grass” Accomplishment, you want to spend Anti Grass on Anti XP, but if you can’t max it out then spend the rest on Anti Grass Value, Anti Grass Grow Speed, and Anti Grass Cap (in this order).</div>
+            <div class="note">Note 3: For Platinum upgrades you will always want to spread Platinum equally.</div>
+
+            <p>Spread AP equally on the Anonymity board upgrades. Get the Anti-Anti Automation upgrades when they aren’t too expensive.</p>
+
+            <div class="note">Note 4: Don’t neglect Normal Realm.</div>
+            <div class="note">Note 5: Don’t buy Anti Grass upgrade for AP gain increase until you are about to do Anonymity.</div>
+
+            <hr style="border-color: #333; margin: 2rem 0;">
+
+            <h2>Liquefy</h2>
+            <p class="warning">DO NOT GRASSHOP ANYMORE ONCE YOU ARE AT GH25.</p>
+
+            <p>Your Base Oil gain from <strong>Liquefy</strong> is based on your current Tier, not Anti Level. Before your first Liquefy make sure you have properly leveled up “Anonymity Speedrun” Accomplishment.</p>
+
+            <div class="note">Note 1: Don’t forget that you gain x25 TP from collecting Anti Grass in Anti Realm.</div>
+
+            <p>You want to get 2k+ Oil on your first Liquefy. Spread it equally on Anti Grass, Anti XP, and Tier upgrades.</p>
+            <p>After first Liquefy you unlock new Platinum upgrade for Oil and a new Anti Automation upgrade.</p>
+
+            <div class="note">Note 2: Oil upgrades don’t have the bonus from every 25 levels, except for the Oily AP upgrade.</div>
+
+            <p>You will want to SPAM Liquefy, don’t even bother with progressing in Anti Realm. Do this until you got a decent amount of Oil upgrades, with the only exception being Steel upgrade, where you to do multiple Liquefy resets just to level it up (Also buy AP automation).</p>
+            <p>After getting enough Oil upgrades, progress in both Realms and get the Refinery upgrade from The Factory.</p>
+
+            <hr style="border-color: #333; margin: 2rem 0;">
+
+            <h2>Refinery</h2>
+            <p>Refinery takes a certain amount of Oil and Charge to produce <strong>Rocket Fuel (RF)</strong>. You can Enable/Disable “Rocket fuel production” at the Refinery Building.</p>
+
+            <p>Considering that the increase that these upgrades provide is not big, while the price of producing RF is quite high at this stage of the game, you don’t want to produce any RF just yet.</p>
+            <p>Your goal now is to unlock Rocket Launch Pad from The Factory (if you haven’t already).</p>
+
+            <div class="note">Note: Don’t forget to do “Powerhouse” Accomplishment.</div>
+
+            <hr style="border-color: #333; margin: 2rem 0;">
+
+            <h2>Rocket Launch Pad & Oil Drilling Rig</h2>
+            <p>This reset will reset most of your Anti Realm progress, Steel, Charge, and total RF produced. Hence, before your first Rocket Part Creation, you want to do as many Accomplishments as you can, spend your Steel to increase your Charge generation and make sure you bought all automation upgrades in Anti Realm.</p>
+
+            <p>You want to create every other Rocket Part as soon as possible after spending Steel on The Factory upgrades (for more Charge, and with that faster RF production).</p>
+            <p>With each Rocket Part Creation the requirements for next Rocket Part Creation increases, and you gain +1 Momentum.</p>
+
+            <div class="note">Note 1: Always produce enough RF for next Rocket Part Creation first, and then get the required Steel.</div>
+
+            <p>For recovery you want to do first Liquefy as soon as possible and just repeat what you were doing before your first Rocket Part Creation. For the first few Rocket Parts, produce RF only for Rocket Part Creation requirement. Once you start getting RF fast you want to get 100 RF per Rocket Part.</p>
+
+            <p>Rocket Part Creation RF requirement is based on the amount of RF you have made since your last Rocket Part Creation, not your current RF. Hence, you want to spend your RF equally on Steel and Oil upgrades. After you max those 2 upgrades, the rest of the RF should be spread equally.</p>
+
+            <p>After your first Rocket Part Creation you will also unlock a new upgrade in The Factory, <strong>Oil Drilling Rig</strong>. Get it as soon as you can.</p>
+
+            <h3>Rocket Part Creation Order</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rocket Part</th>
+                        <th>Upgrade to buy</th>
+                        <th>Additional Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1st</td><td>Charge</td><td>So you wait less for RF production</td></tr>
+                    <tr><td>2nd</td><td>Oil</td><td>So you wait less for RF production + easier recovery</td></tr>
+                    <tr><td>3rd</td><td>Steel</td><td>For Steel upgrades + Rocket Part requirement</td></tr>
+                    <tr><td>4th</td><td>Tier</td><td>For more Oil</td></tr>
+                    <tr><td>5th</td><td>AP</td><td>Easier Anti Realm recovery</td></tr>
+                    <tr><td>6th</td><td>PP</td><td>Generator Charge upgrade</td></tr>
+                    <tr><td>7th</td><td>Crystal</td><td>Generator Charge upgrade</td></tr>
+                    <tr><td>8th</td><td>Grass</td><td>For Foundry upgrades</td></tr>
+                    <tr><td>9th</td><td>Platinum</td><td>For Platinum upgrades</td></tr>
+                    <tr><td>10th</td><td>Grow Speed</td><td>For… Grow Speed…</td></tr>
+                </tbody>
+            </table>
+
+            <div class="note">Note 2: Don’t forget that all Anti Realm resets will reset your Charge.</div>
+            <div class="note">Note 3: You can grind Platinum in Anti Realm and buy Charge upgrade while waiting for RF.</div>
+
+            <p>After you have created all Rocket Parts, you will want to produce 100 RF, spend it, and then perform <strong>Galactic</strong> (for 10 Stars)!</p>
+
+            <p style="text-align: center; font-style: italic; color: #888;">Only 0.001% of people can climb the rocket!!! You WILL RAGE QUIT!!!</p>
+
+            <hr style="border-color: #333; margin: 2rem 0;">
+
+            <h2>Abbreviations</h2>
+            <ul>
+                <li><strong>PP</strong> - Prestige Points</li>
+                <li><strong>TP</strong> - Tier Progress</li>
+                <li><strong>GH</strong> - Grasshop</li>
+                <li><strong>OoM</strong> - Order of Magnitude (Number of digits without first digit. 100-999 is 2 OoM).</li>
+                <li><strong>EL</strong> - Everlasting</li>
+                <li><strong>ABP</strong> - Auto Bypass</li>
+                <li><strong>AP</strong> - Anonymity Points</li>
+                <li><strong>RF</strong> - Rocket Fuel</li>
+            </ul>
+
         </div>
     </main>
 
