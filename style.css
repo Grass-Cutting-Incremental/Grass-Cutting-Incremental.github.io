@@ -168,3 +168,18 @@ main {
 
     .home-content h1 { font-size: 2.5rem; }
 }
+
+/* Add to bottom of style.css */
+
+.section-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #666; /* Muted gray */
+    margin-top: 1.5rem; /* Space before new section */
+    margin-bottom: 0.5rem;
+    padding-left: 15px;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #222;
+    padding-bottom: 5px;
+}
