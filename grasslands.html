@@ -169,24 +169,43 @@
             color: var(--theme-color) !important;
         }
 
+        /* --- BONUS CONTENT STYLING --- */
+        .bonus-section {
+            border-left: 2px dashed #555;
+            padding-left: 2rem;
+            margin-top: 4rem;
+            background: linear-gradient(to right, rgba(34, 197, 94, 0.05), transparent);
+        }
+        .bonus-tag {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            color: #888;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .dot-separator {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.6rem;
+            color: #666;
+            text-align: center;
+            margin: 15px 0 5px 0;
+            letter-spacing: 1px;
+        }
+
         /* --- DOT NAV OVERRIDES FOR LONG LISTS --- */
         #dot-nav {
-            /* Fix for long lists: Fixed height + Scroll */
             top: 100px;
             bottom: 50px;
-            transform: none; /* Remove the vertical centering */
-            overflow-y: auto; /* Allow scrolling */
-            padding-right: 10px; /* Space for hidden scrollbar */
-            
-            /* Hide Scrollbar but keep functionality */
-            scrollbar-width: none; /* Firefox */
-            -ms-overflow-style: none;  /* IE 10+ */
-            
-            gap: 10px; /* Reduce gap slightly */
+            transform: none;
+            overflow-y: auto;
+            padding-right: 10px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            gap: 10px;
         }
-        #dot-nav::-webkit-scrollbar { 
-            display: none; /* Chrome/Safari */
-        }
+        #dot-nav::-webkit-scrollbar { display: none; }
     </style>
 </head>
 <body>
@@ -266,12 +285,15 @@
         <a href="#twilight7" class="dot-item"><div class="dot-circle"></div><span class="dot-label">7th/8th Twilight</span></a>
         <a href="#stages" class="dot-item"><div class="dot-circle"></div><span class="dot-label">500-1000</span></a>
         <a href="#final" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Final Castle</span></a>
-        <a href="#st15" class="dot-item"><div class="dot-circle"></div><span class="dot-label">SNT 15</span></a>
-        <a href="#dd4" class="dot-item"><div class="dot-circle"></div><span class="dot-label">DD4</span></a>
-        <a href="#costreset" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Cost Reset</span></a>
-        <a href="#loop" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Loop</span></a>
-        <a href="#push20k" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Stage 20K</span></a>
-        <a href="#appendix" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Appendix</span></a>
+        
+        <div class="dot-separator">OPTIONAL</div>
+        
+        <a href="#st15" class="dot-item" style="opacity: 0.6;"><div class="dot-circle"></div><span class="dot-label">SNT 15</span></a>
+        <a href="#dd4" class="dot-item" style="opacity: 0.6;"><div class="dot-circle"></div><span class="dot-label">DD4</span></a>
+        <a href="#costreset" class="dot-item" style="opacity: 0.6;"><div class="dot-circle"></div><span class="dot-label">Cost Reset</span></a>
+        <a href="#loop" class="dot-item" style="opacity: 0.6;"><div class="dot-circle"></div><span class="dot-label">Loop</span></a>
+        <a href="#push20k" class="dot-item" style="opacity: 0.6;"><div class="dot-circle"></div><span class="dot-label">Stage 20K</span></a>
+        <a href="#appendix" class="dot-item" style="opacity: 0.6;"><div class="dot-circle"></div><span class="dot-label">Appendix</span></a>
     </div>
 
     <!-- Main Content -->
@@ -295,7 +317,7 @@
             <p class="warning-text">You should avoid any of the following actions:</p>
             <ul>
                 <li>Spending any Flowers in Flower Shop II.</li>
-                <li>Forgetting to purchase upgrades in all tabs of the Singularity chart.</li>
+                <li>Forgetting to purchase upgrades in all tabs of the Singularity chart, which is accessible via a slider. (i.e you can scroll left and right, up and down).</li>
                 <li>Performing a Sunrise for a lower amount of Sunrise FM.</li>
                 <li>Doing a Twilight for zero bonuses.</li>
                 <li>Ignoring Mastery upgrades and Combat Ranks.</li>
@@ -303,6 +325,7 @@
 
             <h3>Guide Info & Formatting</h3>
             <p>This guide will use abbreviations, with the first use of them being marked in bold next to the full version i.e. <strong>Combat Rank (CR)</strong>. Names of resets and currencies will also be marked in bold for clarity.</p>
+            <p>Any extremely important information will be marked clearly in <span class="warning-text">bold red text</span>. Each Supernova Tier (SNT) will have its own section, but be sure to ask around for additional help, advice and alternative playstyles.</p>
 
             <h2 id="constellations">Constellation Setups</h2>
             <p>Before you proceed, you are recommended to update your constellation setups to one of the below. These are also available within the in-game help menu.</p>
@@ -317,156 +340,269 @@
             </table>
 
             <h2 id="overview">Grasslands Overview</h2>
-            <p>Welcome to the Grasslands! The main component of Grasslands are the dungeons, which is an RPG style minigame. The first thing you should notice is the inventory board, which is your main hub for managing your dungeon loot.</p>
-            <p>You will also notice a board next to the inventory called <strong>Combat Ranks (CRs)</strong>, which are purchasable levels that boost your combat stats. To defeat enemies, you can either click on them, or press the E key whilst standing within range.</p>
+            <p>Welcome to the Grasslands! This is a new realm with new mechanics and currencies to boost your Solarians. The main component of Grasslands are the dungeons, which is an RPG style minigame where you defeat enemies to clear rooms and beat bosses on different levels. Each dungeon has unique gear and a unique boss to beat. Each level of a dungeon will have the same enemies, but vary in terms of the number of enemies per room, and increase in length and difficulty each time.</p>
+            <p>The first thing you should notice is the inventory board, which is your main hub for managing your dungeon loot and equipping or levelling new gear. You will also notice a board next to the inventory called <strong>Combat Ranks (CRs)</strong>, which are purchasable levels that boost your combat stats. These are Health and Damage.</p>
+            <p>If you continue moving to the left of this board you will find the dungeons. You will only have access to level 1 of the first dungeon at this point, which you can refer to as D1-1. Most dungeons are made up of 4 levels of increasing difficulty, only unlocking after you beat the boss of the furthest level and go through the exit portal. If you do not go through the portal the level will not be unlocked.</p>
+            <p>To defeat enemies, you can either click on them, or press the E key whilst standing within range. At some point within the settings menu, you will find a new toggle that will enable automatic enemy fighting when you are within range. This is at the bottom of the settings list and may not be unlocked immediately.</p>
 
             <h2 id="enemies">Basic Enemy Tutorial</h2>
-            <p>A dungeon level is made up of rooms, but each room requires you to kill a different amount of enemies. Each dungeon has a set selection of enemies that can spawn (Regular, Tank, Glass Cannon).</p>
-            <p>Each of these items has a value in gold and shards. You will gain gold by selling the gear, or upgrade shards by scrapping it. You should only sell items that are worse than those you have equipped.</p>
+            <p>As already explained, a dungeon level is made up of rooms, but each room requires you to kill a different amount of enemies. Each room typically spawns with more enemies than are needed to unlock the next room. You can see this requirement on the top bar that is displayed during a dungeon run.</p>
+            <p>[The bar display consists of x / y (z), with x being how many enemies you’ve defeated so far, y being how many are required to be defeated in order to progress to the next room, and z being the total number of enemies in that room.]</p>
+            <p>Each dungeon has a set selection of enemies that can spawn, with each dungeon having an enemy that has one of the following stat arrangements:</p>
+            <ul>
+                <li>Medium Health & Damage (Regular)</li>
+                <li>High Health, Low Damage (Tank)</li>
+                <li>Low Health, High Damage (Glass Cannon)</li>
+            </ul>
+            <p>You should try and identify what each of these enemies look like for each dungeon for your convenience. I personally go for either the regular enemy or the glass cannon enemies and use an attack ring ability to minimize the overall number of hits, which will be explained in the equipment section.</p>
+            <p>As you will notice, each type of enemy has a loot pool, with certain enemy types having a higher chance to drop certain items than others. You will primarily drop either Armour or Weapons, occasionally getting Rings, Generators, Treasure and Healing Items. Stats do not update until an item is directly equipped, and health is not replenished by equipping better armour.</p>
+            <p>Each of these items has a value in gold and shards, which can be viewed by clicking on a specific item. You will gain gold by selling the gear, or upgrade shards by scrapping it. You should only sell items that are worse than those you have equipped. This is the same gold that can be used on the Gold Shop you would have seen on the way over to the dungeon.</p>
 
             <h2 id="dungeon">Basic Dungeon Tutorial</h2>
-            <p>Each dungeon has unique gear for each type of loot, starting at Common Rarity, and working its way up to Mythic Rarity. When starting a dungeon, you will want to focus on killing the easiest enemies first.</p>
-            <p>Upgrade Shards should be invested only into the Weapon and Armour. This is due to these item types getting larger stat gains per level when compared to other levelable item types.</p>
-
+            <p>Now that you know the basics, it is time to get onto the gameplay loop. Each dungeon has unique gear for each type of loot, starting at Common Rarity, and working its way up to Mythic Rarity. For this guide, each dungeon section will state the highest necessary gear tier to complete a dungeon's final level. When starting a dungeon, you will want to focus on killing the easiest enemies first, as explained in the previous section.</p>
+            <p>Each dungeon has a set selection of rooms that can spawn, with each dungeon having a room that has one of the following enemy arrangements:</p>
+            <ul>
+                <li>Start Room (contains no enemies)</li>
+                <li>Filler Room (contains regular enemies, and up to 2 mastery or treasure enemies)</li>
+                <li>Treasure Room (can contain at least 1 Treasure Enemy, having a chance to drop a type of item called a nugget/gem, which is worth a lot of gold or shards.)</li>
+                <li>Secret Room (contains a special item from a dungeon, completing this room finishes the level as if you beat the boss)</li>
+                <li>Boss Room (contains only the boss)</li>
+            </ul>
+            <p>Note: If you are grinding for Mastery, which is explained in the next section, you will want to take the side rooms in order to kill the most enemies per dungeon run.</p>
+            <p>You will want to kill these enemies until you get enough new gear to progress within the dungeon. Do not worry if you die immediately, as long as you can kill at least one enemy in the new dungeon or dungeon level.</p>
+            <p>It is recommended that you focus on scrapping unneeded loot for upgrade shards when progressing in grassland, and focus on selling for gold when progressing through solarians.</p>
+            <p>Upgrade Shards should be invested only into the Weapon and Armour. This is due to these item types getting larger stat gains per level when compared to other levelable item types. You will repeat this process of getting new gear, upgrading the gear and beating the boss of a level until reaching the end of a dungeon.</p>
+            <p>As mentioned earlier, you will want to use your Ring Abilities, which are granted by the ring item type. There are 3 primary ring types, which are Health, Protection and Damage. It is recommended that you conserve Skill Points (SP) for the boss, where you should spam protection and damage abilities.</p>
             <div class="note">You gain 20 SP and 20% of health back after clearing a room.</div>
 
             <h2 id="mastery">Mastery Tutorial</h2>
-            <p>Each item of rarities Common to Mythic have 5 Mastery Tiers. Increasing the mastery tier of an item will grant the player <strong>Mastery Points (MPs)</strong>.</p>
+            <p>Now we get onto the last feature you should have noticed on the way over to the dungeons, which is Mastery. Each item of rarities Common to Mythic have 5 Mastery Tiers. You tier up a mastery for an item by mastering a certain amount of max level items of that type.</p>
             <p class="warning-text">Mastering an item will delete the item, and mastery points should not be spent into Generator upgrades.</p>
+            <p>Increasing the mastery tier of an item will grant the player <strong>Mastery Points (MPs)</strong>, which should be focused solely onto upgrades that boost either Sell/Scrap Value OR Attack/Health Stats.</p>
+            <p>I personally do not recommend mastering an item before the 4th Dungeon, and would not suggest mastering any item above T3, as this is where it is no longer efficient for Mastery Point farming. For now you will need to manually Mastery items, but this changes at D4 and will be explained in its respective section.</p>
             <div class="note">Enabling Auto Mastery will disable Auto Scrap / Sell until it is disabled.</div>
 
             <!-- Major Checkpoint: D1 -->
             <h2 id="d1" class="major-checkpoint">D1: Grass Valley</h2>
-            <p><strong>Gear Required for D1-4 Completion:</strong> Legendary OR Medium Level Rare from D1.</p>
-            <p>Well done on making it to the first dungeon. Be aware that if you find a generator for the first time, equip it immediately. I recommend using a gold generator when you are not progressing in grassland, and an upgrade shards generator when progressing in grassland.</p>
+            <p><strong>Gear Required for D1-4 Completion:</strong> Legendary OR Medium Level Rare from D1</p>
+            <p>Well done on making it to the first dungeon. Assuming you read the tutorial sections or have played around yourself, you should be getting the general idea of what to do.</p>
+            <p>Be aware that if you find a generator for the first time, equip it immediately. I recommend using a gold generator when you are not progressing in grassland, and an upgrade shards generator when progressing in grassland.</p>
 
             <h2 id="d2">D2: Dark Mine</h2>
-            <p><strong>Gear Required for D2-4 Completion:</strong> Legendary OR Medium Level Rare from D2.</p>
-            <p>The 2nd Dungeon is very similar to the first one. This is the first dungeon where you should start mastering items once you unlock the Combat Power upgrade in the mastery board.</p>
+            <p><strong>Gear Required for D2-4 Completion:</strong> Legendary OR Medium Level Rare from D2</p>
+            <p>The 2nd Dungeon is very similar to the first one, so using the same approach as the first dungeon should let you clear it effortlessly. It should be noted that you will be increasingly reliant on your ring's abilities. It is important that you are strategic and deliberately use or conserve SP for bosses or hard enemies, as mentioned previously.</p>
+            <p>This is the first dungeon where you should start mastering items once you unlock the Combat Power upgrade in the mastery board. Mythical gear is not necessary for this dungeon, but if you're lucky enough, you should use it.</p>
 
             <h2 id="d3">D3: Desert</h2>
-            <p><strong>Gear Required for D3-4 Completion:</strong> Legendary Gear from D3.</p>
-            <p>The third dungeon is a big step up from the previous. Afterwards, you will want to aim for the rare gear of this dungeon.</p>
+            <p><strong>Gear Required for D3-1 Completion:</strong> Legendary Gear from D2 OR Leveled Uncommon Gear from D3</p>
+            <p><strong>Gear Required for D3-4 Completion:</strong> Legendary Gear from D3</p>
+            <p>The third dungeon is a big step up from the previous, with the legendary gear from the previous dungeon being mandatory in order to tackle its first levels effectively. Afterwards, you will want to aim for the rare gear of this dungeon.</p>
+            <div class="note">Note: Whilst you can get a legendary generator from this dungeon, you should avoid spending upgrade shards on leveling due to its high cost.</div>
 
             <h2 id="autosell">Auto Sell/Scrap Notice</h2>
-            <p>In D3 and above you will need to grind gold/shards, so this is the best time to use the Auto Sell/Scrap feature.</p>
-            <p>Reminder: Enabling Auto Mastery temporarily disables Auto Scrap / Sell.</p>
+            <p>In D3 and above you will need to grind gold/shards, so this is the best time to use the Auto Sell/Scrap feature. Upon opening your inventory, if you look to your left you’ll see some check boxes:</p>
+            <ul>
+                <li>IF the first checkbox is turned on, then the items will be auto scrapped</li>
+                <li>IF it is turned off, then the items will be auto sold</li>
+            </ul>
+            <div class="note">Note: Auto sell/scrap does not activate when you get an item you’ve never gotten before</div>
+            <p>Alongside gold and shards you must also grind mastery in the previous dungeons, which is made easier with the Auto Master upgrade from the singularity chart. This unlocks a new button in the mastery section of grasslands. Turning on this button will enable items to be automatically mastered if they meet the requirements (max level and enough shards)</p>
+            <p>Reminder: Enabling Auto Mastery temporarily disables Auto Scrap / Sell</p>
 
             <h2 id="d4">D4: Sandtone Ruins</h2>
-            <p><strong>Gear Required for D4-4 Completion:</strong> Legendary Gear OR Medium Level Rare Gear from D4.</p>
-            <p>Dungeon 4 is much harder than the previous. You will likely struggle to kill the enemies in the beginning, so should take advantage of the damage and block abilities from your rings.</p>
-            <div class="note">At this point you’ll unlock the Twilight reset. <strong>IGNORE THE RESET UNTIL YOU BEAT THE FIRST LEVEL OF THE NEXT DUNGEON.</strong></div>
+            <p><strong>Gear Required for D4-4 Completion:</strong> Legendary Gear OR Medium Level Rare Gear from D4</p>
+            <p>As you probably guessed, Dungeon 4 is much harder than the previous. You will likely struggle to kill the enemies in the beginning, so should take advantage of the damage and block abilities from your rings. If you lose too much health in the first room, back out immediately and try again. Focus on the weakest enemies first.</p>
+            <p>It will be noticeably easier to kill these enemies once you get the common gear due to the noticeable stat jump. Be aware that the cost of upgrading is much higher here, which makes grinding shards necessary.</p>
+            <p>There is a useful note in the next section that you should read, as well as a separate one below:</p>
+            <div class="note">At this point you’ll also be reaching stage 150 and unlock the Twilight reset as well as many other upgrades YOU SHOULD IGNORE THE RESET UNTIL YOU BEAT THE FIRST LEVEL OF THE NEXT DUNGEON.</div>
 
             <h2 id="collectables">Dungeon Collectables</h2>
-            <p>At D4 and later dungeons, there is a special type of room that spawns called the Mastery Room. D4 also causes new interactable collectables to start randomly (Healing, Skill Point, Shop).</p>
+            <p>At D4 and later dungeons, there is a special type of room that spawns called the Mastery Room. It consists of a few enemies and a massive interactable M in the center of the room, left-clicking or tapping the M will cause it to grant you mastery progress for all items in a previous dungeon. These are very helpful and thus you should always go to the room that houses one if you see it.</p>
+            <div class="note">Note: I recommend spamming the second or third level of a dungeon until you get the gear the room masters to T3.</div>
+            <p>D4 also causes new interactable collectables to start randomly. These can be one of the following:</p>
+            <ul>
+                <li>Healing (heals a portion of your HP on click)</li>
+                <li>Skill Point (replenishes 40 SP on click, does not bypass the cap)</li>
+                <li>Shop (you should have already seen this by now as this is an old interactable)</li>
+            </ul>
+            <p>Use these strategically as they can allow you to beat a dungeon using weaker gear than normal if you get lucky with the spawn locations. These will not despawn if you leave the room or begin to attack enemies.</p>
 
             <h2 id="d5">D5: Desolate Mountains</h2>
-            <p><strong>Gear Required for D5-4 Completion:</strong> Legendary Gear from D5.</p>
-            <p>Dungeon 5 is the most important dungeon of grasslands; beating the first level is imperative to progression, as the first boss drops a new item called the “Corrupted Shard”.</p>
+            <p><strong>Gear Required for D5-1 Completion:</strong> Legendary Gear from D4, Health/Attack Mastery Upgrade from Combat Rank 7</p>
+            <p><strong>Gear Required for D5-4 Completion:</strong> Legendary Gear from D5</p>
+            <p>Dungeon 5 is the most important dungeon of grasslands; beating the first level is imperative to progression, as the first boss drops a new item called the “Corrupted Shard”. It is equipped in the new Crystal Slot of your inventory. Doing so will open a new black portal next to the gold shop into the synthesis area (more on this in the next section).</p>
             <p class="warning-text">EXTRA IMPORTANT INFORMATION: YOU SHOULD NOT TWILIGHT YET</p>
+            <p>One unique part of this dungeon is its boss, which has a new effect called Pierce. This effect causes the enemy to bypass any blocks or protection effects you may have casted with your ring, making damage abilities more helpful.</p>
+            <p>I’ll quickly go over some tips and tricks that should help you beat the first and subsequent levels:</p>
+            <ul>
+                <li>Immediately equip the common gear dropped by enemies as it is much better than any gear from the previous dungeon</li>
+                <li>Make use of your SP and abuse the shield/damage abilities</li>
+                <li>AVOID whirlwind and frozen enemies, they are much harder to beat than normal ice grass</li>
+                <li>Try to get the Protection ring, this ring allows you to block the 3 next attacks using only 10 SP</li>
+                <li>Try to drop the uncommon gear as fast as you can, this is easier in further rooms</li>
+                <li>Get combat rank 9+</li>
+                <li>Plan around the healing and skill points collectables, check every room and go to the room that has one (the SP is better than the Health)</li>
+                <li>ONLY upgrade the uncommon gear once you drop it, you will need to farm shards</li>
+            </ul>
 
             <!-- Major Checkpoint: Synthesis -->
             <h2 id="synthesis" class="major-checkpoint">Synthesis</h2>
-            <p>Synthesis is a vital mechanic for progression. You’ll notice a board that says “activate the machine”. Doing so will start generating Corruption Shards.</p>
-            <p>You can spend Corruption Shards on the Shop right next to the synthesis machine. You should focus on the first three upgrades: Corruption Shard Synthesis Yield, Corrupted Offense/Defense, and Synthesis Speed.</p>
+            <p>Synthesis is a vital mechanic for progression. You’ll notice a board that says “activate the machine”, where you'll be given the option to select “Corruption Shard” and “Begin”. Doing so will start generating Corruption Shards. You will quickly notice a bar filling as you generate more corruption shards. Once the bar is fully filled, your Corruption Shards gain will be increased and the next fill will take a longer time (this is your synthesis speed).</p>
+            <div class="note">Note: The word ‘yield’ means amount.</div>
+            <p>To collect the Corruption Shards you press the “End” button (you will be told how many shards you will be getting in green text below the bar).</p>
+            <p>You will also notice a small blue bar below the white bar, which is the level of the synthesis slot you are using. The more you use a select synthesis slot, the higher its level will be. This gives you a boost to your Corruption Shards gain (You unlock more synthesis slots when you meet the requirements written on them). You should now go and buy the remnant corruption yield upgrade you unlocked at SNT8.</p>
+            <p>You can spend Corruption Shards on the Shop right next to the synthesis machine. You should focus on the first three upgrades “Corruption Shard Synthesis Yield”, “Corrupted Offense/Defense” and “Synthesis Speed”. (you can buy other upgrades if you have spare corruption shards).</p>
 
             <h2 id="snt9">Supernova Tier 9</h2>
-            <p>At around stage 160-163 you should meet the requirements for SNT9. You unlock a new portal in grasslands (Dark Dungeons), Auto-Fight, and Forming compression is no longer reset when performing a sunset reset.</p>
+            <p>At around stage 160-163 you should meet the requirements for SNT9, updating your star tier will come with the following benefits:</p>
+            <ul>
+                <li>You unlock a new portal in grasslands, this is a black and white portal to the right of the gold shop which takes you to dark dungeons (DD) (ignore this for now as the dark dungeons are way too hard at this stage)</li>
+                <li>You unlock Auto-Fight, this adds a checkbox on top of the “fight” button this automatically fights the enemy when you can win</li>
+                <li>Forming compression is no longer reset when performing a sunset reset</li>
+                <li>Solar flares generation is now based on best stage rather than current</li>
+            </ul>
 
             <h2 id="twilight">Twilight</h2>
-            <p>Twilight is the third and final reset of the solar obelisk and the most punishing. Your first Twilight reset should be done at stage 161+ for 28+ Unstable Souls (Usouls).</p>
-            <p>Doing your first Twilight will unlock New Corruption Shard variants, a new tab in Forming, new upgrades in Darkness, and the 6th dungeon.</p>
+            <p>Twilight is the third and final reset of the solar obelisk and the most punishing, which is why knowing exactly when to perform the reset is extremely important. Twilight resets everything sunset does as well as restoration upgrades, gold shop upgrades, the portal to grasslands (you need to rebuild it in order to access the gold shop again), synthesis, keep rank IV, V and VI (magic tab), and downgrades your constellations to line constellations.</p>
+            <p>Your first Twilight reset should be done at stage 161+ for 28+ Unstable Souls (Usouls) and a bonus of x4 offense/defense, x1.5 souls/forming/collecting/restore.</p>
+            <p>The Usouls earned should be spent on Fight VI, Sol VI, Portal stones VI, Fragments VI, Grass essence VI, Souls VI and Compression VI, a new tab will be opened in the soul bonuses for Usouls, spend the rest of them on Dsouls, FM and Corruptions yield (ignore synthesis speed).</p>
+            <p>Doing your first Twilight will unlock the following:</p>
+            <ul>
+                <li>New Corruption Shard variants in the synthesis machine (Note that the empty gem increases your synthesis slot exp more than the others).</li>
+                <li>A new tab in Forming with upgrades that boost souls, collection and forming.</li>
+                <li>New upgrades in the Darkness tab of the restoration board for Cutting/HP, gold and shards.</li>
+                <li>New upgrades in the Magic tab for keeping Keep Rank IV+.</li>
+                <li>Unlocks the 6th dungeon Empyrean Temple.</li>
+            </ul>
 
             <h2 id="d6">D6: Empyrean Temple</h2>
-            <p><strong>Gear Required for D6-4 Completion:</strong> Legendary Gear from D6.</p>
-            <p>This Dungeon is not a big jump in difficulty. It is recommended to have CR 15+ at this point.</p>
+            <p><strong>Gear Required for D6-4 Completion:</strong> Legendary Gear from D6</p>
+            <p>This Dungeon is not a big jump in difficulty; you will not need to farm shards/gold to tackle its first level, as always immediately equip the common gear and aim for the uncommon one. It is recommended to have CR 15+ at this point. (try to not waste shards upgrading common gear since you can drop higher level gear very easily from enemies, and do not waste gold on shops too)</p>
 
             <h2 id="dd1">DD1: Inferno Valley</h2>
-            <p>Dark Dungeons (DD) are modified versions of previous dungeons that are much harder. For this dungeon all enemies have pierce.</p>
+            <p>Dark Dungeons (DD) are modified versions of previous dungeons that are much harder, each dark dungeon has a modifier for all enemies. For this dungeon all enemies have pierce (their attacks ignore the shield ability from rings), with the legendary gear from D6 you are able to beat the first room of DD1 by spamming the triple attack ability (colossal ring). Repeat this process until you get the mythical gear.</p>
+            <p>Grinding the dark dungeon after getting both mythicals is NOT worth it, do NOT grind for shinies and luminous items (very low drop chance and very easily outclassed). Head immediately to D7 after obtaining those mythicals.</p>
+            <div class="note">Note: If you don’t have D7 unlocked, you can grind to DD1-2 to get the Mastery Room.</div>
 
             <h2 id="snt10">Supernova Tier 10</h2>
-            <p>After your first Twilight and around stage 195 you should meet the requirements for SNT10. A new synthesis slot is unlocked and Solarian power has increased by x20.</p>
+            <p>After your first Twilight and around stage 195 you should meet the requirements for SNT10, updating your star tier will come with the following benefits:</p>
+            <ul>
+                <li>A new synthesis slot is unlocked.</li>
+                <li>Solarian power has increased by x20.</li>
+                <li>Tier 2 challenges can be done in bulk (max them if you have not already).</li>
+                <li>Best eclipse is automatically updated with the new best.</li>
+                <li>Divine Souls multi in the restoration board.</li>
+            </ul>
 
             <h2 id="d7">D7: Cursed Lands (S180)</h2>
-            <p>After obtaining the mythical gear from DD1 head to this dungeon. You will get new synthesis gems called “flare shards”.</p>
+            <p>After obtaining the mythical gear from DD1 head to this dungeon and equip its common gear as per usual, then you should aim for legendary gear by the end of this dungeon. You will get new synthesis gems called “flare shards”, you should use those as they are far better than the previous ones (even dark dungeon synthesis gems).</p>
+            <div class="note">Note 1: make sure you are still upgrading the grasslands darkness upgrades they are crucial to beating this dungeon and the ones after.</div>
+            <div class="note">Note 2: grinding gold and shards is still vital, you will also need gold for the gold FM upgrade to reach the required stages for twilights.</div>
 
             <h2 id="dd2">DD2: Silent Cave</h2>
-            <p>The 2nd dark dungeon is far harder than the previous. The modifier of this dungeon is No Heal.</p>
+            <p>The 2nd dark dungeon is far harder than the previous, you will not be able to beat all its levels at this stage. The modifier of this dungeon is No Heal which means you can not regenerate health within this dungeon (healing items, ring abilities and the big crosses have no effects), alongside pierce for all enemies. This is why the only viable ability in this dungeon is the attack boosting one.</p>
+            <p>You should try to get the mythical gear by repeatedly redoing the first room, after dropping one you can progress more and use this dungeon as a gold/shard farm.</p>
 
             <h2 id="twilight2">Second Twilight</h2>
-            <p>Your second Twilight reset should be performed around Stage 195. By this point it is recommended to have Clouds centralized as well as Supernova Tier 10.</p>
+            <p>Your second Twilight reset should be performed around Stage 195. By this point it is recommended to have Clouds centralized as well as Supernova Tier 10</p>
+            <p>Your second twilight should grant you ~720 Unstable Souls.</p>
+            <p>You should spend them on Fight VII Sol VII Light Logs VII, Portal Stones VII, Fragments VII, Souls VII, Compression VII and Grass essence VII any left overs should be spent on the FM, Dsouls and Synthesis Yield.</p>
 
             <h2 id="twilight3">Third Twilight</h2>
-            <p>After reaching stage 217-220 you should have centralized Dark fruits and Rings by then. Perform your third Twilight reset at stage 230.</p>
+            <p>After reaching stage 217-220 you should have centralized Dark fruits and Rings by then, afterwards buy Mega Offense first then buy Ultra Absorb. Perform your third Twilight reset at stage 230 for 20K Usouls and 3 bonuses. Head to the singularity chart Unstable upgrades tab and buy 1 upgrade of Super Keep Rank, then the soul tab to buy all upgrades that cost 300 Usouls or less. Spend whatever you have left on FM, Dsouls and Synthesis Yield in the Usoul bonuses.</p>
 
             <h2 id="snt11">Supernova Tier 11 & Infinity Loops</h2>
-            <p>You will be able to meet the requirements of Star tier 11 at around stage 252. The Final collection resource “infinity loops” is unlocked.</p>
+            <p>You will be able to meet the requirements of Star tier 11 at around stage 252, this star tier is notable for its unlocks:</p>
+            <ul>
+                <li>The Final collection resource “infinity loops”, this resource does not have a cap on its generation rate, it is only bound to your solarian power and collection speed. This resource can be spent in the forming tab to increase the cap of grass essence and sol (it is worth noting that its effects are minimal at first, you will need to invest more into collection).</li>
+                <li>Solarian power has increased by x50.</li>
+                <li>The speed of leveling, forming and restoration is greatly increased (this increases the amount of levels you can get per second, it does not affect restoration and forming speed).</li>
+            </ul>
+            <p class="warning-text">NOTE: THE SPEED OF GETTING LEVELS IS REALLY FAST SO MAKE SURE YOU DO NOT WASTE THINGS LIKE GOLD/MANA ON THE FM UPGRADES</p>
 
             <h2 id="twilight4">Fourth Twilight</h2>
-            <p>After obtaining star tier 11 and reaching stage 250+, you should perform your 4th twilight reset.</p>
+            <p>After obtaining star tier 11 and reaching stage 250+, you should perform your 4th twilight reset. This should give you 3 bonuses and around 180K Usouls.</p>
+            <p>You should spend the Usouls on maxing the singularity chart souls tab upgrades and buying Super Keep Rank II in the unstable upgrades tab (you can also buy the cheaper starting stage and Keep constellations upgrades if you wish), then you can either buy Super Keep Rank III or spend all of the rest of the Usouls on soul bonuses. (you can now start buying synthesis speed though it should be given less importance)</p>
 
             <h2 id="d8">D8: Haunted Crypt (S270)</h2>
-            <p>D8 is a big jump in difficulty compared to D7, needing maxed mythical gear from DD2 to beat its first level. You should aim to get the rare Power Gem at the end of the dungeon.</p>
+            <p>D8 is a big jump in difficulty compared to D7, needing maxed mythical gear from DD2 to beat its first level. Unlike all other dungeons, the common gear is not worth it. You should head straight for the uncommon+ and get least rank 11 on Dungeon Explorer (darkness upgrade) to fully beat the dungeon. You should aim to get the rare Power Gem at the end of the dungeon.</p>
+            <div class="note">Note: The Mastery Rooms do not spawn beyond this dungeon or within Dark Dungeons 3 & 4</div>
 
             <h2 id="twilight5">Fifth Twilight</h2>
-            <p>The 5th Twilight reset should be done at around stage 295, you should have centralized measure.</p>
+            <p>The 5th Twilight reset should be done at around stage 295, you should have centralized measure and bought the “Unstable” upgrade in the singularity chart for a x5 Usouls increase, you should be able to earn 50mil+ Usouls, head to the Unstable upgrade tab to buy up to Super Keep Rank V, Starting stage IV and Twilight Constellations V, afterwards spend the rest of the Usouls in the soul bonuses section on all of the upgrades equally.</p>
 
             <h2 id="dd3">DD3: Industrial Wasteland</h2>
-            <p>The 3rd dark dungeon is extremely difficult. All the enemies have pierce and you can not heal.</p>
+            <p>The 3rd dark dungeon is, as expected, extremely difficult. All the enemies have pierce and you can not heal, you will need the legendary gear from D8 and rank 13/14 of dungeon explorer. As usual, repeat the first room until you drop the mythical gear then farm gold/shards.</p>
 
             <h2 id="ascension">Equipment Ascension</h2>
-            <p>Equipment ascension is a mechanic unlocked by buying the "ascension" singularity chart upgrade. I recommend ignoring item ascension until DD4 or optional content.</p>
+            <p>Equipment ascension is a mechanic unlocked by buying the "ascension" singularity chart upgrade. Ascension allows you to increase the stats of a maxed item in exchange of resetting its level to lvl 1 and increasing its upgrade cost. Ascensions are infinite, but they get expensive very quickly.</p>
+            <div class="note">Note: I recommend ignoring item ascension until DD4 or optional content.</div>
 
             <h2 id="twilight6">Sixth Twilight</h2>
-            <p>Your Sixth Twilight should be done after centralizing arcs, lines, observatorium and reservatorium at around stage 370.</p>
+            <p>Your Sixth Twilight should be done after centralizing arcs, lines, observatorium and reservatorium at around stage 370, earning 50Bil+ Usouls. You should max out the Unstable upgrade tab and spend all the rest on Usouls bonuses.</p>
 
             <h2 id="d9">D9: Chaotic Canyon (S380)</h2>
-            <p>This dungeon is extremely hard. It is recommended to get the uncommon gear if you can, however due to high upgrade costs you can ignore this dungeon until you get 20 ranks of dungeon explorer.</p>
+            <p>This dungeon is extremely hard, it is recommended to get the uncommon gear if you can, however due to high upgrade costs and harsh enemy scaling you can ignore this dungeon until you get 20 ranks of dungeon explorer, which you’ll be able to get at around stage 600. You can beat it much earlier, but it is not needed if you don’t want to yet.</p>
+            <p>Upon beating D9 you unlock the 4th and final dark dungeon, however it is impossible to beat at this stage and is considered bonus content for later. Ignore DD4 for now.</p>
+            <div class="note">Note: It is possible to reach Stage 1,000 without clearing this dungeon, but you will not be able to go to D10 without clearing all D9 levels.</div>
 
             <h2 id="snt13">Supernova Tier 13 (~S405)</h2>
-            <p>You should meet the requirements for ST13 at stage 405+. Sunrise FM updates without needing to sunrise.</p>
+            <p>You should meet the requirements for ST13 at stage 405+ updating your star tier will come with the following benefits:</p>
+            <ul>
+                <li>Sunrise FM updates without needing to sunrise.</li>
+                <li>Twilight no longer resets restoration.</li>
+                <li>Divine absorber’s effect is increased from 0.3% to 1%.</li>
+                <li>You’ll get a Twilight bonus every 10 stages now (rather than 10 stages then every 15 stages after that).</li>
+            </ul>
 
             <h2 id="twilight7">7th & 8th Twilights</h2>
-            <p>Perform your 7th Twilight after centralizing dark charge and stardust. Your 8th Twilight should be done after getting all centralizes at stage 500+.</p>
+            <p>Perform your 7th Twilight after centralizing dark charge and stardust (buy sharper edge first, you can also push perks…? Cent). Your 8th Twilight should be done after getting all centralizes at stage 500+, you should gain 10Qa+ Usouls from this.</p>
 
             <h2 id="stages">Stages 500 to 1,000</h2>
             <p>At this stage you will make use of the allocate one to all button to get every upgrade, alongside Twilighting once you get a large amount of bonuses until you reach star tier 14.</p>
+            <p>Make sure to recover synthesis as this is the most important, and then get rank 25 of dungeon explorer (max rank). Make use of the advanced tab in forming to upgrade collection speed and souls (forming speed is not as important).</p>
 
             <!-- Major Checkpoint: Stage 1000 -->
             <h2 id="final" class="major-checkpoint">Final Castle (S1k)</h2>
-            <p>Upon reaching stage 1000 and beating the last level of D9 the final dungeon D10 is unlocked. <strong>Confront him.</strong></p>
+            <p>Upon reaching stage 1000 and beating the last level of D9 the final dungeon D10 is unlocked. <strong>Confront him</strong></p>
 
             <hr style="border-color: #333; margin: 4rem 0;">
             <p style="text-align: center; font-size: 1.2rem; color: #fff;">Congratulations! You have completed the main Grasslands guide.</p>
 
-            <h2 id="st15">Stage 1,000 - Star Tier 15</h2>
-            <p>If you wish to continue playing W1 then there is plenty of bonus content waiting for you.</p>
-            <img src="portal.png" alt="Portal to W1" class="guide-image">
-            <p>Go through this portal in W2 in order to come back to W1. At around stage 1380 you’ll be able to unlock star tier 15, the only buff given by this tier is passive Usouls generation, this makes the Twilight reset completely redundant.</p>
+            <!-- OPTIONAL CONTENT SECTION -->
+            <div class="bonus-section">
+                <span class="bonus-tag">/// Optional / Bonus Content</span>
 
-            <h2 id="dd4">DD4: Seven Small Stones</h2>
-            <p>This Dungeon should be tackled after you have maxed dungeon explorer and gotten 50+ levels on Combat Power V in the Mastery shop. You should get the Mythical gear and max it and the mythical Aero Gem VI, afterwards you can ignore this dungeon.</p>
+                <h2 id="st15">Stage 1,000 - Star Tier 15</h2>
+                <p>If you wish to continue playing W1 then there is plenty of bonus content waiting for you</p>
+                <img src="portal.png" alt="Portal to W1" class="guide-image">
+                <p>Go through this portal in W2 in order to come back to W1. Back at the star you are able to push stages much faster than before, so you should make sure you have at least one solarian in every job. I’d recommend double checking by pressing allocate one to all a few times (this is not necessary but do it anyway).</p>
+                <p>At around stage 1380 you’ll be able to unlock star tier 15, the only buff given by this tier is passive Usouls generation, this makes the Twilight reset completely redundant and thus it should be ignored from now on.</p>
 
-            <h2 id="costreset">Cost Reset (Credit to Ben0001)</h2>
-            <p>After getting Super Keep Rank, you can now cost reset. You do this by sunsetting after gaining at least 1 rank of Glimmer of Hope. This will keep the rank the same, and set your level to your rank. After doing this, the upgrade cost will be significantly decreased.</p>
-            <h3>Example:</h3>
-            <img src="example1.png" alt="Cost Reset Example" class="guide-image">
-            <p>This also applies to sunrising when it comes to sunrise FM.</p>
-            <h3>Example of sunrise cost reset:</h3>
-            <img src="example2.png" alt="Sunrise Reset Example" class="guide-image">
+                <h2 id="dd4">DD4: Seven Small Stones</h2>
+                <p>This Dungeon should be tackled after you have maxed dungeon explorer and gotten 50+ levels on Combat Power V in the Mastery shop. You should get the Mythical gear and max it and the mythical Aero Gem VI, afterwards you can ignore this dungeon</p>
 
-            <h2 id="loop">Loop Information</h2>
-            <p>Loop is a reset that you can perform after reaching Stage 1000 which resets absolutely everything (except grassland gear, Flower & Planet Run related features and some permanent supernova tier bonuses), and provides a global multiplier.</p>
-            <p><strong>YOU SHOULD GET S20,000 before your first loop</strong> as you get an extra loop and looplet for every 10,000 stages once you loop.</p>
+                <h2 id="costreset">Cost Reset (CREDIT TO BEN0001)</h2>
+                <p>After getting Super Keep Rank, you can now cost reset. You do this by sunsetting after gaining at least 1 rank of Glimmer of Hope. This will keep the rank the same, and set your level to your rank. After doing this, the upgrade cost will be significantly decreased. This works because upgrade cost scales with both level and rank, and sunsetting lowers your level significantly.</p>
+                <h3>Example:</h3>
+                <img src="example1.png" alt="Cost Reset Example" class="guide-image">
+                <p>This also applies to sunrising when it comes to sunrise FM, however its effects are minimal. You should focus on sunsetting from now on.</p>
+                <h3>Example of sunrise cost reset:</h3>
+                <img src="example2.png" alt="Sunrise Reset Example" class="guide-image">
 
-            <h2 id="push20k">Pushing for Stage 10K & 20K</h2>
-            <p>Your progress will slow down and you’ll have to rely on 3 main strategies:</p>
-            <ul>
-                <li><strong>Cost Resetting:</strong> Doing a cost reset by sunsetting with Super Keep Rank maxed.</li>
-                <li><strong>Unstable Souls Bonuses:</strong> After ST15 you will need to manually spend unstable souls in the soul bonuses.</li>
-                <li><strong>Utilizing Synthesis:</strong> While upgrading Usoul bonuses you’ll get a huge boost to synthesis.</li>
-            </ul>
-            <p>Doing all of the above should help you reach stage 20K in 20 to 30 minutes, then you can do your first loop.</p>
+                <h2 id="loop">Loop Information</h2>
+                <p>Loop is a reset that you can perform after reaching Stage 1000 which resets absolutely everything (except grassland gear, Flower & Planet Run related features and some permanent supernova tier bonuses), and provides a global multiplier which boosts almost everything, and gives you 1 looplet which can be spent on looplet upgrades inside the loop tower which is unlocked after looping once.</p>
+                <p><strong>YOU SHOULD GET S20,000 before your first loop</strong> as you get an extra loop and looplet for every 10,000 stages once you loop (essentially doubling/tripling your loops and making recovery much easier). Reaching S30,000 is impossible (as solarian ranks cap out at rank 9999 making you stuck at around stage 24,000).</p>
+
+                <h2 id="push20k">Pushing for Stage 10K & 20K</h2>
+                <p>At this point you should be getting hundreds of stages extremely fast reaching stage 3K+ effortlessly, however your progress will slow down and you’ll have to perform to rely on 3 main strategies:</p>
+                <ul>
+                    <li><strong>Cost Resetting:</strong> Doing a cost reset by sunsetting with Super Keep Rank maxed (for maximum effect), a sunset should be done every 3-4k stages.</li>
+                    <li><strong>Unstable Souls Bonuses:</strong> After ST15 you will need to manually spend unstable souls in the soul bonuses, you will need to update the amount you are spending very frequently since you are gaining a lot of stages and thus increasing Usouls gain.</li>
+                    <li><strong>Utilizing Synthesis:</strong> While upgrading Usoul bonuses you’ll get a huge boost to synthesis, you should be able to max out all synthesis upgrades fairly quickly however you should still get flare shards and empty gems for the advanced tab of forming.</li>
+                </ul>
+                <p>Doing all of the above should help you reach stage 20K in 20 to 30 minutes, then you can do your first loop.</p>
+            </div>
 
             <hr style="border-color: #333; margin: 4rem 0;">
 
@@ -513,10 +649,10 @@
                 <thead><tr><th>Currency</th><th>Upgrade</th><th>Notes</th></tr></thead>
                 <tbody>
                     <tr><td>Moonstone</td><td>Free Compression</td><td>Compression EL is better than increased souls gain</td></tr>
-                    <tr><td>Dark Fruits</td><td>Mega Offense</td><td>Helps you gain more stages</td></tr>
-                    <tr><td>Astro</td><td>The Collector</td><td>Helps you gain more stages</td></tr>
-                    <tr><td>Arcs</td><td>Divine Absorber</td><td>Needed for divine souls</td></tr>
-                    <tr><td>Dark Charge</td><td>Sharper Edge</td><td>Or other option if D9 incomplete</td></tr>
+                    <tr><td>Dark Fruits</td><td>Mega Offense</td><td>Helps you gain more stages in order to get the next cent</td></tr>
+                    <tr><td>Astro</td><td>The Collector</td><td>Helps you gain more stages in order to get the next cent</td></tr>
+                    <tr><td>Arcs</td><td>Divine Absorber</td><td>At this point you are far from the next dungeon so you’ll need the divine souls more</td></tr>
+                    <tr><td>Dark Charge</td><td>Sharper Edge</td><td>You may find the other option better if you have not yet completed D9.</td></tr>
                 </tbody>
             </table>
 
@@ -524,14 +660,14 @@
             <table>
                 <thead><tr><th>Tier</th><th>Stage</th><th>Rank Req</th></tr></thead>
                 <tbody>
-                    <tr><td>SNT8</td><td>~Stage 114</td><td>Rank 8</td></tr>
-                    <tr><td>SNT9</td><td>~Stage 160</td><td>Rank 13</td></tr>
-                    <tr><td>SNT10</td><td>~Stage 193</td><td>Rank 15</td></tr>
-                    <tr><td>SNT11</td><td>~Stage 250</td><td>Rank 16-17</td></tr>
-                    <tr><td>SNT12</td><td>~Stage 322</td><td>Rank 29</td></tr>
-                    <tr><td>SNT13</td><td>~Stage 403</td><td>N/A</td></tr>
-                    <tr><td>SNT14</td><td>~Stage 715</td><td>Rank 115</td></tr>
-                    <tr><td>SNT15</td><td>~Stage 1300</td><td>N/A</td></tr>
+                    <tr><td>SNT8</td><td>Approx. Stage 114</td><td>Rank 8</td></tr>
+                    <tr><td>SNT9</td><td>Approx. Stage 160</td><td>Rank 13</td></tr>
+                    <tr><td>SNT10</td><td>Approx. Stage 193</td><td>Rank 15</td></tr>
+                    <tr><td>SNT11</td><td>Approx. Stage 250</td><td>Rank 16-17</td></tr>
+                    <tr><td>SNT12</td><td>Approx. Stage 322</td><td>Rank 29</td></tr>
+                    <tr><td>SNT13</td><td>Approx. Stage 403</td><td>N/A</td></tr>
+                    <tr><td>SNT14</td><td>Approx. Stage 715</td><td>Rank 115</td></tr>
+                    <tr><td>SNT15</td><td>Approx. Stage ~1300</td><td>N/A</td></tr>
                 </tbody>
             </table>
 
@@ -539,15 +675,15 @@
             <table>
                 <thead><tr><th>#</th><th>Stage</th></tr></thead>
                 <tbody>
-                    <tr><td>1</td><td>~Stage 161</td></tr>
-                    <tr><td>2</td><td>~Stage 195</td></tr>
-                    <tr><td>3</td><td>~Stage 225</td></tr>
-                    <tr><td>4</td><td>~Stage 250</td></tr>
-                    <tr><td>5</td><td>~Stage 285-300</td></tr>
-                    <tr><td>6</td><td>~Stage 370</td></tr>
-                    <tr><td>7</td><td>~Stage 430+</td></tr>
-                    <tr><td>8</td><td>~Stage 500+</td></tr>
-                    <tr><td>9</td><td>~Stage 700+</td></tr>
+                    <tr><td>1</td><td>Approx. Stage 161</td></tr>
+                    <tr><td>2</td><td>Approx. Stage 195</td></tr>
+                    <tr><td>3</td><td>Approx. Stage 225</td></tr>
+                    <tr><td>4</td><td>Approx. Stage 250</td></tr>
+                    <tr><td>5</td><td>Approx. Stage 285, 290 or 300</td></tr>
+                    <tr><td>6</td><td>Approx. Stage 370</td></tr>
+                    <tr><td>7</td><td>Approx. Stage 430+</td></tr>
+                    <tr><td>8</td><td>Approx. Stage ~ 500+</td></tr>
+                    <tr><td>9</td><td>Approx. Stage ~ 700+</td></tr>
                 </tbody>
             </table>
 
@@ -555,7 +691,7 @@
             <table>
                 <thead><tr><th>Upgrade</th><th>Unlock</th><th>Description</th></tr></thead>
                 <tbody>
-                    <tr><td>Solar Powered Momentum</td><td>SNT8</td><td>Increases momentum earned by 1e9x per level</td></tr>
+                    <tr><td>Solar Powered Momentum</td><td>SNT8</td><td>Increases momentum earned by 1,000,000,000x per level</td></tr>
                     <tr><td>Remnants Autobuy III</td><td>SNT9</td><td>Autobuys the final three remnant upgrades</td></tr>
                     <tr><td>Solar Powered Moonstone</td><td>SNT9</td><td>Increases moonstone earned by 100x per level</td></tr>
                     <tr><td>Solar Powered Dark Fruits</td><td>SNT10</td><td>Increases dark fruits earned by 100x per level</td></tr>

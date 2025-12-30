@@ -168,6 +168,19 @@
         #sidebar a:hover {
             color: var(--theme-color) !important;
         }
+
+        /* --- DOT NAV OVERRIDES FOR LONG LISTS --- */
+        #dot-nav {
+            top: 100px;
+            bottom: 50px;
+            transform: none;
+            overflow-y: auto;
+            padding-right: 10px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            gap: 10px;
+        }
+        #dot-nav::-webkit-scrollbar { display: none; }
     </style>
 </head>
 <body>
@@ -182,7 +195,7 @@
     <aside id="sidebar">
         <div class="sidebar-header">
             <h1 style="color: var(--theme-color);">GCI</h1>
-            <p>Solarians Guide</p>
+            <p>Unofficial Guide</p>
         </div>
         <nav>
             <a href="index.html">Home</a>
@@ -211,7 +224,7 @@
         </nav>
     </aside>
 
-    <!-- DOT NAVIGATION (Paste this into Solarians page) -->
+    <!-- DOT NAVIGATION -->
     <div id="dot-nav">
         <a href="#intro" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Intro</span></a>
         <a href="#tutorial" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Tutorial</span></a>
@@ -253,27 +266,29 @@
             <p class="warning-text">You should avoid any of the following actions:</p>
             <ul>
                 <li>Spending any Flowers in Flower Shop II.</li>
-                <li>Forgetting to purchase upgrades in all tabs of the Singularity chart (accessible via slider).</li>
+                <li>Forgetting to purchase upgrades in all tabs of the Singularity chart, which is accessible via a slider. (i.e you can scroll left and right, up and down).</li>
                 <li>Performing a Sunrise for a lower amount of Sunrise FM.</li>
             </ul>
 
             <h3>Guide Info & Formatting</h3>
             <p>This guide will use abbreviations, with the first use of them being marked in bold next to the full version i.e. <strong>Fighting Multi (FM)</strong>. Names of resets and currencies will also be marked in bold for clarity.</p>
+            <p>Any extremely important information will be marked clearly in <span class="warning-text">bold red text</span>. Each Supernova Tier (SNT) will have its own section, but be sure to ask around for additional help, advice and alternative playstyles.</p>
 
             <h2 id="tutorial">Basic Tutorial</h2>
-            <p>Solarians is a minigame involving time and material management. You will be using the people known as Solarians to collect materials and form buffs for you to progress. These Solarians have speeds they work at, with <strong>Collection Speed</strong> for materials and <strong>Forming Speed</strong> for forming.</p>
+            <p>Solarians is a minigame involving time and material management. You will be using the people known as Solarians to collect materials and form buffs for you to progress. These Solarians have speeds they work at, with <strong>Collection Speed</strong> for materials and <strong>Forming Speed</strong> for forming. You will quickly see there are two separate boards for these stats to be utilized. (You will unlock more tabs in the forming board as you go, pay attention to them)</p>
 
-            <p>You can select the number of Solarians you want to use at one time via the large board to the left of the collection. I would personally recommend only using the 100, 25, 5 or 1 options at any given time.</p>
+            <p>You can select the number of Solarians you want to use at one time via the large board to the left of the collection. I would personally recommend only using the 100, 25, 5 or 1 options at any given time. Solarians can also be deployed by selecting the CAP button to the right of the add or remove buttons, which will deploy the maximum number of Solarians to instantly complete the collecting or forming.</p>
 
-            <p>The only way to progress and eventually beat this minigame is to increase your stage by fighting enemies. Increasing your stage will provide you with temporary buffs. The main boosts to pay attention to here are <strong>Solar Shards</strong> and <strong>Sunrise Fighting Multi (SFM)</strong>.</p>
-            <p>SFM does not apply immediately, requiring a <strong>Sunrise</strong> to be performed. I personally recommend getting between 5x and 100x SFM each Sunrise.</p>
+            <p>The only way to progress and eventually beat this minigame is to increase your stage by fighting enemies. You will use your resources and Solarians to defeat these enemies using the Offense and Defense stats. Increasing your stage will provide you with temporary buffs that only apply when you reach that stage or higher. The main boosts to pay attention to here are <strong>Solar Shards</strong> and <strong>Sunrise Fighting Multi (SFM)</strong>. SFM does not apply immediately, requiring a <strong>Sunrise</strong> to be performed. I personally recommend getting between 5x and 100x SFM each Sunrise, or as you see fit.</p>
 
-            <div class="note"><strong>IMPORTANT:</strong> Solar Rays Generation is an upgrade unlocked in the Solar Upgrades Board at Stage 3, costing 10 Million Solar Shards. It should be purchased as soon as possible.</div>
+            <p>Your core gameplay loop will consist of gathering materials, spending materials on forming, increasing your best stage, and then finally sunrising to increase FM. As you repeat this, ensure to check the advanced and basic tabs of the solar upgrades board in order to find useful upgrades required for progression or centralization.</p>
+
+            <div class="note"><strong>IMPORTANT INFO:</strong> Solar Rays Generation is an upgrade unlocked in the Solar Upgrades Board at Stage 3, costing 10 Million (1e7) Solar Shards. It should be purchased as soon as possible.</div>
 
             <h2 id="constellations">Constellation Setups</h2>
             <p>Before you proceed, you are recommended to update your constellation setups to one of the below. These are also available within the in-game help menu.</p>
 
-            <h3>Basic Persistent Constellations</h3>
+            <h3>Table 0.1 | Basic Persistent Constellations</h3>
             <img src="persistent2.png" alt="Basic Persistent Constellations" class="guide-image">
 
             <h3>Later Persistent Constellations</h3>
@@ -281,21 +296,37 @@
 
             <h2 id="unlock">Solarians Unlock</h2>
             <p>Solarians are unlocked via a board that appears at Supernova Tier 5 (SNT5) called the <strong>Singularity Chart</strong>. This board is next to the Solar Obelisk. You can obtain Singularities by Centralizing currencies in the game. Centralizing a currency requires an amount listed on the new Void Obelisk that appeared in the Light Forest upon reaching SNT5. Get enough Prestige Points for the Prestige Point Centralize to get the Solarians upgrade in the Singularity Chart.</p>
+            <p>The general gameplay loop is in the “Basic Tutorial” section of the guide, if you are struggling to understand what to do.</p>
 
             <h2 id="stage1">Stage 1 & Souls</h2>
-            <p>By defeating your first enemy you have gained a new currency called <strong>Souls</strong>. These can be spent on the blue upgrade board to the left of the main fighting board. It is recommended to prioritize Solarian Power earlier on since it offers much better boosts than upgrading collecting/forming individually.</p>
+            <p>Congratulations on making it this far. You did better than most. By defeating your first enemy you have gained a new currency called <strong>Souls</strong>. These can be spent on the blue upgrade board to the left of the main fighting board. It is recommended to prioritize Solarian Power earlier on since it offers much better boosts than upgrading collecting/forming individually, with Forming and Collecting Speed being left mostly even.</p>
 
-            <p>You will quickly get the second centralize and have to choose between Remnants and Soul Eater. <strong>Choose Remnants</strong> because it unlocks 2 upgrades costing Remnants in the Remnants upgrade board. These give x3 to both Offense and Defense which helps you reach the next centralize around stage 5-6 much faster.</p>
+            <p>Solarian Power is a stat that boosts your Solarians working capability. For example, increasing Solarian Power by 10x will increase the Forming and Collecting Speed of each individual Solarian by 10x.</p>
+
+            <p>You will quickly get the second centralize and have to choose between Remnants and Soul Eater. <strong>For this split path Remnants is better</strong> because it unlocks 2 upgrades costing Remnants in the Remnants upgrade board. These give x3 to both Offense and Defense which helps you reach the next centralize around stage 5-6 much faster.</p>
 
             <!-- Major Checkpoint: Sol Compression -->
             <h2 id="compressed" class="major-checkpoint">Sol Compression</h2>
-            <p><strong>Stage 10</strong> is of great significance. It unlocks a new board known as Sol Compression, which generates <strong>Compressed Sol</strong>, of which the generation is boosted by compaction / compression. Sol Compression is similar to Dark Fruits but is tiered, and is spent into all available boosts of that tier automatically.</p>
+            <p><strong>Stage 10</strong> is of great significance. It unlocks a new board known as Sol Compression, which generates <strong>Compressed Sol</strong>, of which the generation is boosted by compaction / compression. Sol Compression is similar to Dark Fruits but is tiered, and is spent into all available boosts of that tier automatically. This spending can be removed later on but it will do for now.</p>
             <div class="note">Be sure to purchase the new sunstone upgrade that unlocks at stage 12.</div>
 
             <h2 id="t1challenges">Tier 1 Challenges</h2>
-            <p>With this stage, you have unlocked challenges which will grant challenge score and a currency called <strong>Golden Stars</strong>. You should do these after you get to SNT6 as this unlocks Bulk Completion for T1 Challenges.</p>
+            <p>Having played through Solarians for a good amount of time now you should be familiar with the gameplay loop. Make sure you have upgraded your constellation setup as high as possible.</p>
+            <p>With this stage, you have unlocked challenges which will grant challenge score, which buffs your fighting multiplier, and a currency called <strong>Golden Stars</strong> (the first challenge, Basic, will not grant any). These can be spent on the solar upgrades board in the golden star tab. You should do these after you get to SNT6 as this unlocks Bulk Completion for T1 Challenges.</p>
+            
+            <p>Golden Stars can be spent on a few upgrades but some of these are locked. The red number above locked upgrades states the total amount of golden stars required to unlock said upgrades.</p>
 
-            <p><strong>Maximum Stage for Bulk Completing Challenges:</strong> Basic: 20, Cycle: 26, Soul: 22, Wall: 18, Soulless: 18, Limited: 28, Strong: 32, Evil: 7.</p>
+            <p><strong>Maximum Stage for Bulk Completing Challenges:</strong></p>
+            <ul>
+                <li>Basic: 20</li>
+                <li>Cycle: 26</li>
+                <li>Soul: 22</li>
+                <li>Wall: 18</li>
+                <li>Soulless: 18</li>
+                <li>Limited: 28</li>
+                <li>Strong: 32</li>
+                <li>Evil: 7</li>
+            </ul>
 
             <h3>Recommended Spending Order for Golden Stars:</h3>
             <ul>
@@ -309,21 +340,26 @@
             </ul>
 
             <h2 id="restoration">Restoration Board</h2>
-            <p>The Restoration Board is unlocked at Stage 20, which at the beginning only contains the advanced star. This is how you get beyond SNT 5 and use the new currency that comes with it, known as <strong>Mana</strong>.</p>
-            <ul>
-                <li><strong>Sword vs Soul:</strong> Choose <strong>Sword</strong> first for the fighting boost.</li>
-                <li><strong>Divine Robbery vs Super Compression:</strong> Choose <strong>Super Compression</strong>.</li>
-            </ul>
+            <p>The Restoration Board is unlocked at Stage 20, which at the beginning only contains the advanced star. This is how you get beyond SNT 5 and use the new currency that comes with it, known as <strong>Mana</strong>. This currency passively generates and you can increase it by improving your collecting and other upgrades later on.</p>
+            
+            <p>For the split path between Sword and Soul <strong>choose Sword first</strong> for the fighting boost to get the next centralize faster if you don’t already have it.</p>
+            <p>For the split path between Divine Robbery and Super Compression <strong>choose Super Compression</strong> as Divine Robbery only has a benefit after you sunset, and the next centralize is obtained before that happens.</p>
 
             <h2 id="stage40">Stage 40</h2>
             <p>Now, you will need to return to the restoration board where you should have met all the requirements necessary to obtain Supernova Tier 6. If you need Mana, you will need to Time Warp, go AFK for a bit of time, or waste time playing Planet Run.</p>
 
-            <div class="note">You might struggle on star growth. Get the sunstone star growth upgrade, upgrade solar powered planetoid currencies, and get the Planet Run token upgrade.</div>
+            <p>You might struggle on star growth, in which case you should get the sunstone star growth upgrade to the highest you can, and also upgrade solar powered planetoid currencies to gain more stardust to get more growth. There also is a token upgrade in Planet Run that boosts star growth.</p>
 
             <h2 id="snt6">Supernova Tier 6</h2>
-            <p>Upon reaching the requirements for the next star tier, you are able to increase your SNT. As seen on the restoration board, you now have an Offense/Defense boost that increases based on your star growth, and the first upgrade of the restore tab will now be unlocked.</p>
+            <p>Upon reaching the requirements for the next star tier, you are able to increase your SNT and view the requirements for the next tier if available. Each time you do this you will gain new unlocks, as viewable alongside the other SNTs.</p>
 
-            <p>Other notable unlocks include the new Sunset reset in the Solar Obelisk and new remnant upgrades. If you get Stars and Fun centralize before Sunset, choose <strong>Best Offense</strong> over Super Absorb.</p>
+            <p>As seen on the restoration board, you now have an Offense/Defense boost that increases based on your star growth, and the first upgrade of the restore tab will now be unlocked. This upgrade will allow you to increase your mana gain. The next upgrade will be unlocked after reaching level 1 of the previous upgrade.</p>
+
+            <p>The other notable unlocks include the new Sunset reset in the Solar Obelisk, which is in the next section, as well as new remnant upgrades. I personally recommend pushing compression remnants whilst pushing stages, and then upgrade mana and divine souls before doing a sunset. You can refund the remnants by doing a sunrise at any time, but make sure to actually spend them.</p>
+
+            <p>If you missed the T1 Challenges section, you should now go and complete most of them, with the exception of the hard challenges, as this should be fairly quick, and is a nice boost to fighting multi.</p>
+
+            <p>If you get Stars and Fun centralize before Sunset then the split path between Best Offense and Super Absorb. It is recommended to <strong>choose Best Offense</strong> because it pushes stages directly, and is unaffected by wait time where Super Absorb is the opposite.</p>
 
             <!-- Major Checkpoint: Sunset -->
             <h2 id="sunset" class="major-checkpoint">Sunset</h2>
@@ -332,40 +368,42 @@
 
             <p>It is recommended to do your first Sunset reset after obtaining SNT7, and both Stars and Fun centralizes, at around Stage 56-58. This should be for around 400+ Divine Souls and 1 Billion+ Darkness.</p>
 
-            <p><strong>Spending Guide:</strong></p>
-            <ul>
-                <li><strong>Singularity Chart (Souls Tab):</strong> Purchase all upgrades costing 3-5 Divine Souls, Compression II, Light Logs V, Souls II.</li>
-                <li><strong>Singularity Chart (Mana Tab):</strong> Purchase ‘Violent’ upgrade.</li>
-                <li><strong>Souls Board:</strong> Buy a mix of Compression, FM, Mana and Souls. Ignore Restoration Speed for now.</li>
-                <li><strong>Darkness:</strong> Prioritize a new Grid tier over anything else, then upgrade from cheapest to most expensive.</li>
-            </ul>
+            <p>Following this, you should go to the singularity chart and select the souls tab. You should purchase all upgrades that cost 3-5 Divine Souls, as well as Compression II, Light Logs V and Souls II. You should then navigate to the Mana tab on the chart and purchase the ‘Violent’ upgrade for 6 Divine Souls. With the remaining Divines, go to the Souls board and select a low % from the selector at the bottom of the board to minimize the risk of accidentally spending them all at once. You should buy a mix of Compression, FM, Mana and Souls. Ignore Restoration Speed for now.</p>
+
+            <p>In terms of Darkness, you should upgrade your Constellations setup using it, prioritizing a new Grid tier over anything else, and then upgrading from cheapest to most expensive. Avoid spending Darkness on the Darkness tab until you are going to do a Sunset. A new upgrade will also now be unlocked in the forming tab called “Magic FM”, which is identical to the Light logs FM upgrade, but costs Mana. This makes it expensive so you should manually add and remove Solarians to it rather than leaving them on it permanently.</p>
+
+            <p>You will notice that the first level of upgrades in the restores tab of the restoration board give decorations for The Star, so go for those first levels if you want to make your area look more pleasant. Avoid leaving Solarians on restores that cost high amounts of Mana or Fragments.</p>
 
             <h2 id="t2challenges">Tier 2 Challenges</h2>
-            <p>After performing a Sunset, you have unlocked T2 Challenges. They provide a second type of stars known as <strong>Platinum Stars</strong>. Completions in the T2 challenge called ‘Challenging’ also automatically complete T1 challenges you may have missed.</p>
-            <div class="note">It is not recommended to skip T2 challenges. As for Platinum stars you should max the Divine Souls upgrade. Afterwards get Compression and Mana upgrades equally.</div>
+            <p>After performing a Sunset, you have unlocked T2 Challenges. Similar to T1 challenges, they have a stage requirement and provide a score that boosts FM. However, they provide a second type of stars known as <strong>Platinum Stars</strong>. Completions in the T2 challenge called ‘Challenging’ also automatically complete T1 challenges you may have missed. It is recommended to complete these after you have enough stats to where you can Sunset and get stages back quickly.</p>
+            <div class="note">Important Information: It is not recommended to skip T2 challenges. As for Platinum stars you should max the Divine Souls upgrade. Afterwards get Compression and Mana upgrades equally. Leaving some T2s incomplete will not be an issue.</div>
 
             <h2 id="snt7">Supernova Tier 7</h2>
             <p>Upon reaching the requirements for SNT7 you can increase your supernova tier in the restoration board once again. This tier is notable for its benefits which include:</p>
             <ul>
-                <li>A new star growth buff for restoration speed.</li>
-                <li>A new tab for the restoration board called the portal tab.</li>
-                <li>The Sunset reset no longer resets basic levels in the forming tab (except compression).</li>
+                <li>A new star growth buff for restoration speed</li>
+                <li>A new tab for the restoration board called the portal tab (read the next section for more info).</li>
+                <li>The Sunset reset no longer resets basic levels in the forming tab (except compression) and the offense/defense sunstone upgrades. This is the ideal time to do your first sunset.</li>
+                <li>You unlock a new upgrade in the solar board advanced tab to automate the last remnant upgrades (it is recommended to not keep the autobuyers on at this point since they can spend remnants on upgrades you may not need).</li>
             </ul>
 
             <h2 id="portal">Portal Pieces</h2>
-            <p>By reaching SNT7, you have unlocked a new tab on the Restoration board known as the <strong>Portal tab</strong>. You can now craft Portal Pieces (PPs). Every portal piece will require a set amount of resources and restoration to complete.</p>
+            <p>By reaching SNT7, you have unlocked a new tab on the Restoration board known as the <strong>Portal tab</strong>. When looking at it, you will notice you can now craft Portal Pieces (PPs). These are required to progress to the next major section of the game.</p>
+            <p>Every portal piece will require a set amount of resources and restoration to complete. Upon completion a Portal Piece will grant a 2x boost to the currency displayed next to the piece.</p>
+            <p>Many PPs, especially the later pieces can take a large amount of restoration, so it is a good idea to start investing into Restoration Speed as well as Souls in the Divine Souls in order to invest into Solarian Power.</p>
 
-            <p>You will notice that portal pieces 8 and 9 require a huge amount of fragments. The best way to improve your gain is to:</p>
+            <p>You will notice that portal pieces 8 and 9 require a huge amount of fragments. The best way to improve your gain and get to the requirement is to:</p>
             <ul>
-                <li>Purchase at least two upgrades of grass essence in the souls tab of the singularity chart.</li>
-                <li>Get the planet run grass essence upgrade.</li>
-                <li>Use time warps (and don’t sunrise until you build those pieces as sunrising resets your fragments).</li>
+                <li>Purchase at least two upgrades of grass essence in the souls tab of the singularity chart</li>
+                <li>Get the planet run grass essence upgrade</li>
+                <li>Use time warps (and don’t sunrise until you build those pieces as sunrising resets your fragments)</li>
             </ul>
 
             <h2 id="help100">Sunset - Stage 100 Help</h2>
+            <p>Good job on making it this far, you should be more accustomed to solarians and its gameplay loop.</p>
             <p>Make sure you are centralizing whenever possible and doing sunsets every time you get x5-x20 more Dsouls and darkness. You should spend these DSouls in soul bonuses and the singularity chart, whilst upgrading your constellations using the darkness you gained.</p>
             <p>Repeat this process until you reach stage 100.</p>
-            <div class="note">Doing planet run while waiting is very beneficial especially while waiting for portal pieces.</div>
+            <div class="note">Note: Doing planet run while waiting is very beneficial especially while waiting for portal pieces, upgrading the grass essence can cut down on some time walls.</div>
 
             <!-- Major Checkpoint: Portal Piece 10 -->
             <h2 id="pp10" class="major-checkpoint">Portal Piece 10</h2>
@@ -380,22 +418,22 @@
             <h3>Centralize Requirements</h3>
             <table>
                 <thead>
-                    <tr><th>Centralized Currency</th><th>Stage Requirement</th></tr>
+                    <tr><th>Centralized Currency</th><th>Stage Requirement</th><th>Solar Powered Requirement + Other</th></tr>
                 </thead>
                 <tbody>
-                    <tr><td>Prestige Points</td><td>Stages 0-1</td></tr>
-                    <tr><td>Crystals</td><td>Stages 1-2</td></tr>
-                    <tr><td>Steel</td><td>Stages 2-3</td></tr>
-                    <tr><td>Rocket Fuel</td><td>Stages 4-6</td></tr>
-                    <tr><td>Charge</td><td>Stages 14-16</td></tr>
-                    <tr><td>Anti-Grass</td><td>Stage 20</td></tr>
-                    <tr><td>Anonymity Points</td><td>Stage 21-23</td></tr>
-                    <tr><td>Oil</td><td>Stage 25-27</td></tr>
-                    <tr><td>Platinum</td><td>Stage 29-30</td></tr>
-                    <tr><td>Fun</td><td>Stage 58</td></tr>
-                    <tr><td>Stars</td><td>Stage 56-58</td></tr>
-                    <tr><td>SFRGT</td><td>Stage 85-86</td></tr>
-                    <tr><td>Dark Matter</td><td>Stage 103-105</td></tr>
+                    <tr><td>Prestige Points</td><td>Stages 0-1</td><td>N/A</td></tr>
+                    <tr><td>Crystals</td><td>Stages 1-2</td><td>N/A</td></tr>
+                    <tr><td>Steel</td><td>Stages 2-3</td><td>N/A</td></tr>
+                    <tr><td>Rocket Fuel</td><td>Stages 4-6</td><td>N/A</td></tr>
+                    <tr><td>Charge</td><td>Stages 14-16</td><td>N/A</td></tr>
+                    <tr><td>Anti-Grass</td><td>Stage 20</td><td>N/A</td></tr>
+                    <tr><td>Anonymity Points</td><td>Stage 21-23</td><td>N/A</td></tr>
+                    <tr><td>Oil</td><td>Stage 25-27</td><td>N/A</td></tr>
+                    <tr><td>Platinum</td><td>Stage 29-30</td><td>N/A</td></tr>
+                    <tr><td>Fun</td><td>Stage 58</td><td>N/A</td></tr>
+                    <tr><td>Stars</td><td>Stage 56-58</td><td>N/A</td></tr>
+                    <tr><td>SFRGT</td><td>Stage 85-86</td><td>N/A</td></tr>
+                    <tr><td>Dark Matter</td><td>Stage 103-105</td><td>N/A</td></tr>
                 </tbody>
             </table>
 
@@ -415,7 +453,7 @@
             <h3>Singularity Order</h3>
             <table>
                 <thead>
-                    <tr><th>Centralized Currency</th><th>Suggested Upgrade</th><th>Notes</th></tr>
+                    <tr><th>Centralized Currency</th><th>Suggested Upgrade</th><th>Additional Notes</th></tr>
                 </thead>
                 <tbody>
                     <tr><td>Crystals</td><td>Remnants</td><td>See Section Stage 1 & Souls</td></tr>
@@ -428,7 +466,7 @@
             <h3>Supernova Requirements</h3>
             <table>
                 <thead>
-                    <tr><th>Supernova Tier</th><th>Stage Requirement</th><th>Notes</th></tr>
+                    <tr><th>Supernova Tier</th><th>Stage Requirement</th><th>Additional Notes</th></tr>
                 </thead>
                 <tbody>
                     <tr><td>SNT6</td><td>Approx. Stage 38</td><td>Rank 0 Growth</td></tr>
@@ -439,17 +477,17 @@
             <h3>Upgrade Unlock List</h3>
             <table>
                 <thead>
-                    <tr><th>Upgrade Name</th><th>Unlock Req</th><th>Description</th></tr>
+                    <tr><th>Upgrade Name</th><th>Unlock Requirement</th><th>Additional Notes + Descriptions</th></tr>
                 </thead>
                 <tbody>
                     <tr><td>Solar Ray Generation</td><td>Stage 3</td><td>Generates .1% of solar rays earned on supernova per second</td></tr>
                     <tr><td>Sunstone Offense</td><td>Stage 4</td><td>Increases fighting offense by +10% per level</td></tr>
                     <tr><td>Sunstone Defense</td><td>Stage 4</td><td>Increases fighting defense by +10% per level</td></tr>
                     <tr><td>Solar Shards Updater</td><td>Stage 5</td><td>Automatically updates best solar shards on supernova</td></tr>
-                    <tr><td>Solar Flares Generator</td><td>Stage 6</td><td>Passively increases solar flare generation based on your current star tier</td></tr>
-                    <tr><td>Constellation Locking</td><td>Stage 8</td><td>Allows locking the constellation grid. Star constellations are more powerful while locked.</td></tr>
+                    <tr><td>Solar Flares Generator Generation</td><td>Stage 6</td><td>Passively increases solar flare generation based on your current star tier</td></tr>
+                    <tr><td>Constellation Locking</td><td>Stage 8</td><td>Allows locking the constellation grid which prevents it from being modified. Star constellations are more powerful while the grid is locked.</td></tr>
                     <tr><td>Sunstone Solar Shards</td><td>Stage 10</td><td>Increases solar shards earned by +10% per level</td></tr>
-                    <tr><td>Solar Idler Time</td><td>Stage 12</td><td>Divides The Solar Idler's trigger time</td></tr>
+                    <tr><td>Solar Idler Time</td><td>Stage 12</td><td>Divides The Solar Idler's trigger time /(Level + 1) ^ 2 -> /(Level + 2) ^ 2</td></tr>
                     <tr><td>Remnants Autobuy I</td><td>Stage 14</td><td>Autobuys the first three remnant upgrades</td></tr>
                     <tr><td>Solar Powered Platinum</td><td>Stage 20</td><td>Increases platinum earned by 100x per level</td></tr>
                     <tr><td>Solar Powered SFRGT</td><td>Stage 50</td><td>Increases SFRGT earned by 1,000,000x per level</td></tr>
@@ -460,19 +498,19 @@
             <h3>Portal Piece Costs</h3>
             <table>
                 <thead>
-                    <tr><th>PP #</th><th>Cost</th><th>Reward</th></tr>
+                    <tr><th>Portal Piece Number</th><th>Portal Piece Cost</th><th>Portal Piece Reward</th></tr>
                 </thead>
                 <tbody>
-                    <tr><td>PP1</td><td>10 Grass Essence, 100M Portal Stones, 1B Mana</td><td>2x Mana</td></tr>
-                    <tr><td>PP2</td><td>10M T1 Comp. Sol, 1B Portal Stones, 10B Mana</td><td>2x Compression Speed</td></tr>
-                    <tr><td>PP3</td><td>1B Souls, 10B Portal Stones, 100B Mana</td><td>2x Divine Souls</td></tr>
-                    <tr><td>PP4</td><td>1T Fragments, 100B Portal Stones, 1T Mana</td><td>2x Grass Essence</td></tr>
-                    <tr><td>PP5</td><td>10,000 Grass Essence, 1T Portal Stones, 10T Mana</td><td>2x Mana</td></tr>
-                    <tr><td>PP6</td><td>1T T1 Comp. Sol, 10T Portal Stones, 100T Mana</td><td>2x Compression Speed</td></tr>
-                    <tr><td>PP7</td><td>10T Souls, 100T Portal Stones, 1Qa Mana</td><td>2x Divine Souls</td></tr>
-                    <tr><td>PP8</td><td>2Qa Fragments, 300T Portal Stones, 3Qa Mana</td><td>2x Grass Essence</td></tr>
-                    <tr><td>PP9</td><td>6Qa Fragments, 800T Portal Stones, 80Qa Mana</td><td>-</td></tr>
-                    <tr><td>PP10</td><td>1 Grassland Gem, 2Qa Portal Stones, 200Qa Mana</td><td>Portal Activated</td></tr>
+                    <tr><td>PP1</td><td>10 Grass Essence, 100M (1e8) Portal Stones, 1B (1e9) Mana</td><td>2x Mana</td></tr>
+                    <tr><td>PP2</td><td>10M (1e7) T1 Compressed Sol, 1B (1e9) Portal Stones, 10B (1e10) Mana</td><td>2x Compression Speed</td></tr>
+                    <tr><td>PP3</td><td>1B (1e9) Souls, 10B (1e10) Portal Stones, 100B (1e11) Mana</td><td>2x Divine Souls</td></tr>
+                    <tr><td>PP4</td><td>1T (1e12) Fragments, 100B (1e11) Portal Stones, 1T (1e12) Mana</td><td>2x Grass Essence</td></tr>
+                    <tr><td>PP5</td><td>10,000 Grass Essence, 1T (1e12) Portal Stones, 10T (1e13) Mana</td><td>2x Mana</td></tr>
+                    <tr><td>PP6</td><td>1T (1e12) T1 Compressed Sol, 10T (1e13) Portal Stones, 100T (1e14) Mana</td><td>2x Compression Speed</td></tr>
+                    <tr><td>PP7</td><td>10T (1e13) Souls, 100T (1e14) Portal Stones, 1Qa (1e15) Mana</td><td>2x Divine Souls</td></tr>
+                    <tr><td>PP8</td><td>2Qa (2e15) Fragments, 300T (3e14) Portal Stones, 3Qa (3e15) Mana</td><td>2x Grass Essence</td></tr>
+                    <tr><td>PP9</td><td>6Qa (6e15) Fragments, 800T (8e14) Portal Stones, 80Qa (8e16) Mana</td><td>-</td></tr>
+                    <tr><td>PP10</td><td>1 Grassland Gem, 2Qa (2e15) Portal Stones, 200Qa (2e17) Mana</td><td>Portal Activated</td></tr>
                 </tbody>
             </table>
 

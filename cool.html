@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cool Realm - GCI Guide</title>
+    <!-- FAVICON -->
+    <link rel="icon" type="image/x-icon" href="Main.ico">
+    
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- PAGE THEME CONFIGURATION --- */
+        :root {
+            --theme-color: #ffee00; /* Piss Yellow */
+        }
+
+        /* --- HEADINGS --- */
+        h1.main-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(255, 238, 0, 0.4);
+        }
+
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            font-size: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #333;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100px;
+            height: 2px;
+            background-color: var(--theme-color);
+            box-shadow: 0 0 10px var(--theme-color);
+        }
+
+        /* Major Checkpoint Headers */
+        h2.major-checkpoint {
+            font-size: 2.5rem;
+            color: var(--theme-color);
+            border-bottom: 4px solid var(--theme-color);
+            text-shadow: 0 0 10px rgba(255, 238, 0, 0.2);
+        }
+
+        h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--theme-color);
+            font-size: 1.4rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* --- TABLE OF CONTENTS --- */
+        .toc-box {
+            background-color: #151515;
+            border: 1px solid #333;
+            border-left: 4px solid var(--theme-color);
+            padding: 1.5rem;
+            margin-bottom: 3rem;
+            border-radius: 6px;
+        }
+        .toc-title {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--theme-color);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        .toc-list {
+            list-style: none;
+            column-count: 2; 
+            column-gap: 20px;
+        }
+        .toc-list li {
+            margin-bottom: 8px;
+        }
+        .toc-list a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.2s;
+            font-size: 0.95rem;
+        }
+        .toc-list a:hover {
+            color: var(--theme-color);
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .toc-list { column-count: 1; }
+        }
+
+        /* --- CREDITS BOX --- */
+        .credits-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid #333;
+            border-left: 4px solid var(--theme-color);
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin-bottom: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .credits-header {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            color: var(--theme-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        .credits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            font-size: 0.95rem;
+            color: #bbb;
+        }
+        .credit-role {
+            font-weight: bold;
+            color: #fff;
+            margin-right: 5px;
+        }
+
+        /* --- NOTE STYLE --- */
+        .note {
+            background-color: #151515;
+            border-left: 2px solid var(--theme-color);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.95rem;
+            color: #cccccc;
+            transition: transform 0.2s;
+        }
+        .note:hover { background-color: #1a1a1a; }
+        .note strong { color: #fff; }
+
+        /* --- IMAGE STYLES --- */
+        .guide-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            display: block;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            border: 1px solid #444;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        /* Warning Text styling */
+        .warning-text {
+            color: #ff5555;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        
+        /* List Styling */
+        ul { margin-left: 20px; margin-bottom: 1.5rem; }
+        li { margin-bottom: 8px; color: #ddd; }
+
+        /* Data Table for Grasshop */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background-color: #151515;
+            border: 1px solid #333;
+        }
+        .data-table th, .data-table td {
+            padding: 12px;
+            border-bottom: 1px solid #333;
+            text-align: left;
+            color: #ccc;
+        }
+        .data-table th {
+            background-color: #222;
+            color: var(--theme-color);
+            font-family: 'Orbitron', sans-serif;
+        }
+        .data-table tr:hover { background-color: #1a1a1a; }
+        .highlight-row { background-color: rgba(255, 238, 0, 0.05); }
+
+        /* Sidebar Active Color Override */
+        #sidebar a.active {
+            color: var(--theme-color) !important;
+            border-left-color: var(--theme-color) !important;
+        }
+        #sidebar a:hover {
+            color: var(--theme-color) !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <div class="logo" style="color:var(--theme-color); font-weight:bold;">GCI</div>
+        <button id="menu-toggle" style="background:none; border:none; color:#fff; font-size:1.5rem;">☰</button>
+    </header>
+
+    <!-- Sidebar -->
+    <aside id="sidebar">
+        <div class="sidebar-header">
+            <h1 style="color: var(--theme-color);">GCI</h1>
+            <p>Cool Guide</p>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+
+            <div class="section-title">World 1</div>
+            <a href="origins.html">Origins</a>
+            <a href="galactic.html">Galactic</a>
+            <a href="planetoid.html">Planetoid</a>
+            <a href="constellations.html">Constellations</a>
+            <a href="supernova.html">Supernova</a>
+            <a href="solarians.html">Solarians</a>
+            <a href="grasslands.html">Grasslands</a>
+            <a href="loops.html">Loops</a>
+
+            <div class="section-title">World 2</div>
+            <a href="jungle.html">Jungle</a>
+            <a href="true-awaken.html">True Awaken</a>
+            <a href="desert.html">Desert</a>
+            <a href="midnight.html">Midnight</a>
+            <a href="great-rift.html">Great Rift</a>
+            <a href="doom.html">Doom (DaS)</a>
+
+            <div class="section-title">Bonus</div>
+            <a href="tower.html">The Tower</a>
+            <a href="cool.html" class="active">Cool</a>
+        </nav>
+    </aside>
+
+    <div id="dot-nav">
+        <a href="#intro" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Intro</span></a>
+        <a href="#beginning" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Start</span></a>
+        <a href="#crystallize" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Crystallize</span></a>
+        <a href="#grasshop" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Grasshop</span></a>
+        <a href="#steely" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Steely</span></a>
+    </div>
+    
+    <!-- Main Content -->
+    <main>
+        <div class="guide-container">
+            
+            <h1 class="main-title">Cool Realm</h1>
+            
+            <!-- Credits -->
+            <div class="credits-box">
+                <div class="credits-header">/// Archive Data</div>
+                <div class="credits-grid">
+                    <div><span class="credit-role">Written by:</span> TakaTaka12637</div>
+                    <div><span class="credit-role">Discord:</span> @tk601</div>
+                </div>
+            </div>
+
+            <!-- Table of Contents -->
+            <div class="toc-box">
+                <div class="toc-title">Table of Contents</div>
+                <ul class="toc-list">
+                    <li><a href="#intro">Introduction</a></li>
+                    <li><a href="#beginning">Beginning & Prestige</a></li>
+                    <li><a href="#crystallize">Crystallize</a></li>
+                    <li><a href="#grasshop">Grasshop</a></li>
+                    <li><a href="#steely">Steely & Brickhouse</a></li>
+                </ul>
+            </div>
+
+            <h2 id="intro">Introduction</h2>
+            <p>Cool Realm (or cool world) is a realm made purely for entertaining purposes as a non-related realm for worlds 1 and 2. This world is accessed by a portal which is hidden in a certain place.</p>
+            
+            <div class="note">
+                <strong>Disclaimer:</strong> This is unofficial and some information might be incorrect. Also, it is the first time making a guide for GCI so some places might be flawed; apologies for that. If any information is incorrect, please ping <strong>@tk601</strong> in the official Discord channel <strong>#cool-world</strong>.
+            </div>
+
+            <p>For more info about the portal location, check the GCI official discord server. The capitalization of some in-game names are lowercase since the realm has a lowercase name of that name.</p>
+
+            <p class="warning-text">Important: Do at least 1 or more galactic(s) to unlock this realm/world.</p>
+            
+            <div class="note">The official GCI development team (including Crow and Spassman) mentioned that this realm might not be permanent, so check for the newest information at the official server.</div>
+
+            <h2 id="beginning">1. Beginning and Prestige</h2>
+            <p>The first thing you notice is that this realm has hand-written graphics and all words are not capitalized. For the first thing to do is literally the same thing you did when you started the game. Collect grass, buy grass upgrades, rinse and repeat. However, there are few mechanics that have changed before prestige.</p>
+
+            <h3>1-1. Automation</h3>
+            <p>Same as World 1, automation will be important later on. You want to first grind for grass to unlock the first level of <strong>"autocut1"</strong>.</p>
+            
+            <!-- Placeholder for potential image -->
+            <!-- <img src="autocut_example.png" alt="Automation Upgrade" class="guide-image"> -->
+
+            <p>You should not try to max out the upgrade, but getting 2/5 levels will be better as the recovery from prestige and other resets will be faster later on.</p>
+
+            <h3>1-2. Perks</h3>
+            <p>In this realm, perks are unlocked at <strong>Level 50</strong>, which should not be hard to grind for since the <strong>"xp1"</strong> upgrade doubles every 5 levels instead of the normal 25 levels.</p>
+            <p>You should also increase the grass cap and regen speed so that it is more efficient as it goes. After you have reached 50 levels, you should unlock Perks. These are useful since they give you massive boosts in grass and xp. Instead of the usual 1 perk when you level up, there are blue grass like platinum and observatorium which you collect and earn perks.</p>
+
+            <div class="note">It is preferred to firstly afford the first 2 upgrades, <strong>“xpP”</strong> and <strong>“grassValueP”</strong> since they boost their values massively and help you in the run.</div>
+
+            <p>After some time, you should be able to reach level 100 to unlock the first reset layer in this realm, prestige.</p>
+
+            <h3>1-3. Prestige and Recovery</h3>
+            <p>On your first prestige, you should definitely get more than <strong>100 PP (prestige points)</strong> since it will help in the upgrades. While you should not grind for too long, definitely keep grinding even when level 100 is reached.</p>
+            <p>If you can, you want to buy the grass upgrade called <strong>“pp1”</strong> which boosts prestige points gain.</p>
+
+            <p>When you have prestiged for the first time, you will unlock <strong>“cooler levels”</strong> which is similar to “Tiers” in World 1, but it uses the normal level formula for its required xp. Cooler levels boost perks, which is useful since perks are used to upgrade perk related upgrades.</p>
+
+            <h2 id="crystallize">2. Crystallize</h2>
+            <h3>2-1. Prestige and Be Stronger</h3>
+            <p>Each time when you prestige, you should aim for more prestige points so that you can upgrade more and aim for higher. Also, start buying the 2nd tier for the perk upgrades which is called <strong>“grassValue2P”</strong> and <strong>“xp2P”</strong> which will multiply its multiplier by another magnitude.</p>
+
+            <p>Since prestige reset only utilizes levels, you should keep upgrading level-related upgrades (and also cooler level related upgrades, which is going to be very useful).</p>
+
+            <p>Keep grinding until you reach <strong>Level 250</strong> when you will unlock your 2nd reset layer, crystallize!</p>
+
+            <h3>2-2. Crystallize and Recovery</h3>
+            <p>Congrats on reaching Level 250! You can now crystallize. The crystal gain is based on cooler levels (told you to upgrade them so you can get more crystal...).</p>
+            <p>You should get roughly 100-200 crystals when you reset. You can spend on crystal upgrades. You can buy anything here since every upgrade is powerful, but I will recommend buying for <strong>“xp3”</strong> and <strong>“xp3a”</strong> (boosts xp and cooler xp).</p>
+
+            <h2 id="grasshop">3. Grasshop</h2>
+            <h3>3-1. More Crystallizing</h3>
+            <p>After your first crystallize, you should keep increasing your levels and cooler level multiplier so you can crystallize faster and get more crystals when you crystallize.</p>
+            <p>One more important upgrade when crystallizing is <strong>“perks”</strong>, which increases perk gain. Perk upgrades are more important in the late game, so consider buying more perk-boosting upgrades so that grass, xp, cooler xp, prestige, and crystals are boosted.</p>
+            <p>After upgrading every upgrade that boosts level, cooler level, and perks, you still have to grind a bit to eventually reach <strong>Level 500</strong>.</p>
+
+            <h3>3-2. First Grasshop + Recovery</h3>
+            <p>The grasshop building is at the same place as world 1. There will be a <strong>VERY LONG</strong> cutscene (it will show every time when you grasshop until grasshop 5. From grasshop 6, it is excluded).</p>
+
+            <h3>Cool Realm Grasshop Milestones</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>GH #</th>
+                        <th>Req. Levels</th>
+                        <th>Effect</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Lv 500</td>
+                        <td class="highlight-row">Earn +100% more grass and perks per grasshop<br>Unlocks more automation upgrades</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Lv 600</td>
+                        <td class="highlight-row">Earn +100% more xp per grasshop<br>Unlocks cooler perks</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Lv 700</td>
+                        <td>Earn +100% more cooler xp per grasshop<br>Earn +100% more cooler perks per grasshop above 2</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Lv 800</td>
+                        <td>Earn +100% more pp per grasshop</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Lv 900</td>
+                        <td>Earn +100% more crystals per grasshop</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Lv 1,000</td>
+                        <td>Earn +100% more steel per grasshop above 5<br>(Steely is unlocked automatically when you reach lv 1000)</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Lv 1,100</td>
+                        <td>Earn +100% more charge per grasshop above 6</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>Lv 1,200</td>
+                        <td>Unlock epicness</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>Lv 1,300</td>
+                        <td>Earn +100% more epicness xp per grasshop above 8</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>Lv 1,400</td>
+                        <td>Double charge earned per grasshop above 9</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>Lv 1,500</td>
+                        <td>Double steel earned per grasshop above 10</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>Lv 1,600</td>
+                        <td>Earn +100% more bricks per grasshop above 11</td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>Lv 1,700</td>
+                        <td>Earn +100% more brick xp per grasshop above 12 (Last Milestone)</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="note">Yellow highlighted milestones are the important ones that you want to get.</div>
+
+            <p>Your recovery should not be too hard since you have the boosts of the grasshop and also your automation upgrades that you have bought before grasshopping. It is recommended to at least buy 1 of each upgrade so that it will passively generate pp and crystals, which should be pretty overpowered at that point.</p>
+            <p>These upgrade names are called <strong>“ppGen”</strong> and <strong>“crystalGen”</strong>. Which the purchase of them using perks as their currency.</p>
+
+            <h3>3-3. Second to Fifth Grasshop (Cooler Perks)</h3>
+            <p>Upon reaching GH 2 (short name for grasshop 2), you will unlock <strong>cooler perks</strong> (just like perks but cooler?). These are earned by collecting cooler perk grass (red colored).</p>
+            <p>Cooler perks upgrades are very powerful (especially the boosts of levels and grass, which boosts it by +400%) so you might want to grind for these. Also, they have a second upgrade for perks so definitely get that to unlock higher tiers of perk-related upgrades.</p>
+
+            <h2 id="steely">4. Steely</h2>
+            <h3>4-1. Charger</h3>
+            <p>The cool realm version of steelie is <strong>“steely”</strong>, which is unlocked by reaching Level 1000. You should do the steely first since it gives more boost. Your first steely unlocks <strong>“the factory”</strong>.</p>
+            
+            <div class="note">You need to reset with at least <strong>10 steel</strong> because there will be nothing you can upgrade otherwise.</div>
+
+            <p>The first thing to buy when you do the steely is the <strong>“charger”</strong>. This unlocks the DIY charger which you charge by clicking (this cannot be automated).</p>
+            <p>It is highly recommended to buy the first 4 upgrades the most in the charger, but most importantly the grass and xp.</p>
+
+            <h3>4-2. Assembler</h3>
+            <p>Assembler is unlocked when you buy the second upgrade in the factory. This unlocks advanced automation throughout the cool realm.</p>
+            <p>For getting this, it is recommended that you get more than <strong>6 grasshops</strong> in order to unlock it easier (especially the 6th grasshop milestone). It is also recommended to buy the charger “steel” upgrade and cooler perk “steel” upgrade.</p>
+
+            <h3>4-3. Brickhouse</h3>
+            <p>Brickhouse is a replacement of the anti realm in world 1. It is unlockable purchasing with <strong>100 million steel</strong>.</p>
+            <p>It is highly recommended having at least <strong>11 grasshops</strong> to unlock this and also utilizing the upgrades from the charger “steel” upgrade and cooler perk “steel” upgrade.</p>
+
+            <!-- Placeholder for Brickhouse image -->
+            <!-- <img src="brickhouse.png" alt="Brickhouse Structure" class="guide-image"> -->
+
+            <p>When you enter this place, it will be a maze and have an entirely new currency pinned over every currency. The currency in this place is called <strong>bricks</strong>, which is an end-game content for the cool realm. There are brick levels that boost charge, and other brick upgrades that overall improves your grinding journey.</p>
+
+            <hr style="border-color: #333; margin: 4rem 0;">
+            <p style="text-align: center; font-size: 1.2rem; color: #fff;">Finally, reach grasshop 13… and you're done! You have unlocked everything in this realm!</p>
+
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
