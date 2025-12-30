@@ -1,1 +1,179 @@
-tsrsad
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmic Guide Wiki</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for a gaming look -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Top Navigation for Mobile -->
+    <header class="mobile-header">
+        <div class="logo">Game Guide</div>
+        <button id="menu-toggle">☰</button>
+    </header>
+
+    <div class="layout">
+        <!-- Sidebar Navigation -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h1>Game Guide</h1>
+                <p>Unofficial Wiki</p>
+            </div>
+            <ul>
+                <li><a href="#origins" class="active">Origins</a></li>
+                <li><a href="#galactic">Galactic</a></li>
+                <li><a href="#planetoid">Planetoid</a></li>
+                <li><a href="#constellations">Constellations</a></li>
+                <li><a href="#supernova">Supernova</a></li>
+                <li><a href="#solarians">Solarians</a></li>
+                <li><a href="#grasslands">Grasslands</a></li>
+                <li><a href="#loops">Loops</a></li>
+                <li><a href="#jungle">Jungle</a></li>
+                <li><a href="#true-awaken">True Awaken</a></li>
+                <li><a href="#desert">Desert</a></li>
+                <li><a href="#midnight">Midnight</a></li>
+                <li><a href="#great-rift">Great Rift</a></li>
+                <li><a href="#doom">Doom (DaS)</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main>
+            <section id="hero">
+                <h2>Welcome Traveler</h2>
+                <p>Select a stage from the menu to view the strategy guide and walkthrough.</p>
+            </section>
+
+            <!-- Guide Sections -->
+            
+            <section id="origins" class="guide-card">
+                <h2>Origins</h2>
+                <span class="tag">Early Game</span>
+                <div class="content">
+                    <p>Write your guide for the early game here. Discuss the basic mechanics, first upgrades, and what to focus on before reaching space.</p>
+                    <ul>
+                        <li>Tip 1: Focus on resource gathering.</li>
+                        <li>Tip 2: Don't upgrade X until you have Y.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="galactic" class="guide-card">
+                <h2>Galactic</h2>
+                <div class="content">
+                    <p>Enter strategy text here...</p>
+                </div>
+            </section>
+
+            <section id="planetoid" class="guide-card">
+                <h2>Planetoid</h2>
+                <div class="content">
+                    <p>Enter strategy text here...</p>
+                </div>
+            </section>
+
+            <section id="constellations" class="guide-card">
+                <h2>Constellations</h2>
+                <div class="content">
+                    <p>Enter strategy text here...</p>
+                </div>
+            </section>
+
+            <section id="supernova" class="guide-card">
+                <h2>Supernova</h2>
+                <div class="content">
+                    <p>Enter strategy text here...</p>
+                </div>
+            </section>
+
+            <section id="solarians" class="guide-card">
+                <h2>Solarians</h2>
+                <div class="content">
+                    <p>Enter strategy text here...</p>
+                </div>
+            </section>
+
+            <section id="grasslands" class="guide-card">
+                <h2>Grasslands</h2>
+                <div class="content">
+                    <p>Enter strategy text here...</p>
+                </div>
+            </section>
+
+            <section id="loops" class="guide-card">
+                <h2>Loops</h2>
+                <div class="content">
+                    <p>Enter strategy text here...</p>
+                </div>
+            </section>
+
+            <section id="jungle" class="guide-card">
+                <h2>Jungle</h2>
+                <div class="content">
+                    <p>Enter strategy text here...</p>
+                </div>
+            </section>
+
+            <section id="true-awaken" class="guide-card">
+                <h2>True Awaken</h2>
+                <div class="content">
+                    <p>Enter strategy text here...</p>
+                </div>
+            </section>
+
+            <section id="desert" class="guide-card">
+                <h2>Desert</h2>
+                <div class="content">
+                    <p>Enter strategy text here...</p>
+                </div>
+            </section>
+
+            <section id="midnight" class="guide-card">
+                <h2>Midnight</h2>
+                <div class="content">
+                    <p>Enter strategy text here...</p>
+                </div>
+            </section>
+
+            <section id="great-rift" class="guide-card">
+                <h2>Great Rift</h2>
+                <div class="content">
+                    <p>Enter strategy text here...</p>
+                </div>
+            </section>
+
+            <section id="doom" class="guide-card">
+                <h2>Doom (DaS)</h2>
+                <div class="content">
+                    <p>Enter strategy text here...</p>
+                </div>
+            </section>
+
+            <footer>
+                <p>Created by [Your Name] | Hosted on GitHub Pages</p>
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+        });
+
+        // Close sidebar when clicking a link on mobile
+        document.querySelectorAll('#sidebar a').forEach(link => {
+            link.addEventListener('click', () => {
+                sidebar.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
