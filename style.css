@@ -183,3 +183,63 @@ main {
     border-bottom: 1px solid #222;
     padding-bottom: 5px;
 }
+
+/* --- DOT NAVIGATION (Left Side) --- */
+#dot-nav {
+    position: fixed;
+    left: 300px; /* Sidebar width (280px) + 20px gap */
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 900;
+}
+
+.dot-item {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    opacity: 0.4;
+    transition: all 0.3s;
+}
+
+.dot-item:hover, .dot-item.active {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.dot-circle {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--theme-color);
+    background-color: transparent;
+    transition: all 0.3s;
+}
+
+.dot-item.active .dot-circle {
+    background-color: var(--theme-color);
+    box-shadow: 0 0 10px var(--theme-color);
+}
+
+.dot-label {
+    margin-left: 12px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+    color: var(--theme-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    
+    /* Optional: Hide labels until hover/active to keep it clean */
+    /* opacity: 0; */ 
+    /* transition: opacity 0.3s; */
+}
+
+/* Uncomment below if you only want text on hover/active */
+/* .dot-item:hover .dot-label, .dot-item.active .dot-label { opacity: 1; } */
+
+/* Hide dots on mobile/tablets where space is tight */
+@media (max-width: 1100px) {
+    #dot-nav { display: none; }
+}
