@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
         wiki.target = '_blank';
         wiki.rel = 'noopener noreferrer';
         const wikiImg = document.createElement('img');
-        wikiImg.src = 'Main.ico';
+        wikiImg.src = 'assets/img/Main.ico';
         wikiImg.alt = 'Wiki';
         wikiImg.className = 'btn-icon';
         wiki.appendChild(wikiImg);
