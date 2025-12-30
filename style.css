@@ -384,6 +384,15 @@ li { margin-bottom: 8px; color: #ddd; }
     #dot-nav { display: none; }
 }
 
+/* Optional content override: ensure bonus sections are not highlighted with theme color */
+.bonus-section,
+.bonus-section * {
+    background: transparent !important;
+    border-left: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
 /* --- CUSTOM SCROLLBAR STYLING --- */
 
 /* For Webkit Browsers (Chrome, Edge, Safari) */
