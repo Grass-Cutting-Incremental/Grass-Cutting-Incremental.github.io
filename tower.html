@@ -137,25 +137,26 @@
         }
 
         /* --- FLOOR SPECIFIC COLORS --- */
-        /* Floor 1: Green */
         h2#f1, h2#f1::after { color: #4ade80 !important; border-color: #4ade80 !important; background-color: transparent; }
         h2#f1::after { background-color: #4ade80; }
         
-        /* Floor 2: Crystal Pink */
         h2#f2, h2#f2::after { color: #f472b6 !important; border-color: #f472b6 !important; background-color: transparent; }
         h2#f2::after { background-color: #f472b6; }
 
-        /* Floor 3: Frosty Blue */
         h2#f3, h2#f3::after { color: #60a5fa !important; border-color: #60a5fa !important; background-color: transparent; }
         h2#f3::after { background-color: #60a5fa; }
 
-        /* Floor 4: Darker Light Green */
         h2#f4, h2#f4::after { color: #16a34a !important; border-color: #16a34a !important; background-color: transparent; }
         h2#f4::after { background-color: #16a34a; }
 
-        /* Floor 5: Crimson Red */
         h2#f5, h2#f5::after { color: #dc2626 !important; border-color: #dc2626 !important; background-color: transparent; }
         h2#f5::after { background-color: #dc2626; }
+
+        /* --- TABLE OF CONTENTS OVERRIDE (Fix Wrapping) --- */
+        .toc-list { list-style: none !important; padding-left: 0 !important; display: block !important; }
+        .toc-list li { display: block !important; margin-bottom: 8px; width: 100%; }
+        .toc-list .sub-list { margin: 5px 0 10px 24px !important; padding-left: 12px !important; border-left: 1px solid rgba(255,255,255,0.1); display: block !important; list-style: none !important; }
+        .toc-list a { white-space: normal !important; display: inline-block !important; }
 
     </style>
 </head>
@@ -205,7 +206,7 @@
         <a href="#f1" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Floor 1</span></a>
         <a href="#f2" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Floor 2</span></a>
         <a href="#f3" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Floor 3</span></a>
-        <a href="#platinum" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Farming</span></a>
+        <a href="#farming" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Farming</span></a>
         <a href="#f4" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Floor 4</span></a>
         <a href="#f5" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Floor 5</span></a>
         <a href="#rh8" class="dot-item"><div class="dot-circle"></div><span class="dot-label">RH 1-8</span></a>
@@ -226,7 +227,27 @@
                 </div>
             </div>
 
-            <h2 id="intro">Introduction & Notice</h2>
+            <!-- Table of Contents -->
+            <div class="toc-box">
+                <div class="toc-title">Table of Contents</div>
+                <ul class="toc-list">
+                    <li><a href="#intro">Intro</a></li>
+                    <li><a href="#f1">Floor 1</a></li>
+                    <li><a href="#f2">Floor 2</a></li>
+                    <li><a href="#f3">Floor 3</a></li>
+                    <div class="sub-list">
+                        <li><a href="#farming">Farming</a></li>
+                    </div>
+                    <li><a href="#f4">Floor 4</a></li>
+                    <li><a href="#f5">Floor 5</a></li>
+                    <div class="sub-list">
+                        <li><a href="#rh8">RH 1-8</a></li>
+                        <li><a href="#rh10">RH 8-10</a></li>
+                    </div>
+                </ul>
+            </div>
+
+            <h2 id="intro">Intro</h2>
             <p>Congratulations on beating World 2! Here you will find a relatively long piece of optional content that you can complete known as The Tower. Before you get into the guide, there is some important information to know below.</p>
             
             <p class="warning-text">You should avoid any of the following actions:</p>
@@ -240,7 +261,7 @@
             <p>This guide will use abbreviations, with the first use of them being marked in bold next to the full version i.e. <strong>Grasshops (GH)</strong>. Names of resets and currencies will also be marked in bold for clarity.</p>
             <p>Any extremely important information will be marked clearly in <span class="warning-text">bold red text</span>. Each Floor will have its own section, but be sure to ask around for additional help, advice and alternative playstyles.</p>
 
-            <h2 id="f1">Floor 1 (Grass Field)</h2>
+            <h2 id="f1">Floor 1</h2>
             <p><strong>Estimated Time to GH 10:</strong> 1-1.5 Hours Active Playtime</p>
             <p>Welcome to the first floor. This is essentially the exact same as the normal realm, but with different upgrades and grasshop milestones. Your goal here, and for every other floor, is to reach Grasshop 10.</p>
 
@@ -256,7 +277,7 @@
 
             <p>You can then push for GH 10 once you have at least 7-8 levels in the steel upgrades. Once you get it, go to the next floor immediately.</p>
 
-            <h2 id="f2">Floor 2 (Crystal Caves)</h2>
+            <h2 id="f2">Floor 2</h2>
             <p><strong>Estimated Time to GH 10 Equivalent:</strong> 4-5 Hours Active Playtime</p>
             <p>Well done on getting to the second floor. You will immediately notice that this floor level grants a multi to the floor below. This is similar to the loop global multi in W1, which multiplies all currencies and experience types, whilst leaving non-currencies, upgrades and milestones the same. You will also notice that the upgrades here start off with a higher cost, which is explained in the next section you may want to read first.</p>
 
@@ -270,7 +291,7 @@
 
             <p>The rest of this is pretty straight forward. You should aim to do the first Steelie on the 7th crystal hop, with around 6-10 levels in the steel upgrade from crystals.</p>
 
-            <h2 id="f3">Floor 3 (Diamond Zone)</h2>
+            <h2 id="f3">Floor 3</h2>
             <p><strong>Estimated Time to GH 10 Equivalent:</strong> 20 Hours In Game</p>
             <p>You reached Floor 3! This is the exact same as the other floors, except the costs are higher and the Platinum-equivalent has a lower spawn chance.</p>
 
@@ -281,7 +302,7 @@
                 <li>You should now be monitoring steel gain on floor 2 and find out how many steelies you need to do to purchase steel generation level 1.</li>
             </ul>
 
-            <h2 id="platinum">Platinum-Type Farming</h2>
+            <h3 id="farming">Farming</h3>
             <p>From floor 3 onwards, you cannot make any progress without farming a large amount of platinum for platinum upgrades, and each floor will take much longer than the last.</p>
             <p>You can either:</p>
             <ul>
@@ -291,7 +312,7 @@
             <p>You should be able to collect 1-2K Platinum-Type Grasses per hour.</p>
             <div class="note">Reminder that you are not allowed to discuss or share Macros within the LG discord server.</div>
 
-            <h2 id="f4">Floor 4 (Mystical Forest)</h2>
+            <h2 id="f4">Floor 4</h2>
             <p><strong>Estimated Time to GH 10 Equivalent:</strong> 40-50 Hours In-Game</p>
             <p>Well done on making it this far. I will spare you the explanation, as what you need to do is the exact same as the other floors, just slower. You do however need to note that on this floor and the fifth floor, you CANNOT progress without getting Platinum-Type upgrades.</p>
 
@@ -312,7 +333,7 @@
                 <li>You should ignore Mystic Steelie until MH 8. Get at least 1 level in the first three upgrades, but more should be possible easily with the Stone upgrade, if you grinded the Platinum Stars upgrade.</li>
             </ul>
 
-            <h2 id="f5">Floor 5 (Demonic Place)</h2>
+            <h2 id="f5">Floor 5</h2>
             <p><strong>Estimated Time to GH 10 Equivalent:</strong> 1 Week - 1 Month (depends on how long you spend macroing Platinum equivalent)</p>
             <p>Upon unlocking Floor 5 you will have to devote yourself to collecting grass until you get to at least Demonic Level 7, preferably higher and closer to 10 or 11 for the fastest and easiest time. The difficulty jump from F4 to 5 is less than F3 to F4.</p>
 
@@ -330,7 +351,7 @@
 
             <p><strong>Recommended Stats for RH 1:</strong> 10 levels in Orange Rings Demonic Grass Value & XP, 4 in Perks, 35 in Red Rings Demonic Grass Value & XP, with 25 in Perks. You can reach this with minimal or no Platinum Farming. MAKE SURE TO MAX OUT PLATINUM ON F4 BEFORE DOING RH 1.</p>
 
-            <h2 id="rh8">Ring Hop 1-8</h2>
+            <h3 id="rh8">RH 1-8</h3>
             <p>Below is an outline of the rough amount of Green Ring farming you need to do in order to reach certain RHs. You will get large increases in stats after RH 2 and 4, assuming you are macroing Green Rings.</p>
 
             <p>You can obtain RH 1 & 2 with <5k Green Rings earnt. It is then recommended you get to ~8 Green Rings per collection and farm 60-100k Green Rings, which will allow you to get RH 3 & 4 with minimal waiting, and RH 5 with the use of warps.</p>
@@ -339,7 +360,7 @@
 
             <p>After this, you should be able to get ~20 Green Rings per collection and should then aim to collect around 200-300k Green Rings in order to get 50 levels in Demonic Grass Value & XP II, as well as 25 in Red Rings II and 25 in Orange Rings. This should be enough for RH 6, 7 and potentially 8. At this point you should try and get a few levels in the upgrade for yellow rings and then read the next section.</p>
 
-            <h2 id="rh10">Ring Hop 8-10</h2>
+            <h3 id="rh10">RH 8-10</h3>
             <p>This section can be done in multiple ways. These are:</p>
             <ul>
                 <li>AFK for RH 9 and skip Yellow Rings until after RH 9, where you will do 2 resets.</li>

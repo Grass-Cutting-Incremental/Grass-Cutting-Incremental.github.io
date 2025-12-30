@@ -67,24 +67,33 @@
             border-radius: 6px;
         }
         .toc-title {
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Yuruka', 'Orbitron', sans-serif;
             color: var(--theme-color);
             margin-bottom: 10px;
             font-size: 1.2rem;
+            font-weight: 700;
         }
         .toc-list {
             list-style: none;
-            column-count: 2;
-            column-gap: 20px;
+            column-count: 1; /* single column for better hierarchy */
+            padding-left: 0;
+            font-family: 'Yuruka', 'Orbitron', sans-serif !important;
+            font-weight: 400;
         }
         .toc-list li {
             margin-bottom: 8px;
         }
+        .toc-list .sub-list {
+            margin: 8px 0 8px 24px; /* stronger indent for sub-items */
+            padding-left: 12px;
+            border-left: 2px solid rgba(255,255,255,0.09);
+        }
         .toc-list a {
-            color: #ccc;
+            color: #ddd;
             text-decoration: none;
             transition: color 0.2s;
             font-size: 0.95rem;
+            font-weight: 700;
         }
         .toc-list a:hover {
             color: var(--theme-color);
@@ -229,24 +238,6 @@
         </nav>
     </aside>
 
-    <!-- DOT NAVIGATION -->
-    <div id="dot-nav">
-        <a href="#intro" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Intro</span></a>
-        <a href="#tutorial" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Tutorial</span></a>
-        <a href="#prestige" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Prestige</span></a>
-        <a href="#saves" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Saves</span></a>
-        <a href="#flowers" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Flowers</span></a>
-        <a href="#crystallize" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Crystallize</span></a>
-        <a href="#accomplishments" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Accomplishments</span></a>
-        <a href="#grasshop" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Grasshop</span></a>
-        <a href="#steelie" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Steelie</span></a>
-        <a href="#charger" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Charger</span></a>
-        <a href="#antirealm" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Anti-Realm</span></a>
-        <a href="#anonymity" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Anonymity</span></a>
-        <a href="#liquefy" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Liquefy</span></a>
-        <a href="#refinery" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Refinery</span></a>
-        <a href="#rocket" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Rocket</span></a>
-    </div>
 
     <!-- Main Content -->
     <main>
@@ -287,14 +278,14 @@
                 </ul>
             </div>
 
-            <h2 id="intro">Introduction</h2>
+            <h2 id="intro">Intro</h2>
             <p>Welcome to Grass Cutting Incremental! This is a guide to help you progress faster throughout the Early Game.</p>
             
             <h3>Guide Info & Formatting</h3>
             <p>This guide will use abbreviations, with the first use of them being marked in bold next to the full version i.e. <strong>Prestige points (PP)</strong>. You can find the Abbreviation page at the end of the document.</p>
             <p>Names of resets, currencies, and some important features will also be marked in bold for clarity. Any extremely important information will be marked clearly in <span class="warning-text">bold red text</span>.</p>
 
-            <h2 id="tutorial">Basic Tutorial</h2>
+            <h2 id="tutorial">Tutorial</h2>
             <p>Let’s get started with the UI. The <strong>Map</strong> button gives you the ability to teleport across the map (you unlock more teleport pins as you progress further). You should pin these locations for easier fast travel. The <strong>Help</strong> button lets you access the help menu to gather helpful information about the game (new pages will be unlocked as you progress further). The <strong>Stats & Settings</strong> button lets you access different settings in the game.</p>
             
             <div class="note"><strong>Tip:</strong> Currencies and Levels tabs allow you to pin currencies/levels & disable/enable autobuyers and popups.</div>
@@ -308,7 +299,7 @@
             <div class="note">Keep in mind that many upgrades give additional/compounding increase every 25 Levels of an upgrade.</div>
             <div class="note">PC users can “Buy Max” by right clicking an upgrade.</div>
 
-            <h2 id="prestige">Prestige & Platinum</h2>
+            <h2 id="prestige">Prestige</h2>
             <p>At level 31 you unlock <strong>Prestige</strong>, which resets everything before it in exchange for <strong>Prestige Points (PP)</strong> based on Level.</p>
 
             <p>The first Prestige should be done for around 40+ PP. Split your PPs equally into the XP and Grass Value upgrades, and do not buy any automation upgrades that cost PPs on first Prestige.</p>
@@ -345,7 +336,7 @@
 
             <p>The only upgrades you will want to focus on are the Mini Time Warp Upgrades (which you unlock after your first Grasshop). This is because they will be useful throughout the whole game, unlike other upgrades which would help only at certain progression points (you also won’t need to Respec flowers this way).</p>
 
-            <h2 id="crystallize">Crystallize</h2>
+            <h2 id="crystallize">Crystalize</h2>
             <p>Crystallize is the second reset, granting <strong>Crystals</strong> based on Tier. You should perform your first Crystallize for at least 35 Crystals. In terms of upgrades, you should get every upgrade from this board to level 1 (except the Grow Amount) and then spend the rest equally, whilst ignoring the newly unlocked automation upgrades.</p>
 
             <p>Your first Crystallize will unlock new Perk and Platinum upgrades. Below is the order you should buy Perk upgrades in:</p>
@@ -360,7 +351,7 @@
 
             <div class="note">Once you max out PP generation you don’t have to Prestige anymore (except for Accomplishments).</div>
 
-            <h2 id="accomplishments">Accomplishments</h2>
+            <h3 id="accomplishments">Accomplishments</h3>
             <p>Accomplishments are a series of challenges that provide HUGE rewards on completion. Each Accomplishment has some sort of rules and a Level/Tier Goal. If you follow the rules mentioned and meet the requirements, you will be properly rewarded.</p>
 
             <p>Once you unlock Accomplishments you will want to do every Accomplishment that you can. Don’t focus on the amount you get from resets, but rather focus just on doing Accomplishments. You should do Accomplishments in bulk.</p>
@@ -386,7 +377,7 @@
             <div class="note">Once you reach GH 5 you start getting 5 Platinum per collection. For every 5 Platinum per collection you generate +1 Platinum per second, that is the base formula.</div>
             <div class="note">You can see how much Platinum you are getting per collection in Stats & Settings > Stats, you can also pin up to 2 stats at once at the top of your screen by clicking number 1 or 2 (which are just for positioning).</div>
 
-            <h2 id="steelie">Steelie</h2>
+            <h3 id="steelie">Steelie</h3>
             <p>You should perform your first <strong>Steelie</strong> as soon as possible for 1 Steel, as this will unlock new upgrades once you get the 1st upgrade at <strong>The Factory</strong> (the recently unlocked building with all the upgrades that cost Steel).</p>
 
             <p>After your first Steelie, you unlock new Accomplishments. They require you to perform a Steelie while meeting the requirements, but you don’t want to worry about them just yet. You also unlock <strong>The Foundry</strong>, which makes it so that the more time that passes (offline progress included) since your last Steelie, the more Steel you will gain from your next Steelie. This building also contains upgrades that will affect your Steel gain.</p>
@@ -407,7 +398,7 @@
             <div class="note">Always spend Grass, PP, and Crystal on Foundry & Generator upgrades right before performing GH/Steelie.</div>
             <div class="note">Don’t forget to max out all automation upgrades and to pay attention to the bonus you get every 25 Levels of some upgrades.</div>
 
-            <h2 id="charger">Charger & Assembler</h2>
+            <h3 id="charger">Charger & Assembler</h3>
             <p>After getting the Charger upgrade from The Factory for the first time, you will unlock your first building located in the Industrial Zone (go to your Map and pin the teleport pin for it).</p>
 
             <p>The <strong>Charger</strong> generates a certain amount of Charge per second, and has a list of Milestones. These Milestones are unlocked once you reach the required amount of Charge. Having more Charge increases the bonus that Milestones provide.</p>
@@ -449,7 +440,7 @@
             <div class="note">Higher Anti Level = more Charge (It also scales exponentially).</div>
             <div class="note">All resets in Anti Realm reset your Charge.</div>
 
-            <h2 id="anonymity">Anonymity</h2>
+            <h3 id="anonymity">Anonymity</h3>
             <p>At Anti Level 31 you unlock <strong>Anonymity</strong>, Anti Realm’s version of Prestige. This resets everything before it in Anti Realm in exchange for <strong>Anonymity Points (AP)</strong> based on Anti Level.</p>
 
             <p>First Anonymity reset should be done as soon as possible. You want to spend all of your AP on Anti Grass upgrade, with leftover AP going to Charge upgrade.</p>
@@ -464,7 +455,7 @@
             <div class="note">Don’t neglect Normal Realm.</div>
             <div class="note">Don’t buy Anti Grass upgrade for AP gain increase until you are about to do Anonymity.</div>
 
-            <h2 id="liquefy">Liquefy</h2>
+            <h3 id="liquefy">Liquefy</h3>
             <p class="warning-text">DO NOT GRASSHOP ANYMORE ONCE YOU ARE AT GH25.</p>
 
             <p>Your Base Oil gain from <strong>Liquefy</strong> is based on your current Tier, not Anti Level. Before your first Liquefy make sure you have properly leveled up “Anonymity Speedrun” Accomplishment.</p>
@@ -479,7 +470,7 @@
             <p>You will want to SPAM Liquefy, don’t even bother with progressing in Anti Realm. Do this until you got a decent amount of Oil upgrades, with the only exception being Steel upgrade, where you to do multiple Liquefy resets just to level it up (Also buy AP automation).</p>
             <p>After getting enough Oil upgrades, progress in both Realms and get the Refinery upgrade from The Factory.</p>
 
-            <h2 id="refinery">Refinery</h2>
+            <h3 id="refinery">Refinery</h3>
             <p>Refinery takes a certain amount of Oil and Charge to produce <strong>Rocket Fuel (RF)</strong>. You can Enable/Disable “Rocket fuel production” at the Refinery Building.</p>
 
             <p>Considering that the increase that these upgrades provide is not big, while the price of producing RF is quite high at this stage of the game, you don’t want to produce any RF just yet.</p>
@@ -487,7 +478,7 @@
 
             <div class="note">Don’t forget to do “Powerhouse” Accomplishment.</div>
 
-            <h2 id="rocket">Rocket Launch Pad & Oil Drilling Rig</h2>
+            <h2 id="rocket">Rocket</h2>
             <p>This reset will reset most of your Anti Realm progress, Steel, Charge, and total RF produced. Hence, before your first Rocket Part Creation, you want to do as many Accomplishments as you can, spend your Steel to increase your Charge generation and make sure you bought all automation upgrades in Anti Realm.</p>
 
             <p>You want to create every other Rocket Part as soon as possible after spending Steel on The Factory upgrades (for more Charge, and with that faster RF production).</p>

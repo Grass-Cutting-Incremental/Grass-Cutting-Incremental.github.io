@@ -33,30 +33,101 @@ document.addEventListener('DOMContentLoaded', () => {
     if (collapseBtn) collapseBtn.addEventListener('click', toggleSidebar);
     if (expandBtn) expandBtn.addEventListener('click', toggleSidebar);
 
-    // --- Dot Navigation Auto-Builder ---
+    // --- Dot Navigation Auto-Builder (grouped hierarchy with numbering) ---
     function buildDotNav() {
         // Respect pages that already declare their own dot nav
         if (document.getElementById('dot-nav')) return;
-        const headings = document.querySelectorAll('h2[id]');
+        // Capture h2, h3, h4 to build grouped hierarchical dot nav
+        const headings = document.querySelectorAll('h2[id], h3[id], h4[id]');
         if (!headings.length) return;
 
         const dotNav = document.createElement('div');
         dotNav.id = 'dot-nav';
 
-        headings.forEach(h => {
+        let topIndex = 0;
+        let subIndex = 0;
+        let subSubIndex = 0;
+        let currentGroup = null;
+        let currentChildren = null;
+
+        function makeDotLink(h, level, numText) {
             const a = document.createElement('a');
-            a.href = '#' + h.id;
-            a.className = 'dot-item';
+            a.href = h.id ? ('#' + h.id) : '#';
+            a.className = 'dot-item level-' + level;
 
             const circle = document.createElement('div');
             circle.className = 'dot-circle';
+
+            const num = document.createElement('span');
+            num.className = 'dot-num';
+            num.textContent = numText || '';
+
             const label = document.createElement('span');
             label.className = 'dot-label';
-            label.textContent = h.textContent;
+            label.textContent = h.textContent || '';
 
             a.appendChild(circle);
+            a.appendChild(num);
             a.appendChild(label);
-            dotNav.appendChild(a);
+            return a;
+        }
+
+        headings.forEach(h => {
+            const tag = h.tagName.toLowerCase();
+            if (tag === 'h2') {
+                topIndex++;
+                subIndex = 0;
+                subSubIndex = 0;
+
+                // create a group container for this top-level
+                currentGroup = document.createElement('div');
+                currentGroup.className = 'dot-group';
+
+                const parentLink = makeDotLink(h, 1, `${topIndex}`);
+                currentGroup.appendChild(parentLink);
+
+                currentChildren = document.createElement('div');
+                currentChildren.className = 'dot-children';
+                currentGroup.appendChild(currentChildren);
+
+                dotNav.appendChild(currentGroup);
+            } else if (tag === 'h3') {
+                subIndex++;
+                subSubIndex = 0;
+                if (!currentGroup) {
+                    // create a synthetic top group if missing
+                    topIndex++;
+                    currentGroup = document.createElement('div');
+                    currentGroup.className = 'dot-group';
+                    const parentLink = makeDotLink({id: '', textContent: ''}, 1, `${topIndex}`);
+                    currentGroup.appendChild(parentLink);
+                    currentChildren = document.createElement('div');
+                    currentChildren.className = 'dot-children';
+                    currentGroup.appendChild(currentChildren);
+                    dotNav.appendChild(currentGroup);
+                }
+
+                const childLink = makeDotLink(h, 2, `${topIndex}.${subIndex}`);
+                currentChildren.appendChild(childLink);
+            } else if (tag === 'h4') {
+                subSubIndex++;
+                // attach under last child; if none, attach to currentChildren
+                let parentChild = currentChildren && currentChildren.lastElementChild;
+                if (parentChild) {
+                    let nested = parentChild.querySelector('.dot-children');
+                    if (!nested) {
+                        nested = document.createElement('div');
+                        nested.className = 'dot-children sub-level';
+                        parentChild.appendChild(nested);
+                    }
+                    const subChildLink = makeDotLink(h, 3, `${topIndex}.${subIndex}.${subSubIndex}`);
+                    nested.appendChild(subChildLink);
+                } else {
+                    // fallback: append as sub-item
+                    const childLink = makeDotLink(h, 2, `${topIndex}.${subIndex}.${subSubIndex}`);
+                    if (currentChildren) currentChildren.appendChild(childLink);
+                }
+            }
         });
 
         const main = document.querySelector('main');
@@ -65,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Scroll Spy (Dot Nav) Logic ---
     function initScrollSpy() {
-        const sections = document.querySelectorAll('h2[id]');
+        const sections = document.querySelectorAll('h2[id], h3[id], h4[id], h5[id]');
         const navDots = document.querySelectorAll('.dot-item');
         if (navDots.length === 0 || sections.length === 0) return;
 
@@ -98,14 +169,159 @@ document.addEventListener('DOMContentLoaded', () => {
         navDots.forEach(dot => dot.addEventListener('click', () => setTimeout(updateActive, 100)));
     }
 
-    // --- Table of Contents Auto-Generator ---
+    // --- TOC generator helper (supports h2/h3/h4 numbering) ---
+    function generateTOCList(headings) {
+        const tocList = document.createElement('ul');
+        tocList.className = 'toc-list';
+
+        let topIndex = 0;
+        let subIndex = 0;
+        let subSubIndex = 0;
+
+        let currentTopLi = null;
+        let currentSubLi = null;
+
+        headings.forEach(h => {
+            const tag = h.tagName.toLowerCase();
+            if (tag === 'h2') {
+                topIndex++;
+                subIndex = 0;
+                subSubIndex = 0;
+
+                const li = document.createElement('li');
+                li.className = 'toc-item toc-level-1';
+
+                const num = document.createElement('span');
+                num.className = 'toc-num';
+                num.textContent = `${topIndex}. `;
+
+                const a = document.createElement('a');
+                a.href = '#' + h.id;
+                a.appendChild(document.createTextNode(h.textContent));
+
+                li.appendChild(num);
+                li.appendChild(a);
+                tocList.appendChild(li);
+                currentTopLi = li;
+                currentSubLi = null;
+            } else if (tag === 'h3') {
+                if (!currentTopLi) {
+                    // no top yet, create synthetic top
+                    topIndex++;
+                    const topLi = document.createElement('li');
+                    topLi.className = 'toc-item toc-level-1';
+                    const ta = document.createElement('a');
+                    ta.href = '#';
+                    const tnum = document.createElement('span');
+                    tnum.className = 'toc-num';
+                    tnum.textContent = `${topIndex}. `;
+                    ta.appendChild(tnum);
+                    ta.appendChild(document.createTextNode('')); // empty title placeholder
+                    topLi.appendChild(ta);
+                    tocList.appendChild(topLi);
+                    currentTopLi = topLi;
+                }
+                subIndex++;
+                subSubIndex = 0;
+
+                let subList = currentTopLi.querySelector('ul.sub-list');
+                if (!subList) {
+                    subList = document.createElement('ul');
+                    subList.className = 'sub-list';
+                    currentTopLi.appendChild(subList);
+                }
+
+                const li = document.createElement('li');
+                li.className = 'toc-item toc-level-2';
+
+                const num = document.createElement('span');
+                num.className = 'toc-num';
+                num.textContent = `${topIndex}.${subIndex} `;
+
+                const a = document.createElement('a');
+                a.href = '#' + h.id;
+                a.appendChild(document.createTextNode(h.textContent));
+
+                li.appendChild(num);
+                li.appendChild(a);
+                subList.appendChild(li);
+                currentSubLi = li;
+            } else if (tag === 'h4') {
+                if (!currentTopLi) {
+                    topIndex++;
+                    const topLi = document.createElement('li');
+                    topLi.className = 'toc-item toc-level-1';
+                    const ta = document.createElement('a');
+                    ta.href = '#';
+                    const tnum = document.createElement('span');
+                    tnum.className = 'toc-num';
+                    tnum.textContent = `${topIndex}. `;
+                    ta.appendChild(tnum);
+                    ta.appendChild(document.createTextNode(''));
+                    topLi.appendChild(ta);
+                    tocList.appendChild(topLi);
+                    currentTopLi = topLi;
+                }
+                if (!currentSubLi) {
+                    // create a sub-list container if missing
+                    let subList = currentTopLi.querySelector('ul.sub-list');
+                    if (!subList) {
+                        subList = document.createElement('ul');
+                        subList.className = 'sub-list';
+                        currentTopLi.appendChild(subList);
+                    }
+                    // increment subIndex because we will attach h4 under a newly created sub item
+                    subIndex = (subIndex || 0) + 1;
+
+                    // create a placeholder sub-li to attach sub-sub-list
+                    currentSubLi = document.createElement('li');
+                    currentSubLi.className = 'toc-item toc-level-2';
+                    const pa = document.createElement('a');
+                    pa.href = '#';
+                    const pnum = document.createElement('span');
+                    pnum.className = 'toc-num';
+                    pnum.textContent = `${topIndex}.${subIndex} `;
+                    pa.appendChild(pnum);
+                    pa.appendChild(document.createTextNode(''));
+                    currentSubLi.appendChild(pa);
+                    currentTopLi.querySelector('ul.sub-list').appendChild(currentSubLi);
+                }
+
+                // find or create sub-sub-list
+                let subSubList = currentSubLi.querySelector('ul.sub-list');
+                if (!subSubList) {
+                    subSubList = document.createElement('ul');
+                    subSubList.className = 'sub-list';
+                    currentSubLi.appendChild(subSubList);
+                }
+
+                subSubIndex++;
+                const li = document.createElement('li');
+                li.className = 'toc-item toc-level-3';
+
+                const num = document.createElement('span');
+                num.className = 'toc-num';
+                num.textContent = `${topIndex}.${subIndex}.${subSubIndex} `;
+
+                const a = document.createElement('a');
+                a.href = '#' + h.id;
+                a.appendChild(document.createTextNode(h.textContent));
+
+                li.appendChild(num);
+                li.appendChild(a);
+                subSubList.appendChild(li);
+            }
+        });
+
+        return tocList;
+    }
+
     function buildTOC() {
         const container = document.querySelector('.guide-container');
         if (!container) return;
-        // If a TOC already exists, skip (respect pages that have a custom or manual TOC)
-        if (container.querySelector('.toc-box')) return;
+        if (container.querySelector('.toc-box')) return; // skip if page has its own TOC
 
-        const headings = container.querySelectorAll('h2[id]');
+        const headings = container.querySelectorAll('h2[id], h3[id], h4[id]');
         if (!headings.length) return;
 
         const tocBox = document.createElement('div');
@@ -116,21 +332,9 @@ document.addEventListener('DOMContentLoaded', () => {
         tocTitle.textContent = 'Table of Contents';
         tocBox.appendChild(tocTitle);
 
-        const tocList = document.createElement('ul');
-        tocList.className = 'toc-list';
-
-        headings.forEach(h => {
-            const li = document.createElement('li');
-            const a = document.createElement('a');
-            a.href = '#' + h.id;
-            a.textContent = h.textContent;
-            li.appendChild(a);
-            tocList.appendChild(li);
-        });
-
+        const tocList = generateTOCList(headings);
         tocBox.appendChild(tocList);
 
-        // Insert after credits box if present, otherwise before first h2
         const credits = container.querySelector('.credits-box');
         if (credits && credits.parentNode === container) {
             container.insertBefore(tocBox, credits.nextSibling);
@@ -139,6 +343,87 @@ document.addEventListener('DOMContentLoaded', () => {
             if (firstH2) container.insertBefore(tocBox, firstH2);
             else container.appendChild(tocBox);
         }
+    }
+
+    // Enhance existing manual TOC blocks (rebuild from actual headings)
+    function enhanceExistingTOCs() {
+        const boxes = document.querySelectorAll('.toc-box');
+        boxes.forEach(box => {
+            if (box.dataset.enhanced === 'true') return;
+            // Find the nearest guide container (TOC should reflect the page content)
+            const container = box.closest('.guide-container') || document;
+            const headings = container.querySelectorAll('h2[id], h3[id], h4[id]');
+            if (!headings.length) { box.dataset.enhanced = 'true'; return; }
+
+            // Preserve existing title if present
+            const title = box.querySelector('.toc-title');
+            if (title) title.textContent = 'Table of Contents';
+            else {
+                const t = document.createElement('div');
+                t.className = 'toc-title';
+                t.textContent = 'Table of Contents';
+                box.insertBefore(t, box.firstChild);
+            }
+
+            // Remove existing list (if any) and replace with generated one
+            const old = box.querySelector('ul.toc-list');
+            if (old) old.remove();
+            const newList = generateTOCList(headings);
+            box.appendChild(newList);
+
+            box.dataset.enhanced = 'true';
+        });
+    }
+
+    // Ensure existing dot nav items get level classes, bold labels and numbering (based on page headings)
+    function enhanceExistingDotNav() {
+        const existing = document.querySelectorAll('#dot-nav .dot-item');
+        if (!existing.length) return;
+
+        // build numbering map from headings
+        const headings = document.querySelectorAll('h2[id], h3[id], h4[id]');
+        const numberMap = {};
+        let tIndex = 0; let sIndex = 0; let ssIndex = 0;
+        headings.forEach(h => {
+            const tag = h.tagName.toLowerCase();
+            if (tag === 'h2') { tIndex++; sIndex = 0; ssIndex = 0; numberMap[h.id] = `${tIndex}`; }
+            else if (tag === 'h3') { sIndex++; ssIndex = 0; numberMap[h.id] = `${tIndex}.${sIndex}`; }
+            else if (tag === 'h4') { ssIndex++; numberMap[h.id] = `${tIndex}.${sIndex}.${ssIndex}`; }
+        });
+
+        existing.forEach(item => {
+            const href = item.getAttribute('href') || (item.querySelector('a') && item.querySelector('a').getAttribute('href')) || '';
+            const id = (href || '').replace('#','');
+            const target = document.getElementById(id);
+            let level = 1;
+            if (target) {
+                const tag = target.tagName.toLowerCase();
+                if (tag === 'h3') level = 2;
+                else if (tag === 'h4') level = 3;
+                else if (tag === 'h5') level = 4;
+            }
+            item.classList.remove('level-1','level-2','level-3','level-4');
+            item.classList.add('level-' + level);
+
+            // ensure number span exists
+            let num = item.querySelector('.dot-num');
+            const numText = numberMap[id] || '';
+            if (!num) {
+                num = document.createElement('span');
+                num.className = 'dot-num';
+                // insert after circle if present
+                const circle = item.querySelector('.dot-circle');
+                if (circle && circle.parentNode) circle.parentNode.insertBefore(num, circle.nextSibling);
+                else item.insertBefore(num, item.firstChild);
+            }
+            num.textContent = numText;
+
+            const label = item.querySelector('.dot-label');
+            if (label) {
+                label.style.fontFamily = "'Yuruka', 'Orbitron', sans-serif";
+                label.style.fontWeight = '700';
+            }
+        });
     }
 
     // External Buttons (Wiki / Discord)
@@ -189,7 +474,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     buildTOC();
+    enhanceExistingTOCs();
     buildDotNav();
+    enhanceExistingDotNav();
+    enhanceExistingTOCs();
     initScrollSpy();
     addExternalButtons();
+    enhanceExistingDotNav();
 });

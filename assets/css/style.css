@@ -1,5 +1,13 @@
 /* style.css */
 
+@font-face {
+    font-family: 'Yuruka';
+    src: url('../fonts/FOT-Yuruka Std.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 /* General Reset */
 * {
     box-sizing: border-box;
@@ -8,7 +16,7 @@
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Yuruka', 'Roboto', sans-serif;
     background-color: #121212; /* Dark background for reading */
     color: #e0e0e0;
     line-height: 1.6;
@@ -169,6 +177,7 @@ h3 {
     font-size: 1.4rem;
     margin-top: 2rem;
     margin-bottom: 1rem;
+    font-weight: 400; /* subheadings: not bold for readability */
 }
 
 .credits-box {
@@ -321,42 +330,6 @@ li { margin-bottom: 8px; color: #ddd; }
     padding-bottom: 5px;
 }
 
-/* --- TABLE OF CONTENTS --- */
-.toc-box {
-    background-color: #151515;
-    border: 1px solid #333;
-    border-left: 4px solid var(--theme-color);
-    padding: 1.5rem;
-    margin-bottom: 3rem;
-    border-radius: 6px;
-}
-.toc-title {
-    font-family: 'Orbitron', sans-serif;
-    color: var(--theme-color);
-    margin-bottom: 10px;
-    font-size: 1.2rem;
-}
-.toc-list {
-    list-style: none;
-    column-count: 2;
-    column-gap: 20px;
-}
-.toc-list li {
-    margin-bottom: 8px;
-}
-.toc-list a {
-    color: #ccc;
-    text-decoration: none;
-    transition: color 0.2s;
-    font-size: 0.95rem;
-}
-.toc-list a:hover {
-    color: var(--theme-color);
-    text-decoration: underline;
-}
-@media (max-width: 768px) {
-    .toc-list { column-count: 1; }
-}
 
 /* --- DOT NAVIGATION (Left Side) --- */
 #dot-nav {
@@ -366,49 +339,100 @@ li { margin-bottom: 8px; color: #ddd; }
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 14px;
     z-index: 900;
 }
 
 .dot-item {
-    display: flex;
+    display: grid;
+    grid-template-columns: 20px 3ch 1fr; /* circle | number | label */
     align-items: center;
     text-decoration: none;
-    opacity: 0.4;
-    transition: all 0.3s;
+    opacity: 0.9; /* high default visibility */
+    transition: all 0.22s ease;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .dot-item:hover, .dot-item.active {
     opacity: 1;
-    transform: scale(1.1);
+    transform: scale(1.12);
 }
 
 .dot-circle {
-    width: 12px;
-    height: 12px;
+    width: 16px; /* larger and easier to see */
+    height: 16px;
     border-radius: 50%;
-    border: 2px solid var(--theme-color);
-    background-color: transparent;
-    transition: all 0.3s;
+    border: 3px solid var(--theme-color); /* use theme color */
+    background-color: var(--theme-color); /* theme fill, controlled by opacity */
+    opacity: 0.22; /* subtle by default */
+    transition: all 0.22s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.6) inset;
+}
+
+.dot-item:hover .dot-circle {
+    opacity: 0.45; /* brighter on hover */
 }
 
 .dot-item.active .dot-circle {
+    opacity: 1; /* fully bright when active */
+    border-color: var(--theme-color);
     background-color: var(--theme-color);
-    box-shadow: 0 0 10px var(--theme-color);
+    box-shadow: 0 0 18px var(--theme-color), 0 8px 22px rgba(0,0,0,0.45);
 }
 
 .dot-label {
     margin-left: 12px;
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Yuruka', 'Orbitron', sans-serif;
     font-size: 0.75rem;
-    color: var(--theme-color);
+    color: var(--theme-color); /* label uses theme color */
     text-transform: uppercase;
     letter-spacing: 1px;
-    
-    /* Optional: Hide labels until hover/active to keep it clean */
-    /* opacity: 0; */ 
-    /* transition: opacity 0.3s; */
+    text-shadow: 0 0 10px rgba(0,0,0,0.6);
+    /* keep labels visible for accessibility */
+    font-weight: 400; /* sublabels normal to improve scanability */
 }
+
+/* Make top-level dot labels bold for emphasis */
+.dot-item.level-1 .dot-label { font-weight: 700; }
+
+.dot-item.level-2 .dot-label { font-weight: 400; }
+.dot-item.level-3 .dot-label { font-weight: 400; }
+.dot-item.level-4 .dot-label { font-weight: 400; }
+
+.dot-item.active .dot-label {
+    text-shadow: 0 0 14px var(--theme-color);
+    color: var(--theme-color);
+}
+
+/* Grouped dot nav layout (parent + children) */
+.dot-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
+.dot-children { margin-left: 0; display: flex; flex-direction: column; gap: 6px; }
+.dot-children.sub-level { margin-left: 0; }
+
+/* Base dot item layout */
+.dot-item { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+.dot-item .dot-num { color: var(--theme-color); font-weight: 700; width: 3ch; text-align: right; margin-left: 6px; }
+.dot-item .dot-label { display: block; text-align: left; }
+
+/* Indentation and hierarchy for dot nav levels */
+.dot-item.level-1 { padding-left: 0; }
+.dot-item.level-1 .dot-label { font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; }
+
+.dot-item.level-2 { padding-left: 0; }
+.dot-item.level-2 .dot-circle { width: 12px; height: 12px; border-width: 2px; }
+.dot-item.level-2 .dot-label { font-size: 0.88rem; opacity: 0.98; font-weight: 700; text-transform: none; letter-spacing: 0.2px; }
+
+.dot-item.level-3 { padding-left: 0; }
+.dot-item.level-3 .dot-circle { width: 10px; height: 10px; border-width: 2px; }
+.dot-item.level-3 .dot-label { font-size: 0.82rem; opacity: 0.95; font-weight: 700; }
+
+.dot-item.level-4 { padding-left: 0; }
+.dot-item.level-4 .dot-circle { width: 8px; height: 8px; border-width: 2px; }
+.dot-item.level-4 .dot-label { font-size: 0.76rem; opacity: 0.9; font-weight: 700; }
+
+
+/* Uncomment below if you only want text on hover/active */
+/* .dot-item:hover .dot-label, .dot-item.active .dot-label { opacity: 1; } */
 
 /* Uncomment below if you only want text on hover/active */
 /* .dot-item:hover .dot-label, .dot-item.active .dot-label { opacity: 1; } */
@@ -503,6 +527,17 @@ li { margin-bottom: 8px; color: #ddd; }
     transition: all 0.3s ease-in-out;
 }
 
+/* Force heading and UI font to use Yuruka where appropriate (headings, sidebar, dots) */
+/* Keep body and content readable using Roboto */
+#sidebar, .sidebar-header h1, .sidebar-header p, #sidebar a, h1, h2, h3, .credits-header, .section-title, .dot-label {
+    font-family: 'Yuruka', 'Orbitron', sans-serif !important;
+}
+
+/* Ensure content like paragraphs, TOC, tables use Roboto (readable) */
+body, p, li, .toc-list, table, th, td, .note, .qa-box, .credits-grid {
+    font-family: 'Roboto', 'Yuruka', sans-serif;
+}
+
 /* --- COLLAPSED STATE (Applied via JS) --- */
 body.collapsed #sidebar {
     transform: translateX(-100%); /* Hides sidebar to the left */
@@ -519,4 +554,66 @@ body.collapsed #desktop-expand-btn {
 /* Move dots to the left when sidebar is gone */
 body.collapsed #dot-nav {
     left: 40px; 
+}
+
+/* --- CLEAN TABLE OF CONTENTS --- */
+.toc-box {
+    background-color: #151515;
+    border: 1px solid #333;
+    border-left: 4px solid var(--theme-color);
+    padding: 1.5rem;
+    margin-bottom: 3rem;
+    border-radius: 6px;
+    width: 100%; /* Ensures it uses full available space */
+}
+
+.toc-title {
+    font-family: 'Yuruka', 'Orbitron', sans-serif;
+    color: var(--theme-color);
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.toc-list {
+    list-style: none !important;
+    padding-left: 0 !important;
+    margin: 0 !important;
+    display: block !important; /* Kills any inherited grids */
+}
+
+/* Base items */
+.toc-list li {
+    display: block !important; /* Force text to use full width */
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+/* Sub-list (The container div you used in HTML) */
+.toc-list .sub-list {
+    display: block !important;
+    margin: 5px 0 10px 25px !important; /* Indent */
+    padding-left: 15px !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.toc-list a {
+    color: #ddd;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1.4;
+    display: inline-block; /* Allows width to be calculated correctly */
+    transition: color 0.2s;
+}
+
+.toc-list a:hover {
+    color: var(--theme-color);
+    text-decoration: underline;
+}
+
+/* Desktop: Allow two columns ONLY if the box is wide enough */
+@media (min-width: 1200px) {
+    /* Optional: Uncomment below if you want two columns back */
+    /* .toc-list { column-count: 1; } */
 }

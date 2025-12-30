@@ -7,181 +7,14 @@
     <!-- FAVICON -->
     <link rel="icon" type="image/x-icon" href="assets/img/Main.ico">
     
+    <!-- Link to your main stylesheet -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     
     <style>
-        /* --- PAGE THEME CONFIGURATION --- */
+        /* --- PAGE SPECIFIC THEME --- */
         :root {
             --theme-color: #d946ef; /* Planetoid Purple */
-        }
-
-        /* --- HEADINGS --- */
-        h1.main-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 3.5rem;
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 10px rgba(217, 70, 239, 0.3);
-        }
-
-        h2 {
-            font-family: 'Orbitron', sans-serif;
-            color: #fff;
-            font-size: 2rem;
-            margin-top: 3rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #333;
-            position: relative;
-        }
-        
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 100px;
-            height: 2px;
-            background-color: var(--theme-color);
-            box-shadow: 0 0 10px var(--theme-color);
-        }
-
-        /* Major Checkpoint Headers */
-        h2.major-checkpoint {
-            font-size: 2.5rem;
-            color: var(--theme-color);
-            border-bottom: 4px solid var(--theme-color);
-            text-shadow: 0 0 10px rgba(217, 70, 239, 0.2);
-        }
-
-        h3 {
-            font-family: 'Orbitron', sans-serif;
-            color: var(--theme-color);
-            font-size: 1.4rem;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        /* --- TABLE OF CONTENTS --- */
-        .toc-box {
-            background-color: #151515;
-            border: 1px solid #333;
-            border-left: 4px solid var(--theme-color);
-            padding: 1.5rem;
-            margin-bottom: 3rem;
-            border-radius: 6px;
-        }
-        .toc-title {
-            font-family: 'Orbitron', sans-serif;
-            color: var(--theme-color);
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-        }
-        .toc-list {
-            list-style: none;
-            column-count: 2;
-            column-gap: 20px;
-        }
-        .toc-list li {
-            margin-bottom: 8px;
-        }
-        .toc-list a {
-            color: #ccc;
-            text-decoration: none;
-            transition: color 0.2s;
-            font-size: 0.95rem;
-        }
-        .toc-list a:hover {
-            color: var(--theme-color);
-            text-decoration: underline;
-        }
-        @media (max-width: 768px) {
-            .toc-list { column-count: 1; }
-        }
-
-        /* --- CREDITS BOX --- */
-        .credits-box {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid #333;
-            border-left: 4px solid var(--theme-color);
-            border-radius: 6px;
-            padding: 1.5rem;
-            margin-bottom: 3rem;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .credits-header {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.9rem;
-            color: var(--theme-color);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
-        }
-
-        .credits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 10px;
-            font-size: 0.95rem;
-            color: #bbb;
-        }
-
-        .credit-role {
-            font-weight: bold;
-            color: #fff;
-            margin-right: 5px;
-        }
-
-        /* --- NOTE STYLE --- */
-        .note {
-            background-color: #151515;
-            border-left: 2px solid var(--theme-color);
-            padding: 1rem 1.5rem;
-            margin: 1.5rem 0;
-            border-radius: 0 6px 6px 0;
-            font-size: 0.95rem;
-            color: #cccccc;
-            transition: transform 0.2s;
-        }
-        .note:hover { background-color: #1a1a1a; }
-        .note strong { color: #fff; }
-
-        /* --- IMAGE STYLES --- */
-        .guide-image {
-            width: 100%;
-            max-width: 600px;
-            height: auto;
-            display: block;
-            margin: 1.5rem 0;
-            border-radius: 8px;
-            border: 1px solid #444;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-        }
-
-        /* Warning Text styling */
-        .warning-text {
-            color: #ff5555;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-        
-        /* List Styling */
-        ul { margin-left: 20px; margin-bottom: 1.5rem; }
-        li { margin-bottom: 8px; color: #ddd; }
-
-        /* Sidebar Active Color Override */
-        #sidebar a.active {
-            color: var(--theme-color) !important;
-            border-left-color: var(--theme-color) !important;
-        }
-        #sidebar a:hover {
-            color: var(--theme-color) !important;
         }
     </style>
 </head>
@@ -227,28 +60,34 @@
         </nav>
     </aside>
 
-     <!-- DOT NAVIGATION -->
+    <!-- DOT NAVIGATION -->
     <div id="dot-nav">
         <a href="#intro" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Intro</span></a>
+        
         <a href="#planetoid" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Planetoid</span></a>
-        <a href="#ring" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Ring</span></a>
+        <a href="#ring" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Form Ring</span></a>
         <a href="#reservatorium" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Reservatorium</span></a>
         <a href="#astrolabe" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Astrolabe</span></a>
         <a href="#quadrant" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Quadrant</span></a>
+        
         <a href="#darktree" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Dark Tree</span></a>
+        
         <a href="#breakring" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Break Ring</span></a>
         <a href="#planetary" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Planetary</span></a>
         <a href="#grassjump" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Grass Jump</span></a>
-        <a href="#trials" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Trials</span></a>
-        <a href="#lunar" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Lunar</span></a>
-        <a href="#constellation" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Constellation</span></a>
-        <a href="#darkcharge" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Dark Charge</span></a>
-        <a href="#arc" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Arc</span></a>
+        <a href="#trials" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Planetary Trials</span></a>
+        <a href="#lunar" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Lunar Obelisk</span></a>
+        
+        <a href="#constellation" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Constellations</span></a>
+        <a href="#darkcharge" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Dark Charger</span></a>
+        <a href="#arc" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Arcs</span></a>
+        
         <a href="#star" class="dot-item"><div class="dot-circle"></div><span class="dot-label">The Star</span></a>
         <a href="#planetrun" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Planet Run</span></a>
+        
         <a href="#startier" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Star Tier 1</span></a>
     </div>
-    
+
     <!-- Main Content -->
     <main>
         <div class="guide-container">
@@ -268,27 +107,41 @@
                 <div class="toc-title">Table of Contents</div>
                 <ul class="toc-list">
                     <li><a href="#intro">Introduction</a></li>
+                    
                     <li><a href="#planetoid">The Planetoid</a></li>
-                    <li><a href="#ring">Form Ring</a></li>
-                    <li><a href="#reservatorium">Reservatorium</a></li>
-                    <li><a href="#astrolabe">Astrolabe</a></li>
-                    <li><a href="#quadrant">Quadrant</a></li>
+                    <div class="sub-list">
+                        <li><a href="#ring">Form Ring</a></li>
+                        <li><a href="#reservatorium">Reservatorium</a></li>
+                        <li><a href="#astrolabe">Astrolabe</a></li>
+                        <li><a href="#quadrant">Quadrant</a></li>
+                    </div>
+
                     <li><a href="#darktree">Dark Tree</a></li>
-                    <li><a href="#breakring">Break Ring (Major)</a></li>
-                    <li><a href="#planetary">Planetary</a></li>
-                    <li><a href="#grassjump">Grass Jump</a></li>
-                    <li><a href="#trials">Planetary Trials</a></li>
-                    <li><a href="#lunar">Lunar Obelisk</a></li>
-                    <li><a href="#constellation">Constellation (Major)</a></li>
-                    <li><a href="#darkcharge">Dark Charge</a></li>
-                    <li><a href="#arc">Arc Constellations</a></li>
+
+                    <li><a href="#breakring">Break Ring</a></li>
+                    <div class="sub-list">
+                        <li><a href="#planetary">Planetary</a></li>
+                        <li><a href="#grassjump">Grass Jump</a></li>
+                        <li><a href="#trials">Planetary Trials</a></li>
+                        <li><a href="#lunar">Lunar Obelisk</a></li>
+                    </div>
+
+                    <li><a href="#constellation">Constellation</a></li>
+                    <div class="sub-list">
+                        <li><a href="#darkcharge">Dark Charge</a></li>
+                        <li><a href="#arc">Arc Constellations</a></li>
+                    </div>
+
                     <li><a href="#star">The Star</a></li>
-                    <li><a href="#planetrun">Planet Run</a></li>
+                    <div class="sub-list">
+                        <li><a href="#planetrun">Planet Run</a></li>
+                    </div>
+
                     <li><a href="#startier">Star Tier 1</a></li>
                 </ul>
             </div>
 
-            <h2 id="intro">Introduction & Notice</h2>
+            <h2 id="intro">Intro</h2>
             <p>You have reached Planetoid! This is the beginning of the long grind towards your next major goal. Before you get into the guide, there is some important and useful information to note below.</p>
             
             <p>You should avoid any of the following actions:</p>
@@ -307,24 +160,24 @@
             <div class="note">Compaction in the Planetoid is divided by 100,000x (your compaction can’t be lower than 1x).</div>
             <div class="note"><strong>Tip:</strong> Definitely have TP pins for the Planetoid and all the other realms, as you’ll be teleporting between them pretty often. You can pin TPs in the map.</div>
 
-            <h2 id="ring">Form Ring</h2>
+            <h3 id="ring">Form Ring</h3>
             <p>Forming the ring resets almost everything in the Planetoid below Planetary despite requiring the lowest level. You get <strong>Rings</strong> from the form ring reset, which can be spent on ring upgrades. These ring upgrades are pretty op and are never reset in the Planetoid (except only once at AGHGS 45).</p>
 
             <div class="note">Form Ring also resets your Observatorium but not Observatorium Upgrades.</div>
 
             <p>Get 40+ rings on your first ring reset. Spend it on Planetarium and Cosmic. Avoid spending rings on upgrades that boost currencies/xp outside of the Planetoid (except compaction) until later when you’re going for higher AGHGS milestones.</p>
 
-            <h2 id="reservatorium">Reservatorium</h2>
+            <h3 id="reservatorium">Reservatorium</h3>
             <p>While grinding rings, you might notice a ring upgrade that unlocks a new currency: <strong>Reservatorium</strong>.</p>
             <p>Buying the Basic or Intermediate Reservatorium ring upgrades unlocks the ability to get Reservatorium from the Ring reset. Every time you form the ring, all of your Observatorium is converted into Reservatorium. This is the only way to earn Reservatorium.</p>
             <p>For now, the Reservatorium upgrades are pretty expensive, so you don’t need to actively grind them every time before you form the ring, but it will be super useful later.</p>
 
-            <h2 id="astrolabe">Astrolabe</h2>
+            <h3 id="astrolabe">Astrolabe</h3>
             <p>The <strong>Astrolabe</strong> reset is unlocked at Planetoid level 31. Get 100+ Astro on your first Astrolabe. Spread it evenly among Planetarium, Grow Speed, and Rings.</p>
 
             <p>Now would be a good time to get AGHGS 33 which doubles your rings every time your best AGHGS is increased by 3 starting at AGHGS 30. Start maxing any cheap ring upgrades you have not bought, then get as much boost as you can from Astro.</p>
 
-            <h2 id="quadrant">Quadrant</h2>
+            <h3 id="quadrant">Quadrant</h3>
             <p>After that long push, you should be able to get around 30 <strong>Measure</strong>. Do your first Quadrant immediately since there is no other way to increase it before your first Quadrant. Performing a Quadrant will reset what Astrolabe does including Astrolabe upgrades.</p>
 
             <div class="note">Be aware that forming the ring will reset your Measure and Measure upgrades!</div>
@@ -336,8 +189,7 @@
             <p>AGHGS 36 unlocks the Dark Tree. This generates a currency called <strong>Dark Fruits</strong>. You get 1 Dark Fruit every 2 hours. You can allocate your Dark Fruits to boost a specific currency/xp.</p>
             <p>The priority order to spend your Dark Fruits on is <strong>Cosmic, Xp, Planetarium</strong>, and then the rest on whatever you want.</p>
 
-            <!-- Major Checkpoint: Break Ring -->
-            <h2 id="breakring" class="major-checkpoint">Break Ring (AGHGS 45)</h2>
+            <h2 id="breakring">Break Ring</h2>
             <p>The grind to AGHGS 45 will take a while. Spend all of your measure on Rings, then grind and buy Astro Rings as much as you can until you can get 5M+ rings. From now on, spam rings until you max the Advanced Planetarium and Advanced Observatorium ring upgrades.</p>
             
             <p>You should definitely grind 10M Reservatorium for "Keep Perks..?" on Astro. Grind the Unnatural realm for Compaction and Cloud upgrades. Keep on spamming the ring reset until you get around 10-15 levels into Powerful Cosmic.</p>
@@ -354,19 +206,19 @@
 
             <div class="note">Grass Tiers above 40 gives an SP boost.</div>
 
-            <h2 id="planetary">Planetary</h2>
+            <h3 id="planetary">Planetary</h3>
             <p><strong>Planetary</strong> is the first new reset in the Planetoid after breaking the ring. It works similarly to Grasshop. Your goal is to get PT3 to unlock Grass Jump. Spend your Planets on Observatorium, then Planetarium.</p>
 
             <div class="note">Planetary is not reset when forming the Ring.</div>
             <div class="note">Try to grind 100B Reservatorium for Keep Perks..? II right before you get PT3.</div>
             <div class="note"><strong>Tip:</strong> Form the ring right after you do a major reset like Planetary so you don’t have to regrind back your Planetoid progress.</div>
 
-            <h2 id="grassjump">Grass Jump</h2>
+            <h3 id="grassjump">Grass Jump</h3>
             <p>Again, Grass Jump is similar to Grass hop. Always Grass Jump as soon as you can. Your goal now is to get PT6 to unlock the Planetary Trials and Grass Jump 8 to unlock the Lunar Obelisk.</p>
 
             <div class="note">You can turn off the dark mode in the Unnatural realm by clicking on “Disable Evil” in Settings.</div>
 
-            <h2 id="trials">Planetary Trials</h2>
+            <h3 id="trials">Planetary Trials</h3>
             <p>Planetary Trials are similar to accomplishments except almost everything in the Planetoid is temporarily reset. The goal of every trial you do is to get as much Planetoid level as you can in 10 minutes (or 1 minute if you’re also doing the Speed challenge).</p>
 
             <div class="note">Automations are disabled in Planetary Trials.</div>
@@ -382,13 +234,12 @@
 
             <div class="note">Your best Planetary Trial challenges will not save if you leave the game during a Planetary Trial.</div>
 
-            <h2 id="lunar">Lunar Obelisk</h2>
+            <h3 id="lunar">Lunar Obelisk</h3>
             <p>The Lunar Obelisk is the second obelisk in the Light Forest. You can select any currencies to level it up. Lunar Power is based on how much Moonstone you have.</p>
             <p>The recommended priority order is: <strong>Cosmic, XP, Observatorium, Dark Fruits, Clouds</strong>, then pick whatever you want.</p>
             <p>Now use the various boosts from the Lunar Obelisk to push to Planetoid level 301 to unlock Constellations! Get 3 lines for your first Constellation reset.</p>
 
-            <!-- Major Checkpoint: Constellation -->
-            <h2 id="constellation" class="major-checkpoint">Constellation</h2>
+            <h2 id="constellation">Constellation</h2>
             <p>Constellation is a reactor-like minigame where you have to place as many buildings without it being too unstable. If your instability capacity ever goes above 90%, your constellation won’t generate any boosts.</p>
 
             <h3>Constellation Buildings:</h3>
@@ -410,13 +261,13 @@
             <div class="note">Use Setup 2 if you can. If your constellation is too unstable, upgrade your stabilizer/reinforcement tiers or effectiveness in ring upgrades.</div>
             <div class="note">Deleting/selling constellations will refund all of your lines.</div>
 
-            <h2 id="darkcharge">Dark Charge</h2>
+            <h3 id="darkcharge">Dark Charge</h3>
             <p>Dark Charge works similar to Charge in the normal island. The main sources for more dark charge are grass jumps, ring upgrades, and constellation.</p>
             <p>Your final goal in the Planetoid is to reach GJ 35. You will need to get the planetary trial level 1600 milestone.</p>
             
             <div class="note">Your dark charge gets reset temporarily during Planetary Trials.</div>
 
-            <h2 id="arc">Arc Constellations</h2>
+            <h3 id="arc">Arc Constellations</h3>
             <p>After acquiring 10Qa lines, you will unlock a new constellation building called Arc. Arcs can be spent on arc upgrades next to the line upgrades, but are mainly used on constellation buildings in the arc tab.</p>
 
             <p>To generate arcs, you need 2 T5 moons that are adjacent to a T1 Basic arc. Start by using setup #1. Once you have enough arcs, you can start using setup #2.</p>
@@ -436,7 +287,7 @@
             <p>The Star is the final barrier between The Planetoid and Supernova. There are two stats associated with the star: <strong>Stardust</strong> and <strong>Star Growth</strong>.</p>
             <p>Your biggest priority is to upgrade your stardust rate and then star growth. Your Planetoid level also directly boosts stardust starting at Planetoid level 450.</p>
 
-            <h2 id="planetrun">Planet Run</h2>
+            <h3 id="planetrun">Planet Run</h3>
             <p>Planet run is an optional world where you can do obbies, earn Planet Tokens, and buy upgrades. This entire world is NEVER reset.</p>
             <p>You can use Planet Tokens to buy Time Warps, or get upgrades. The most important upgrade at the moment is Star growth, you should upgrade it to speed up the wait.</p>
 

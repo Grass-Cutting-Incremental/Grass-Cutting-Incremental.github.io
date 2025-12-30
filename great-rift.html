@@ -75,24 +75,33 @@
             border-radius: 6px;
         }
         .toc-title {
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Yuruka', 'Orbitron', sans-serif;
             color: var(--theme-color);
             margin-bottom: 10px;
             font-size: 1.2rem;
+            font-weight: 700;
         }
         .toc-list {
             list-style: none;
-            column-count: 2;
-            column-gap: 20px;
+            column-count: 1; /* single column for better hierarchy */
+            padding-left: 0;
+            font-family: 'Yuruka', 'Orbitron', sans-serif !important;
+            font-weight: 700;
         }
         .toc-list li {
             margin-bottom: 8px;
         }
+        .toc-list .sub-list {
+            margin: 8px 0 8px 24px; /* stronger indent for sub-items */
+            padding-left: 12px;
+            border-left: 2px solid rgba(255,255,255,0.09);
+        }
         .toc-list a {
-            color: #ccc;
+            color: #ddd;
             text-decoration: none;
             transition: color 0.2s;
             font-size: 0.95rem;
+            font-weight: 700;
         }
         .toc-list a:hover {
             color: var(--theme-color);
@@ -219,12 +228,11 @@
         <a href="#intro" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Intro</span></a>
         <a href="#reset" class="dot-item"><div class="dot-circle"></div><span class="dot-label">The Reset</span></a>
         <a href="#mechanics" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Mechanics</span></a>
-        <a href="#grp" class="dot-item"><div class="dot-circle"></div><span class="dot-label">GRP & Auto</span></a>
+        <a href="#grp" class="dot-item"><div class="dot-circle"></div><span class="dot-label">GRP & Autos</span></a>
         <a href="#tips" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Tips</span></a>
         <a href="#grl2" class="dot-item"><div class="dot-circle"></div><span class="dot-label">GRL 2</span></a>
         <a href="#grl3" class="dot-item"><div class="dot-circle"></div><span class="dot-label">GRL 3</span></a>
         <a href="#end" class="dot-item"><div class="dot-circle"></div><span class="dot-label">The End..?</span></a>
-        <a href="#doom" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Doom</span></a>
     </div>
 
     <!-- Main Content -->
@@ -254,7 +262,6 @@
                     <li><a href="#grl2">5.6: GRL 2 & Rift Gauntlet</a></li>
                     <li><a href="#grl3">5.7: GRL 3</a></li>
                     <li><a href="#end">5.8: The End..?</a></li>
-                    <li><a href="#doom">5.9: The World of Doom</a></li>
                 </ul>
             </div>
 
@@ -382,31 +389,9 @@
                 <li>While this is the end of the current endgame, there is difficult optional content left for you. You can also push for GRL 7. So if you feel like dying, onward you go!</li>
                 <li>You can find the door in the cavern.</li>
             </ul>
-
-            <p>‘Ok im down there, what should i do?’<br>
-            > Head to the next page</p>
-            
-            <div class="note" style="color: var(--theme-color);">Next page contains a spoiler about the next channel of W2, be warned!</div>
-
-            <h2 id="doom">5.9: The World of Doom</h2>
-            <p class="warning-text" style="font-size: 0.8rem; text-transform: none;">(this page will be likely removed if DaS or tower ever gets a guide, or just removed because)</p>
-            
-            <p>Welcome to the world of Doom. This content is completely optional, so if you’re not looking for that you can call it here.</p>
-            
-            <ul>
-                <li>You can either go to The Tower, a difficult subworld with 5 floors of grindy content,</li>
-                <li>Or do the Definetly a Scam reset (commonly known as DaS).
-                    <ul>
-                        <li>The amount of EFS (Evil Fat Stacks) you get depends on GRL, with it starting at 10 and going up by +5 every GRL past 5.</li>
-                        <li>If you’re planning to do DaS, please do it at GRL 7!</li>
-                    </ul>
-                </li>
-            </ul>
-
             <hr style="border-color: #333; margin: 4rem 0;">
         </div>
     </main>
-
     <script src="assets/js/script.js"></script>
 </body>
 </html>

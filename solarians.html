@@ -160,6 +160,52 @@
         ul { margin-left: 20px; margin-bottom: 1.5rem; }
         li { margin-bottom: 8px; color: #ddd; }
 
+        /* --- TABLE OF CONTENTS --- */
+        .toc-box {
+            background-color: #151515;
+            border: 1px solid #333;
+            border-left: 4px solid var(--theme-color);
+            padding: 1.5rem;
+            margin-bottom: 3rem;
+            border-radius: 6px;
+        }
+        .toc-title {
+            font-family: 'Yuruka', 'Orbitron', sans-serif;
+            color: var(--theme-color);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        .toc-list {
+            list-style: none;
+            column-count: 1; /* single column for better hierarchy */
+            padding-left: 0;
+            font-family: 'Yuruka', 'Orbitron', sans-serif !important;
+            font-weight: 700;
+        }
+        .toc-list li {
+            margin-bottom: 8px;
+        }
+        .toc-list .sub-list {
+            margin: 8px 0 8px 24px; /* stronger indent for sub-items */
+            padding-left: 12px;
+            border-left: 2px solid rgba(255,255,255,0.09);
+        }
+        .toc-list a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.2s;
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+        .toc-list a:hover {
+            color: var(--theme-color);
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .toc-list { column-count: 1; }
+        }
+
         /* Sidebar Active Color Override */
         #sidebar a.active {
             color: var(--theme-color) !important;
@@ -169,7 +215,7 @@
             color: var(--theme-color) !important;
         }
 
-    </style>"
+    </style>
 </head>
 <body>
 
@@ -217,19 +263,23 @@
     <div id="dot-nav">
         <a href="#intro" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Intro</span></a>
         <a href="#tutorial" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Tutorial</span></a>
-        <a href="#constellations" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Setups</span></a>
-        <a href="#unlock" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Unlock</span></a>
+        <a href="#setups" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Const Setups</span></a>
+        <a href="#unlock" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Starting Off</span></a>
+        
         <a href="#stage1" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Stage 1</span></a>
-        <a href="#compressed" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Compressed</span></a>
+        <a href="#compressed" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Compression</span></a>
         <a href="#t1challenges" class="dot-item"><div class="dot-circle"></div><span class="dot-label">T1 Challenges</span></a>
         <a href="#restoration" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Restoration</span></a>
         <a href="#stage40" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Stage 40</span></a>
+        
         <a href="#snt6" class="dot-item"><div class="dot-circle"></div><span class="dot-label">SNT 6</span></a>
         <a href="#sunset" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Sunset</span></a>
         <a href="#t2challenges" class="dot-item"><div class="dot-circle"></div><span class="dot-label">T2 Challenges</span></a>
+        
         <a href="#snt7" class="dot-item"><div class="dot-circle"></div><span class="dot-label">SNT 7</span></a>
         <a href="#portal" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Portal</span></a>
-        <a href="#help100" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Help 100</span></a>
+        <a href="#stage100" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Stage 100</span></a>
+        
         <a href="#pp10" class="dot-item"><div class="dot-circle"></div><span class="dot-label">PP 10</span></a>
         <a href="#appendix" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Appendix</span></a>
     </div>
@@ -249,7 +299,41 @@
                 </div>
             </div>
 
-            <h2 id="intro">Introduction & Notice</h2>
+            <!-- Table of Contents -->
+            <div class="toc-box">
+                <div class="toc-title">Table of Contents</div>
+                <ul class="toc-list">
+                    <li><a href="#intro">Intro</a></li>
+                    <li><a href="#tutorial">Tutorial</a></li>
+                    <li><a href="#setups">Setups</a></li>
+                    <li><a href="#unlock">Unlock</a></li>
+                    
+                    <div class="sub-list">
+                        <li><a href="#stage1">Stage 1</a></li>
+                        <li><a href="#compressed">Compressed</a></li>
+                        <li><a href="#t1challenges">T1 Challenges</a></li>
+                        <li><a href="#restoration">Restoration</a></li>
+                        <li><a href="#stage40">Stage 40</a></li>
+                    </div>
+
+                    <li><a href="#snt6">SNT 6</a></li>
+                    <div class="sub-list">
+                        <li><a href="#sunset">Sunset</a></li>
+                        <li><a href="#t2challenges">T2 Challenges</a></li>
+                    </div>
+                    
+                    <li><a href="#snt7">SNT 7</a></li>
+                    <div class="sub-list">
+                        <li><a href="#portal">Portal</a></li>
+                        <li><a href="#stage100">Stage 100</a></li>
+                    </div>
+                    
+                    <li><a href="#pp10">PP 10</a></li>
+                    <li><a href="#appendix">Appendix</a></li>
+                </ul>
+            </div>
+
+            <h2 id="intro">Intro</h2>
             <p>You have reached Solarians! This is the beginning of the long grind towards your next major goal. Before you get into the guide, there is some important and useful information to note below.</p>
             
             <p class="warning-text">You should avoid any of the following actions:</p>
@@ -263,7 +347,7 @@
             <p>This guide will use abbreviations, with the first use of them being marked in bold next to the full version i.e. <strong>Fighting Multi (FM)</strong>. Names of resets and currencies will also be marked in bold for clarity.</p>
             <p>Any extremely important information will be marked clearly in <span class="warning-text">bold red text</span>. Each Supernova Tier (SNT) will have its own section, but be sure to ask around for additional help, advice and alternative playstyles.</p>
 
-            <h2 id="tutorial">Basic Tutorial</h2>
+            <h2 id="tutorial">Tutorial</h2>
             <p>Solarians is a minigame involving time and material management. You will be using the people known as Solarians to collect materials and form buffs for you to progress. These Solarians have speeds they work at, with <strong>Collection Speed</strong> for materials and <strong>Forming Speed</strong> for forming. You will quickly see there are two separate boards for these stats to be utilized. (You will unlock more tabs in the forming board as you go, pay attention to them)</p>
 
             <p>You can select the number of Solarians you want to use at one time via the large board to the left of the collection. I would personally recommend only using the 100, 25, 5 or 1 options at any given time. Solarians can also be deployed by selecting the CAP button to the right of the add or remove buttons, which will deploy the maximum number of Solarians to instantly complete the collecting or forming.</p>
@@ -274,7 +358,7 @@
 
             <div class="note"><strong>IMPORTANT INFO:</strong> Solar Rays Generation is an upgrade unlocked in the Solar Upgrades Board at Stage 3, costing 10 Million (1e7) Solar Shards. It should be purchased as soon as possible.</div>
 
-            <h2 id="constellations">Constellation Setups</h2>
+            <h2 id="setups">Setups</h2>
             <p>Before you proceed, you are recommended to update your constellation setups to one of the below. These are also available within the in-game help menu.</p>
 
             <h3>Table 0.1 | Basic Persistent Constellations</h3>
@@ -283,11 +367,11 @@
             <h3>Later Persistent Constellations</h3>
             <img src="assets/img/persistent3.png" alt="Later Persistent Constellations" class="guide-image">
 
-            <h2 id="unlock">Solarians Unlock</h2>
+            <h2 id="unlock">Unlock</h2>
             <p>Solarians are unlocked via a board that appears at Supernova Tier 5 (SNT5) called the <strong>Singularity Chart</strong>. This board is next to the Solar Obelisk. You can obtain Singularities by Centralizing currencies in the game. Centralizing a currency requires an amount listed on the new Void Obelisk that appeared in the Light Forest upon reaching SNT5. Get enough Prestige Points for the Prestige Point Centralize to get the Solarians upgrade in the Singularity Chart.</p>
             <p>The general gameplay loop is in the “Basic Tutorial” section of the guide, if you are struggling to understand what to do.</p>
 
-            <h2 id="stage1">Stage 1 & Souls</h2>
+            <h3 id="stage1">Stage 1</h3>
             <p>Congratulations on making it this far. You did better than most. By defeating your first enemy you have gained a new currency called <strong>Souls</strong>. These can be spent on the blue upgrade board to the left of the main fighting board. It is recommended to prioritize Solarian Power earlier on since it offers much better boosts than upgrading collecting/forming individually, with Forming and Collecting Speed being left mostly even.</p>
 
             <p>Solarian Power is a stat that boosts your Solarians working capability. For example, increasing Solarian Power by 10x will increase the Forming and Collecting Speed of each individual Solarian by 10x.</p>
@@ -295,11 +379,11 @@
             <p>You will quickly get the second centralize and have to choose between Remnants and Soul Eater. <strong>For this split path Remnants is better</strong> because it unlocks 2 upgrades costing Remnants in the Remnants upgrade board. These give x3 to both Offense and Defense which helps you reach the next centralize around stage 5-6 much faster.</p>
 
             <!-- Major Checkpoint: Sol Compression -->
-            <h2 id="compressed" class="major-checkpoint">Sol Compression</h2>
+            <h3 id="compressed">Compressed</h3>
             <p><strong>Stage 10</strong> is of great significance. It unlocks a new board known as Sol Compression, which generates <strong>Compressed Sol</strong>, of which the generation is boosted by compaction / compression. Sol Compression is similar to Dark Fruits but is tiered, and is spent into all available boosts of that tier automatically. This spending can be removed later on but it will do for now.</p>
             <div class="note">Be sure to purchase the new sunstone upgrade that unlocks at stage 12.</div>
 
-            <h2 id="t1challenges">Tier 1 Challenges</h2>
+            <h3 id="t1challenges">T1 challenges</h3>
             <p>Having played through Solarians for a good amount of time now you should be familiar with the gameplay loop. Make sure you have upgraded your constellation setup as high as possible.</p>
             <p>With this stage, you have unlocked challenges which will grant challenge score, which buffs your fighting multiplier, and a currency called <strong>Golden Stars</strong> (the first challenge, Basic, will not grant any). These can be spent on the solar upgrades board in the golden star tab. You should do these after you get to SNT6 as this unlocks Bulk Completion for T1 Challenges.</p>
             
@@ -328,18 +412,18 @@
                 <li>Last 10: Restore</li>
             </ul>
 
-            <h2 id="restoration">Restoration Board</h2>
+            <h3 id="restoration">Restoration</h3>
             <p>The Restoration Board is unlocked at Stage 20, which at the beginning only contains the advanced star. This is how you get beyond SNT 5 and use the new currency that comes with it, known as <strong>Mana</strong>. This currency passively generates and you can increase it by improving your collecting and other upgrades later on.</p>
             
             <p>For the split path between Sword and Soul <strong>choose Sword first</strong> for the fighting boost to get the next centralize faster if you don’t already have it.</p>
             <p>For the split path between Divine Robbery and Super Compression <strong>choose Super Compression</strong> as Divine Robbery only has a benefit after you sunset, and the next centralize is obtained before that happens.</p>
 
-            <h2 id="stage40">Stage 40</h2>
+            <h3 id="stage40">Stage 40</h3>
             <p>Now, you will need to return to the restoration board where you should have met all the requirements necessary to obtain Supernova Tier 6. If you need Mana, you will need to Time Warp, go AFK for a bit of time, or waste time playing Planet Run.</p>
 
             <p>You might struggle on star growth, in which case you should get the sunstone star growth upgrade to the highest you can, and also upgrade solar powered planetoid currencies to gain more stardust to get more growth. There also is a token upgrade in Planet Run that boosts star growth.</p>
 
-            <h2 id="snt6">Supernova Tier 6</h2>
+            <h2 id="snt6">SNT 6</h2>
             <p>Upon reaching the requirements for the next star tier, you are able to increase your SNT and view the requirements for the next tier if available. Each time you do this you will gain new unlocks, as viewable alongside the other SNTs.</p>
 
             <p>As seen on the restoration board, you now have an Offense/Defense boost that increases based on your star growth, and the first upgrade of the restore tab will now be unlocked. This upgrade will allow you to increase your mana gain. The next upgrade will be unlocked after reaching level 1 of the previous upgrade.</p>
@@ -351,7 +435,7 @@
             <p>If you get Stars and Fun centralize before Sunset then the split path between Best Offense and Super Absorb. It is recommended to <strong>choose Best Offense</strong> because it pushes stages directly, and is unaffected by wait time where Super Absorb is the opposite.</p>
 
             <!-- Major Checkpoint: Sunset -->
-            <h2 id="sunset" class="major-checkpoint">Sunset</h2>
+            <h3 id="sunset">Sunset</h3>
             <p class="warning-text">READ THE FULL SECTION BELOW BEFORE DOING A SUNSET</p>
             <p>Sunset is the second reset on the Solar Obelisk. It is an important reset, BUT YOU SHOULD NOT DO IT IMMEDIATELY, as your Divine Souls (DSouls / DS) gain on this reset is especially important. You can boost this from remnant upgrades unlocked at SNT6 and a new tier of Compression. You will also gain <strong>Darkness</strong> on this reset at a rate of 1:1 of current Mana.</p>
 
@@ -363,11 +447,11 @@
 
             <p>You will notice that the first level of upgrades in the restores tab of the restoration board give decorations for The Star, so go for those first levels if you want to make your area look more pleasant. Avoid leaving Solarians on restores that cost high amounts of Mana or Fragments.</p>
 
-            <h2 id="t2challenges">Tier 2 Challenges</h2>
+            <h3 id="t2challenges">T2 challenges</h3>
             <p>After performing a Sunset, you have unlocked T2 Challenges. Similar to T1 challenges, they have a stage requirement and provide a score that boosts FM. However, they provide a second type of stars known as <strong>Platinum Stars</strong>. Completions in the T2 challenge called ‘Challenging’ also automatically complete T1 challenges you may have missed. It is recommended to complete these after you have enough stats to where you can Sunset and get stages back quickly.</p>
             <div class="note">Important Information: It is not recommended to skip T2 challenges. As for Platinum stars you should max the Divine Souls upgrade. Afterwards get Compression and Mana upgrades equally. Leaving some T2s incomplete will not be an issue.</div>
 
-            <h2 id="snt7">Supernova Tier 7</h2>
+            <h2 id="snt7">SNT 7</h2>
             <p>Upon reaching the requirements for SNT7 you can increase your supernova tier in the restoration board once again. This tier is notable for its benefits which include:</p>
             <ul>
                 <li>A new star growth buff for restoration speed</li>
@@ -376,7 +460,7 @@
                 <li>You unlock a new upgrade in the solar board advanced tab to automate the last remnant upgrades (it is recommended to not keep the autobuyers on at this point since they can spend remnants on upgrades you may not need).</li>
             </ul>
 
-            <h2 id="portal">Portal Pieces</h2>
+            <h3 id="portal">Portal</h3>
             <p>By reaching SNT7, you have unlocked a new tab on the Restoration board known as the <strong>Portal tab</strong>. When looking at it, you will notice you can now craft Portal Pieces (PPs). These are required to progress to the next major section of the game.</p>
             <p>Every portal piece will require a set amount of resources and restoration to complete. Upon completion a Portal Piece will grant a 2x boost to the currency displayed next to the piece.</p>
             <p>Many PPs, especially the later pieces can take a large amount of restoration, so it is a good idea to start investing into Restoration Speed as well as Souls in the Divine Souls in order to invest into Solarian Power.</p>
@@ -388,14 +472,14 @@
                 <li>Use time warps (and don’t sunrise until you build those pieces as sunrising resets your fragments)</li>
             </ul>
 
-            <h2 id="help100">Sunset - Stage 100 Help</h2>
+            <h3 id="stage100">Stage 100</h3>
             <p>Good job on making it this far, you should be more accustomed to solarians and its gameplay loop.</p>
             <p>Make sure you are centralizing whenever possible and doing sunsets every time you get x5-x20 more Dsouls and darkness. You should spend these DSouls in soul bonuses and the singularity chart, whilst upgrading your constellations using the darkness you gained.</p>
             <p>Repeat this process until you reach stage 100.</p>
             <div class="note">Note: Doing planet run while waiting is very beneficial especially while waiting for portal pieces, upgrading the grass essence can cut down on some time walls.</div>
 
             <!-- Major Checkpoint: Portal Piece 10 -->
-            <h2 id="pp10" class="major-checkpoint">Portal Piece 10</h2>
+            <h2 id="pp10" class="major-checkpoint">PP 10</h2>
             <p>Once you reach stage 107-110 you should be able to finally centralize Dark Matter. Doing so will teleport you to a small obby, clearing it and doing a Galactic will reward you with the <strong>Grassland Gem</strong>, which is needed to complete the 10th portal piece. Go and finish the portal to enter the new realm.</p>
 
             <h2 id="appendix">Appendix</h2>

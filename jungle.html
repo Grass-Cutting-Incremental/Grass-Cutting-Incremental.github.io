@@ -75,24 +75,33 @@
             border-radius: 6px;
         }
         .toc-title {
-            font-family: 'Orbitron', sans-serif;
+            font-family: 'Yuruka', 'Orbitron', sans-serif;
             color: var(--theme-color);
             margin-bottom: 10px;
             font-size: 1.2rem;
+            font-weight: 700;
         }
         .toc-list {
             list-style: none;
-            column-count: 2;
-            column-gap: 20px;
+            column-count: 1; /* single column for better hierarchy */
+            padding-left: 0;
+            font-family: 'Yuruka', 'Orbitron', sans-serif !important;
+            font-weight: 700;
         }
         .toc-list li {
             margin-bottom: 8px;
         }
+        .toc-list .sub-list {
+            margin: 8px 0 8px 24px; /* stronger indent for sub-items */
+            padding-left: 12px;
+            border-left: 2px solid rgba(255,255,255,0.09);
+        }
         .toc-list a {
-            color: #ccc;
+            color: #ddd;
             text-decoration: none;
             transition: color 0.2s;
             font-size: 0.95rem;
+            font-weight: 700;
         }
         .toc-list a:hover {
             color: var(--theme-color);
@@ -247,21 +256,25 @@
             <div class="toc-box">
                 <div class="toc-title">Table of Contents</div>
                 <ul class="toc-list">
-                    <li><a href="#intro">Introduction & Notice</a></li>
-                    <li><a href="#start">Start of Jungle</a></li>
+                    <li><a href="#intro">Intro</a></li>
+                    <li><a href="#start">Start</a></li>
                     <li><a href="#runes">Runes</a></li>
-                    <li><a href="#ruby">Ruby</a></li>
+                    <div class="sub-list">
+                        <li><a href="#ruby">Ruby</a></li>
+                    </div>
                     <li><a href="#sapphires">Sapphires</a></li>
                     <li><a href="#awakening">Awakening</a></li>
-                    <li><a href="#construct">The Construct</a></li>
-                    <li><a href="#stability">Stability Device</a></li>
+                    <div class="sub-list">
+                        <li><a href="#construct">Construct</a></li>
+                        <li><a href="#stability">Stability</a></li>
+                    </div>
                     <li><a href="#cavern">Cavern</a></li>
                     <li><a href="#intersection">Intersection</a></li>
                     <li><a href="#trueawaken">True Awaken</a></li>
                 </ul>
             </div>
 
-            <h2 id="intro">Introduction & Notice</h2>
+            <h2 id="intro">Intro</h2>
             <p>You have reached The Jungle! This is the beginning of the long grind towards your next major goal. Before you get into the guide, there is some important and useful information to note below.</p>
             
             <p class="warning-text">You should avoid any of the following actions:</p>
@@ -275,7 +288,7 @@
 
             <p class="warning-text">Any extremely important information will be marked clearly in bold red text as shown here. Each AL with notable time required to complete, or a feature unlock, will have its own section, but be sure to ask around for additional help, advice and alternative playstyles.</p>
 
-            <h2 id="start">Start of Jungle</h2>
+            <h2 id="start">Start</h2>
             <p>The Jungle is similar to the normal realm in world 1. You will start by collecting grass and leveling up the first few upgrades. Like in world 1, every Jungle Level will give you grass multi. You may notice that you passively gain Tier Points (TP) every second, and that every new tier will increase the amount of XP and Regrowth, as will be explained down below.</p>
 
             <p>Regrowth is a currency that you get by cutting grass at Tier 3 (T3) and above. It can be used to increase your Grass Value, Runes (explained later) and TP. With some small grind you will have enough levels for your first Runes reset. If you wish, you can get some extra levels and do your first runes reset at Jungle Level 40+.</p>
@@ -284,7 +297,7 @@
             <p>For this first reset you can spend half of your runes on Regrowth and the other half on TP. One thing to note is that the amount of unspent runes will contribute to the Rune Grass Multiplier, each unspent Rune gives you +0.1x (additive) to the Rune Grass Multiplier.</p>
             <p>As you get more levels, you can do more runes resets to continue upgrading Regrowth, TP and Ruby, which will be explained in the next section.</p>
 
-            <h2 id="ruby">Ruby</h2>
+            <h3 id="ruby">Ruby</h3>
             <p>Ruby is another currency that you can get from cutting red-ish grass in the Jungle Field (similar to platinum in world 1). Getting Ruby will be really important if you wish to get enough levels for future milestones that are coming up. At the start you may just get a few levels on TP and XP, as well as Grass Value. You can also form Ruby Runes, which you can get by converting Ruby and Runes at a 1:400 ratio, that means, 10 Ruby and 4000 Runes will be converted into 10 Ruby Runes.</p>
 
             <p>Ruby Runes can be used to increase your Ruby Value by +1, 2x XP and 2x Runes. The XP and Runes upgrades will be essential for getting levels throughout most of this guide. If jungle levels feel slow, you can try getting 10x more ruby runes.</p>
@@ -309,7 +322,7 @@
 
             <p>Scaled Grass will exponentially increase your grass multi per level, starting at a 2% exponent increase. You will find upgrades to increase this later. Your next unlock is at AL7.</p>
 
-            <h2 id="construct">The Construct</h2>
+            <h3 id="construct">Construct</h3>
             <p>At AL7, you unlock The Construct. It is a building where you can buy some automation and Everlasting (EL) upgrades. For now, you can ignore the automation upgrades in the construct and go buy the Sapphire Runes upgrade in the temple chart whenever possible. It allows you to gain Sapphire Runes on Awaken, which can be used on the Sapphire building to increase TP and Stability Conversion (unlocked at AL11, this will be explained in the next section).</p>
 
             <p>After buying Sapphire Runes in the Temple Chart, you will notice a new set of upgrades, each costing a different currency: Sapphire Scaling, which uses Sapphire Runes; Grass Scaling, which uses Runes; Added Rubies Scaling, which uses Ruby Runes; and More Offline Ruby, which uses RF. At first, you most likely won’t be able to afford many of these upgrades, but consider trying to get them once you get close.</p>
@@ -317,9 +330,7 @@
             <p>Here’s a gameplay loop that might help you get the next ALs:<br>
             Start by getting enough ruby runes for 2-3 levels of 2x XP and Runes, max out the Runes TP upgrade, wait a few seconds to get enough Sapphires on reset, do a Sapphire reset multiple times to buy enough Sapphire XP, TP and Ruby Value levels until it gets too expensive to get in just a few resets, then you go back to Ruby Runes and regular Runes grind until you get enough levels for the next AL.</p>
 
-            <p>Your next important upgrade will be unlocked at AL10.</p>
-
-            <h2 id="stability">Stability Device</h2>
+            <h3 id="stability">Stability</h3>
             <p>There is a new upgrade available for you to buy at AL10 for 100 RF, which unlocks the Stability Device. It generates Instability every second and gives boosts based on your total Instability. Instability can be used on Unstable Modules (also known as Instability upgrades). Those Instability upgrades will be essential for pushing more Levels from now on. Make sure to always have a look at your Instability whenever possible.</p>
 
             <div class="note">Note: whenever the Stability Device reaches the next rift stability tier, it will produce 100x less instability but gives you a new boost. You may use the boost from the second tier when going for AL11 as it should give you about 2x RF.</div>
