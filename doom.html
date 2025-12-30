@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doom (DaS) - GCI Guide</title>
+    <!-- FAVICON -->
+    <link rel="icon" type="image/x-icon" href="Main.ico">
+    
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- PAGE THEME CONFIGURATION --- */
+        :root {
+            --theme-color: #b30000; /* Dark Red */
+        }
+
+        /* --- HEADINGS --- */
+        h1.main-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(179, 0, 0, 0.4);
+        }
+
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            font-size: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #333;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100px;
+            height: 2px;
+            background-color: var(--theme-color);
+            box-shadow: 0 0 10px var(--theme-color);
+        }
+
+        /* Major Checkpoint Headers */
+        h2.major-checkpoint {
+            font-size: 2.5rem;
+            color: var(--theme-color);
+            border-bottom: 4px solid var(--theme-color);
+            text-shadow: 0 0 10px rgba(179, 0, 0, 0.2);
+        }
+
+        h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--theme-color);
+            font-size: 1.4rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* --- TABLE OF CONTENTS --- */
+        .toc-box {
+            background-color: #151515;
+            border: 1px solid #333;
+            border-left: 4px solid var(--theme-color);
+            padding: 1.5rem;
+            margin-bottom: 3rem;
+            border-radius: 6px;
+        }
+        .toc-title {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--theme-color);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        .toc-list {
+            list-style: none;
+            column-count: 2;
+            column-gap: 20px;
+        }
+        .toc-list li {
+            margin-bottom: 8px;
+        }
+        .toc-list a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.2s;
+            font-size: 0.95rem;
+        }
+        .toc-list a:hover {
+            color: var(--theme-color);
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .toc-list { column-count: 1; }
+        }
+
+        /* --- CREDITS BOX --- */
+        .credits-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid #333;
+            border-left: 4px solid var(--theme-color);
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin-bottom: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .credits-header {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            color: var(--theme-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .credits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            font-size: 0.95rem;
+            color: #bbb;
+        }
+
+        .credit-role {
+            font-weight: bold;
+            color: #fff;
+            margin-right: 5px;
+        }
+
+        /* --- NOTE STYLE --- */
+        .note {
+            background-color: #151515;
+            border-left: 2px solid var(--theme-color);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.95rem;
+            color: #cccccc;
+            transition: transform 0.2s;
+        }
+        .note:hover { background-color: #1a1a1a; }
+        .note strong { color: #fff; }
+
+        /* Warning Text styling */
+        .warning-text {
+            color: #ff5555;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* Important Notice Box */
+        .important-notice {
+            border: 2px solid #ff5555;
+            background-color: rgba(255, 85, 85, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        /* List Styling */
+        ul { margin-left: 20px; margin-bottom: 1.5rem; }
+        li { margin-bottom: 8px; color: #ddd; }
+        li ul { margin-top: 8px; }
+
+        /* Sidebar Active Color Override */
+        #sidebar a.active {
+            color: var(--theme-color) !important;
+            border-left-color: var(--theme-color) !important;
+        }
+        #sidebar a:hover {
+            color: var(--theme-color) !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <div class="logo" style="color:var(--theme-color); font-weight:bold;">GCI</div>
+        <button id="menu-toggle" style="background:none; border:none; color:#fff; font-size:1.5rem;">☰</button>
+    </header>
+
+    <!-- Sidebar -->
+    <aside id="sidebar">
+        <div class="sidebar-header">
+            <h1 style="color: var(--theme-color);">GCI</h1>
+            <p>Doom Guide</p>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+
+            <div class="section-title">World 1</div>
+            <a href="origins.html">Origins</a>
+            <a href="galactic.html">Galactic</a>
+            <a href="planetoid.html">Planetoid</a>
+            <a href="constellations.html">Constellations</a>
+            <a href="supernova.html">Supernova</a>
+            <a href="solarians.html">Solarians</a>
+            <a href="grasslands.html">Grasslands</a>
+            <a href="loops.html">Loops</a>
+
+            <div class="section-title">World 2</div>
+            <a href="jungle.html">Jungle</a>
+            <a href="true-awaken.html">True Awaken</a>
+            <a href="desert.html">Desert</a>
+            <a href="midnight.html">Midnight</a>
+            <a href="great-rift.html">Great Rift</a>
+            <a href="doom.html" class="active">Doom (DaS)</a>
+
+            <div class="section-title">Bonus</div>
+            <a href="tower.html">The Tower</a>
+            <a href="cool.html">Cool</a>
+        </nav>
+    </aside>
+
+    <!-- DOT NAVIGATION -->
+    <div id="dot-nav">
+        <a href="#notice" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Notice</span></a>
+        <a href="#4x" class="dot-item"><div class="dot-circle"></div><span class="dot-label">4x Multi</span></a>
+        <a href="#16x" class="dot-item"><div class="dot-circle"></div><span class="dot-label">16x Multi</span></a>
+        <a href="#32x" class="dot-item"><div class="dot-circle"></div><span class="dot-label">32x Multi</span></a>
+        <a href="#64x" class="dot-item"><div class="dot-circle"></div><span class="dot-label">64x Multi</span></a>
+        <a href="#128x" class="dot-item"><div class="dot-circle"></div><span class="dot-label">128x Multi</span></a>
+        <a href="#256x" class="dot-item"><div class="dot-circle"></div><span class="dot-label">256x Multi</span></a>
+        <a href="#512x" class="dot-item"><div class="dot-circle"></div><span class="dot-label">512x Multi</span></a>
+        <a href="#high" class="dot-item"><div class="dot-circle"></div><span class="dot-label">High Multi</span></a>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <div class="guide-container">
+            
+            <h1 class="main-title">Doom (DaS)</h1>
+            
+            <div class="credits-box">
+                <div class="credits-header">/// Author Info</div>
+                <div class="credits-grid">
+                    <div><span class="credit-role">Written by:</span> GrandDom</div>
+                </div>
+            </div>
+
+            <!-- Table of Contents -->
+            <div class="toc-box">
+                <div class="toc-title">Table of Contents</div>
+                <ul class="toc-list">
+                    <li><a href="#notice">Important Notice</a></li>
+                    <li><a href="#4x">4x Global Multi</a></li>
+                    <li><a href="#16x">16x Global Multi</a></li>
+                    <li><a href="#32x">32x Global Multi</a></li>
+                    <li><a href="#64x">64x Global Multi</a></li>
+                    <li><a href="#128x">128x Global Multi</a></li>
+                    <li><a href="#256x">256x Global Multi</a></li>
+                    <li><a href="#512x">512x Global Multi</a></li>
+                    <li><a href="#high">High Global Multi</a></li>
+                </ul>
+            </div>
+
+            <div id="notice" class="important-notice">
+                <h3 style="color:#ff5555; margin-top:0;">Important Notice</h3>
+                <p>If you couldn’t read, this content is <strong>TEMPORARY</strong> and <strong>WILL BE REMOVED</strong> with the next major version update for W2.</p>
+                <p>For players who want to do this content, you <span class="warning-text">SHOULD NOT</span> perform the first reset until you <strong>REACH</strong> and have <strong>PERFORMED GREAT RIFT LEVEL 7</strong>.</p>
+            </div>
+
+            <h2 id="notes">Notes</h2>
+
+            <h3 id="4x">4x Global Multi (5-7 Day Recovery)</h3>
+            <ul>
+                <li>You can take a shortcut to Intersection by TPing to Collapse and jumping out of the open wall (PRE GRL ONLY, UNLESS GENERATOR KEEPER IS PURCHASED)</li>
+                <li>You can take a shortcut to do first PL by TPing to bulb rather than walking (PRE GRL ONLY)</li>
+                <li>You can near instantly recover non-artifact stats from Twilight reset</li>
+                <li>You should purchase Generator Keeper for the first Auto.</li>
+                <li>You can take a shortcut to intersection after GR by jumping off the right side of the great rift area, instead of walking through the stability area.</li>
+            </ul>
+
+            <h3 id="16x">16x Global Multi (2.5-4 Day Recovery)</h3>
+            <ul>
+                <li>You do not need to worry about saving Rune Fragments for purchasing Cavern Key as you can get 10k with only 1 awaken</li>
+                <li>You should get Fossilize before Twilight (USUALLY REQUIRES SAL 20, IT IS NOT SHOWN BUT IT STILL ACTIVATES)</li>
+                <li>You can get DP before Destabilize (THIS IS NOT USUALLY RECOMMENDED AT THIS LOW OF A MULTI)</li>
+                <li>It is no longer efficient to wait for TALgenerator after Great Rift</li>
+                <li>You can purchase T2 Autos on GRL 2</li>
+                <li>You should be purchasing Generator Keeper on GRL 1 and then Temple Auto on GRL 2</li>
+            </ul>
+
+            <h3 id="32x">32x Global Multi (2-3 Day Recovery)</h3>
+            <ul>
+                <li>You should skip from TAL 1 to 4. If you haven't been already, you should do the first TAL immediately after reaching IL 10 and buying the upgrade.</li>
+                <li>Allows you to skip Destabilize until Upper Temple (THIS IS NOT RECOMMENDED AT THIS LOW OF A MULTI)</li>
+                <li>You don't need to get more than 1 kill worth of T2 Desert Artifacts per Twilight / Midnight until ML 12 where you should get as much as possible for TAP</li>
+            </ul>
+
+            <h3 id="64x">64x Global Multi (1-2 Day Recovery)</h3>
+            <div class="note"><strong>NOTE:</strong> You should leave your relic chamber at a room with low enough TAP to get the automations at the start of unlock. This can be swapped for the power chamber once you have a high enough multi to save time.</div>
+            <ul>
+                <li>This is the first multi threshold that causes a large progression speed-up, you can now complete DaS significantly faster</li>
+                <li>CC1 can be skipped entirely (complete it only if you get stuck)</li>
+                <li>You can skip Twilight until first Midnight (NOT RECOMMENDED UNTIL AFTER GRL 1 w/T2 DESERT AUTO)</li>
+                <li>Allows you to get a T2 Auto on Great Rift Level 1, recommended is Desert Auto for MULTI SAL</li>
+                <li>Auto Order for T3 on GRL 3: Desert -> Generator Keeper -> T3 Upper Temple -> Hall for starting TAL1 -> Temple Chart Keeper -> Cavern or Jungle</li>
+            </ul>
+
+            <h3 id="128x">128x Global Multi (~1 Day Recovery | Start -> GRL 1 is ~4.5 Hours)</h3>
+            <ul>
+                <li>You should get 1 kill worth of cavern and jungle artifacts at gauntlet unlock</li>
+                <li>You should skip from TAL 1 to 5</li>
+                <li>You can attempt to skip 10-20% of the max cap of ALL hall artifacts NOT INCLUDED in the Rad Chamber (mainly referring to AoGP, life, temple XP, creation and Power). You should always get more if you have nothing else to use the gauntlet on.</li>
+                <li>You should not get more than 1 enemy worth of T2 desert artifacts pre or post Twilight (only needed to boost TAP and XP you may be missing from the fewer hall artifacts or other skips)</li>
+                <li>You should not destabilize until TAL 21 in order to get the boost from time multi</li>
+                <li>You can purchase all Doom Sigils upgrades pre upper temple in one cactus</li>
+                <li>You can afford to max all autobuyers and generators from Midnight at ML 1, unless skipping twilight</li>
+                <li>Manual Doom Sigil collection grants more than the dauntlet chamber, recommended to collect cacti manually after maxing out upgrades from Cactus Trials</li>
+                <li>GRL 7 takes ~20 minutes wait time for the Rift Gauntlet, depending on Midnight GRL and Rift Relic GRL levels</li>
+            </ul>
+
+            <h3 id="256x">256x Global Multi (<1 Day Recovery)</h3>
+            <div class="note"><strong>Note:</strong> Your Rift Runes should be spent in the order of Autos -> Rift Energy -> TAP -> GRP -> Others, prioritizing next 25 on Rift Energy</div>
+            <div class="note"><strong>Note 2:</strong> This is the multi many players choose to start purchasing some levels of DaS LPL instead of multi. YOU DO NOT NEED MORE THAN 8 LEVELS.</div>
+            <ul>
+                <li>You should first awaken immediately and then buy all chart upgrades, then go to AL 7, buy sapphire runes, and then buy autobuyers.</li>
+                <li>For AL recovery, do rune and ruby for AL 1, Sapphire only for AL 1 to 9, Sapphire + either Rune or Ruby Rune until AL 13, and then back to only sapphire until AL 22.</li>
+                <li>YOU SHOULD BE SKIPPING ALL UPGRADES IN THE TEMPLE CHART AFTER SAPPHIRE RUNES, EXCLUDING LIGHT RUNES</li>
+                <li>You can skip the bulb reset entirely, as long as you do an Opal</li>
+                <li>You do not need to do all PLs, only do PL until you can get enough 97455 and links for IL 10 + upgrade (should be between PL 4 and PL 7)</li>
+                <li>It is recommended to skip CC 3 and 4 until AFTER TAL 12. YOU SHOULD NOT FULLY SKIP THESE AT THIS MULTI.</li>
+                <li>It is possible to entirely skip CC3 at this multi (IT WILL BE FASTER NOT TO SKIP AT THIS MULTI UNLESS YOU REALLY DON’T WANT TO DO IT)</li>
+                <li>You can afford the next 25 in Rift Energy Rift Rune Upgrade on GRL 1</li>
+                <li>You can afford 1 T3 Auto on GRL 2 if you farm to 3,800 GRP</li>
+            </ul>
+
+            <h3 id="512x">512x Global Multi (<10 Hours Recovery Time)</h3>
+            <div class="note"><strong>Note:</strong> If you haven't already, you should push the rooms on Temple XP and SSP Artifact chambers in the Hall for convenience during later runs.</div>
+            <div class="note"><strong>Note 2:</strong> If you do not wish to spam DaS everyday, it is recommended to do all DaS runs following this point with GRL 8. If you are active it is recommended to do it with GRL 7 until ~2048x at the latest. Below are the required stats:
+                <ul>
+                    <li>TAL 61</li>
+                    <li>ML 36</li>
+                    <li>SAL 68</li>
+                    <li>LVL 30 Rift Relic GRP</li>
+                    <li>LVL 32 Rift Rune GRP</li>
+                    <li>LVL 40 Midnight GRP</li>
+                    <li>Max Rift Energy GRP</li>
+                </ul>
+            </div>
+            <ul>
+                <li>You can skip the T2 Desert Artifacts completely. Get 1 kill worth if short on TAP.</li>
+                <li>You can get T3 autos on GRL 2 without farming GRP.</li>
+            </ul>
+
+            <h3 id="high">High Global Multi</h3>
+            
+            <h4>1024x Global Multi</h4>
+            <div class="note"><strong>Note:</strong> If you haven’t already, use Autobuy Advanced and set all pre-midnight Sigil upgrades to 100%.</div>
+            <ul>
+                <li>You only need to collect 1 Doom Cacti with maxed upgrades to max all pre-midnight sigils upgrades</li>
+            </ul>
+
+            <h4>2048x Global Multi</h4>
+            <ul>
+                <li>You can skip CC3 with 0 time loss</li>
+                <li>You should only need ~100 AOGP</li>
+            </ul>
+
+            <h4>4096x Global Multi</h4>
+            <ul>
+                <li>You can skip CC4 (NOT RECOMMENDED AT THIS MULTI, WILL CAUSE TIME LOSS)</li>
+            </ul>
+
+            <h4>65.5kx Global Multi (2-3 Hour Recovery Time)</h4>
+            <ul>
+                <li>You can max all pre-Midnight Doom Sigil upgrades in 1 Doom Cactus without any Sand or Vase upgrades, recommended to save Doom Cacti on field for efficiency</li>
+                <li>You can afford a T3 Auto on first GRL, Upper Temple is recommended</li>
+            </ul>
+
+            <h4>1.048Mx Global Multi</h4>
+            <ul>
+                <li>GRL 9 is obtainable with ~1-2 weeks farming (FOR FLEX PURPOSES ONLY)</li>
+            </ul>
+
+            <hr style="border-color: #333; margin: 4rem 0;">
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

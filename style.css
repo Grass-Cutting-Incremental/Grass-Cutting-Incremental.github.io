@@ -93,22 +93,125 @@ main {
 .guide-container h1 {
     font-family: 'Orbitron', sans-serif;
     font-size: 3rem;
-    color: #4ade80;
+    color: var(--theme-color);
     margin-bottom: 2rem;
     border-bottom: 2px solid #333;
     padding-bottom: 1rem;
 }
 
-.guide-container h2 {
+/* Shared guide theme base (applies across pages using --theme-color variable) */
+h2 {
+    font-family: 'Orbitron', sans-serif;
     color: #fff;
+    font-size: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #333;
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100px;
+    height: 2px;
+    background-color: var(--theme-color);
+    box-shadow: 0 0 10px var(--theme-color);
+}
+
+h2.major-checkpoint {
+    font-size: 2.5rem;
+    color: var(--theme-color);
+    border-bottom: 4px solid var(--theme-color);
+    text-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+h3 {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--theme-color);
+    font-size: 1.4rem;
     margin-top: 2rem;
     margin-bottom: 1rem;
 }
 
-.guide-container p {
-    margin-bottom: 1.5rem;
-    font-size: 1.1rem;
+.credits-box {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid #333;
+    border-left: 4px solid var(--theme-color);
+    border-radius: 6px;
+    padding: 1.5rem;
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
+
+.credits-header {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9rem;
+    color: var(--theme-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+.note {
+    background-color: #151515;
+    border-left: 2px solid var(--theme-color);
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+    color: #cccccc;
+    transition: transform 0.2s;
+}
+.note:hover { background-color: #1a1a1a; }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    background-color: #111;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 0.9rem;
+}
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #222;
+}
+th {
+    background-color: #1f1f1f;
+    color: var(--theme-color);
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+}
+
+/* Warning Text styling */
+.warning-text {
+    color: #ff5555;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* List Styling */
+ul { margin-left: 20px; margin-bottom: 1.5rem; }
+li { margin-bottom: 8px; color: #ddd; }
+
+/* Sidebar Active Color Override */
+#sidebar a.active {
+    color: var(--theme-color) !important;
+    border-left-color: var(--theme-color) !important;
+}
+#sidebar a:hover {
+    color: var(--theme-color) !important;
+}
+
 
 /* HOME PAGE STYLING */
 /* This makes the image cover the whole area to the right */
@@ -182,6 +285,43 @@ main {
     letter-spacing: 1px;
     border-bottom: 1px solid #222;
     padding-bottom: 5px;
+}
+
+/* --- TABLE OF CONTENTS --- */
+.toc-box {
+    background-color: #151515;
+    border: 1px solid #333;
+    border-left: 4px solid var(--theme-color);
+    padding: 1.5rem;
+    margin-bottom: 3rem;
+    border-radius: 6px;
+}
+.toc-title {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--theme-color);
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+.toc-list {
+    list-style: none;
+    column-count: 2;
+    column-gap: 20px;
+}
+.toc-list li {
+    margin-bottom: 8px;
+}
+.toc-list a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.2s;
+    font-size: 0.95rem;
+}
+.toc-list a:hover {
+    color: var(--theme-color);
+    text-decoration: underline;
+}
+@media (max-width: 768px) {
+    .toc-list { column-count: 1; }
 }
 
 /* --- DOT NAVIGATION (Left Side) --- */

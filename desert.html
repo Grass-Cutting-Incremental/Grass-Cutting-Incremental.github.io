@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desert - GCI Guide</title>
+    <!-- FAVICON -->
+    <link rel="icon" type="image/x-icon" href="Main.ico">
+    
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- PAGE THEME CONFIGURATION --- */
+        :root {
+            --theme-color: #9198d6; /* Lilac */
+        }
+
+        /* --- HEADINGS --- */
+        h1.main-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+        }
+
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            font-size: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #333;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100px;
+            height: 2px;
+            background-color: var(--theme-color);
+            box-shadow: 0 0 10px var(--theme-color);
+        }
+
+        /* Major Checkpoint Headers */
+        h2.major-checkpoint {
+            font-size: 2.5rem;
+            color: var(--theme-color);
+            border-bottom: 4px solid var(--theme-color);
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.2);
+        }
+
+        h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--theme-color);
+            font-size: 1.4rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* --- CREDITS BOX --- */
+        .credits-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid #333;
+            border-left: 4px solid var(--theme-color);
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin-bottom: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .credits-header {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            color: var(--theme-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        .credits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            font-size: 0.95rem;
+            color: #bbb;
+        }
+        .credit-role {
+            font-weight: bold;
+            color: #fff;
+            margin-right: 5px;
+        }
+
+        /* --- NOTE STYLE --- */
+        .note {
+            background-color: #151515;
+            border-left: 2px solid var(--theme-color);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.95rem;
+            color: #cccccc;
+            transition: transform 0.2s;
+        }
+        .note:hover { background-color: #1a1a1a; }
+        .note strong { color: #fff; }
+
+        /* --- TABLE STYLES --- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background-color: #111;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            border-radius: 8px;
+            overflow: hidden;
+            font-size: 0.9rem;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #222;
+        }
+        th {
+            background-color: #1f1f1f;
+            color: var(--theme-color);
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+        }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background-color: #1a1a1a; }
+
+        /* Warning Text styling */
+        .warning-text {
+            color: #ff5555;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        /* List Styling */
+        ul { margin-left: 20px; margin-bottom: 1.5rem; }
+        li { margin-bottom: 8px; color: #ddd; }
+
+        /* Sidebar Active Color Override */
+        #sidebar a.active {
+            color: var(--theme-color) !important;
+            border-left-color: var(--theme-color) !important;
+        }
+        #sidebar a:hover {
+            color: var(--theme-color) !important;
+        }
+
+    </style>"
+</head>
+<body>
+
+    <button id="desktop-expand-btn">☰</button>
+
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <div class="logo" style="color:var(--theme-color); font-weight:bold;">GCI</div>
+        <button id="menu-toggle" style="background:none; border:none; color:#fff; font-size:1.5rem;">☰</button>
+    </header>
+
+    <!-- Sidebar -->
+    <aside id="sidebar">
+        <div class="sidebar-header">
+            <h1 style="color: var(--theme-color);">GCI</h1>
+            <p>Desert Guide</p>
+            <button id="sidebar-collapse-btn">«</button>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+
+            <div class="section-title">World 1</div>
+            <a href="origins.html">Origins</a>
+            <a href="galactic.html">Galactic</a>
+            <a href="planetoid.html">Planetoid</a>
+            <a href="constellations.html">Constellations</a>
+            <a href="supernova.html">Supernova</a>
+            <a href="solarians.html">Solarians</a>
+            <a href="grasslands.html">Grasslands</a>
+            <a href="loops.html" class="active">Loops</a>
+
+            <div class="section-title">World 2</div>
+            <a href="jungle.html">Jungle</a>
+            <a href="true-awaken.html">True Awaken</a>
+            <a href="desert.html">Desert</a>
+            <a href="midnight.html">Midnight</a>
+            <a href="great-rift.html">Great Rift</a>
+            <a href="doom.html">Doom (DaS)</a>
+
+            <div class="section-title">Bonus</div>
+            <a href="tower.html">The Tower</a>
+            <a href="cool.html">Cool</a>
+        </nav>
+    </aside>
+
+    <!-- DOT NAVIGATION -->
+    <div id="dot-nav">
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <div class="guide-container">
+            
+            <h1 class="main-title">Desert</h1>
+            
+            <!-- Credits -->
+            <div class="credits-box">
+                <div class="credits-header">/// Author Info</div>
+                <div class="credits-grid">
+                    <div><span class="credit-role">Written by:</span> ???</div>
+                    <div><span class="credit-role">Verified by:</span> ???</</div>
+                </div>
+            </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

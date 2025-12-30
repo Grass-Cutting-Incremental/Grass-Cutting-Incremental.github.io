@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Great Rift - GCI Guide</title>
+    <!-- FAVICON -->
+    <link rel="icon" type="image/x-icon" href="Main.ico">
+    
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- PAGE THEME CONFIGURATION --- */
+        :root {
+            --theme-color: #00e5ff; /* Rift Cyan */
+        }
+
+        /* --- HEADINGS --- */
+        h1.main-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+        }
+
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            font-size: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #333;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100px;
+            height: 2px;
+            background-color: var(--theme-color);
+            box-shadow: 0 0 10px var(--theme-color);
+        }
+
+        /* Major Checkpoint Headers */
+        h2.major-checkpoint {
+            font-size: 2.5rem;
+            color: var(--theme-color);
+            border-bottom: 4px solid var(--theme-color);
+            text-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+        }
+
+        h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--theme-color);
+            font-size: 1.4rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* --- TABLE OF CONTENTS --- */
+        .toc-box {
+            background-color: #151515;
+            border: 1px solid #333;
+            border-left: 4px solid var(--theme-color);
+            padding: 1.5rem;
+            margin-bottom: 3rem;
+            border-radius: 6px;
+        }
+        .toc-title {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--theme-color);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        .toc-list {
+            list-style: none;
+            column-count: 2;
+            column-gap: 20px;
+        }
+        .toc-list li {
+            margin-bottom: 8px;
+        }
+        .toc-list a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.2s;
+            font-size: 0.95rem;
+        }
+        .toc-list a:hover {
+            color: var(--theme-color);
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .toc-list { column-count: 1; }
+        }
+
+        /* --- CREDITS BOX --- */
+        .credits-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid #333;
+            border-left: 4px solid var(--theme-color);
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin-bottom: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .credits-header {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            color: var(--theme-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .credits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            font-size: 0.95rem;
+            color: #bbb;
+        }
+
+        .credit-role {
+            font-weight: bold;
+            color: #fff;
+            margin-right: 5px;
+        }
+
+        /* --- NOTE STYLE --- */
+        .note {
+            background-color: #151515;
+            border-left: 2px solid var(--theme-color);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.95rem;
+            color: #cccccc;
+            transition: transform 0.2s;
+        }
+        .note:hover { background-color: #1a1a1a; }
+        .note strong { color: #fff; }
+
+        /* Warning Text styling */
+        .warning-text {
+            color: #ff5555;
+            font-weight: bold;
+        }
+        
+        /* List Styling */
+        ul { margin-left: 20px; margin-bottom: 1.5rem; }
+        li { margin-bottom: 8px; color: #ddd; }
+
+        /* Sidebar Active Color Override */
+        #sidebar a.active {
+            color: var(--theme-color) !important;
+            border-left-color: var(--theme-color) !important;
+        }
+        #sidebar a:hover {
+            color: var(--theme-color) !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <div class="logo" style="color:var(--theme-color); font-weight:bold;">GCI</div>
+        <button id="menu-toggle" style="background:none; border:none; color:#fff; font-size:1.5rem;">☰</button>
+    </header>
+
+    <!-- Sidebar -->
+    <aside id="sidebar">
+        <div class="sidebar-header">
+            <h1 style="color: var(--theme-color);">GCI</h1>
+            <p>Great Rift Guide</p>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+
+            <div class="section-title">World 1</div>
+            <a href="origins.html">Origins</a>
+            <a href="galactic.html">Galactic</a>
+            <a href="planetoid.html">Planetoid</a>
+            <a href="constellations.html">Constellations</a>
+            <a href="supernova.html">Supernova</a>
+            <a href="solarians.html">Solarians</a>
+            <a href="grasslands.html">Grasslands</a>
+            <a href="loops.html">Loops</a>
+
+            <div class="section-title">World 2</div>
+            <a href="jungle.html">Jungle</a>
+            <a href="true-awaken.html">True Awaken</a>
+            <a href="desert.html">Desert</a>
+            <a href="midnight.html">Midnight</a>
+            <a href="great-rift.html" class="active">Great Rift</a>
+            <a href="doom.html">Doom (DaS)</a>
+
+            <div class="section-title">Bonus</div>
+            <a href="tower.html">The Tower</a>
+            <a href="cool.html">Cool</a>
+        </nav>
+    </aside>
+
+    <!-- DOT NAVIGATION -->
+    <div id="dot-nav">
+        <a href="#intro" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Intro</span></a>
+        <a href="#reset" class="dot-item"><div class="dot-circle"></div><span class="dot-label">The Reset</span></a>
+        <a href="#mechanics" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Mechanics</span></a>
+        <a href="#grp" class="dot-item"><div class="dot-circle"></div><span class="dot-label">GRP & Auto</span></a>
+        <a href="#tips" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Tips</span></a>
+        <a href="#grl2" class="dot-item"><div class="dot-circle"></div><span class="dot-label">GRL 2</span></a>
+        <a href="#grl3" class="dot-item"><div class="dot-circle"></div><span class="dot-label">GRL 3</span></a>
+        <a href="#end" class="dot-item"><div class="dot-circle"></div><span class="dot-label">The End..?</span></a>
+        <a href="#doom" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Doom</span></a>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <div class="guide-container">
+            
+            <h1 class="main-title">Great Rift</h1>
+            
+            <div class="credits-box">
+                <div class="credits-header">/// Author Info</div>
+                <div class="credits-grid">
+                    <div><span class="credit-role">Written by:</span> vexi49</div>
+                    <div><span class="credit-role">Assisted by:</span> The Helper Team</div>
+                    <div><span class="credit-role">Guide Design by:</span> Mocha</div>
+                </div>
+            </div>
+
+            <!-- Table of Contents -->
+            <div class="toc-box">
+                <div class="toc-title">Table of Contents (5.0)</div>
+                <ul class="toc-list">
+                    <li><a href="#intro">5.1: Let’s begin!</a></li>
+                    <li><a href="#reset">5.2: Did the reset. What now?</a></li>
+                    <li><a href="#mechanics">5.3: Mechanic Overview</a></li>
+                    <li><a href="#grp">5.4: Recommended GRP and Auto</a></li>
+                    <li><a href="#tips">5.5: Great Rift Tips</a></li>
+                    <li><a href="#grl2">5.6: GRL 2 & Rift Gauntlet</a></li>
+                    <li><a href="#grl3">5.7: GRL 3</a></li>
+                    <li><a href="#end">5.8: The End..?</a></li>
+                    <li><a href="#doom">5.9: The World of Doom</a></li>
+                </ul>
+            </div>
+
+            <h2 id="intro">5.1: Let's begin!</h2>
+            <p>Great Rift resets...</p>
+            <ul>
+                <li>Everything prior to unlocking Great Rift</li>
+                <li>You however keep base artifact drop upgrades in the Temple Chart</li>
+            </ul>
+
+            <p>Your first Great Rift unlocks...</p>
+            <ul>
+                <li>The Rift Field, Rift Energy and Rift Runes</li>
+                <li>Autos</li>
+                <li>TAL Generator</li>
+            </ul>
+
+            <div class="note">
+                Notes:
+                <ul>
+                    <li>Similar to TAL, GRL is gained by increasing your OoM of GRP.</li>
+                    <li>Unlike TAL though, you <span class="warning-text">cannot</span> skip GRLs.</li>
+                </ul>
+            </div>
+
+            <h2 id="reset">5.2: Did the reset. What now?</h2>
+            <p>You may now proceed with spending your Rift Runes.</p>
+            <p>The recommended spending is as follows:</p>
+            <ul>
+                <li>2 in TAP</li>
+                <li>1 in Rift Energy</li>
+                <li>Choose one of the remaining upgrades to buy, depending on preference</li>
+            </ul>
+
+            <p>The Rift Field is useful for its Rift Energy upgrades, heavily speeding up gain of certain stats. It is unique in which that it comes with a default <strong>autocut</strong> of 0.5/s, which allows you to play normally and come back from time to time to upgrade. This autocut has a 20% Timewarp Effectiveness.</p>
+
+            <h2 id="mechanics">5.3: Mechanic Overview</h2>
+            <p>Autos are self explanatory.</p>
+            <ul>
+                <li>You gain 1 auto upon advancing your Great Rift Level</li>
+                <li>Autos can be spent on powerful upgrades automating certain parts of the game.</li>
+                <li>Each auto hosts 3 tiers - the first costing 1 Rift Energy, the next costing 1,000 Rift Runes and the last costing 1,000,000 Rift Runes.</li>
+            </ul>
+
+            <p>The <strong>TAL Generator</strong> is pretty simple, too</p>
+            <ul>
+                <li>It generates <strong>True Awakening Levels</strong> up to your highest reached every 2 hours.</li>
+                <li>This mechanic has a 25% Timewarp Effectiveness</li>
+            </ul>
+
+            <h2 id="grp">5.4: Recommended GRP and Auto</h2>
+            
+            <h3>GRL 1 (10 GRP)</h3>
+            <p><strong>Generator Keepers</strong> or <strong>Temple Chart Keeper</strong><br>
+            This choice depends on if you decide to wait for TAL Generator or not. If waiting, get Gen Keepers</p>
+
+            <h3>GRL 2 (150 GRP)</h3>
+            <p>Get the other auto mentioned in GRL1</p>
+
+            <h3>GRL 3 (3.5k | 10k GRP)</h3>
+            <p><strong>Desert Automation</strong></p>
+
+            <h3>GRL 4 (55k | 100k GRP)</h3>
+            <p><strong>Upper Temple Automation</strong> or <strong>Intersection Automation</strong> or <strong>Jungle Automation</strong> (skips wait for TAL 1)</p>
+
+            <h3>GRL 5 (400k | 1M GRP)</h3>
+            <p>If doing at 1m+ GRP: <strong>Temple Automation</strong> (get Tier 3!)<br>
+            otherwise get one of the autos mentioned in GRL 4</p>
+
+            <h2 id="tips">5.5: Great Rift Tips</h2>
+            <ul>
+                <li>You may want to wait until TAL1 or TAL6 to begin your recovery, as TAL1 unlocks Multi AL and TAL6 provides massive help when recovering pre-TA</li>
+                <li>You may be able to skip corners here and there so take advantage of that opportunity. Example:
+                    <ul>
+                        <li>You can stop doing resets as often like Destabilize and Twilight</li>
+                        <li>Don’t bother waiting for trial charge. You also may start not to do trials on each ML anymore (you should still do them.. though)</li>
+                    </ul>
+                </li>
+                <li>For pushing higher GRP, remember TAL, SAL, and ML. You may also want to spam Midnights for essence. Collect Stellar Cactus to push higher Desert Level. Take note of other sources of GRP unlocked later.</li>
+            </ul>
+
+            <h2 id="grl2">5.6: GRL 2 and the Rift Gauntlet</h2>
+            <p>Congratulations! You’ve reached GRL2. I’m sure you are DYING to use this feature.</p>
+            <ul>
+                <li>Outside of the gauntlet, take note of the other things!</li>
+                <li>Alongside the milestones you now have access to the rift runes GRP upgrade.</li>
+            </ul>
+            <p>From GRL 2 and onward, I recommend you focus your Rift Runes on GRP and TAP without bankrupting yourself then spread them evenly.</p>
+            
+            <p>The Rift Gauntlet works like any other gauntlet.</p>
+            <ul>
+                <li>It is however, unique in that all of the artifacts don’t have a cap! (and HARSH scaling…)</li>
+                <li>It has 4 chambers. But one is locked behind GRL 3, which we will talk about later.</li>
+            </ul>
+
+            <ul>
+                <li><strong>Rift 0</strong> gives you Rift Relics, a type of feature you’re familiar with.</li>
+                <li><strong>Rift 1</strong> hosts the <strong>Bonus Artifact</strong> - increasing bonus level of all level related artifacts by 1 per artifact. (This does not increase cap! It’s a flat addition to your normal level of artifacts. This is great for recovering from GRLs and pushing for higher GRP, so keep that in mind)</li>
+                <li><strong>Rift 2</strong> hosts the <strong>Energy Artifact</strong> - increasing Rift Energy gain by +10% per level.</li>
+            </ul>
+            <p>For now, you should alternate between the first 2 Rifts</p>
+
+            <h2 id="grl3">5.7: GRL 3</h2>
+            <p>Good job! You’ve reached GRL 3</p>
+            <ul>
+                <li>You now have access to powerful DP upgrades increasing TAP and RP.</li>
+                <li>You can now also skip midnight levels!</li>
+                <li>You’ve also unlocked a new mechanic: Rift Essence, and its respective chamber Rift 3</li>
+                <li>And other stuff. Go read</li>
+            </ul>
+
+            <p>Rift Essence is simple.</p>
+            <ul>
+                <li>You gain Rift Essence every second</li>
+                <li>The only way to increase Rift Essence gain is through the new chamber.</li>
+                <li>Rift Essence is used to aid in gaining TAP and SSP</li>
+                <li>This feature has a 20% Timewarp Effectiveness.</li>
+            </ul>
+
+            <p>From here you will progress to GRL5, as the GRL4 milestones are simple. Good luck!</p>
+
+            <h2 id="end">5.8: The End..?</h2>
+            <p>You’ve obtained GRL 5, unlocking the door under the lake.</p>
+            <ul>
+                <li>While this is the end of the current endgame, there is difficult optional content left for you. You can also push for GRL 7. So if you feel like dying, onward you go!</li>
+                <li>You can find the door in the cavern.</li>
+            </ul>
+
+            <p>‘Ok im down there, what should i do?’<br>
+            > Head to the next page</p>
+            
+            <div class="note" style="color: var(--theme-color);">Next page contains a spoiler about the next channel of W2, be warned!</div>
+
+            <h2 id="doom">5.9: The World of Doom</h2>
+            <p class="warning-text" style="font-size: 0.8rem; text-transform: none;">(this page will be likely removed if DaS or tower ever gets a guide, or just removed because)</p>
+            
+            <p>Welcome to the world of Doom. This content is completely optional, so if you’re not looking for that you can call it here.</p>
+            
+            <ul>
+                <li>You can either go to The Tower, a difficult subworld with 5 floors of grindy content,</li>
+                <li>Or do the Definetly a Scam reset (commonly known as DaS).
+                    <ul>
+                        <li>The amount of EFS (Evil Fat Stacks) you get depends on GRL, with it starting at 10 and going up by +5 every GRL past 5.</li>
+                        <li>If you’re planning to do DaS, please do it at GRL 7!</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <hr style="border-color: #333; margin: 4rem 0;">
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

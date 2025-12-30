@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Jungle - GCI Guide</title>
+    <!-- FAVICON -->
+    <link rel="icon" type="image/x-icon" href="Main.ico">
+    
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- PAGE THEME CONFIGURATION --- */
+        :root {
+            --theme-color: #38d94b; /* Jungle Vine Green */
+        }
+
+        /* --- HEADINGS --- */
+        h1.main-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(56, 217, 75, 0.4);
+        }
+
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            font-size: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #333;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100px;
+            height: 2px;
+            background-color: var(--theme-color);
+            box-shadow: 0 0 10px var(--theme-color);
+        }
+
+        /* Major Checkpoint Headers */
+        h2.major-checkpoint {
+            font-size: 2.5rem;
+            color: var(--theme-color);
+            border-bottom: 4px solid var(--theme-color);
+            text-shadow: 0 0 10px rgba(56, 217, 75, 0.2);
+        }
+
+        h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--theme-color);
+            font-size: 1.4rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* --- TABLE OF CONTENTS --- */
+        .toc-box {
+            background-color: #151515;
+            border: 1px solid #333;
+            border-left: 4px solid var(--theme-color);
+            padding: 1.5rem;
+            margin-bottom: 3rem;
+            border-radius: 6px;
+        }
+        .toc-title {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--theme-color);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        .toc-list {
+            list-style: none;
+            column-count: 2;
+            column-gap: 20px;
+        }
+        .toc-list li {
+            margin-bottom: 8px;
+        }
+        .toc-list a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.2s;
+            font-size: 0.95rem;
+        }
+        .toc-list a:hover {
+            color: var(--theme-color);
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .toc-list { column-count: 1; }
+        }
+
+        /* --- CREDITS BOX --- */
+        .credits-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid #333;
+            border-left: 4px solid var(--theme-color);
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin-bottom: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .credits-header {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            color: var(--theme-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .credits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            font-size: 0.95rem;
+            color: #bbb;
+        }
+
+        .credit-role {
+            font-weight: bold;
+            color: #fff;
+            margin-right: 5px;
+        }
+
+        /* --- NOTE STYLE --- */
+        .note {
+            background-color: #151515;
+            border-left: 2px solid var(--theme-color);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.95rem;
+            color: #cccccc;
+            transition: transform 0.2s;
+        }
+        .note:hover { background-color: #1a1a1a; }
+        .note strong { color: #fff; }
+
+        /* Warning Text styling */
+        .warning-text {
+            color: #ff5555;
+            font-weight: bold;
+        }
+        
+        /* List Styling */
+        ul { margin-left: 20px; margin-bottom: 1.5rem; }
+        li { margin-bottom: 8px; color: #ddd; }
+
+        /* Sidebar Active Color Override */
+        #sidebar a.active {
+            color: var(--theme-color) !important;
+            border-left-color: var(--theme-color) !important;
+        }
+        #sidebar a:hover {
+            color: var(--theme-color) !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <div class="logo" style="color:var(--theme-color); font-weight:bold;">GCI</div>
+        <button id="menu-toggle" style="background:none; border:none; color:#fff; font-size:1.5rem;">☰</button>
+    </header>
+
+    <!-- Sidebar -->
+    <aside id="sidebar">
+        <div class="sidebar-header">
+            <h1 style="color: var(--theme-color);">GCI</h1>
+            <p>Jungle Guide</p>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+
+            <div class="section-title">World 1</div>
+            <a href="origins.html">Origins</a>
+            <a href="galactic.html">Galactic</a>
+            <a href="planetoid.html">Planetoid</a>
+            <a href="constellations.html">Constellations</a>
+            <a href="supernova.html">Supernova</a>
+            <a href="solarians.html">Solarians</a>
+            <a href="grasslands.html">Grasslands</a>
+            <a href="loops.html">Loops</a>
+
+            <div class="section-title">World 2</div>
+            <a href="jungle.html" class="active">Jungle</a>
+            <a href="true-awaken.html">True Awaken</a>
+            <a href="desert.html">Desert</a>
+            <a href="midnight.html">Midnight</a>
+            <a href="great-rift.html">Great Rift</a>
+            <a href="doom.html">Doom (DaS)</a>
+
+            <div class="section-title">Bonus</div>
+            <a href="tower.html">The Tower</a>
+            <a href="cool.html">Cool</a>
+        </nav>
+    </aside>
+
+    <!-- DOT NAVIGATION -->
+    <div id="dot-nav">
+        <a href="#intro" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Intro</span></a>
+        <a href="#start" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Start</span></a>
+        <a href="#runes" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Runes</span></a>
+        <a href="#ruby" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Ruby</span></a>
+        <a href="#sapphires" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Sapphires</span></a>
+        <a href="#awakening" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Awakening</span></a>
+        <a href="#construct" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Construct</span></a>
+        <a href="#stability" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Stability</span></a>
+        <a href="#cavern" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Cavern</span></a>
+        <a href="#intersection" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Intersection</span></a>
+        <a href="#trueawaken" class="dot-item"><div class="dot-circle"></div><span class="dot-label">True Awaken</span></a>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <div class="guide-container">
+            
+            <h1 class="main-title">The Jungle</h1>
+            
+            <div class="credits-box">
+                <div class="credits-header">/// Author Info</div>
+                <div class="credits-grid">
+                    <div><span class="credit-role">Written by:</span> PinkSparkles</div>
+                    <div><span class="credit-role">Revised by:</span> 4178, GrandDom</div>
+                </div>
+            </div>
+
+            <!-- Table of Contents -->
+            <div class="toc-box">
+                <div class="toc-title">Table of Contents</div>
+                <ul class="toc-list">
+                    <li><a href="#intro">Introduction & Notice</a></li>
+                    <li><a href="#start">Start of Jungle</a></li>
+                    <li><a href="#runes">Runes</a></li>
+                    <li><a href="#ruby">Ruby</a></li>
+                    <li><a href="#sapphires">Sapphires</a></li>
+                    <li><a href="#awakening">Awakening</a></li>
+                    <li><a href="#construct">The Construct</a></li>
+                    <li><a href="#stability">Stability Device</a></li>
+                    <li><a href="#cavern">Cavern</a></li>
+                    <li><a href="#intersection">Intersection</a></li>
+                    <li><a href="#trueawaken">True Awaken</a></li>
+                </ul>
+            </div>
+
+            <h2 id="intro">Introduction & Notice</h2>
+            <p>You have reached The Jungle! This is the beginning of the long grind towards your next major goal. Before you get into the guide, there is some important and useful information to note below.</p>
+            
+            <p class="warning-text">You should avoid any of the following actions:</p>
+            <ul>
+                <li>Performing an Awaken without gaining an Awakening Level (AL), unless for Rune Fragments</li>
+                <li>Forgetting to purchase Temple Chart Upgrades</li>
+            </ul>
+
+            <h3>Guide Info & Formatting</h3>
+            <p>This guide will use abbreviations, with the first use of them being marked in bold next to the full version .i.e. <strong>Awakening Level (AL)</strong>. Names of resets and currencies will also be marked in bold for clarity.</p>
+
+            <p class="warning-text">Any extremely important information will be marked clearly in bold red text as shown here. Each AL with notable time required to complete, or a feature unlock, will have its own section, but be sure to ask around for additional help, advice and alternative playstyles.</p>
+
+            <h2 id="start">Start of Jungle</h2>
+            <p>The Jungle is similar to the normal realm in world 1. You will start by collecting grass and leveling up the first few upgrades. Like in world 1, every Jungle Level will give you grass multi. You may notice that you passively gain Tier Points (TP) every second, and that every new tier will increase the amount of XP and Regrowth, as will be explained down below.</p>
+
+            <p>Regrowth is a currency that you get by cutting grass at Tier 3 (T3) and above. It can be used to increase your Grass Value, Runes (explained later) and TP. With some small grind you will have enough levels for your first Runes reset. If you wish, you can get some extra levels and do your first runes reset at Jungle Level 40+.</p>
+
+            <h2 id="runes">Runes</h2>
+            <p>For this first reset you can spend half of your runes on Regrowth and the other half on TP. One thing to note is that the amount of unspent runes will contribute to the Rune Grass Multiplier, each unspent Rune gives you +0.1x (additive) to the Rune Grass Multiplier.</p>
+            <p>As you get more levels, you can do more runes resets to continue upgrading Regrowth, TP and Ruby, which will be explained in the next section.</p>
+
+            <h2 id="ruby">Ruby</h2>
+            <p>Ruby is another currency that you can get from cutting red-ish grass in the Jungle Field (similar to platinum in world 1). Getting Ruby will be really important if you wish to get enough levels for future milestones that are coming up. At the start you may just get a few levels on TP and XP, as well as Grass Value. You can also form Ruby Runes, which you can get by converting Ruby and Runes at a 1:400 ratio, that means, 10 Ruby and 4000 Runes will be converted into 10 Ruby Runes.</p>
+
+            <p>Ruby Runes can be used to increase your Ruby Value by +1, 2x XP and 2x Runes. The XP and Runes upgrades will be essential for getting levels throughout most of this guide. If jungle levels feel slow, you can try getting 10x more ruby runes.</p>
+
+            <p>Your next feature awaits you at Jungle Tier 7, however, if you feel like waiting a bit more, you can do it at Tier 8 (T8).</p>
+
+            <h2 id="sapphires">Sapphires</h2>
+            <p>The amount of Sapphires you get on reset is based on your Jungle Tier. You can also boost it with the Regrowth upgrade for Sapphire Value. Get enough Sapphires for Grass autobuyer and TP, or you can also wait a bit more to upgrade one level of XP.</p>
+
+            <p>For your next sapphire resets, you can do it whenever you feel like you need extra Jungle Tiers and Levels. On your second reset, you can level up XP and Ruby Value if you wish. A third sapphire reset might be needed to push for the next feature. Remember to always level up sapphire value before Sapphire resets, level up ruby rune XP and Runes as you get more levels and remember the runes grass multi.</p>
+
+            <p>A new reset layer awaits for you at Level 200 and Jungle Tier 10. You could wait until T11.</p>
+
+            <h2 id="awakening">Awakening</h2>
+            <p>Congratulations, you have performed your first Awakening! I strongly recommend you avoid doing an Awakening without increasing your <strong>Awakening Level (AL)</strong>, at least for the first few ALs.</p>
+
+            <p>The Temple Chart contains many QOL upgrades, with most upgrades costing Rune Fragments (RF). You can start by getting the Fragment Power and Offline Ruby upgrades as well as Higher Tiers. Fragment Power boosts your TP based on your total amount of Rune Fragments, including spent ones. The current cap is 10x TP, but this can be increased later.</p>
+
+            <p>Here you might notice a pattern when getting ALs. You grind levels, reset for Runes, make sure to hold some Runes for the Runes Grass Multi, grind Ruby and Ruby Runes, do some Sapphire resets and make your way to the next Awakening Level with slightly higher numbers. Repeat this until you get to AL7.</p>
+
+            <p>You may upgrade these in the Temple Chart as you progress: Higher Tiers, Keep Speed, Scaled Grass, More Runes, Keep Ruby, Auto Regrowth. This order should be fine but you can upgrade them in any order you find better. Once you upgrade one of each, simply keep upgrading the next levels of the mentioned upgrades as you progress through the awakening levels. You may use the AL4 milestone bonus to form more Ruby Runes, as it’s crucial for getting higher levels for the next ALs.</p>
+
+            <p>Scaled Grass will exponentially increase your grass multi per level, starting at a 2% exponent increase. You will find upgrades to increase this later. Your next unlock is at AL7.</p>
+
+            <h2 id="construct">The Construct</h2>
+            <p>At AL7, you unlock The Construct. It is a building where you can buy some automation and Everlasting (EL) upgrades. For now, you can ignore the automation upgrades in the construct and go buy the Sapphire Runes upgrade in the temple chart whenever possible. It allows you to gain Sapphire Runes on Awaken, which can be used on the Sapphire building to increase TP and Stability Conversion (unlocked at AL11, this will be explained in the next section).</p>
+
+            <p>After buying Sapphire Runes in the Temple Chart, you will notice a new set of upgrades, each costing a different currency: Sapphire Scaling, which uses Sapphire Runes; Grass Scaling, which uses Runes; Added Rubies Scaling, which uses Ruby Runes; and More Offline Ruby, which uses RF. At first, you most likely won’t be able to afford many of these upgrades, but consider trying to get them once you get close.</p>
+
+            <p>Here’s a gameplay loop that might help you get the next ALs:<br>
+            Start by getting enough ruby runes for 2-3 levels of 2x XP and Runes, max out the Runes TP upgrade, wait a few seconds to get enough Sapphires on reset, do a Sapphire reset multiple times to buy enough Sapphire XP, TP and Ruby Value levels until it gets too expensive to get in just a few resets, then you go back to Ruby Runes and regular Runes grind until you get enough levels for the next AL.</p>
+
+            <p>Your next important upgrade will be unlocked at AL10.</p>
+
+            <h2 id="stability">Stability Device</h2>
+            <p>There is a new upgrade available for you to buy at AL10 for 100 RF, which unlocks the Stability Device. It generates Instability every second and gives boosts based on your total Instability. Instability can be used on Unstable Modules (also known as Instability upgrades). Those Instability upgrades will be essential for pushing more Levels from now on. Make sure to always have a look at your Instability whenever possible.</p>
+
+            <div class="note">Note: whenever the Stability Device reaches the next rift stability tier, it will produce 100x less instability but gives you a new boost. You may use the boost from the second tier when going for AL11 as it should give you about 2x RF.</div>
+
+            <p>AL11 and AL12 unlock new upgrades related to Stability Conversion, which should help you get to the next stability tier faster in case you want the RF boost from the Stability Device. AL14 might make it easier to get some extra automation upgrades, so grab them whenever you can. Your next unlock is at AL17 and 10k RF.</p>
+
+            <h2 id="cavern">Cavern</h2>
+            <p>At AL17, you can buy the key to the Cavern in the Construct. You may use the Cavern to take a break from all that AL grind you had to do. Min Score and Max Score upgrades increase the Mushroom size making you get more Mushrooms. With a high enough Score, your Mushrooms will release Spores when cut. Those Spores can be used to increase Stability Conversion, Jungle XP and Mushroom Value.</p>
+
+            <p>As you get to Cavern Level 30, you will unlock a new reset, Opal. Opal upgrades can be used to increase RF gain, TP and Cavern related upgrades. You can do your first Opal reset at level 40-50+. Try to spend an even amount of Opal on every upgrade, this is also true for every reset from now on. With 2-3 more Opal resets you might reach level Cavern Level 100.</p>
+
+            <p>With Cavern Level 100, you unlock another reset called Bulb. Aside from your usual Cavern related upgrades, you also unlock Rune Mushrooms there. Rune Mushrooms have a base chance of 1% of spawning in the Cavern Field and will give a percentage of RF based on the amount you get per Awaken per Rune mushroom. To get more Bulbs, you can get more Cavern Levels above 100, as well as more Jungle Levels above 550. At the start, you won’t be able to go much further in Jungle Levels to give a significant boost to Bulbs.</p>
+
+            <p>Pay attention to the AL milestones, as some milestones will boost something in the Cavern area, making it possible to get more Cavern levels. Also make sure to check the Stability Device every AL. Keep switching between Cavern and Jungle to progress, your next unlock is at AL31 and 1Sp (1e24) Instability. You might be able to reach Cavern Level 200+ before the next unlock.</p>
+
+            <div class="note">Note: The color of the mushroom is purely cosmetic.</div>
+
+            <h2 id="intersection">Intersection</h2>
+            <p>Now that you are at AL31, you can unlock the key to the Intersection for 1Sp Instability. It shouldn’t take too long to get it at this point.</p>
+
+            <p>The Intersection is the most unique field in the game as there is no growth speed, grass here spawns instantly, and the grass cap is fixed. Intersection levels (IL) give a 2x boost per level on GM9 (which stands for Grass, Mushrooms and 97455). For now, just focus on getting 1M 97455 so you can buy the Upper Cavern upgrade and unlock your next reset. Once you buy Upper Cavern, head up the stairs in the Bulb area (or go through the rift on the right side of the intersection field) and perform your first Absorb immediately at Cavern Level 200.</p>
+
+            <p>Absorb gives you Power Levels (PL) and Light (based on your PL) per reset. The amount of Light you get is fixed, so you should generally always absorb as soon as you can. Note that Absorb also forces an Awaken, so as long as it doesn’t take too long for you to grind enough Jungle Levels for the next AL, wait until you hit the requirement for the next AL and then do an Absorb to increase both your AL and PL. After doing your first Absorb, you can head back to the Intersection for new upgrades.</p>
+
+            <p>At this point, most of the Jungle, if not all, should be automated. So you can just focus on the Cavern and the Intersection as you get more PLs. To the left of the Intersection Field, there’s a new feature, Links. Links can be used for the last piece of automation that Jungle needs as well as nice boosts to RF, Jungle XP, 97455 and Intersection XP.</p>
+
+            <p>The formula for links is based on Order of Magnitudes (Oom) of Instability (the amount of digits minus one), your Light, and ALs. The more you have of those resets and Instability, the more Links you will have. You may focus on Intersection to get 10x more 97455 every time you do an Absorb and then come back to the Cavern to increase your PL.</p>
+
+            <div class="note">Note: Link automatically has EL, meaning always buy link upgrades whenever you have enough links.</div>
+
+            <p>You might notice one upgrade that is not unlocked yet, IL10 is where you’ll unlock this and your next reset layer. Switch between Cavern and Intersection until you get to IL 10.</p>
+
+            <h2 id="trueawaken">True Awaken</h2>
+            <p>At IL10, you will unlock the True Awaken (TA) reset. For your first TA, it is recommended that you get PL13-14, which is around 250 Light Runes (LR). PL14 might take around 30 minutes from PL13 and going any further than PL14 might take a bit too much. Your LR amount is based on your current Light, and is boosted for every OoM of True Awaken Power (TAP), both can be increased with more PLs. The AL40 milestone also boosts LR, but it might take too much time. Please do not spend all of your LR on one upgrade, try to split between every upgrade. Recommended spending suggestions will be explained in the next guide.</p>
+            
+            <hr style="border-color: #333; margin: 4rem 0;">
+
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
