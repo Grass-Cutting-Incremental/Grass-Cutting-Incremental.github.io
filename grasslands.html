@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grasslands - GCI Guide</title>
+    <!-- FAVICON -->
+    <link rel="icon" type="image/x-icon" href="Main.ico">
+    
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- PAGE THEME CONFIGURATION --- */
+        :root {
+            --theme-color: #22c55e; /* Dark Green */
+        }
+
+        /* --- HEADINGS --- */
+        h1.main-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(34, 197, 94, 0.4);
+        }
+
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            font-size: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #333;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100px;
+            height: 2px;
+            background-color: var(--theme-color);
+            box-shadow: 0 0 10px var(--theme-color);
+        }
+
+        /* Major Checkpoint Headers */
+        h2.major-checkpoint {
+            font-size: 2.5rem;
+            color: var(--theme-color);
+            border-bottom: 4px solid var(--theme-color);
+            text-shadow: 0 0 10px rgba(34, 197, 94, 0.2);
+        }
+
+        h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--theme-color);
+            font-size: 1.4rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* --- CREDITS BOX --- */
+        .credits-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid #333;
+            border-left: 4px solid var(--theme-color);
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin-bottom: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .credits-header {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            color: var(--theme-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        .credits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            font-size: 0.95rem;
+            color: #bbb;
+        }
+        .credit-role {
+            font-weight: bold;
+            color: #fff;
+            margin-right: 5px;
+        }
+
+        /* --- NOTE STYLE --- */
+        .note {
+            background-color: #151515;
+            border-left: 2px solid var(--theme-color);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.95rem;
+            color: #cccccc;
+            transition: transform 0.2s;
+        }
+        .note:hover { background-color: #1a1a1a; }
+        .note strong { color: #fff; }
+
+        /* --- IMAGE STYLES --- */
+        .guide-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            display: block;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            border: 1px solid #444;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        /* --- TABLE STYLES --- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background-color: #111;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            border-radius: 8px;
+            overflow: hidden;
+            font-size: 0.9rem;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #222;
+        }
+        th {
+            background-color: #1f1f1f;
+            color: var(--theme-color);
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+        }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background-color: #1a1a1a; }
+
+        /* Warning Text styling */
+        .warning-text {
+            color: #ff5555;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        /* List Styling */
+        ul { margin-left: 20px; margin-bottom: 1.5rem; }
+        li { margin-bottom: 8px; color: #ddd; }
+
+        /* Sidebar Active Color Override */
+        #sidebar a.active {
+            color: var(--theme-color) !important;
+            border-left-color: var(--theme-color) !important;
+        }
+        #sidebar a:hover {
+            color: var(--theme-color) !important;
+        }
+
+        /* --- BONUS CONTENT STYLING --- */
+        .bonus-section {
+            border-left: 2px dashed #555;
+            padding-left: 2rem;
+            margin-top: 4rem;
+            background: linear-gradient(to right, rgba(34, 197, 94, 0.05), transparent);
+        }
+        .bonus-tag {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            color: #888;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .dot-separator {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.6rem;
+            color: #666;
+            text-align: center;
+            margin: 15px 0 5px 0;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <div class="logo" style="color:var(--theme-color); font-weight:bold;">GCI</div>
+        <button id="menu-toggle" style="background:none; border:none; color:#fff; font-size:1.5rem;">☰</button>
+    </header>
+
+    <!-- Sidebar -->
+    <aside id="sidebar">
+        <div class="sidebar-header">
+            <h1 style="color: var(--theme-color);">GCI</h1>
+            <p>Unofficial Guide</p>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+
+            <div class="section-title">World 1</div>
+            <a href="origins.html">Origins</a>
+            <a href="galactic.html">Galactic</a>
+            <a href="planetoid.html">Planetoid</a>
+            <a href="constellations.html">Constellations</a>
+            <a href="supernova.html">Supernova</a>
+            <a href="solarians.html">Solarians</a>
+            <a href="grasslands.html" class="active">Grasslands</a>
+            <a href="loops.html">Loops</a>
+
+            <div class="section-title">World 2</div>
+            <a href="jungle.html">Jungle</a>
+            <a href="true-awaken.html">True Awaken</a>
+            <a href="desert.html">Desert</a>
+            <a href="midnight.html">Midnight</a>
+            <a href="great-rift.html">Great Rift</a>
+            <a href="doom.html">Doom (DaS)</a>
+
+            <div class="section-title">Bonus</div>
+            <a href="tower.html">The Tower</a>
+            <a href="cool.html">Cool</a>
+        </nav>
+    </aside>
+
+    <!-- DOT NAVIGATION -->
+    <div id="dot-nav">
+        <a href="#intro" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Intro</span></a>
+        <a href="#overview" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Overview</span></a>
+        <a href="#enemies" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Enemies</span></a>
+        <a href="#dungeon" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Dungeon</span></a>
+        <a href="#mastery" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Mastery</span></a>
+        <a href="#d1" class="dot-item"><div class="dot-circle"></div><span class="dot-label">D1</span></a>
+        <a href="#d2" class="dot-item"><div class="dot-circle"></div><span class="dot-label">D2</span></a>
+        <a href="#d3" class="dot-item"><div class="dot-circle"></div><span class="dot-label">D3</span></a>
+        <a href="#autosell" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Auto Sell</span></a>
+        <a href="#d4" class="dot-item"><div class="dot-circle"></div><span class="dot-label">D4</span></a>
+        <a href="#collectables" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Collectables</span></a>
+        <a href="#d5" class="dot-item"><div class="dot-circle"></div><span class="dot-label">D5</span></a>
+        <a href="#synthesis" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Synthesis</span></a>
+        <a href="#snt9" class="dot-item"><div class="dot-circle"></div><span class="dot-label">SNT 9</span></a>
+        <a href="#twilight" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Twilight</span></a>
+        <a href="#d6" class="dot-item"><div class="dot-circle"></div><span class="dot-label">D6</span></a>
+        <a href="#dd1" class="dot-item"><div class="dot-circle"></div><span class="dot-label">DD1</span></a>
+        <a href="#snt10" class="dot-item"><div class="dot-circle"></div><span class="dot-label">SNT 10</span></a>
+        <a href="#d7" class="dot-item"><div class="dot-circle"></div><span class="dot-label">D7</span></a>
+        <a href="#dd2" class="dot-item"><div class="dot-circle"></div><span class="dot-label">DD2</span></a>
+        <a href="#twilight2" class="dot-item"><div class="dot-circle"></div><span class="dot-label">2nd Twilight</span></a>
+        <a href="#twilight3" class="dot-item"><div class="dot-circle"></div><span class="dot-label">3rd Twilight</span></a>
+        <a href="#snt11" class="dot-item"><div class="dot-circle"></div><span class="dot-label">SNT 11</span></a>
+        <a href="#twilight4" class="dot-item"><div class="dot-circle"></div><span class="dot-label">4th Twilight</span></a>
+        <a href="#d8" class="dot-item"><div class="dot-circle"></div><span class="dot-label">D8</span></a>
+        <a href="#twilight5" class="dot-item"><div class="dot-circle"></div><span class="dot-label">5th Twilight</span></a>
+        <a href="#dd3" class="dot-item"><div class="dot-circle"></div><span class="dot-label">DD3</span></a>
+        <a href="#ascension" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Ascension</span></a>
+        <a href="#twilight6" class="dot-item"><div class="dot-circle"></div><span class="dot-label">6th Twilight</span></a>
+        <a href="#d9" class="dot-item"><div class="dot-circle"></div><span class="dot-label">D9</span></a>
+        <a href="#snt13" class="dot-item"><div class="dot-circle"></div><span class="dot-label">SNT 13</span></a>
+        <a href="#twilight7" class="dot-item"><div class="dot-circle"></div><span class="dot-label">7th/8th Twilight</span></a>
+        <a href="#stages" class="dot-item"><div class="dot-circle"></div><span class="dot-label">500-1000</span></a>
+        <a href="#final" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Final Castle</span></a>
+        
+        <!-- OPTIONAL CONTENT SEPARATOR -->
+        <div class="dot-separator">OPTIONAL</div>
+        
+        <a href="#st15" class="dot-item" style="opacity: 0.6;"><div class="dot-circle"></div><span class="dot-label">SNT 15</span></a>
+        <a href="#dd4" class="dot-item" style="opacity: 0.6;"><div class="dot-circle"></div><span class="dot-label">DD4</span></a>
+        <a href="#costreset" class="dot-item" style="opacity: 0.6;"><div class="dot-circle"></div><span class="dot-label">Cost Reset</span></a>
+        <a href="#loop" class="dot-item" style="opacity: 0.6;"><div class="dot-circle"></div><span class="dot-label">Loop</span></a>
+        <a href="#push20k" class="dot-item" style="opacity: 0.6;"><div class="dot-circle"></div><span class="dot-label">Stage 20K</span></a>
+        <a href="#appendix" class="dot-item" style="opacity: 0.6;"><div class="dot-circle"></div><span class="dot-label">Appendix</span></a>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <div class="guide-container">
+            
+            <h1 class="main-title">Grasslands</h1>
+            
+            <!-- Credits -->
+            <div class="credits-box">
+                <div class="credits-header">/// Archive Data</div>
+                <div class="credits-grid">
+                    <div><span class="credit-role">Written by:</span> SigmaFlo44</div>
+                    <div><span class="credit-role">Revised by:</span> Projects Team & GrandDom</div>
+                </div>
+            </div>
+
+            <h2 id="intro">Introduction & Notice</h2>
+            <p>You have reached Grasslands! This is the beginning of the long grind towards your next major goal. Before you get into the guide, there is some important and useful information to note below.</p>
+            
+            <p class="warning-text">You should avoid any of the following actions:</p>
+            <ul>
+                <li>Spending any Flowers in Flower Shop II.</li>
+                <li>Forgetting to purchase upgrades in all tabs of the Singularity chart.</li>
+                <li>Performing a Sunrise for a lower amount of Sunrise FM.</li>
+                <li>Doing a Twilight for zero bonuses.</li>
+                <li>Ignoring Mastery upgrades and Combat Ranks.</li>
+            </ul>
+
+            <h3>Guide Info & Formatting</h3>
+            <p>This guide will use abbreviations, with the first use of them being marked in bold next to the full version i.e. <strong>Combat Rank (CR)</strong>. Names of resets and currencies will also be marked in bold for clarity.</p>
+
+            <h2 id="constellations">Constellation Setups</h2>
+            <p>Before you proceed, you are recommended to update your constellation setups to one of the below. These are also available within the in-game help menu.</p>
+            <table>
+                <thead>
+                    <tr><th>Table 1.1</th><th>Persistent Constellation Setups</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Basic Persistent Constellations</td><td>(Refer to Image in Solarians Guide or In-Game)</td></tr>
+                    <tr><td>Later Persistent Constellations</td><td>(Refer to Image in Solarians Guide or In-Game)</td></tr>
+                </tbody>
+            </table>
+
+            <h2 id="overview">Grasslands Overview</h2>
+            <p>Welcome to the Grasslands! The main component of Grasslands are the dungeons, which is an RPG style minigame. The first thing you should notice is the inventory board, which is your main hub for managing your dungeon loot.</p>
+            <p>You will also notice a board next to the inventory called <strong>Combat Ranks (CRs)</strong>, which are purchasable levels that boost your combat stats. To defeat enemies, you can either click on them, or press the E key whilst standing within range.</p>
+
+            <h2 id="enemies">Basic Enemy Tutorial</h2>
+            <p>A dungeon level is made up of rooms, but each room requires you to kill a different amount of enemies. Each dungeon has a set selection of enemies that can spawn (Regular, Tank, Glass Cannon).</p>
+            <p>Each of these items has a value in gold and shards. You will gain gold by selling the gear, or upgrade shards by scrapping it. You should only sell items that are worse than those you have equipped.</p>
+
+            <h2 id="dungeon">Basic Dungeon Tutorial</h2>
+            <p>Each dungeon has unique gear for each type of loot, starting at Common Rarity, and working its way up to Mythic Rarity. When starting a dungeon, you will want to focus on killing the easiest enemies first.</p>
+            <p>Upgrade Shards should be invested only into the Weapon and Armour. This is due to these item types getting larger stat gains per level when compared to other levelable item types.</p>
+
+            <div class="note">You gain 20 SP and 20% of health back after clearing a room.</div>
+
+            <h2 id="mastery">Mastery Tutorial</h2>
+            <p>Each item of rarities Common to Mythic have 5 Mastery Tiers. Increasing the mastery tier of an item will grant the player <strong>Mastery Points (MPs)</strong>.</p>
+            <p class="warning-text">Mastering an item will delete the item, and mastery points should not be spent into Generator upgrades.</p>
+            <div class="note">Enabling Auto Mastery will disable Auto Scrap / Sell until it is disabled.</div>
+
+            <!-- Major Checkpoint: D1 -->
+            <h2 id="d1" class="major-checkpoint">D1: Grass Valley</h2>
+            <p><strong>Gear Required for D1-4 Completion:</strong> Legendary OR Medium Level Rare from D1.</p>
+            <p>Well done on making it to the first dungeon. Be aware that if you find a generator for the first time, equip it immediately. I recommend using a gold generator when you are not progressing in grassland, and an upgrade shards generator when progressing in grassland.</p>
+
+            <h2 id="d2">D2: Dark Mine</h2>
+            <p><strong>Gear Required for D2-4 Completion:</strong> Legendary OR Medium Level Rare from D2.</p>
+            <p>The 2nd Dungeon is very similar to the first one. This is the first dungeon where you should start mastering items once you unlock the Combat Power upgrade in the mastery board.</p>
+
+            <h2 id="d3">D3: Desert</h2>
+            <p><strong>Gear Required for D3-4 Completion:</strong> Legendary Gear from D3.</p>
+            <p>The third dungeon is a big step up from the previous. Afterwards, you will want to aim for the rare gear of this dungeon.</p>
+
+            <h2 id="autosell">Auto Sell/Scrap Notice</h2>
+            <p>In D3 and above you will need to grind gold/shards, so this is the best time to use the Auto Sell/Scrap feature.</p>
+            <p>Reminder: Enabling Auto Mastery temporarily disables Auto Scrap / Sell.</p>
+
+            <h2 id="d4">D4: Sandtone Ruins</h2>
+            <p><strong>Gear Required for D4-4 Completion:</strong> Legendary Gear OR Medium Level Rare Gear from D4.</p>
+            <p>Dungeon 4 is much harder than the previous. You will likely struggle to kill the enemies in the beginning, so should take advantage of the damage and block abilities from your rings.</p>
+            <div class="note">At this point you’ll unlock the Twilight reset. <strong>IGNORE THE RESET UNTIL YOU BEAT THE FIRST LEVEL OF THE NEXT DUNGEON.</strong></div>
+
+            <h2 id="collectables">Dungeon Collectables</h2>
+            <p>At D4 and later dungeons, there is a special type of room that spawns called the Mastery Room. D4 also causes new interactable collectables to start randomly (Healing, Skill Point, Shop).</p>
+
+            <h2 id="d5">D5: Desolate Mountains</h2>
+            <p><strong>Gear Required for D5-4 Completion:</strong> Legendary Gear from D5.</p>
+            <p>Dungeon 5 is the most important dungeon of grasslands; beating the first level is imperative to progression, as the first boss drops a new item called the “Corrupted Shard”.</p>
+            <p class="warning-text">EXTRA IMPORTANT INFORMATION: YOU SHOULD NOT TWILIGHT YET</p>
+
+            <!-- Major Checkpoint: Synthesis -->
+            <h2 id="synthesis" class="major-checkpoint">Synthesis</h2>
+            <p>Synthesis is a vital mechanic for progression. You’ll notice a board that says “activate the machine”. Doing so will start generating Corruption Shards.</p>
+            <p>You can spend Corruption Shards on the Shop right next to the synthesis machine. You should focus on the first three upgrades: Corruption Shard Synthesis Yield, Corrupted Offense/Defense, and Synthesis Speed.</p>
+
+            <h2 id="snt9">Supernova Tier 9</h2>
+            <p>At around stage 160-163 you should meet the requirements for SNT9. You unlock a new portal in grasslands (Dark Dungeons), Auto-Fight, and Forming compression is no longer reset when performing a sunset reset.</p>
+
+            <h2 id="twilight">Twilight</h2>
+            <p>Twilight is the third and final reset of the solar obelisk and the most punishing. Your first Twilight reset should be done at stage 161+ for 28+ Unstable Souls (Usouls).</p>
+            <p>Doing your first Twilight will unlock New Corruption Shard variants, a new tab in Forming, new upgrades in Darkness, and the 6th dungeon.</p>
+
+            <h2 id="d6">D6: Empyrean Temple</h2>
+            <p><strong>Gear Required for D6-4 Completion:</strong> Legendary Gear from D6.</p>
+            <p>This Dungeon is not a big jump in difficulty. It is recommended to have CR 15+ at this point.</p>
+
+            <h2 id="dd1">DD1: Inferno Valley</h2>
+            <p>Dark Dungeons (DD) are modified versions of previous dungeons that are much harder. For this dungeon all enemies have pierce.</p>
+
+            <h2 id="snt10">Supernova Tier 10</h2>
+            <p>After your first Twilight and around stage 195 you should meet the requirements for SNT10. A new synthesis slot is unlocked and Solarian power has increased by x20.</p>
+
+            <h2 id="d7">D7: Cursed Lands (S180)</h2>
+            <p>After obtaining the mythical gear from DD1 head to this dungeon. You will get new synthesis gems called “flare shards”.</p>
+
+            <h2 id="dd2">DD2: Silent Cave</h2>
+            <p>The 2nd dark dungeon is far harder than the previous. The modifier of this dungeon is No Heal.</p>
+
+            <h2 id="twilight2">Second Twilight</h2>
+            <p>Your second Twilight reset should be performed around Stage 195. By this point it is recommended to have Clouds centralized as well as Supernova Tier 10.</p>
+
+            <h2 id="twilight3">Third Twilight</h2>
+            <p>After reaching stage 217-220 you should have centralized Dark fruits and Rings by then. Perform your third Twilight reset at stage 230.</p>
+
+            <h2 id="snt11">Supernova Tier 11 & Infinity Loops</h2>
+            <p>You will be able to meet the requirements of Star tier 11 at around stage 252. The Final collection resource “infinity loops” is unlocked.</p>
+
+            <h2 id="twilight4">Fourth Twilight</h2>
+            <p>After obtaining star tier 11 and reaching stage 250+, you should perform your 4th twilight reset.</p>
+
+            <h2 id="d8">D8: Haunted Crypt (S270)</h2>
+            <p>D8 is a big jump in difficulty compared to D7, needing maxed mythical gear from DD2 to beat its first level. You should aim to get the rare Power Gem at the end of the dungeon.</p>
+
+            <h2 id="twilight5">Fifth Twilight</h2>
+            <p>The 5th Twilight reset should be done at around stage 295, you should have centralized measure.</p>
+
+            <h2 id="dd3">DD3: Industrial Wasteland</h2>
+            <p>The 3rd dark dungeon is extremely difficult. All the enemies have pierce and you can not heal.</p>
+
+            <h2 id="ascension">Equipment Ascension</h2>
+            <p>Equipment ascension is a mechanic unlocked by buying the "ascension" singularity chart upgrade. I recommend ignoring item ascension until DD4 or optional content.</p>
+
+            <h2 id="twilight6">Sixth Twilight</h2>
+            <p>Your Sixth Twilight should be done after centralizing arcs, lines, observatorium and reservatorium at around stage 370.</p>
+
+            <h2 id="d9">D9: Chaotic Canyon (S380)</h2>
+            <p>This dungeon is extremely hard. It is recommended to get the uncommon gear if you can, however due to high upgrade costs you can ignore this dungeon until you get 20 ranks of dungeon explorer.</p>
+
+            <h2 id="snt13">Supernova Tier 13 (~S405)</h2>
+            <p>You should meet the requirements for ST13 at stage 405+. Sunrise FM updates without needing to sunrise.</p>
+
+            <h2 id="twilight7">7th & 8th Twilights</h2>
+            <p>Perform your 7th Twilight after centralizing dark charge and stardust. Your 8th Twilight should be done after getting all centralizes at stage 500+.</p>
+
+            <h2 id="stages">Stages 500 to 1,000</h2>
+            <p>At this stage you will make use of the allocate one to all button to get every upgrade, alongside Twilighting once you get a large amount of bonuses until you reach star tier 14.</p>
+
+            <!-- Major Checkpoint: Stage 1000 -->
+            <h2 id="final" class="major-checkpoint">Final Castle (S1k)</h2>
+            <p>Upon reaching stage 1000 and beating the last level of D9 the final dungeon D10 is unlocked. <strong>Confront him.</strong></p>
+
+            <hr style="border-color: #333; margin: 4rem 0;">
+            <p style="text-align: center; font-size: 1.2rem; color: #fff;">Congratulations! You have completed the main Grasslands guide.</p>
+
+            <!-- OPTIONAL CONTENT SECTION -->
+            <div class="bonus-section">
+                <span class="bonus-tag">/// Optional / Bonus Content</span>
+
+                <h2 id="st15">Stage 1,000 - Star Tier 15</h2>
+                <p>If you wish to continue playing W1 then there is plenty of bonus content waiting for you.</p>
+                <img src="portal.png" alt="Portal to W1" class="guide-image">
+                <p>Go through this portal in W2 in order to come back to W1. At around stage 1380 you’ll be able to unlock star tier 15, the only buff given by this tier is passive Usouls generation, this makes the Twilight reset completely redundant.</p>
+
+                <h2 id="dd4">DD4: Seven Small Stones</h2>
+                <p>This Dungeon should be tackled after you have maxed dungeon explorer and gotten 50+ levels on Combat Power V in the Mastery shop. You should get the Mythical gear and max it and the mythical Aero Gem VI, afterwards you can ignore this dungeon.</p>
+
+                <h2 id="costreset">Cost Reset (Credit to Ben0001)</h2>
+                <p>After getting Super Keep Rank, you can now cost reset. You do this by sunsetting after gaining at least 1 rank of Glimmer of Hope. This will keep the rank the same, and set your level to your rank. After doing this, the upgrade cost will be significantly decreased.</p>
+                <h3>Example:</h3>
+                <img src="example1.png" alt="Cost Reset Example" class="guide-image">
+                <p>This also applies to sunrising when it comes to sunrise FM.</p>
+                <h3>Example of sunrise cost reset:</h3>
+                <img src="example2.png" alt="Sunrise Reset Example" class="guide-image">
+
+                <h2 id="loop">Loop Information</h2>
+                <p>Loop is a reset that you can perform after reaching Stage 1000 which resets absolutely everything (except grassland gear, Flower & Planet Run related features and some permanent supernova tier bonuses), and provides a global multiplier.</p>
+                <p><strong>YOU SHOULD GET S20,000 before your first loop</strong> as you get an extra loop and looplet for every 10,000 stages once you loop.</p>
+
+                <h2 id="push20k">Pushing for Stage 10K & 20K</h2>
+                <p>Your progress will slow down and you’ll have to rely on 3 main strategies:</p>
+                <ul>
+                    <li><strong>Cost Resetting:</strong> Doing a cost reset by sunsetting with Super Keep Rank maxed.</li>
+                    <li><strong>Unstable Souls Bonuses:</strong> After ST15 you will need to manually spend unstable souls in the soul bonuses.</li>
+                    <li><strong>Utilizing Synthesis:</strong> While upgrading Usoul bonuses you’ll get a huge boost to synthesis.</li>
+                </ul>
+                <p>Doing all of the above should help you reach stage 20K in 20 to 30 minutes, then you can do your first loop.</p>
+            </div>
+
+            <hr style="border-color: #333; margin: 4rem 0;">
+
+            <h2 id="appendix">Appendix</h2>
+
+            <h3>Centralize Requirements</h3>
+            <table>
+                <thead><tr><th>Currency</th><th>Stage</th><th>Reqs</th></tr></thead>
+                <tbody>
+                    <tr><td>Momentum</td><td>Stage 125</td><td>N/A</td></tr>
+                    <tr><td>Moonstone</td><td>Stage 134-137</td><td>N/A</td></tr>
+                    <tr><td>Unnatural Grass</td><td>Stage 136-137</td><td>N/A</td></tr>
+                    <tr><td>Normality</td><td>Stage 134-138</td><td>N/A</td></tr>
+                    <tr><td>Clouds</td><td>Stage 184</td><td>N/A</td></tr>
+                    <tr><td>Dark Fruits</td><td>Stage 200-205</td><td>Level 6</td></tr>
+                    <tr><td>Rings</td><td>Stage 212-215</td><td>Level 13</td></tr>
+                    <tr><td>Planetarium</td><td>Stage 253</td><td>N/A</td></tr>
+                    <tr><td>Astro</td><td>Stage 270-274</td><td>N/A</td></tr>
+                    <tr><td>Measure</td><td>Stage 295-303</td><td>Level 416</td></tr>
+                    <tr><td>Planets</td><td>Stage 308-315</td><td>Level 437</td></tr>
+                    <tr><td>Arcs</td><td>Stage 327-330</td><td>Level 464</td></tr>
+                    <tr><td>Lines</td><td>Stage 337-339</td><td>N/A</td></tr>
+                    <tr><td>Observ & Reserv</td><td>Stage 352</td><td>R42 Compaction, R15 PoN</td></tr>
+                    <tr><td>Dark Charge</td><td>Stage 402-405</td><td>N/A</td></tr>
+                    <tr><td>Stardust</td><td>Stage 422</td><td>N/A</td></tr>
+                    <tr><td>Perks..?</td><td>Stage 444</td><td>N/A</td></tr>
+                    <tr><td>Perks</td><td>Stage 484</td><td>N/A</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Stage Bonuses</h3>
+            <table>
+                <thead><tr><th>Stage</th><th>Bonus</th></tr></thead>
+                <tbody>
+                    <tr><td>Stage 2+</td><td>3x Sunrise FM Compounding, 2x Sunstone Compounding, 4x Solar Rays Compounding.</td></tr>
+                    <tr><td>Stage 10+</td><td>3x Solar Shards Compounding</td></tr>
+                    <tr><td>Stage 50+</td><td>1.5x Solar Flares Compounding</td></tr>
+                    <tr><td>Stage 100+</td><td>Sunrise FM per stage decreases to 1.05x per stage</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Singularity Order</h3>
+            <table>
+                <thead><tr><th>Currency</th><th>Upgrade</th><th>Notes</th></tr></thead>
+                <tbody>
+                    <tr><td>Moonstone</td><td>Free Compression</td><td>Compression EL is better than increased souls gain</td></tr>
+                    <tr><td>Dark Fruits</td><td>Mega Offense</td><td>Helps you gain more stages</td></tr>
+                    <tr><td>Astro</td><td>The Collector</td><td>Helps you gain more stages</td></tr>
+                    <tr><td>Arcs</td><td>Divine Absorber</td><td>Needed for divine souls</td></tr>
+                    <tr><td>Dark Charge</td><td>Sharper Edge</td><td>Or other option if D9 incomplete</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Supernova Requirements</h3>
+            <table>
+                <thead><tr><th>Tier</th><th>Stage</th><th>Rank Req</th></tr></thead>
+                <tbody>
+                    <tr><td>SNT8</td><td>~Stage 114</td><td>Rank 8</td></tr>
+                    <tr><td>SNT9</td><td>~Stage 160</td><td>Rank 13</td></tr>
+                    <tr><td>SNT10</td><td>~Stage 193</td><td>Rank 15</td></tr>
+                    <tr><td>SNT11</td><td>~Stage 250</td><td>Rank 16-17</td></tr>
+                    <tr><td>SNT12</td><td>~Stage 322</td><td>Rank 29</td></tr>
+                    <tr><td>SNT13</td><td>~Stage 403</td><td>N/A</td></tr>
+                    <tr><td>SNT14</td><td>~Stage 715</td><td>Rank 115</td></tr>
+                    <tr><td>SNT15</td><td>~Stage 1300</td><td>N/A</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Stages to Twilight At</h3>
+            <table>
+                <thead><tr><th>#</th><th>Stage</th></tr></thead>
+                <tbody>
+                    <tr><td>1</td><td>~Stage 161</td></tr>
+                    <tr><td>2</td><td>~Stage 195</td></tr>
+                    <tr><td>3</td><td>~Stage 225</td></tr>
+                    <tr><td>4</td><td>~Stage 250</td></tr>
+                    <tr><td>5</td><td>~Stage 285-300</td></tr>
+                    <tr><td>6</td><td>~Stage 370</td></tr>
+                    <tr><td>7</td><td>~Stage 430+</td></tr>
+                    <tr><td>8</td><td>~Stage 500+</td></tr>
+                    <tr><td>9</td><td>~Stage 700+</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Upgrade Unlock List</h3>
+            <table>
+                <thead><tr><th>Upgrade</th><th>Unlock</th><th>Description</th></tr></thead>
+                <tbody>
+                    <tr><td>Solar Powered Momentum</td><td>SNT8</td><td>Increases momentum earned by 1e9x per level</td></tr>
+                    <tr><td>Remnants Autobuy III</td><td>SNT9</td><td>Autobuys the final three remnant upgrades</td></tr>
+                    <tr><td>Solar Powered Moonstone</td><td>SNT9</td><td>Increases moonstone earned by 100x per level</td></tr>
+                    <tr><td>Solar Powered Dark Fruits</td><td>SNT10</td><td>Increases dark fruits earned by 100x per level</td></tr>
+                    <tr><td>Solar Powered Rings</td><td>SNT10</td><td>Increases rings earned by 1,000x per level</td></tr>
+                    <tr><td>Solar Powered Observatorium</td><td>SNT12</td><td>Increases observatorium earned by 1,000x per level</td></tr>
+                    <tr><td>Solar Powered III</td><td>SNT13</td><td>Increases dark change earned by 1,000x per level</td></tr>
+                    <tr><td>Solar Powered Stardust</td><td>SNT13</td><td>Increases stardust earned by 1,000x per level</td></tr>
+                    <tr><td>Solar Powered Perks..?</td><td>SNT13</td><td>Allows centralizing perks..?</td></tr>
+                    <tr><td>Solar Powered Perks</td><td>SNT13</td><td>Allows centralizing perks</td></tr>
+                </tbody>
+            </table>
+
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
