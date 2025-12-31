@@ -200,6 +200,88 @@
         #sidebar a:hover {
             color: var(--theme-color) !important;
         }
+
+        /* 1. SIDEBAR FIX: Prevent links from going off-bottom on short screens */
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px; /* Adjust based on your width */
+    height: 100vh; /* Full viewport height */
+    overflow-y: auto; /* Adds scrollbar if menu is too long */
+    display: flex;
+    flex-direction: column;
+    background-color: #111;
+    z-index: 1000;
+    scrollbar-width: thin; /* Clean scrollbar for Firefox */
+    scrollbar-color: var(--theme-color) #111;
+}
+
+/* Custom scrollbar for Chrome/Safari */
+#sidebar::-webkit-scrollbar {
+    width: 5px;
+}
+#sidebar::-webkit-scrollbar-thumb {
+    background: var(--theme-color);
+}
+
+/* 2. DOT NAV FIX (The vertical dots on the side) */
+.dot-nav {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 100;
+    
+    /* FIX: Prevents dots from leaving screen when window is short */
+    max-height: 90vh; 
+    overflow-y: visible; 
+}
+
+/* 3. RESPONSIVE FIX: Prevent overlap at "strange" or small resolutions */
+@media (max-width: 1200px) {
+    /* If the screen isn't wide enough to hold dots + content, 
+       we move the dots or hide them to prevent overlap */
+    .dot-nav {
+        display: none; /* Simplest fix for small screens */
+    }
+}
+
+/* FIX for very short windows */
+@media (max-height: 500px) {
+    .dot-nav {
+        gap: 8px; /* Shrink spacing when window is short */
+    }
+    .dot-nav a {
+        width: 8px;  /* Shrink dot size if necessary */
+        height: 8px;
+    }
+    
+    /* Ensure the sidebar header doesn't take up too much space */
+    .sidebar-header {
+        padding: 10px;
+    }
+}
+
+/* 4. MAIN CONTENT ADJUSTMENT */
+main {
+    margin-left: 260px; /* Ensure this is wider than your sidebar */
+    margin-right: 60px; /* Create a 'safe zone' for the dot nav */
+    padding: 20px;
+    transition: margin 0.3s;
+}
+
+@media (max-width: 768px) {
+    main {
+        margin-left: 0;
+        margin-right: 0;
+        padding: 15px;
+        margin-top: 60px; /* Space for mobile header */
+    }
+}
     </style>
 </head>
 <body>
@@ -248,8 +330,8 @@
     <div id="dot-nav">
         <a href="#intro" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Intro</span></a>
         <a href="#galactic" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Galactic</span></a>
+        <a href="#stars" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Star Spending</span></a>
         <a href="#flowers" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Flowers</span></a>
-        
         <a href="#antigh" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Anti GH</span></a>
         <a href="#grassskip" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Grass Skip</span></a>
         <a href="#recovery" class="dot-item"><div class="dot-circle"></div><span class="dot-label">Recovery</span></a>
@@ -290,6 +372,9 @@
                 <ul class="toc-list">
                     <li><a href="#intro">Intro</a></li>
                     <li><a href="#galactic">Galactic</a></li>
+                 <div class="sub-list">
+                    <li><a href="#stars">Star Spending</a></li>
+                 </div>
                     <li><a href="#flowers">Flowers</a></li>
                     <li><a href="#antigh">Anti GH</a></li>
                     <div class="sub-list">
@@ -320,7 +405,7 @@
                 <li>You should not Galactic unless you need to as it is a waste of time.</li>
                 <li>You should go to Anti Realm to gain more SP from manual collection.</li>
                 <li>You should not randomly spend Stars.</li>
-                <li>You should not Sacrifice for no DM or without notable increase from the last.</li>
+                <li>You should not Sacrifice for 0 DM, or without notable increase from the last.</li>
                 <li>You should farm Moonstone from the Anti Realm as it is worth 10x!!!!</li>
             </ul>
 
@@ -339,6 +424,15 @@
                 <li><strong>5. Impossible Accomplishment:</strong> It boosts Platinum, and can only be completed by Auto Accomplishment.</li>
             </ul>
 
+            <h3 id="stars">Star Spending</h3>
+            <p>The main point of Stars is to reduce the time to reach Galactic again, allowing you to progress further than before. This means you will want to prioritize spending on things that will increase either Steel, Oil or Charge.</p>
+            <p>You should also focus on things that reduce the actions you take per Galactic, such as automation. This means you will primarily focus on the first two tabs of the Star Chart</p>
+
+            <div class="note">Your main priority must be Steel, so choose Faster Foundary first.</div>
+
+            <p>After a Galactic or two, I would recommend pushing further into the Automation Tree, as it unlocks EL Autobuyers for the steel-costing buildings. This will save a lot of time each Galactic run.</p>
+            <p>They should be obtainable with AGH 19, Moonstone Stars and some Grass Skips</p>
+
             <h2 id="flowers">Flowers</h2>
             <p>Rare flower is a new currency you unlock from Galactic. They function in the same way as normal Flowers except you get 50 Rare Flowers every hour and they can only be spent on the Rare Flower Shop. For now you can only buy time warps.</p>
 
@@ -346,7 +440,7 @@
             <div class="note">Do not convert Flowers into Rare Flowers, keep using your normal Flowers to buy Mini Time Warp Generation and Capacity.</div>
 
             <h2 id="antigh">Anti GH</h2>
-            <p><strong>Anti-Grasshop (AGH)</strong> Milestones gives boosts depending on how many Grasshops you did when you Galactic. This is how you will progress through Galactic. For now AGH milestones are not reset and are not revoked if you do a Galactic with more Grasshops.</p>
+            <p><strong>Anti-Grasshop (AGH)</strong> Milestones give boosts depending on how many Grasshops you did when you Galactic. This is how you will progress through Galactic. For now AGH milestones are not reset and are not revoked if you do a Galactic with more Grasshops.</p>
 
             <p>Assuming you got AGH 25 on your first galactic, the next AGH milestone you should get is AGH 19. Going any lower would take way too long. AGH 19 will unlock the Star Accumulator in the factory for 1Ud Steel and make astral levels boost stars, which will help you get more stars.</p>
             <p>The recommended order of the AGH milestones you want to get is 25 > 19 > 13 > 7 > 0, however, you will not be able to immediately hop from one AGH milestone to another, as you will need to do some star runs in between to grind stars.</p>
