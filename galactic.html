@@ -209,13 +209,17 @@
     width: 250px; /* Adjust based on your width */
     height: 100vh; /* Full viewport height */
     overflow-y: auto; /* Adds scrollbar if menu is too long */
+    -webkit-overflow-scrolling: touch; /* Smooth momentum scrolling on iOS */
+    box-sizing: border-box;
+    padding-bottom: env(safe-area-inset-bottom, 12px); /* Ensure bottom safe area is respected on mobile */
+    min-height: 0; /* Allows flex children to shrink and overflow properly */
     display: flex;
     flex-direction: column;
     background-color: #111;
     z-index: 1000;
     scrollbar-width: thin; /* Clean scrollbar for Firefox */
     scrollbar-color: var(--theme-color) #111;
-}
+} 
 
 /* Custom scrollbar for Chrome/Safari */
 #sidebar::-webkit-scrollbar {
@@ -280,6 +284,11 @@ main {
         margin-right: 0;
         padding: 15px;
         margin-top: 60px; /* Space for mobile header */
+    }
+
+    /* Give the nav extra bottom space so the external buttons can be scrolled to */
+    #sidebar nav {
+        padding-bottom: calc(96px + env(safe-area-inset-bottom, 12px));
     }
 }
     </style>
