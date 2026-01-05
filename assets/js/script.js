@@ -481,4 +481,111 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollSpy();
     addExternalButtons();
     enhanceExistingDotNav();
+
+    // --- Sidebar collapsible sections ---
+    function makeSidebarSectionsCollapsible() {
+        if (!sidebar) return;
+        const nav = sidebar.querySelector('nav');
+        if (!nav) return;
+
+        // Avoid running twice
+        if (nav.dataset.collapsible === 'true') return;
+        nav.dataset.collapsible = 'true';
+
+        // Build sections: group links between section-title nodes
+        const children = Array.from(nav.children);
+        const sections = [];
+        const topLinks = [];
+        let current = null;
+        let firstSectionFound = false;
+
+        function pushCurrent() {
+            if (current) sections.push(current);
+            current = null;
+        }
+
+        children.forEach(node => {
+            if (node.classList && node.classList.contains('section-title')) {
+                // start a new section
+                firstSectionFound = true;
+                pushCurrent();
+                current = { titleNode: node, links: [] };
+            } else if (node.tagName && node.tagName.toLowerCase() === 'a') {
+                const text = (node.textContent || '').trim();
+                // Keep Home and Tools links at the top (not collapsible)
+                if (!firstSectionFound && (text === 'Home' || text.startsWith('Home') || text.includes('Tools'))) {
+                    topLinks.push(node);
+                } else {
+                    if (!current) {
+                        // If links appear before any section-title, create a default untitled section
+                        current = { titleNode: null, links: [] };
+                    }
+                    current.links.push(node);
+                }
+            } else if (node.classList && node.classList.contains('external-buttons')) {
+                // leave external buttons in place; push current then append as-is later
+                pushCurrent();
+                sections.push({ titleNode: null, links: [], extraNode: node });
+            } else {
+                // ignore other nodes
+            }
+        });
+        pushCurrent();
+
+        if (!sections.length && !topLinks.length) return;
+
+        // Clear existing nav and rebuild grouped sections
+        nav.innerHTML = ''; 
+        // append Home/Tools top links first
+        topLinks.forEach(n => nav.appendChild(n.cloneNode(true)));
+        sections.forEach((sec, i) => {
+            if (sec.extraNode) {
+                // append the extra node (external buttons)
+                nav.appendChild(sec.extraNode);
+                return;
+            }
+
+            const wrapper = document.createElement('div');
+            wrapper.className = 'sidebar-section';
+
+            const title = sec.titleNode ? sec.titleNode.cloneNode(true) : document.createElement('div');
+            title.classList.add('section-title');
+            if (!sec.titleNode) title.textContent = 'Links';
+            title.setAttribute('role','button');
+            title.setAttribute('tabindex','0');
+
+            // Add caret indicator
+            const caret = document.createElement('span');
+            caret.className = 'section-caret';
+            caret.setAttribute('aria-hidden','true');
+            title.appendChild(caret);
+
+            const linksContainer = document.createElement('div');
+            linksContainer.className = 'section-links';
+
+            sec.links.forEach(a => linksContainer.appendChild(a.cloneNode(true)));
+
+            wrapper.appendChild(title);
+            wrapper.appendChild(linksContainer);
+            nav.appendChild(wrapper);
+
+            // initial state: closed unless user opened before
+            const key = 'sidebar-section-open:' + (title.textContent || 'section-' + i).trim();
+            const opened = localStorage.getItem(key) === 'true';
+            if (opened) wrapper.classList.add('open');
+
+            function setOpen(open) {
+                if (open) wrapper.classList.add('open');
+                else wrapper.classList.remove('open');
+                localStorage.setItem(key, !!open);
+            }
+
+            // click / keyboard to toggle
+            title.addEventListener('click', () => setOpen(!wrapper.classList.contains('open')));
+            title.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setOpen(!wrapper.classList.contains('open')); } });
+        });
+    }
+
+    // Run the collapsible builder after other nav-adds (external buttons) so we group everything
+    makeSidebarSectionsCollapsible();
 });
