@@ -16,27 +16,106 @@
             --theme-color: #00d4ff; /* Galactic Blue */
         }
 
-                /* --- TEXT CONTENT STYLES (The fix for spacing) --- */
+        /* =========================================
+           1. SIDEBAR & LAYOUT FIX (The New Code)
+           ========================================= */
+        
+        /* Sidebar Structure */
+        #sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px; 
+            height: 100vh;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            box-sizing: border-box;
+            padding-bottom: env(safe-area-inset-bottom, 12px);
+            display: flex;
+            flex-direction: column;
+            background-color: #111;
+            z-index: 1000;
+            scrollbar-width: thin;
+            scrollbar-color: var(--theme-color) #111;
+        } 
+
+        #sidebar::-webkit-scrollbar { width: 5px; }
+        #sidebar::-webkit-scrollbar-thumb { background: var(--theme-color); }
+
+        /* Dot Navigation Positioning & Fix */
+        #dot-nav {
+            position: fixed;
+            left: 280px; /* Sidebar (250) + Gap (30) */
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 900;
+            width: 180px; /* Fixed width for collision calculation */
+        }
+
+        /* COLLISION LOGIC: Hide dots if screen is too short or too narrow */
+        @media (max-height: 850px) {
+            #dot-nav, .dot-nav { display: none !important; }
+        }
+        @media (max-width: 1650px) {
+            #dot-nav, .dot-nav { display: none !important; }
+        }
+
+        /* Main Content Adjustment */
+        main {
+            margin-left: 260px; 
+            padding: 40px;
+            transition: margin 0.3s;
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            main {
+                margin-left: 0;
+                padding: 20px;
+                margin-top: 60px; 
+            }
+            #sidebar nav {
+                padding-bottom: calc(96px + env(safe-area-inset-bottom, 12px));
+            }
+        }
+
+        /* Sidebar Link Coloring */
+        #sidebar a.active {
+            color: var(--theme-color) !important;
+            border-left-color: var(--theme-color) !important;
+        }
+        #sidebar a:hover {
+            color: var(--theme-color) !important;
+        }
+
+        /* =========================================
+           2. TYPOGRAPHY & CONTENT STYLES
+           ========================================= */
+
+        /* Text Spacing */
         p {
-            line-height: 1.7;        /* Increases space between lines of text */
-            margin-bottom: 1.5rem;   /* Adds space after every paragraph */
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
             color: #ccc;
             font-family: 'Roboto', sans-serif;
         }
 
-        /* Spacing for lists within the guide content */
         .guide-container ul {
             margin-bottom: 1.5rem;
             padding-left: 1.5rem;
         }
 
         .guide-container li {
-            margin-bottom: 0.8rem;   /* Space between list items */
+            margin-bottom: 0.8rem;
             line-height: 1.6;
             color: #ccc;
         }
-        
-        /* --- HEADINGS --- */
+        li ul { margin-top: 8px; }
+
+        /* Headings */
         h1.main-title {
             font-family: 'Orbitron', sans-serif;
             font-size: 3.5rem;
@@ -44,7 +123,7 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 1rem;
-            text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+            text-shadow: 0 0 12px rgba(255, 59, 59, 0.6);
         }
 
         h2 {
@@ -57,7 +136,7 @@
             border-bottom: 2px solid #333;
             position: relative;
         }
-        
+
         h2::after {
             content: '';
             position: absolute;
@@ -69,12 +148,11 @@
             box-shadow: 0 0 10px var(--theme-color);
         }
 
-        /* Major Checkpoint Headers */
         h2.major-checkpoint {
             font-size: 2.5rem;
             color: var(--theme-color);
             border-bottom: 4px solid var(--theme-color);
-            text-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
+            text-shadow: 0 0 10px rgba(179, 0, 0, 0.2);
         }
 
         h3 {
@@ -84,8 +162,7 @@
             margin-top: 2rem;
             margin-bottom: 1rem;
         }
-
-        /* --- TABLE OF CONTENTS --- */
+        
         .toc-box {
             background-color: #151515;
             border: 1px solid #333;
@@ -103,46 +180,53 @@
         }
         .toc-list {
             list-style: none;
-            column-count: 1; /* single column for better hierarchy */
             padding-left: 0;
             font-family: 'Yuruka', 'Orbitron', sans-serif !important;
             font-weight: 700;
         }
-        .toc-list li {
-            margin-bottom: 8px;
-        }
+        .toc-list li { margin-bottom: 8px; }
         .toc-list .sub-list {
-            margin: 8px 0 8px 24px; /* stronger indent for sub-items */
+            margin: 8px 0 8px 24px;
             padding-left: 12px;
             border-left: 2px solid rgba(255,255,255,0.09);
         }
-        .toc-list a {
-            color: #ddd;
-            text-decoration: none;
-            transition: color 0.2s;
-            font-size: 0.95rem;
-            font-weight: 700;
-        }
-        .toc-list a:hover {
-            color: var(--theme-color);
-            text-decoration: underline;
-        }
-        @media (max-width: 768px) {
-            .toc-list { column-count: 1; }
-        }
+        .toc-list a { color: #ddd; text-decoration: none; transition: color 0.2s; font-size: 0.95rem; font-weight: 700; }
+        .toc-list a:hover { color: var(--theme-color); text-decoration: underline; }
 
-        /* --- CREDITS BOX --- */
+        /* Credits Box */
         .credits-box {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid #333;
             border-left: 4px solid var(--theme-color);
-            border-radius: 6px;
             padding: 1.5rem;
             margin-bottom: 3rem;
+            border-radius: 6px;
             display: flex;
             flex-direction: column;
             gap: 10px;
         }
+        .credits-header { font-family: 'Orbitron', sans-serif; font-size: 0.9rem; color: var(--theme-color); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
+        .credits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; font-size: 0.95rem; color: #bbb; }
+        .credit-role { font-weight: bold; color: #fff; margin-right: 5px; }
+
+        /* Note Style */
+        .note { background-color: #151515; border-left: 2px solid var(--theme-color); padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; font-size: 0.95rem; color: #cccccc; transition: transform 0.2s; }
+        .note:hover { background-color: #1a1a1a; }
+        .note strong { color: #fff; }
+
+        /* Warning & Important Notice */
+        .warning-text { color: #ff5555; font-weight: bold; text-transform: uppercase; }
+        .important-notice { border: 2px solid #ff5555; background-color: rgba(255, 85, 85, 0.1); padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem; text-align: center; }
+
+        /* -------------------- PAGE-SPECIFIC OVERRIDES -------------------- */
+        /* Keep the single-column toc and mobile fallback */
+        .toc-list { column-count: 1; }
+        @media (max-width: 768px) { .toc-list { column-count: 1; } }
+
+        /* Theme-specific title shadows to match original look */
+        h1.main-title { text-shadow: 0 0 10px rgba(0, 212, 255, 0.3); }
+        h2.major-checkpoint { text-shadow: 0 0 10px rgba(0, 212, 255, 0.2); }
+
 
         .credits-header {
             font-family: 'Orbitron', sans-serif;
@@ -201,96 +285,86 @@
             color: var(--theme-color) !important;
         }
 
-        /* 1. SIDEBAR FIX: Prevent links from going off-bottom on short screens */
-#sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 250px; /* Adjust based on your width */
-    height: 100vh; /* Full viewport height */
-    overflow-y: auto; /* Adds scrollbar if menu is too long */
-    -webkit-overflow-scrolling: touch; /* Smooth momentum scrolling on iOS */
-    box-sizing: border-box;
-    padding-bottom: env(safe-area-inset-bottom, 12px); /* Ensure bottom safe area is respected on mobile */
-    min-height: 0; /* Allows flex children to shrink and overflow properly */
-    display: flex;
-    flex-direction: column;
-    background-color: #111;
-    z-index: 1000;
-    scrollbar-width: thin; /* Clean scrollbar for Firefox */
-    scrollbar-color: var(--theme-color) #111;
-} 
+        /* --- 1. SIDEBAR CONFIGURATION --- */
+        #sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px; 
+            height: 100vh;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            box-sizing: border-box;
+            padding-bottom: env(safe-area-inset-bottom, 12px);
+            display: flex;
+            flex-direction: column;
+            background-color: #111;
+            z-index: 1000;
+            scrollbar-width: thin;
+            scrollbar-color: var(--theme-color) #111;
+        } 
 
-/* Custom scrollbar for Chrome/Safari */
-#sidebar::-webkit-scrollbar {
-    width: 5px;
-}
-#sidebar::-webkit-scrollbar-thumb {
-    background: var(--theme-color);
-}
+        #sidebar::-webkit-scrollbar { width: 5px; }
+        #sidebar::-webkit-scrollbar-thumb { background: var(--theme-color); }
 
-/* 2. DOT NAV FIX (The vertical dots on the side) */
-.dot-nav {
-    position: fixed;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    z-index: 100;
-    
-    /* FIX: Prevents dots from leaving screen when window is short */
-    max-height: 90vh; 
-    overflow-y: visible; 
-}
+        /* --- 2. DOT NAVIGATION (The fix) --- */
+        #dot-nav {
+            position: fixed;
+            /* Sidebar (250px) + Gap (30px) */
+            left: 280px; 
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 900;
+            /* Give it a fixed width so we can calculate overlap precisely */
+            width: 180px; 
+        }
 
-/* 3. RESPONSIVE FIX: Prevent overlap at "strange" or small resolutions */
-@media (max-width: 1200px) {
-    /* If the screen isn't wide enough to hold dots + content, 
-       we move the dots or hide them to prevent overlap */
-    .dot-nav {
-        display: none; /* Simplest fix for small screens */
-    }
-}
+        /* --- 3. RESPONSIVE & COLLISION FIXES --- */
+        
+        /* HEIGHT COLLISION: 
+           The menu is approx 600px tall. It needs 300px clearance top & bottom.
+           If the window is shorter than 850px, the dots will clip off-screen. 
+           We hide them to prevent this. */
+        @media (max-height: 850px) {
+            #dot-nav, .dot-nav {
+                display: none !important;
+            }
+        }
 
-/* FIX for very short windows */
-@media (max-height: 500px) {
-    .dot-nav {
-        gap: 8px; /* Shrink spacing when window is short */
-    }
-    .dot-nav a {
-        width: 8px;  /* Shrink dot size if necessary */
-        height: 8px;
-    }
-    
-    /* Ensure the sidebar header doesn't take up too much space */
-    .sidebar-header {
-        padding: 10px;
-    }
-}
+        /* WIDTH COLLISION:
+           Math: Sidebar (250) + Dots (180) + Gap (40) = 470px on the left.
+           Your content is 900px wide and centered.
+           Collision happens when the screen is narrower than approx 1600px.
+           We set it to 1650px to ensure 0px overlap with scrollbars included. */
+        @media (max-width: 1650px) {
+            #dot-nav, .dot-nav {
+                display: none !important;
+            }
+        }
 
-/* 4. MAIN CONTENT ADJUSTMENT */
-main {
-    margin-left: 260px; /* Ensure this is wider than your sidebar */
-    margin-right: 60px; /* Create a 'safe zone' for the dot nav */
-    padding: 20px;
-    transition: margin 0.3s;
-}
+        /* --- 4. MAIN CONTENT ADJUSTMENT --- */
+        main {
+            /* Standard margins */
+            margin-left: 260px; 
+            padding: 40px;
+            transition: margin 0.3s;
+            position: relative;
+        }
 
-@media (max-width: 768px) {
-    main {
-        margin-left: 0;
-        margin-right: 0;
-        padding: 15px;
-        margin-top: 60px; /* Space for mobile header */
-    }
+        @media (max-width: 768px) {
+            main {
+                margin-left: 0;
+                padding: 20px;
+                margin-top: 60px; /* Space for mobile header */
+            }
 
-    /* Give the nav extra bottom space so the external buttons can be scrolled to */
-    #sidebar nav {
-        padding-bottom: calc(96px + env(safe-area-inset-bottom, 12px));
-    }
-}
+            #sidebar nav {
+                padding-bottom: calc(96px + env(safe-area-inset-bottom, 12px));
+            }
+        }
     </style>
 </head>
 <body>

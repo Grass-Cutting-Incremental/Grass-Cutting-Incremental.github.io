@@ -12,9 +12,21 @@
     
     <style>
         /* --- PAGE THEME CONFIGURATION --- */
-        :root {
-            --theme-color: #ffaa00; /* Supernova Orange/Gold */
-        }
+        :root { --theme-color: #ffee00; /* Supernova Yellow */ }
+
+        #sidebar { position: fixed; top: 0; left: 0; width: 250px; height: 100vh; overflow-y: auto; -webkit-overflow-scrolling: touch; box-sizing: border-box; padding-bottom: env(safe-area-inset-bottom, 12px); display: flex; flex-direction: column; background-color: #111; z-index: 1000; scrollbar-width: thin; scrollbar-color: var(--theme-color) #111; }
+        #sidebar::-webkit-scrollbar { width: 5px; }
+        #sidebar::-webkit-scrollbar-thumb { background: var(--theme-color); }
+        #dot-nav { position: fixed; left: 280px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 12px; z-index: 900; width: 180px; }
+        @media (max-height: 850px) { #dot-nav, .dot-nav { display: none !important; } }
+        @media (max-width: 1650px) { #dot-nav, .dot-nav { display: none !important; } }
+
+        p { line-height: 1.7; margin-bottom: 1.5rem; color: #ccc; font-family: 'Roboto', sans-serif; }
+        .toc-box { background-color: #151515; border: 1px solid #333; border-left: 4px solid var(--theme-color); padding: 1.5rem; margin-bottom: 3rem; border-radius: 6px; }
+        .toc-list { list-style: none; column-count: 1; padding-left: 0; font-family: 'Yuruka', 'Orbitron', sans-serif !important; font-weight: 700; }
+        @media (max-width: 768px) { .toc-list { column-count: 1; } }
+
+        h1.main-title { text-shadow: 0 0 10px rgba(255, 238, 0, 0.4); }
 
         /* --- HEADINGS --- */
         h1.main-title {
@@ -24,7 +36,7 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 1rem;
-            text-shadow: 0 0 10px rgba(255, 170, 0, 0.4);
+            text-shadow: 0 0 10px rgba(255, 238, 0, 0.4);
         }
 
         h2 {
@@ -54,7 +66,7 @@
             font-size: 2.5rem;
             color: var(--theme-color);
             border-bottom: 4px solid var(--theme-color);
-            text-shadow: 0 0 10px rgba(255, 170, 0, 0.2);
+            text-shadow: 0 0 10px rgba(255, 238, 0, 0.2);
         }
 
         h3 {
