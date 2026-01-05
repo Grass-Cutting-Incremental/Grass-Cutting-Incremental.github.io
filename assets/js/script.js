@@ -159,6 +159,23 @@ document.addEventListener('DOMContentLoaded', () => {
             navDots.forEach(dot => {
                 dot.classList.toggle('active', dot.getAttribute('href') === '#' + current);
             });
+
+            // --- Dynamic page theming for Tower floors ---
+            try {
+                const isTower = window.location.pathname.endsWith('tower.html') || document.body.classList.contains('tower-page');
+                if (isTower) {
+                    const floorColors = {
+                        'f1': '#4ade80',
+                        'f2': '#f472b6',
+                        'f3': '#60a5fa',
+                        'f4': '#16a34a',
+                        'f5': '#dc2626'
+                    };
+                    const defaultColor = '#ffffff';
+                    const newColor = floorColors[current] || defaultColor;
+                    document.documentElement.style.setProperty('--theme-color', newColor);
+                }
+            } catch (e) { /* ignore errors */ }
         }
 
         window.addEventListener('scroll', updateActive);
@@ -553,6 +570,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!sec.titleNode) title.textContent = 'Links';
             title.setAttribute('role','button');
             title.setAttribute('tabindex','0');
+
+            // Add semantic classes for coloring: w1, w2, bonus
+            const titleText = (title.textContent || '').trim().toLowerCase();
+            if (titleText.includes('world 1')) title.classList.add('w1');
+            else if (titleText.includes('world 2')) title.classList.add('w2');
+            else if (titleText.includes('bonus')) title.classList.add('bonus');
 
             // Add caret indicator
             const caret = document.createElement('span');

@@ -328,7 +328,78 @@ li { margin-bottom: 8px; color: #ddd; }
     letter-spacing: 1px;
     border-bottom: 1px solid #222;
     padding-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
 }
+
+/* caret indicator */
+.section-title .section-caret {
+    width: 12px;
+    height: 12px;
+    border-left: 2px solid #888;
+    border-bottom: 2px solid #888;
+    transform: rotate(-45deg);
+    display: inline-block;
+    margin-left: 10px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+/* collapsed links container */
+.sidebar-section .section-links {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.28s ease, padding 0.2s ease;
+    padding-left: 4px;
+}
+
+/* open state */
+.sidebar-section.open .section-links {
+    max-height: 2000px; /* large enough for content */
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+/* rotate caret when open */
+.sidebar-section.open .section-title .section-caret {
+    transform: rotate(45deg);
+    border-color: var(--theme-color);
+}
+
+/* small spacing for links inside section */
+.sidebar-section .section-links a { padding-left: 24px; }
+
+/* Section title color variants */
+.section-title.w1 { color: #4ade80; }
+.section-title.w2 { color: #15803d; }
+.section-title.bonus { color: #00e1ff; }
+
+/* Caret color per section */
+.section-title.w1 .section-caret { border-left-color: #4ade80; border-bottom-color: #4ade80; }
+.section-title.w2 .section-caret { border-left-color: #15803d; border-bottom-color: #15803d; }
+.section-title.bonus .section-caret { border-left-color: #00e1ff; border-bottom-color: #00e1ff; }
+
+/* Keep title color obvious when open */
+.sidebar-section.open .section-title.w1 { color: #4ade80; }
+.sidebar-section.open .section-title.w2 { color: #15803d; }
+.sidebar-section.open .section-title.bonus { color: #00e1ff; }
+
+/* --- Sidebar section color themes --- */
+.sidebar-section.w1 .section-title { color: #9AE6B4 !important; }
+.sidebar-section.w2 .section-title { color: #16A34A !important; }
+.sidebar-section.bonus .section-title { color: #06B6D4 !important; }
+
+/* caret color per section when open */
+.sidebar-section.w1.open .section-title .section-caret { border-color: #9AE6B4; }
+.sidebar-section.w2.open .section-title .section-caret { border-color: #16A34A; }
+.sidebar-section.bonus.open .section-title .section-caret { border-color: #06B6D4; }
+
+/* ensure links in section use theme on hover */
+.sidebar-section.w1 .section-links a:hover { color: #9AE6B4; }
+.sidebar-section.w2 .section-links a:hover { color: #16A34A; }
+.sidebar-section.bonus .section-links a:hover { color: #06B6D4; }
+
 
 
 /* --- DOT NAVIGATION (Left Side) --- */

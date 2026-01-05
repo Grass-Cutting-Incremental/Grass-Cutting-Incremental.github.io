@@ -12,7 +12,7 @@
     
     <style>
         /* --- PAGE THEME CONFIGURATION --- */
-        :root { --theme-color: #f59e0b; /* Tower Amber */ }
+        :root { --theme-color: #ffffff; /* Default: White (tower base) */ }
 
         #sidebar { position: fixed; top: 0; left: 0; width: 250px; height: 100vh; overflow-y: auto; -webkit-overflow-scrolling: touch; box-sizing: border-box; padding-bottom: env(safe-area-inset-bottom, 12px); display: flex; flex-direction: column; background-color: #111; z-index: 1000; scrollbar-width: thin; scrollbar-color: var(--theme-color) #111; }
         #sidebar::-webkit-scrollbar { width: 5px; }
@@ -188,7 +188,7 @@
 
     </style>
 </head>
-<body>
+<body class="tower-page">
 
     <!-- Mobile Header -->
     <header class="mobile-header">
