@@ -22,6 +22,22 @@
         @media (max-height: 850px) { #dot-nav, .dot-nav { display: none !important; } }
         @media (max-width: 1650px) { #dot-nav, .dot-nav { display: none !important; } }
 
+        main { margin-left: 260px; padding: 40px; transition: margin 0.3s; position: relative; }
+        @media (max-width: 768px) { main { margin-left: 0; padding: 20px; margin-top: 60px; } #sidebar nav { padding-bottom: calc(96px + env(safe-area-inset-bottom, 12px)); } }
+
+        /* --- DOT NAV OVERRIDES FOR LONG LISTS --- */
+        #dot-nav {
+            top: 100px;
+            bottom: 50px;
+            transform: none;
+            overflow-y: auto;
+            padding-right: 10px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            gap: 10px;
+        }
+        #dot-nav::-webkit-scrollbar { display: none; }
+
         p { line-height: 1.7; margin-bottom: 1.5rem; color: #ccc; font-family: 'Roboto', sans-serif; }
         .guide-container ul { margin-bottom: 1.5rem; padding-left: 1.5rem; }
         .guide-container li { margin-bottom: 0.8rem; line-height: 1.6; color: #ccc; }
@@ -84,6 +100,8 @@
             background-color: var(--theme-color);
             box-shadow: 0 0 10px var(--theme-color);
         }
+
+        h2.major-checkpoint { font-size: 2.5rem; color: var(--theme-color); border-bottom: 4px solid var(--theme-color); text-shadow: 0 0 10px rgba(74, 222, 128, 0.2); }
 
         h3 {
             font-family: 'Orbitron', sans-serif;
@@ -303,7 +321,7 @@
                     <li><a href="#saves">Save Files & Modifiers</a></li>
                     <li><a href="#flowers">Flowers</a></li>
                     <li><a href="#crystallize">Crystallize</a></li>
-                    <li><a href="#accomplishments">Accomplishments</a></li>
+                    <li><a href="#accomplishments">Accomplish</a></li>
                     <li><a href="#grasshop">Grasshop</a></li>
                     <li><a href="#steelie">Steelie</a></li>
                     <li><a href="#charger">Charger & Assembler</a></li>
@@ -312,7 +330,7 @@
                     <li><a href="#liquefy">Liquefy</a></li>
                     <li><a href="#refinery">Refinery</a></li>
                     <li><a href="#rocket">Rocket Launch Pad</a></li>
-                    <li><a href="#abbreviations">Abbreviations</a></li>
+                    <li><a href="#abbreviations">Abbrevs</a></li>
                 </ul>
             </div>
 
