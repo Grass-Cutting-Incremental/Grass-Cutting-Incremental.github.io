@@ -1,11 +1,37 @@
-# GrassCuttingIncremental.github.io
+# Grass Cutting Incremental — Site
 
-## Project structure (updated)
+A lightweight static site hosting guides and resources for the Roblox game "Grass Cutting Incremental".
 
-- assets/css/ — project stylesheet (moved from project root)
-- assets/js/ — site scripts (moved from project root)
-- assets/img/ — images and favicon (moved from project root)
+## Overview
 
-Notes:
-- All HTML files were updated to reference the new asset paths so the site should continue to work when served from the repository root.
-- If you'd like a larger refactor (e.g., extracting repeated inline styles into shared CSS or moving pages into a `src/` folder with a build step), I can propose that as a next step.
+This repository contains the site's HTML, CSS, images, and client-side JavaScript. The site is intended to be hosted on GitHub Pages (https://grasscuttingincremental.github.io/).
+
+## Quick preview
+
+- To preview locally, run a simple HTTP server from the project root:
+
+  - Python 3: `python -m http.server 8000`
+  - Then open: `http://localhost:8000/`
+
+## Project structure
+
+- `index.html` — Home page
+- `*.html` — Guide pages (each page includes the same sidebar)
+- `404.html` — 404 page
+- `assets/css/` — Stylesheets
+- `assets/js/` — Site scripts
+- `assets/img/` — Images and favicon
+
+## Contributing
+
+- Edit the appropriate HTML file for content changes.
+- Add images to `assets/img/` and styles to `assets/css/style.css`.
+- Send a pull request; include screenshots for visual changes.
+
+## Maintainer
+
+Maintained by GrandDom (Actiari).
+
+## License
+
+No license is specified in this repository. If you want to add an open-source license, add a `LICENSE` file to the repo.

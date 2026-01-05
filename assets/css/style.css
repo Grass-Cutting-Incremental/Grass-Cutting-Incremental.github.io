@@ -400,6 +400,26 @@ li { margin-bottom: 8px; color: #ddd; }
 .sidebar-section.w2 .section-links a:hover { color: #16A34A; }
 .sidebar-section.bonus .section-links a:hover { color: #06B6D4; }
 
+/* Maintainer note styles */
+.sidebar-maintainer {
+    margin: 1rem;
+    padding: 0.6rem 0.9rem;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid #222;
+    border-radius: 8px;
+    color: #ddd;
+    font-size: 0.85rem;
+    text-align: center;
+}
+.sidebar-maintainer strong { color: #4ade80; font-weight:700; }
+
+.maintained-note {
+    margin-top: 1.25rem;
+    font-size: 1rem;
+    color: #cfd8cc;
+}
+.maintained-note strong { color: #4ade80; font-weight:600; }
+
 
 
 /* --- DOT NAVIGATION (Left Side) --- */
