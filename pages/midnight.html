@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Midnight - GCI Guide</title>
     <!-- FAVICON -->
-    <link rel="icon" type="image/x-icon" href="assets/img/Main.ico">
+    <link rel="icon" type="image/x-icon" href="../assets/img/Main.ico">
     
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     
     <style>
@@ -103,6 +103,21 @@
         }
         .toc-list li {
             margin-bottom: 8px;
+        }
+        .toc-list li.toc-divider {
+            display: flex;
+            align-items: center;
+            height: auto;
+            margin: 12px 0;
+            padding: 0;
+            line-height: 0;
+        }
+        .toc-list li.toc-divider::before {
+            content: '';
+            display: block;
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, rgba(139, 92, 246, 0), rgba(139, 92, 246, 0.5), rgba(139, 92, 246, 0));
         }
         .toc-list .sub-list {
             margin: 8px 0 8px 24px; /* stronger indent for sub-items */
@@ -297,22 +312,27 @@
                     <li><a href="#ml1">Midnight Level 1</a></li>
                     <li><a href="#recov-gen">General Midnight Recovery</a></li>
                     <li><a href="#recov1">Midnight Level 1 Recovery</a></li>
+                    <li class="toc-divider"></li>
                     <li><a href="#ml2">Midnight Level 2</a></li>
                     <li><a href="#recov2">Midnight Level 2 Recovery</a></li>
                     <li><a href="#ml3">Midnight Level 3</a></li>
                     <li><a href="#recov3">Midnight Level 3 Recovery</a></li>
+                    <li class="toc-divider"></li>
                     <li><a href="#ml4">Midnight Level 4</a></li>
                     <li><a href="#ml5">Midnight Level 5</a></li>
                     <li><a href="#ml6">Midnight Level 6 & Cactus Trials</a></li>
                     <li><a href="#ml7">Midnight Level 7</a></li>
+                    <li class="toc-divider"></li>
                     <li><a href="#ml8">Midnight Level 8</a></li>
                     <li><a href="#ml9">Midnight Level 9</a></li>
                     <li><a href="#ml10">Midnight Level 10</a></li>
                     <li><a href="#ml11">Midnight Level 11</a></li>
+                    <li class="toc-divider"></li>
                     <li><a href="#ml12">Midnight Level 12</a></li>
                     <li><a href="#ml13">Midnight Level 13</a></li>
                     <li><a href="#ml14">Midnight Level 14</a></li>
                     <li><a href="#ml15">Midnight Level 15</a></li>
+                    <li class="toc-divider"></li>
                     <li><a href="#ml16">Midnight Level 16 - 21</a></li>
                     <li><a href="#rift">The Great Rift Push</a></li>
                 </ul>
@@ -329,7 +349,7 @@
                 <li class="warning-text">Destabilizing and Performing a Twilight at the same time. Only Destabilize after fully recovering from a Twilight, especially if you have the desert exp core upgrade.</li>
             </ul>
 
-            <div class="note">Note: time warps work at 20% effectiveness for the desert and upper Temple, 15% for RP and DP and 10% for gauntlets.</div>
+            <div class="note"><strong>Note:</strong>  time warps work at 20% effectiveness for the desert and upper Temple, 15% for RP and DP and 10% for gauntlets.</div>
 
             <p>This guide will ideally serve as a fall back if you can’t progress. You are urged to make your own decisions and experiment.</p>
 
@@ -343,7 +363,7 @@
 
             <p>As for upgrades you should buy: 1 LR generation (light rune), 1 Sand generation, 1 SSP, 1 Core multi, Vase and remnant automation.</p>
 
-            <div class="note">
+            <div class="note"><strong>Note:</strong> 
                 Notes:<br>
                 - You can buy DP instead of some automations if you want to.<br>
                 - Do not buy RP as you are given a x10 RP boost on Midnight level 1.<br>
@@ -645,6 +665,6 @@
         </div>
     </main>
 
-    <script src="assets/js/script.js"></script>
+    <script src="../assets/js/script.js"></script>
 </body>
 </html>
