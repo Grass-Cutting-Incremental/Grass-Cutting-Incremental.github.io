@@ -70,7 +70,7 @@ body {
     transition: all 0.2s;
 }
 
-/* External link buttons (Wiki / Discord) */
+/* External link buttons (Wiki) */
 .external-buttons {
     padding: 0 1rem 1rem 1rem;
     display: flex;
@@ -96,7 +96,6 @@ body {
 }
 .external-buttons .btn.wiki { background: linear-gradient(180deg,#16a34a,#15803d); }
 .external-buttons .btn.wiki img { width: 18px; height: 18px; }
-.external-buttons .btn.discord { background: linear-gradient(180deg,#7c3aed,#6d28d9); }
 .external-buttons .btn:hover { transform: translateY(-2px); }
 
 @media (max-width: 768px) {

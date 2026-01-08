@@ -443,7 +443,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // External Buttons (Wiki / Discord)
+    // External Buttons (Wiki)
     function addExternalButtons() {
         if (!sidebar) return;
         if (sidebar.querySelector('.external-buttons')) return; // already added
@@ -463,27 +463,7 @@ document.addEventListener('DOMContentLoaded', () => {
         wiki.appendChild(wikiImg);
         wiki.appendChild(document.createTextNode(' Go to the GCI Wiki!'));
 
-        const discord = document.createElement('a');
-        discord.className = 'btn discord';
-        discord.href = 'https://discord.gg/xk7CdTQt';
-        discord.target = '_blank';
-        discord.rel = 'noopener noreferrer';
-        // Inline Discord SVG icon (created below to avoid escaping issues)
-
-        // Create SVG manually to avoid escaping issues
-        const svgNS = 'http://www.w3.org/2000/svg';
-        const svg = document.createElementNS(svgNS, 'svg');
-        svg.setAttribute('class', 'btn-icon');
-        svg.setAttribute('viewBox', '0 0 24 24');
-        const path = document.createElementNS(svgNS, 'path');
-        path.setAttribute('fill', '#FFFFFF');
-        path.setAttribute('d', 'M20.317 4.369A19.791 19.791 0 0016.956 3c-.2.349-.435.806-.6 1.163-1.796-.269-3.555-.269-5.181 0-.165-.357-.4-.814-.6-1.163A19.736 19.736 0 003.683 4.37C.677 9.048-.3 13.57.066 18.03 3.0 19.712 6.0 20.9 9.2 21.318c.583-.797 1.104-1.63 1.55-2.47-2.67-.8-4.63-2.2-5.6-3.6 0 0 .47.32 1.27.87 2.3.97 4.8 1.59 7.4 1.9 2.6-.31 5.1-.93 7.4-1.9.8-.54 1.27-.87 1.27-.87-.98 1.39-2.95 2.8-5.62 3.6.45.84.97 1.67 1.55 2.47 3.2-.42 6.2-1.605 9.14-3.288C24.3 13.57 23.3 9.048 20.317 4.369zM8.02 14.8c-1.03 0-1.87-.95-1.87-2.12 0-1.17.83-2.12 1.87-2.12 1.05 0 1.9.95 1.87 2.12 0 1.17-.82 2.12-1.87 2.12zm7.96 0c-1.03 0-1.87-.95-1.87-2.12 0-1.17.83-2.12 1.87-2.12 1.05 0 1.9.95 1.87 2.12 0 1.17-.82 2.12-1.87 2.12z');
-        svg.appendChild(path);
-        discord.appendChild(svg);
-        discord.appendChild(document.createTextNode(' Join The Discord!'));
-
         container.appendChild(wiki);
-        container.appendChild(discord);
 
         const navEl = sidebar.querySelector('nav');
         if (navEl && navEl.parentNode) navEl.parentNode.insertBefore(container, navEl.nextSibling);
